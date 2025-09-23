@@ -1,8 +1,11 @@
 {
-  "name": "frontend",
+  "name": "kcislk-timetable-frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "KCISLK 課表查詢系統 - React 前端應用",
+  "author": "Chang Ho Chien",
+  "license": "UNLICENSED",
   "engines": {
     "node": ">=20.0.0",
     "npm": ">=10.0.0"
