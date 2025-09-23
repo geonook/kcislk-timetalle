@@ -44,9 +44,10 @@ services:
       timeout: 10s
       retries: 3
     volumes:
-      - ./configs/nginx/kcislk-timetable-docker:/etc/nginx/conf.d/default.conf:ro
       # Uncomment for SSL certificates
       # - ./ssl:/etc/ssl/certs:ro
+      # Log files for debugging
+      - ./logs/nginx:/var/log/nginx
     networks:
       - kcislk-network
 

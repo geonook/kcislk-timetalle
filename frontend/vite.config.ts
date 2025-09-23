@@ -25,9 +25,9 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       outDir: 'dist',
-      sourcemap: mode === 'development',
-      minify: mode === 'production' ? 'esbuild' : false,
-      target: 'es2015',
+      sourcemap: mode !== 'production',
+      minify: env.VITE_MINIFY === 'true' ? 'esbuild' : mode === 'production' ? 'esbuild' : false,
+      target: env.VITE_BUILD_TARGET || (mode === 'production' ? 'es2015' : 'es2020'),
       cssCodeSplit: true,
       chunkSizeWarningLimit: 1000,
       rollupOptions: {
@@ -48,11 +48,14 @@ export default defineConfig(({ mode }) => {
       assetsInlineLimit: 4096,
     },
     define: {
-      __APP_VERSION__: JSON.stringify(process.env.npm_package_version || '1.0.0'),
+      __APP_VERSION__: JSON.stringify(env.VITE_APP_VERSION || process.env.npm_package_version || '1.0.0'),
       __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
+      __DEV_MODE__: JSON.stringify(env.VITE_DEV_MODE === 'true'),
+      __LOG_LEVEL__: JSON.stringify(env.VITE_LOG_LEVEL || 'info'),
     },
     esbuild: {
       drop: mode === 'production' ? ['console', 'debugger'] : [],
+      legalComments: mode === 'production' ? 'none' : 'inline',
     },
     optimizeDeps: {
       include: [

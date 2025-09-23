@@ -9,6 +9,7 @@ set -e
 FRONTEND_DIR="/Users/chenzehong/Desktop/kcislk-timetable/frontend"
 BUILD_DIR="$FRONTEND_DIR/dist"
 DEPLOY_TARGET="/var/www/kcislk-timetable"
+PROJECT_ROOT="/Users/chenzehong/Desktop/kcislk-timetable"
 NGINX_CONFIG="/etc/nginx/sites-available/kcislk-timetable"
 BACKUP_DIR="/var/backups/kcislk-timetable/$(date +%Y%m%d_%H%M%S)"
 
@@ -32,7 +33,7 @@ cd "$FRONTEND_DIR"
 
 # Install dependencies
 echo -e "${YELLOW}📦 Installing dependencies...${NC}"
-npm ci --only=production
+npm ci
 
 # Run linting and type checking
 echo -e "${YELLOW}🔍 Running linting and type checking...${NC}"
@@ -73,9 +74,13 @@ sudo nginx -t
 echo -e "${YELLOW}🔄 Reloading nginx...${NC}"
 sudo systemctl reload nginx
 
-echo -e "${GREEN}✅ Frontend deployment completed successfully!${NC}"
+echo -e "${GREEN}✅ React frontend deployment completed successfully!${NC}"
 echo "📊 Build size:"
 du -sh "$BUILD_DIR"
+echo "🔧 Build info:"
+echo "- React version: $(node -pe "require('$FRONTEND_DIR/node_modules/react/package.json').version")"
+echo "- TypeScript compiled successfully"
+echo "- Tailwind CSS processed"
 
 echo ""
 echo "🌐 Access the application at: http://your-domain.com"
