@@ -298,64 +298,107 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function displayStudentTimetables(timetables) {
-        console.log('Displaying student timetables:', timetables);
+        try {
+            console.log('Displaying student timetables:', timetables);
 
-        const timetableTypes = [
-            { key: 'english_timetable', name: '英文班級課表', icon: 'M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v9a2 2 0 01-2 2h-5l-4 4z' },
-            { key: 'homeroom_timetable', name: 'Home Room課表', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
-            { key: 'ev_myreading_timetable', name: 'EV & myReading課表', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' }
-        ];
-
-        const timetableHTML = timetableTypes.map(type => {
-            const timetable = timetables[type.key];
-            if (!timetable || Object.keys(timetable).length === 0) {
-                return `
-                    <div class="bg-white dark:bg-gray-800 rounded-notion shadow-notion p-6">
-                        <div class="flex items-center mb-4">
-                            <svg class="w-6 h-6 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${type.icon}"/>
-                            </svg>
-                            <h4 class="text-lg font-semibold text-gray-900 dark:text-white">${type.name}</h4>
-                        </div>
-                        <div class="text-center py-8 text-gray-500 dark:text-gray-400">
-                            無課表資料
-                        </div>
-                    </div>
-                `;
+            // Ensure timetables is an object
+            if (!timetables || typeof timetables !== 'object') {
+                console.error('Invalid timetables data:', timetables);
+                showError('課表資料格式錯誤', studentTimetable);
+                return;
             }
 
-            return `
-                <div class="bg-white dark:bg-gray-800 rounded-notion shadow-notion p-6">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-6 h-6 text-accent-600 dark:text-accent-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${type.icon}"/>
-                        </svg>
-                        <h4 class="text-lg font-semibold text-gray-900 dark:text-white">${type.name}</h4>
-                    </div>
-                    <div class="overflow-x-auto">
-                        ${renderTimetable(timetable)}
-                    </div>
+            const timetableTypes = [
+                { key: 'english_timetable', name: '英文班級課表', icon: 'M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v9a2 2 0 01-2 2h-5l-4 4z' },
+                { key: 'homeroom_timetable', name: 'Home Room課表', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
+                { key: 'ev_myreading_timetable', name: 'EV & myReading課表', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' }
+            ];
+
+            const timetableHTML = timetableTypes.map(type => {
+                try {
+                    const timetable = timetables[type.key];
+                    console.log(`Processing ${type.key}:`, timetable);
+
+                    if (!timetable || Object.keys(timetable).length === 0) {
+                        return `
+                            <div class="bg-white dark:bg-gray-800 rounded-notion shadow-notion p-6">
+                                <div class="flex items-center mb-4">
+                                    <svg class="w-6 h-6 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${type.icon}"/>
+                                    </svg>
+                                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white">${type.name}</h4>
+                                </div>
+                                <div class="text-center py-8 text-gray-500 dark:text-gray-400">
+                                    無課表資料
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    const renderedTable = renderTimetable(timetable);
+                    console.log(`Rendered table for ${type.key}:`, renderedTable ? 'Success' : 'Failed');
+
+                    return `
+                        <div class="bg-white dark:bg-gray-800 rounded-notion shadow-notion p-6">
+                            <div class="flex items-center mb-4">
+                                <svg class="w-6 h-6 text-accent-600 dark:text-accent-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${type.icon}"/>
+                                </svg>
+                                <h4 class="text-lg font-semibold text-gray-900 dark:text-white">${type.name}</h4>
+                            </div>
+                            <div class="overflow-x-auto">
+                                ${renderedTable}
+                            </div>
+                        </div>
+                    `;
+                } catch (error) {
+                    console.error(`Error rendering ${type.key}:`, error);
+                    return `
+                        <div class="bg-white dark:bg-gray-800 rounded-notion shadow-notion p-6">
+                            <div class="flex items-center mb-4">
+                                <svg class="w-6 h-6 text-red-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${type.icon}"/>
+                                </svg>
+                                <h4 class="text-lg font-semibold text-gray-900 dark:text-white">${type.name}</h4>
+                            </div>
+                            <div class="text-center py-8 text-red-500 dark:text-red-400">
+                                課表渲染錯誤: ${error.message}
+                            </div>
+                        </div>
+                    `;
+                }
+            }).join('');
+
+            console.log('Final timetableHTML generated, setting innerHTML');
+            studentTimetable.innerHTML = `
+                <div class="space-y-6">
+                    ${timetableHTML}
                 </div>
             `;
-        }).join('');
+            console.log('Timetable display completed successfully');
 
-        studentTimetable.innerHTML = `
-            <div class="space-y-6">
-                ${timetableHTML}
-            </div>
-        `;
+        } catch (error) {
+            console.error('Fatal error in displayStudentTimetables:', error);
+            showError(`課表顯示錯誤: ${error.message}`, studentTimetable);
+        }
     }
 
     function renderTimetable(timetable) {
-        const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-        const dayNames = ['星期一', '星期二', '星期三', '星期四', '星期五'];
-        const periods = ['1', '2', '3', '4', '5', '6', '7', '8'];
-        const periodTimes = [
-            '08:20-09:05', '09:15-10:00', '10:20-11:05', '11:15-12:00',
-            '13:20-14:05', '14:15-15:00', '15:20-16:05', '16:15-17:00'
-        ];
+        try {
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+            const dayNames = ['星期一', '星期二', '星期三', '星期四', '星期五'];
+            const periods = ['1', '2', '3', '4', '5', '6', '7', '8'];
+            const periodTimes = [
+                '08:20-09:05', '09:15-10:00', '10:20-11:05', '11:15-12:00',
+                '13:20-14:05', '14:15-15:00', '15:20-16:05', '16:15-17:00'
+            ];
 
-        console.log('Rendering timetable:', timetable);
+            console.log('Rendering timetable:', timetable);
+
+            if (!timetable || typeof timetable !== 'object') {
+                console.error('Invalid timetable data for rendering:', timetable);
+                return '<div class="text-center py-4 text-red-500">課表資料無效</div>';
+            }
 
         return `
             <table class="w-full text-sm">
@@ -419,6 +462,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 </tbody>
             </table>
         `;
+        } catch (error) {
+            console.error('Error in renderTimetable:', error);
+            return `<div class="text-center py-4 text-red-500">課表渲染錯誤: ${error.message}</div>`;
+        }
     }
 
     function showError(message, container) {
