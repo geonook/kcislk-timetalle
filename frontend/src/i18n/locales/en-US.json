@@ -1,0 +1,107 @@
+{
+  "app": {
+    "title": "KCISLK Timetable System",
+    "description": "KCIS Linkou Elementary Timetable Query System"
+  },
+  "navigation": {
+    "classes": "Class Timetables",
+    "students": "Student Timetables",
+    "home": "Home"
+  },
+  "pages": {
+    "home": {
+      "title": "Class Timetable Query",
+      "subtitle": "Select a class to view weekly timetable",
+      "searchPlaceholder": "Search class name...",
+      "loading": "Loading...",
+      "error": "Failed to load"
+    },
+    "student": {
+      "title": "Student Timetable Query",
+      "subtitle": "Enter student name to view personal timetable",
+      "searchPlaceholder": "Enter student name...",
+      "searchButton": "Search",
+      "loading": "Searching...",
+      "error": "Search failed",
+      "noResults": "No students found",
+      "selectStudent": "Please select a student"
+    },
+    "class": {
+      "title": "Class Timetable",
+      "loading": "Loading timetable...",
+      "error": "Failed to load timetable"
+    },
+    "notFound": {
+      "title": "Page Not Found",
+      "description": "Sorry, the page you're looking for doesn't exist.",
+      "goHome": "Go Home"
+    }
+  },
+  "timetable": {
+    "periods": {
+      "1": "Period 1",
+      "2": "Period 2",
+      "3": "Period 3",
+      "4": "Period 4",
+      "5": "Period 5",
+      "6": "Period 6",
+      "7": "Period 7",
+      "8": "Period 8"
+    },
+    "weekdays": {
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday"
+    },
+    "courseTypes": {
+      "english": "English Class",
+      "homeroom": "Homeroom Class",
+      "ev_myreading": "EV & myReading"
+    },
+    "emptySlot": "Free Period",
+    "teacher": "Teacher",
+    "classroom": "Classroom",
+    "subject": "Subject"
+  },
+  "student": {
+    "info": {
+      "name": "Name",
+      "studentId": "Student ID",
+      "englishClass": "English Class",
+      "homeroomClass": "Homeroom Class",
+      "evClass": "EV Class",
+      "grade": "Grade"
+    },
+    "statistics": {
+      "totalClasses": "Total Classes",
+      "daysWithClasses": "Days with Classes",
+      "englishClasses": "English Classes",
+      "homeroomClasses": "Homeroom Classes",
+      "evClasses": "EV Classes"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "search": "Search",
+    "clear": "Clear",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous"
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode",
+    "system": "Follow System"
+  },
+  "language": {
+    "zh-TW": "繁體中文",
+    "en-US": "English"
+  }
+}

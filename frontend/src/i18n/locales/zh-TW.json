@@ -1,0 +1,107 @@
+{
+  "app": {
+    "title": "KCISLK 課表查詢系統",
+    "description": "康橋國際學校林口校區小學部課表查詢系統"
+  },
+  "navigation": {
+    "classes": "班級課表",
+    "students": "學生課表",
+    "home": "首頁"
+  },
+  "pages": {
+    "home": {
+      "title": "班級課表查詢",
+      "subtitle": "選擇班級查看週課表",
+      "searchPlaceholder": "搜尋班級名稱...",
+      "loading": "載入中...",
+      "error": "載入失敗"
+    },
+    "student": {
+      "title": "學生課表查詢",
+      "subtitle": "輸入學生姓名查看個人課表",
+      "searchPlaceholder": "請輸入學生姓名...",
+      "searchButton": "搜尋",
+      "loading": "搜尋中...",
+      "error": "搜尋失敗",
+      "noResults": "未找到學生",
+      "selectStudent": "請選擇學生"
+    },
+    "class": {
+      "title": "班級課表",
+      "loading": "載入課表中...",
+      "error": "載入課表失敗"
+    },
+    "notFound": {
+      "title": "頁面不存在",
+      "description": "抱歉，您訪問的頁面不存在。",
+      "goHome": "返回首頁"
+    }
+  },
+  "timetable": {
+    "periods": {
+      "1": "第一節",
+      "2": "第二節",
+      "3": "第三節",
+      "4": "第四節",
+      "5": "第五節",
+      "6": "第六節",
+      "7": "第七節",
+      "8": "第八節"
+    },
+    "weekdays": {
+      "monday": "星期一",
+      "tuesday": "星期二",
+      "wednesday": "星期三",
+      "thursday": "星期四",
+      "friday": "星期五"
+    },
+    "courseTypes": {
+      "english": "英文班",
+      "homeroom": "導師班",
+      "ev_myreading": "EV & myReading"
+    },
+    "emptySlot": "空堂",
+    "teacher": "老師",
+    "classroom": "教室",
+    "subject": "科目"
+  },
+  "student": {
+    "info": {
+      "name": "姓名",
+      "studentId": "學號",
+      "englishClass": "英文班級",
+      "homeroomClass": "導師班級",
+      "evClass": "EV班級",
+      "grade": "年級"
+    },
+    "statistics": {
+      "totalClasses": "總課堂數",
+      "daysWithClasses": "上課天數",
+      "englishClasses": "英文課堂",
+      "homeroomClasses": "導師課堂",
+      "evClasses": "EV課堂"
+    }
+  },
+  "common": {
+    "loading": "載入中...",
+    "error": "發生錯誤",
+    "retry": "重試",
+    "cancel": "取消",
+    "confirm": "確認",
+    "save": "儲存",
+    "search": "搜尋",
+    "clear": "清除",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步"
+  },
+  "theme": {
+    "light": "淺色模式",
+    "dark": "深色模式",
+    "system": "跟隨系統"
+  },
+  "language": {
+    "zh-TW": "繁體中文",
+    "en-US": "English"
+  }
+}
