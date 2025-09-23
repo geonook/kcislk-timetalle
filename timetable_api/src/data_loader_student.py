@@ -8,7 +8,7 @@ def load_student_data():
     """載入學生資料到資料庫"""
     try:
         # 設定學生資料 CSV 檔案路徑
-        csv_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'students_template.csv')
+        csv_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'students_complete.csv')
 
         # 檢查檔案是否存在
         if not os.path.exists(csv_file_path):
@@ -45,7 +45,7 @@ def load_english_timetable_data():
     """載入英文班課表資料到資料庫"""
     try:
         # 設定英文班課表 CSV 檔案路徑
-        csv_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'english_timetable_template.csv')
+        csv_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'english_timetable_complete.csv')
 
         # 檢查檔案是否存在
         if not os.path.exists(csv_file_path):

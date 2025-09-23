@@ -1,0 +1,1290 @@
+Day,Classroom,Teacher,Period,ClassName
+Monday,E101,張家芸 Kenny,(3)10:20-11:00,G1 Visionaries
+Monday,E101,張家芸 Kenny,(4)11:05-11:45,G1 Visionaries
+Monday,E101,張家芸 Kenny,(5)12:55-13:35,G1 Inventors
+Monday,E101,張家芸 Kenny,(6)13:40-14:20,G1 Inventors
+Monday,E203,林慧君 Liza,(3)10:20-11:00,G1 Discoverers
+Monday,E203,林慧君 Liza,(4)11:05-11:45,G1 Discoverers
+Monday,E203,林慧君 Liza,(5)12:55-13:35,G1 Voyagers
+Monday,E203,林慧君 Liza,(6)13:40-14:20,G1 Voyagers
+Monday,E301,朱韻伃 Ariel,(4)11:05-11:45,G1 Seekers
+Monday,E301,朱韻伃 Ariel,(5)12:55-13:35,G1 Seekers
+Monday,E301,朱韻伃 Ariel,(6)13:40-14:20,G1 Seekers
+Monday,E306,石珈嘉 Kassie,(3)10:20-11:00,G1 Navigators
+Monday,E306,石珈嘉 Kassie,(4)11:05-11:45,G1 Navigators
+Monday,E306,石珈嘉 Kassie,(5)12:55-13:35,G1 Explorers
+Monday,E306,石珈嘉 Kassie,(6)13:40-14:20,G1 Explorers
+Monday,E309,顏思甄 Wendy,(3)10:20-11:00,G1 Pathfinders
+Monday,E309,顏思甄 Wendy,(4)11:05-11:45,G1 Pathfinders
+Monday,E309,顏思甄 Wendy,(5)12:55-13:35,G1 Achievers
+Monday,E309,顏思甄 Wendy,(6)13:40-14:20,G1 Achievers
+Monday,E312,高頌雯 Michelle,(3)10:20-11:00,G1 Innovators
+Monday,E312,高頌雯 Michelle,(4)11:05-11:45,G1 Trailblazers
+Monday,E409,簡安安 Ann,(3)10:20-11:00,G1 Pioneers
+Monday,E409,簡安安 Ann,(4)11:05-11:45,G1 Pioneers
+Monday,E409,簡安安 Ann,(5)12:55-13:35,G1 Guardians
+Monday,E409,簡安安 Ann,(6)13:40-14:20,G1 Guardians
+Monday,E103,林威德 Alvin,(5)12:55-13:35,G2B
+Monday,E103,林威德 Alvin,(6)13:40-14:20,G2B
+Monday,E103,林威德 Alvin,(7)14:40-15:20,G2 Innovators
+Monday,E103,林威德 Alvin,(8)15:25-16:05,G2 Innovators
+Monday,E104,沈家琪 Kim,(5)12:55-13:35,G2A
+Monday,E104,沈家琪 Kim,(6)13:40-14:20,G2A
+Monday,E201,李文歆 Peko,(7)14:40-15:20,G2 Inventers
+Monday,E201,李若華 Samathan,(5)12:55-13:35,G2D
+Monday,E201,李若華 Samathan,(6)13:40-14:20,G2D
+Monday,E303,陳惠文 Julia,(5)12:55-13:35,G2F
+Monday,E303,陳惠文 Julia,(6)13:40-14:20,G2F
+Monday,E303,陳惠文 Julia,(7)14:40-15:20,G2 Explorers
+Monday,E303,陳惠文 Julia,(8)15:25-16:05,G2 Explorers
+Monday,E304,洪禎伶 Cheryl,(5)12:55-13:35,G2G
+Monday,E304,洪禎伶 Cheryl,(6)13:40-14:20,G2G
+Monday,E304,洪禎伶 Cheryl,(7)14:40-15:20,G2 Discoverers
+Monday,E304,洪禎伶 Cheryl,(8)15:25-16:05,G2 Voyagers
+Monday,E307,鄭婷芸 Tiffany,(5)12:55-13:35,G2C
+Monday,E307,鄭婷芸 Tiffany,(6)13:40-14:20,G2C
+Monday,E307,鄭婷芸 Tiffany,(7)14:40-15:20,G2 Adventurers
+Monday,E307,鄭婷芸 Tiffany,(8)15:25-16:05,G2 Adventurers
+Monday,E310,何真瑾 Evelyn,(5)12:55-13:35,G2E
+Monday,E310,何真瑾 Evelyn,(6)13:40-14:20,G2E
+Monday,E310,何真瑾 Evelyn,(7)14:40-15:20,G2 Pathfinders
+Monday,E310,何真瑾 Evelyn,(8)15:25-16:05,G2 Pathfinders
+Monday,E402,黃俐璇 Scarlett,(3)10:20-11:00,G3 Discoverers
+Monday,E402,黃俐璇 Scarlett,(4)11:05-11:45,G3 Discoverers
+Monday,E402,黃俐璇 Scarlett,(5)12:55-13:35,G4 Guardians
+Monday,E402,黃俐璇 Scarlett,(6)13:40-14:20,G4 Guardians
+Monday,E402,黃俐璇 Scarlett,(7)14:40-15:20,G3 Trailblazers
+Monday,E402,黃俐璇 Scarlett,(8)15:25-16:05,G3 Trailblazers
+Monday,E404,彭可鵑 Kate,(3)10:20-11:00,G3 Pathfinders
+Monday,E404,彭可鵑 Kate,(4)11:05-11:45,G3 Pathfinders
+Monday,E404,彭可鵑 Kate,(5)12:55-13:35,G4 Visionaries
+Monday,E404,彭可鵑 Kate,(6)13:40-14:20,G4 Visionaries
+Monday,E408,葛恆婉 Jenny,(5)12:55-13:35,G4 Seekers
+Monday,E408,葛恆婉 Jenny,(6)13:40-14:20,G4 Seekers
+Monday,E408,葛恆婉 Jenny,(7)14:40-15:20,G3 Innovators
+Monday,E408,葛恆婉 Jenny,(8)15:25-16:05,G3 Innovators
+Monday,E408,林彥宇 Lynn,(3)10:20-11:00,G3 Adventurers
+Monday,E408,林彥宇 Lynn,(4)11:05-11:45,G3 Adventurers
+Monday,E411,彭歆芸 Angel,(7)14:40-15:20,G3 Guardians
+Monday,E411,彭歆芸 Angel,(8)15:25-16:05,G3 Guardians
+Monday,E413,陳詩薇 Phoebe C.,(5)12:55-13:35,G4 Innovators
+Monday,E413,陳詩薇 Phoebe C.,(6)13:40-14:20,G4 Innovators
+Monday,E413,陳詩薇 Phoebe C.,(7)14:40-15:20,G3 Seekers
+Monday,E413,陳詩薇 Phoebe C.,(8)15:25-16:05,G3 Seekers
+Monday,E415,葉慎岑 Jojo,(3)10:20-11:00,G3 Voyagers
+Monday,E415,葉慎岑 Jojo,(4)11:05-11:45,G3 Voyagers
+Monday,E415,葉慎岑 Jojo,(5)12:55-13:35,G4 Trailblazers
+Monday,E415,葉慎岑 Jojo,(6)13:40-14:20,G4 Trailblazers
+Monday,E415,葉慎岑 Jojo,(7)14:40-15:20,G3 Visionaries
+Monday,E415,葉慎岑 Jojo,(8)15:25-16:05,G3 Visionaries
+Monday,E507,謝明儒 Rebecca,(3)10:20-11:00,G3 Navigators
+Monday,E507,謝明儒 Rebecca,(4)11:05-11:45,G3 Navigators
+Monday,E502,姜孟妤 Meg,(3)10:20-11:00,G5 Pathfinders
+Monday,E502,姜孟妤 Meg,(4)11:05-11:45,G5 Pathfinders
+Monday,E502,姜孟妤 Meg,(5)12:55-13:35,G6 Innovators
+Monday,E502,姜孟妤 Meg,(6)13:40-14:20,G6 Innovators
+Monday,E502,姜孟妤 Meg,(7)14:40-15:20,G5 Trailblazers
+Monday,E502,姜孟妤 Meg,(8)15:25-16:05,G5 Trailblazers
+Monday,E504,王紀剛 Ben,(3)10:20-11:00,G5 Navigators
+Monday,E504,王紀剛 Ben,(4)11:05-11:45,G5 Navigators
+Monday,E504,王紀剛 Ben,(7)14:40-15:20,G5 Explorers
+Monday,E504,王紀剛 Ben,(8)15:25-16:05,G5 Explorers
+Monday,E506,傅于菁 Josselyn,(5)12:55-13:35,G6 Guardians
+Monday,E506,傅于菁 Josselyn,(6)13:40-14:20,G6 Guardians
+Monday,E506,傅于菁 Josselyn,(7)14:40-15:20,G5 Voyagers
+Monday,E506,傅于菁 Josselyn,(8)15:25-16:05,G5 Voyagers
+Monday,E508,蔣令珮Phoebe,(7)14:40-15:20,G5 Seekers
+Monday,E508,蔣令珮Phoebe,(8)15:25-16:05,G5 Seekers
+Monday,E511,束昀庭 Tim,(7)14:40-15:20,G5 Innovators
+Monday,E511,束昀庭 Tim,(8)15:25-16:05,G5 Innovators
+Monday,E513,劉必喬 Charles,(3)10:20-11:00,G5 Discoverers
+Monday,E513,劉必喬 Charles,(4)11:05-11:45,G5 Discoverers
+Monday,E513,劉必喬 Charles,(5)12:55-13:35,G6 Seekers
+Monday,E513,劉必喬 Charles,(6)13:40-14:20,G6 Seekers
+Monday,E515,許亦欣 Elena,(3)10:20-11:00,G5 Adventurers
+Monday,E515,許亦欣 Elena,(4)11:05-11:45,G5 Adventurers
+Monday,E515,許亦欣 Elena,(5)12:55-13:35,G6 Trailblazers
+Monday,E515,許亦欣 Elena,(6)13:40-14:20,G6 Trailblazers
+Monday,E515,許亦欣 Elena,(7)14:40-15:20,G5 Guardians
+Monday,E515,許亦欣 Elena,(8)15:25-16:05,G5 Guardians
+Monday,E102,Jeffrey Hurd,(3)10:20-11:00,G1 Inventors
+Monday,E102,Jeffrey Hurd,(4)11:05-11:45,G1 Inventors
+Monday,E102,Jeffrey Hurd,(5)12:55-13:35,G1 Visionaries
+Monday,E102,Jeffrey Hurd,(6)13:40-14:20,G1 Visionaries
+Monday,E102,Jeffrey Hurd,(7)14:40-15:20,G2 Visionaries
+Monday,E102,Jeffrey Hurd,(8)15:25-16:05,G2 Visionaries
+Monday,E202,Sam Thompson,(3)10:20-11:00,G1 Voyagers
+Monday,E202,Sam Thompson,(4)11:05-11:45,G1 Voyagers
+Monday,E202,Sam Thompson,(5)12:55-13:35,G1 Discoverers
+Monday,E202,Sam Thompson,(6)13:40-14:20,G1 Discoverers
+Monday,E202,Sam Thompson,(8)15:25-16:05,G2 Inventers
+Monday,E302,Carlo Van Rensburg,(3)10:20-11:00,G1 Seekers
+Monday,E302,Carlo Van Rensburg,(5)12:55-13:35,G1 Adventurers
+Monday,E302,Carlo Van Rensburg,(6)13:40-14:20,G1 Adventurers
+Monday,E302,Sarah Liebenberg,(7)14:40-15:20,G2 Navigators
+Monday,E302,Sarah Liebenberg,(8)15:25-16:05,G2 Navigators
+Monday,E305,Jesse Mueller,(3)10:20-11:00,G1 Explorers
+Monday,E305,Jesse Mueller,(4)11:05-11:45,G1 Explorers
+Monday,E305,Jesse Mueller,(5)12:55-13:35,G1 Navigators
+Monday,E305,Jesse Mueller,(6)13:40-14:20,G1 Navigators
+Monday,E305,Jesse Mueller,(7)14:40-15:20,G2 Voyagers
+Monday,E305,Jesse Mueller,(8)15:25-16:05,G2 Discoverers
+Monday,E308,Jonathan Perry,(3)10:20-11:00,G1 Achievers
+Monday,E308,Jonathan Perry,(4)11:05-11:45,G1 Achievers
+Monday,E308,Jonathan Perry,(5)12:55-13:35,G1 Pathfinders
+Monday,E308,Jonathan Perry,(6)13:40-14:20,G1 Pathfinders
+Monday,E308,Jonathan Perry,(7)14:40-15:20,G2 Pioneers
+Monday,E308,Jonathan Perry,(8)15:25-16:05,G2 Pioneers
+Monday,E311,Fundiswa Ngcongo,(3)10:20-11:00,G1 Trailblazers
+Monday,E311,Fundiswa Ngcongo,(4)11:05-11:45,G1 Innovators
+Monday,E311,Fundiswa Ngcongo,(5)12:55-13:35,G1 Trailblazers
+Monday,E311,Fundiswa Ngcongo,(6)13:40-14:20,G1 Trailblazers
+Monday,E311,Fundiswa Ngcongo,(7)14:40-15:20,G2 Guardians
+Monday,E311,Fundiswa Ngcongo,(8)15:25-16:05,G2 Guardians
+Monday,E406,Nosiviwe Xwayi,(3)10:20-11:00,G1 Guardians
+Monday,E406,Nosiviwe Xwayi,(4)11:05-11:45,G1 Guardians
+Monday,E406,Nosiviwe Xwayi,(5)12:55-13:35,G1 Pioneers
+Monday,E406,Nosiviwe Xwayi,(6)13:40-14:20,G1 Pioneers
+Monday,E406,Nosiviwe Xwayi,(7)14:40-15:20,G2 Seekers
+Monday,E406,Nosiviwe Xwayi,(8)15:25-16:05,G2 Seekers
+Monday,E401,Thomas Mathias,(3)10:20-11:00,G3 Explorers
+Monday,E401,Thomas Mathias,(4)11:05-11:45,G3 Explorers
+Monday,E401,Thomas Mathias,(7)14:40-15:20,G3 Navigators
+Monday,E401,Thomas Mathias,(8)15:25-16:05,G3 Navigators
+Monday,E401,Aleksandra Cieslikowska,(5)12:55-13:35,G4 Achievers
+Monday,E401,Aleksandra Cieslikowska,(6)13:40-14:20,G4 Achievers
+Monday,E403,Adeleena Lee-Hussien,(3)10:20-11:00,G3 Trailblazers
+Monday,E403,Adeleena Lee-Hussien,(4)11:05-11:45,G3 Trailblazers
+Monday,E403,Adeleena Lee-Hussien,(5)12:55-13:35,G4 Voyagers
+Monday,E403,Adeleena Lee-Hussien,(6)13:40-14:20,G4 Voyagers
+Monday,E403,Adeleena Lee-Hussien,(7)14:40-15:20,G3 Discoverers
+Monday,E403,Adeleena Lee-Hussien,(8)15:25-16:05,G3 Discoverers
+Monday,E405,Jane Abasalie,(3)10:20-11:00,G3 Pioneers
+Monday,E405,Jane Abasalie,(4)11:05-11:45,G3 Pioneers
+Monday,E405,Jane Abasalie,(5)12:55-13:35,G4 Adventurers
+Monday,E405,Jane Abasalie,(6)13:40-14:20,G4 Adventurers
+Monday,E405,Natacha Keys,(7)14:40-15:20,G3 Pathfinders
+Monday,E405,Natacha Keys,(8)15:25-16:05,G3 Pathfinders
+Monday,E407,Mark Ajayi,(3)10:20-11:00,G3 Innovators
+Monday,E407,Mark Ajayi,(4)11:05-11:45,G3 Innovators
+Monday,E407,Mark Ajayi,(5)12:55-13:35,G4 Inventors
+Monday,E407,Mark Ajayi,(6)13:40-14:20,G4 Inventors
+Monday,E407,Mark Ajayi,(7)14:40-15:20,G3 Adventurers
+Monday,E407,Mark Ajayi,(8)15:25-16:05,G3 Adventurers
+Monday,E410,Jeffrey Doan,(3)10:20-11:00,G3 Guardians
+Monday,E410,Jeffrey Doan,(4)11:05-11:45,G3 Guardians
+Monday,E410,Jeffrey Doan,(5)12:55-13:35,G4 Discoverers
+Monday,E410,Jeffrey Doan,(6)13:40-14:20,G4 Discoverers
+Monday,E410,Jeffrey Doan,(7)14:40-15:20,G3 Achievers
+Monday,E410,Jeffrey Doan,(8)15:25-16:05,G3 Achievers
+Monday,E412,James Franklin,(3)10:20-11:00,G3 Visionaries
+Monday,E412,James Franklin,(4)11:05-11:45,G3 Visionaries
+Monday,E412,James Franklin,(5)12:55-13:35,G4 Pathfinders
+Monday,E412,James Franklin,(6)13:40-14:20,G4 Pathfinders
+Monday,E412,James Franklin,(7)14:40-15:20,G3 Voyagers
+Monday,E412,James Franklin,(8)15:25-16:05,G3 Voyagers
+Monday,E414,Destiny Mtika,(3)10:20-11:00,G3 Seekers
+Monday,E414,Destiny Mtika,(4)11:05-11:45,G3 Seekers
+Monday,E414,Destiny Mtika,(5)12:55-13:35,G4 Navigators
+Monday,E414,Destiny Mtika,(6)13:40-14:20,G4 Navigators
+Monday,E414,Destiny Mtika,(7)14:40-15:20,G3 Inventors
+Monday,E414,Destiny Mtika,(8)15:25-16:05,G3 Inventors
+Monday,E501,Russell Aranza,(3)10:20-11:00,G5 Seekers
+Monday,E501,Russell Aranza,(4)11:05-11:45,G5 Seekers
+Monday,E501,Russell Aranza,(5)12:55-13:35,G6 Adventurers
+Monday,E501,Russell Aranza,(6)13:40-14:20,G6 Adventurers
+Monday,E501,Russell Aranza,(7)14:40-15:20,G5 Inventors
+Monday,E501,Russell Aranza,(8)15:25-16:05,G5 Inventors
+Monday,E503,Jade Uys,(3)10:20-11:00,G5 Trailblazers
+Monday,E503,Jade Uys,(4)11:05-11:45,G5 Trailblazers
+Monday,E503,Jade Uys,(5)12:55-13:35,G6 Voyagers
+Monday,E503,Jade Uys,(6)13:40-14:20,G6 Voyagers
+Monday,E503,Jade Uys,(7)14:40-15:20,G5 Pathfinders
+Monday,E503,Jade Uys,(8)15:25-16:05,G5 Pathfinders
+Monday,E505,Adriaan Venter,(3)10:20-11:00,G5 Explorers
+Monday,E505,Adriaan Venter,(4)11:05-11:45,G5 Explorers
+Monday,E505,Adriaan Venter,(5)12:55-13:35,G6 Achievers
+Monday,E505,Adriaan Venter,(6)13:40-14:20,G6 Achievers
+Monday,E505,Adriaan Venter,(7)14:40-15:20,G5 Navigators
+Monday,E505,Adriaan Venter,(8)15:25-16:05,G5 Navigators
+Monday,E509,Richmond Rapelo,(3)10:20-11:00,G5 Guardians
+Monday,E509,Richmond Rapelo,(4)11:05-11:45,G5 Guardians
+Monday,E509,Richmond Rapelo,(7)14:40-15:20,G5 Adventurers
+Monday,E509,Richmond Rapelo,(8)15:25-16:05,G5 Adventurers
+Monday,E509,Bryce Bedillion,(5)12:55-13:35,G6 Pathfinders
+Monday,E509,Bryce Bedillion,(6)13:40-14:20,G6 Pathfinders
+Monday,E510,Greg Porter,(3)10:20-11:00,G5 Voyagers
+Monday,E510,Greg Porter,(4)11:05-11:45,G5 Voyagers
+Monday,E510,Greg Porter,(5)12:55-13:35,G6 Discoverers
+Monday,E510,Greg Porter,(6)13:40-14:20,G6 Discoverers
+Monday,E510,Greg Porter,(7)14:40-15:20,G5 Visionaries
+Monday,E510,Greg Porter,(8)15:25-16:05,G5 Visionaries
+Monday,E512,Jessie Su,(3)10:20-11:00,G5 Innovators
+Monday,E512,Jessie Su,(4)11:05-11:45,G5 Innovators
+Monday,E512,Jessie Su,(5)12:55-13:35,G6 Inventors
+Monday,E512,Jessie Su,(6)13:40-14:20,G6 Inventors
+Monday,E512,Bryce Bedillion,(7)14:40-15:20,G5 Achievers
+Monday,E512,Bryce Bedillion,(8)15:25-16:05,G5 Achievers
+Monday,E514,Timothy Zabinski,(3)10:20-11:00,G5 Pioneers
+Monday,E514,Timothy Zabinski,(4)11:05-11:45,G5 Pioneers
+Monday,E514,Timothy Zabinski,(5)12:55-13:35,G6 Navigators
+Monday,E514,Timothy Zabinski,(6)13:40-14:20,G6 Navigators
+Monday,E514,Timothy Zabinski,(7)14:40-15:20,G5 Discoverers
+Monday,E514,Timothy Zabinski,(8)15:25-16:05,G5 Discoverers
+Monday,KCFS1,Carole Godfrey,(3)10:20-11:00,G5 Inventors
+Monday,KCFS1,Carole Godfrey,(4)11:05-11:45,G5 Inventors
+Monday,KCFS1,Carole Godfrey,(7)14:40-15:20,G2 Trailblazers
+Monday,KCFS1,Carole Godfrey,(8)15:25-16:05,G2 Trailblazers
+Monday,KCFS1,Harry Keys,(5)12:55-13:35,G6 Visionaries
+Monday,KCFS1,Harry Keys,(6)13:40-14:20,G6 Visionaries
+Monday,KCFS2,Ava Joy Melocotones,(3)10:20-11:00,G1 Adventurers
+Monday,KCFS2,Ava Joy Melocotones,(4)11:05-11:45,G1 Adventurers
+Monday,KCFS2,Ava Joy Melocotones,(5)12:55-13:35,G1 Innovators
+Monday,KCFS2,Ava Joy Melocotones,(6)13:40-14:20,G1 Innovators
+Monday,KCFS2,Ava Joy Melocotones,(7)14:40-15:20,G2 Achievers
+Monday,KCFS2,Ava Joy Melocotones,(8)15:25-16:05,G2 Achievers
+Monday,KCFS3,Caselyn Javier,(3)10:20-11:00,G5 Visionaries
+Monday,KCFS3,Caselyn Javier,(4)11:05-11:45,G5 Visionaries
+Monday,KCFS3,Caselyn Javier,(5)12:55-13:35,G4 Explorers
+Monday,KCFS3,Caselyn Javier,(6)13:40-14:20,G4 Pioneers
+Monday,KCFS3,Caselyn Javier,(7)14:40-15:20,G5 Pioneers
+Monday,KCFS3,Caselyn Javier,(8)15:25-16:05,G5 Pioneers
+Monday,KCFS4,Elliot Turner,(3)10:20-11:00,G3 Inventors
+Monday,KCFS4,Elliot Turner,(4)11:05-11:45,G3 Inventors
+Monday,KCFS4,Elliot Turner,(5)12:55-13:35,G6 Explorers
+Monday,KCFS4,Elliot Turner,(6)13:40-14:20,G6 Explorers
+Monday,KCFS4,Elliot Turner,(7)14:40-15:20,G3 Pioneers
+Monday,KCFS4,Elliot Turner,(8)15:25-16:05,G3 Pioneers
+Monday,KCFS5,Adriaan Louw,(3)10:20-11:00,G5 Achievers
+Monday,KCFS5,Adriaan Louw,(4)11:05-11:45,G5 Achievers
+Monday,KCFS5,Adriaan Louw,(5)12:55-13:35,G6 Pioneers
+Monday,KCFS5,Adriaan Louw,(6)13:40-14:20,G6 Pioneers
+Monday,KCFS5,Adriaan Louw,(7)14:40-15:20,G5 Explorers
+Monday,KCFS5,Adriaan Louw,(8)15:25-16:05,G5 Explorers
+Monday,KCFS6,Marisa Chapman,(3)10:20-11:00,G3 Achievers
+Monday,KCFS6,Marisa Chapman,(4)11:05-11:45,G3 Achievers
+Monday,KCFS6,Marisa Chapman,(5)12:55-13:35,G4 Pioneers
+Monday,KCFS6,Marisa Chapman,(6)13:40-14:20,G4 Pioneers
+Monday,KCFS6,Marisa Chapman,(7)14:40-15:20,G3 Explorers
+Monday,KCFS6,Marisa Chapman,(8)15:25-16:05,G3 Explorers
+Tuesday,E101,張家芸 Kenny,(1)8:25-9:05,G1B
+Tuesday,E101,張家芸 Kenny,(2)9:10-09:50,G1B
+Tuesday,E101,張家芸 Kenny,(7)14:40-15:20,G1H
+Tuesday,E101,張家芸 Kenny,(8)15:25-16:05,G1H
+Tuesday,E203,林慧君 Liza,(1)8:25-9:05,G1E
+Tuesday,E203,林慧君 Liza,(2)9:10-09:50,G1E
+Tuesday,E203,林慧君 Liza,(5)12:55-13:35,G1 Voyagers
+Tuesday,E203,林慧君 Liza,(6)13:40-14:20,G1 Voyagers
+Tuesday,E203,林慧君 Liza,(7)14:40-15:20,G1L
+Tuesday,E203,林慧君 Liza,(8)15:25-16:05,G1L
+Tuesday,E301,朱韻伃 Ariel,(1)8:25-9:05,G1D
+Tuesday,E301,朱韻伃 Ariel,(2)9:10-09:50,G1D
+Tuesday,E301,朱韻伃 Ariel,(5)12:55-13:35,G1 Adventurers
+Tuesday,E301,朱韻伃 Ariel,(7)14:40-15:20,G1K
+Tuesday,E301,朱韻伃 Ariel,(8)15:25-16:05,G1K
+Tuesday,E306,石珈嘉 Kassie,(1)8:25-9:05,G1A
+Tuesday,E306,石珈嘉 Kassie,(2)9:10-09:50,G1A
+Tuesday,E306,石珈嘉 Kassie,(5)12:55-13:35,G1 Explorers
+Tuesday,E306,石珈嘉 Kassie,(6)13:40-14:20,G1 Navigators
+Tuesday,E306,石珈嘉 Kassie,(7)14:40-15:20,G1I
+Tuesday,E306,石珈嘉 Kassie,(8)15:25-16:05,G1I
+Tuesday,E309,顏思甄 Wendy,(1)8:25-9:05,G1C
+Tuesday,E309,顏思甄 Wendy,(2)9:10-09:50,G1C
+Tuesday,E309,顏思甄 Wendy,(5)12:55-13:35,G1 Achievers
+Tuesday,E309,顏思甄 Wendy,(6)13:40-14:20,G1 Pathfinders
+Tuesday,E309,顏思甄 Wendy,(7)14:40-15:20,G1J
+Tuesday,E309,顏思甄 Wendy,(8)15:25-16:05,G1J
+Tuesday,E312,高頌雯 Michelle,(1)8:25-9:05,G1G
+Tuesday,E312,高頌雯 Michelle,(2)9:10-09:50,G1G
+Tuesday,E312,高頌雯 Michelle,(5)12:55-13:35,G1 Innovators
+Tuesday,E312,高頌雯 Michelle,(6)13:40-14:20,G1 Innovators
+Tuesday,E312,高頌雯 Michelle,(7)14:40-15:20,G1N
+Tuesday,E312,高頌雯 Michelle,(8)15:25-16:05,G1N
+Tuesday,E409,簡安安 Ann,(1)8:25-9:05,G1F
+Tuesday,E409,簡安安 Ann,(2)9:10-09:50,G1F
+Tuesday,E409,簡安安 Ann,(5)12:55-13:35,G1 Guardians
+Tuesday,E409,簡安安 Ann,(6)13:40-14:20,G1 Guardians
+Tuesday,E409,簡安安 Ann,(7)14:40-15:20,G1M
+Tuesday,E409,簡安安 Ann,(8)15:25-16:05,G1M
+Tuesday,E103,林威德 Alvin,(1)8:25-9:05,G2 Visionaries
+Tuesday,E103,林威德 Alvin,(2)9:10-09:50,G2 Visionaries
+Tuesday,E103,林威德 Alvin,(7)14:40-15:20,G2 Innovators
+Tuesday,E103,林威德 Alvin,(8)15:25-16:05,G2 Innovators
+Tuesday,E104,沈家琪 Kim,(1)8:25-9:05,G2 Achievers
+Tuesday,E104,沈家琪 Kim,(2)9:10-09:50,G2 Achievers
+Tuesday,E104,沈家琪 Kim,(7)14:40-15:20,G2 Seekers
+Tuesday,E104,沈家琪 Kim,(8)15:25-16:05,G2 Seekers
+Tuesday,E201,李文歆 Peko,(7)14:40-15:20,G2 Inventers
+Tuesday,E201,李文歆 Peko,(8)15:25-16:05,G2 Inventers
+Tuesday,E201,李若華 Samathan,(1)8:25-9:05,G2 Trailblazers
+Tuesday,E201,李若華 Samathan,(2)9:10-09:50,G2 Trailblazers
+Tuesday,E303,陳惠文 Julia,(1)8:25-9:05,G2 Navigators
+Tuesday,E303,陳惠文 Julia,(2)9:10-09:50,G2 Explorers
+Tuesday,E303,陳惠文 Julia,(7)14:40-15:20,G2 Explorers
+Tuesday,E303,陳惠文 Julia,(8)15:25-16:05,G2 Explorers
+Tuesday,E304,洪禎伶 Cheryl,(1)8:25-9:05,G2 Discoverers
+Tuesday,E304,洪禎伶 Cheryl,(2)9:10-09:50,G2 Discoverers
+Tuesday,E304,洪禎伶 Cheryl,(7)14:40-15:20,G2 Voyagers
+Tuesday,E304,洪禎伶 Cheryl,(8)15:25-16:05,G2 Voyagers
+Tuesday,E307,鄭婷芸 Tiffany,(1)8:25-9:05,G2 Pioneers
+Tuesday,E307,鄭婷芸 Tiffany,(2)9:10-09:50,G2 Pioneers
+Tuesday,E307,鄭婷芸 Tiffany,(7)14:40-15:20,G2 Adventurers
+Tuesday,E307,鄭婷芸 Tiffany,(8)15:25-16:05,G2 Adventurers
+Tuesday,E310,何真瑾 Evelyn,(7)14:40-15:20,G2 Guardians
+Tuesday,E310,何真瑾 Evelyn,(8)15:25-16:05,G2 Guardians
+Tuesday,E402,黃俐璇 Scarlett,(7)14:40-15:20,G3 Trailblazers
+Tuesday,E402,黃俐璇 Scarlett,(8)15:25-16:05,G3 Trailblazers
+Tuesday,E404,彭可鵑 Kate,(1)8:25-9:05,G4 Voyagers
+Tuesday,E404,彭可鵑 Kate,(2)9:10-09:50,G4 Voyagers
+Tuesday,E404,彭可鵑 Kate,(5)12:55-13:35,G4 Visionaries
+Tuesday,E404,彭可鵑 Kate,(6)13:40-14:20,G4 Visionaries
+Tuesday,E404,彭可鵑 Kate,(7)14:40-15:20,G3 Pioneers
+Tuesday,E404,彭可鵑 Kate,(8)15:25-16:05,G3 Pioneers
+Tuesday,E408,葛恆婉 Jenny,(1)8:25-9:05,G4 Discoverers
+Tuesday,E408,葛恆婉 Jenny,(2)9:10-09:50,G4 Discoverers
+Tuesday,E408,葛恆婉 Jenny,(7)14:40-15:20,G3 Innovators
+Tuesday,E408,葛恆婉 Jenny,(8)15:25-16:05,G3 Innovators
+Tuesday,E411,彭歆芸 Angel,(1)8:25-9:05,G4 Pathfinders
+Tuesday,E411,彭歆芸 Angel,(2)9:10-09:50,G4 Pathfinders
+Tuesday,E411,彭歆芸 Angel,(5)12:55-13:35,G4 Explorers
+Tuesday,E411,彭歆芸 Angel,(6)13:40-14:20,G4 Explorers
+Tuesday,E413,陳詩薇 Phoebe C.,(1)8:25-9:05,G4 Adventurers
+Tuesday,E413,陳詩薇 Phoebe C.,(2)9:10-09:50,G4 Adventurers
+Tuesday,E413,陳詩薇 Phoebe C.,(5)12:55-13:35,G4 Innovators
+Tuesday,E413,陳詩薇 Phoebe C.,(6)13:40-14:20,G4 Innovators
+Tuesday,E415,葉慎岑 Jojo,(1)8:25-9:05,G4 Navigators
+Tuesday,E415,葉慎岑 Jojo,(2)9:10-09:50,G4 Navigators
+Tuesday,E415,葉慎岑 Jojo,(5)12:55-13:35,G4 Trailblazers
+Tuesday,E415,葉慎岑 Jojo,(6)13:40-14:20,G4 Trailblazers
+Tuesday,E507,謝明儒 Rebecca,(5)12:55-13:35,G4 Pioneers
+Tuesday,E507,謝明儒 Rebecca,(6)13:40-14:20,G4 Pioneers
+Tuesday,E507,謝明儒 Rebecca,(7)14:40-15:20,G3 Explorers
+Tuesday,E507,謝明儒 Rebecca,(8)15:25-16:05,G3 Explorers
+Tuesday,E502,姜孟妤 Meg,(1)8:25-9:05,G6 Adventurers
+Tuesday,E502,姜孟妤 Meg,(2)9:10-09:50,G6 Adventurers
+Tuesday,E502,姜孟妤 Meg,(5)12:55-13:35,G6 Innovators
+Tuesday,E502,姜孟妤 Meg,(6)13:40-14:20,G6 Innovators
+Tuesday,E502,姜孟妤 Meg,(7)14:40-15:20,G5 Trailblazers
+Tuesday,E502,姜孟妤 Meg,(8)15:25-16:05,G5 Trailblazers
+Tuesday,E504,王紀剛 Ben,(1)8:25-9:05,G6 Voyagers
+Tuesday,E504,王紀剛 Ben,(2)9:10-09:50,G6 Voyagers
+Tuesday,E504,王紀剛 Ben,(5)12:55-13:35,G6 Visionaries
+Tuesday,E504,王紀剛 Ben,(6)13:40-14:20,G6 Visionaries
+Tuesday,E504,王紀剛 Ben,(7)14:40-15:20,G5 Explorers
+Tuesday,E504,王紀剛 Ben,(8)15:25-16:05,G5 Explorers
+Tuesday,E506,傅于菁 Josselyn,(7)14:40-15:20,G5 Voyagers
+Tuesday,E506,傅于菁 Josselyn,(8)15:25-16:05,G5 Voyagers
+Tuesday,E508,蔣令珮Phoebe,(1)8:25-9:05,G6 Pathfinders
+Tuesday,E508,蔣令珮Phoebe,(2)9:10-09:50,G6 Pathfinders
+Tuesday,E508,蔣令珮Phoebe,(5)12:55-13:35,G6 Pioneers
+Tuesday,E508,蔣令珮Phoebe,(6)13:40-14:20,G6 Pioneers
+Tuesday,E511,束昀庭 Tim,(1)8:25-9:05,G6 Discoverers
+Tuesday,E511,束昀庭 Tim,(2)9:10-09:50,G6 Discoverers
+Tuesday,E511,束昀庭 Tim,(5)12:55-13:35,G6 Explorers
+Tuesday,E511,束昀庭 Tim,(6)13:40-14:20,G6 Explorers
+Tuesday,E511,束昀庭 Tim,(7)14:40-15:20,G5 Innovators
+Tuesday,E511,束昀庭 Tim,(8)15:25-16:05,G5 Innovators
+Tuesday,E513,劉必喬 Charles,(7)14:40-15:20,G5 Pioneers
+Tuesday,E513,劉必喬 Charles,(8)15:25-16:05,G5 Pioneers
+Tuesday,E515,許亦欣 Elena,(1)8:25-9:05,G6 Navigators
+Tuesday,E515,許亦欣 Elena,(2)9:10-09:50,G6 Navigators
+Tuesday,E515,許亦欣 Elena,(5)12:55-13:35,G6 Trailblazers
+Tuesday,E515,許亦欣 Elena,(6)13:40-14:20,G6 Trailblazers
+Tuesday,E102,Jeffrey Hurd,(1)8:25-9:05,G2 Innovators
+Tuesday,E102,Jeffrey Hurd,(2)9:10-09:50,G2 Innovators
+Tuesday,E102,Jeffrey Hurd,(5)12:55-13:35,G1 Visionaries
+Tuesday,E102,Jeffrey Hurd,(6)13:40-14:20,G1 Visionaries
+Tuesday,E102,Jeffrey Hurd,(7)14:40-15:20,G2 Visionaries
+Tuesday,E102,Jeffrey Hurd,(8)15:25-16:05,G2 Visionaries
+Tuesday,E202,Sam Thompson,(1)8:25-9:05,G2 Inventers
+Tuesday,E202,Sam Thompson,(2)9:10-09:50,G2 Inventers
+Tuesday,E202,Sam Thompson,(5)12:55-13:35,G1 Discoverers
+Tuesday,E202,Sam Thompson,(6)13:40-14:20,G1 Discoverers
+Tuesday,E202,Sam Thompson,(7)14:40-15:20,G2 Trailblazers
+Tuesday,E202,Sam Thompson,(8)15:25-16:05,G2 Trailblazers
+Tuesday,E302,Carlo Van Rensburg,(1)8:25-9:05,G2 Explorers
+Tuesday,E302,Carlo Van Rensburg,(6)13:40-14:20,G1 Adventurers
+Tuesday,E302,Sarah Liebenberg,(2)9:10-09:50,G2 Navigators
+Tuesday,E302,Sarah Liebenberg,(7)14:40-15:20,G2 Navigators
+Tuesday,E302,Sarah Liebenberg,(8)15:25-16:05,G2 Navigators
+Tuesday,E305,Jesse Mueller,(1)8:25-9:05,G2 Voyagers
+Tuesday,E305,Jesse Mueller,(2)9:10-09:50,G2 Voyagers
+Tuesday,E305,Jesse Mueller,(5)12:55-13:35,G1 Navigators
+Tuesday,E305,Jesse Mueller,(6)13:40-14:20,G1 Explorers
+Tuesday,E305,Jesse Mueller,(7)14:40-15:20,G2 Discoverers
+Tuesday,E305,Jesse Mueller,(8)15:25-16:05,G2 Discoverers
+Tuesday,E308,Jonathan Perry,(5)12:55-13:35,G1 Pathfinders
+Tuesday,E308,Jonathan Perry,(6)13:40-14:20,G1 Achievers
+Tuesday,E308,Jonathan Perry,(7)14:40-15:20,G2 Pioneers
+Tuesday,E308,Jonathan Perry,(8)15:25-16:05,G2 Pioneers
+Tuesday,E311,Fundiswa Ngcongo,(1)8:25-9:05,G2 Guardians
+Tuesday,E311,Fundiswa Ngcongo,(2)9:10-09:50,G2 Guardians
+Tuesday,E311,Fundiswa Ngcongo,(5)12:55-13:35,G1 Trailblazers
+Tuesday,E311,Fundiswa Ngcongo,(6)13:40-14:20,G1 Trailblazers
+Tuesday,E311,Fundiswa Ngcongo,(7)14:40-15:20,G2 Pathfinders
+Tuesday,E311,Fundiswa Ngcongo,(8)15:25-16:05,G2 Pathfinders
+Tuesday,E406,Nosiviwe Xwayi,(1)8:25-9:05,G2 Seekers
+Tuesday,E406,Nosiviwe Xwayi,(2)9:10-09:50,G2 Seekers
+Tuesday,E406,Nosiviwe Xwayi,(5)12:55-13:35,G1 Pioneers
+Tuesday,E406,Nosiviwe Xwayi,(6)13:40-14:20,G1 Pioneers
+Tuesday,E406,Nosiviwe Xwayi,(7)14:40-15:20,G2 Achievers
+Tuesday,E406,Nosiviwe Xwayi,(8)15:25-16:05,G2 Achievers
+Tuesday,E401,Thomas Mathias,(1)8:25-9:05,G4 Guardians
+Tuesday,E401,Thomas Mathias,(2)9:10-09:50,G4 Guardians
+Tuesday,E401,Thomas Mathias,(7)14:40-15:20,G3 Navigators
+Tuesday,E401,Thomas Mathias,(8)15:25-16:05,G3 Navigators
+Tuesday,E401,Aleksandra Cieslikowska,(5)12:55-13:35,G4 Achievers
+Tuesday,E401,Aleksandra Cieslikowska,(6)13:40-14:20,G4 Achievers
+Tuesday,E403,Adeleena Lee-Hussien,(1)8:25-9:05,G4 Visionaries
+Tuesday,E403,Adeleena Lee-Hussien,(2)9:10-09:50,G4 Visionaries
+Tuesday,E403,Adeleena Lee-Hussien,(5)12:55-13:35,G4 Voyagers
+Tuesday,E403,Adeleena Lee-Hussien,(6)13:40-14:20,G4 Voyagers
+Tuesday,E403,Adeleena Lee-Hussien,(7)14:40-15:20,G3 Discoverers
+Tuesday,E403,Adeleena Lee-Hussien,(8)15:25-16:05,G3 Discoverers
+Tuesday,E405,Jane Abasalie,(1)8:25-9:05,G4 Innovators
+Tuesday,E405,Jane Abasalie,(2)9:10-09:50,G4 Innovators
+Tuesday,E405,Jane Abasalie,(5)12:55-13:35,G4 Adventurers
+Tuesday,E405,Jane Abasalie,(6)13:40-14:20,G4 Adventurers
+Tuesday,E405,Natacha Keys,(7)14:40-15:20,G3 Pathfinders
+Tuesday,E405,Natacha Keys,(8)15:25-16:05,G3 Pathfinders
+Tuesday,E407,Mark Ajayi,(1)8:25-9:05,G4 Pioneers
+Tuesday,E407,Mark Ajayi,(2)9:10-09:50,G4 Pioneers
+Tuesday,E407,Mark Ajayi,(5)12:55-13:35,G4 Inventors
+Tuesday,E407,Mark Ajayi,(6)13:40-14:20,G4 Inventors
+Tuesday,E407,Mark Ajayi,(7)14:40-15:20,G3 Adventurers
+Tuesday,E407,Mark Ajayi,(8)15:25-16:05,G3 Adventurers
+Tuesday,E410,Jeffrey Doan,(1)8:25-9:05,G4 Seekers
+Tuesday,E410,Jeffrey Doan,(2)9:10-09:50,G4 Seekers
+Tuesday,E410,Jeffrey Doan,(5)12:55-13:35,G4 Discoverers
+Tuesday,E410,Jeffrey Doan,(6)13:40-14:20,G4 Discoverers
+Tuesday,E410,Jeffrey Doan,(7)14:40-15:20,G3 Achievers
+Tuesday,E410,Jeffrey Doan,(8)15:25-16:05,G3 Achievers
+Tuesday,E412,James Franklin,(1)8:25-9:05,G4 Explorers
+Tuesday,E412,James Franklin,(2)9:10-09:50,G4 Explorers
+Tuesday,E412,James Franklin,(5)12:55-13:35,G4 Pathfinders
+Tuesday,E412,James Franklin,(6)13:40-14:20,G4 Pathfinders
+Tuesday,E412,James Franklin,(7)14:40-15:20,G3 Visionaries
+Tuesday,E412,James Franklin,(8)15:25-16:05,G3 Visionaries
+Tuesday,E414,Destiny Mtika,(1)8:25-9:05,G4 Trailblazers
+Tuesday,E414,Destiny Mtika,(2)9:10-09:50,G4 Trailblazers
+Tuesday,E414,Destiny Mtika,(5)12:55-13:35,G4 Navigators
+Tuesday,E414,Destiny Mtika,(6)13:40-14:20,G4 Navigators
+Tuesday,E414,Destiny Mtika,(7)14:40-15:20,G3 Inventors
+Tuesday,E414,Destiny Mtika,(8)15:25-16:05,G3 Inventors
+Tuesday,E501,Russell Aranza,(1)8:25-9:05,G6 Innovators
+Tuesday,E501,Russell Aranza,(2)9:10-09:50,G6 Innovators
+Tuesday,E501,Russell Aranza,(5)12:55-13:35,G6 Adventurers
+Tuesday,E501,Russell Aranza,(6)13:40-14:20,G6 Adventurers
+Tuesday,E501,Russell Aranza,(7)14:40-15:20,G5 Inventors
+Tuesday,E501,Russell Aranza,(8)15:25-16:05,G5 Inventors
+Tuesday,E503,Jade Uys,(1)8:25-9:05,G6 Visionaries
+Tuesday,E503,Jade Uys,(2)9:10-09:50,G6 Visionaries
+Tuesday,E503,Jade Uys,(5)12:55-13:35,G6 Voyagers
+Tuesday,E503,Jade Uys,(6)13:40-14:20,G6 Voyagers
+Tuesday,E503,Jade Uys,(7)14:40-15:20,G5 Pathfinders
+Tuesday,E503,Jade Uys,(8)15:25-16:05,G5 Pathfinders
+Tuesday,E505,Adriaan Venter,(1)8:25-9:05,G6 Guardians
+Tuesday,E505,Adriaan Venter,(2)9:10-09:50,G6 Guardians
+Tuesday,E505,Adriaan Venter,(5)12:55-13:35,G6 Achievers
+Tuesday,E505,Adriaan Venter,(6)13:40-14:20,G6 Achievers
+Tuesday,E505,Adriaan Venter,(7)14:40-15:20,G5 Navigators
+Tuesday,E505,Adriaan Venter,(8)15:25-16:05,G5 Navigators
+Tuesday,E509,Richmond Rapelo,(1)8:25-9:05,G6 Pioneers
+Tuesday,E509,Richmond Rapelo,(2)9:10-09:50,G6 Pioneers
+Tuesday,E509,Richmond Rapelo,(7)14:40-15:20,G5 Adventurers
+Tuesday,E509,Richmond Rapelo,(8)15:25-16:05,G5 Adventurers
+Tuesday,E509,Bryce Bedillion,(5)12:55-13:35,G6 Pathfinders
+Tuesday,E509,Bryce Bedillion,(6)13:40-14:20,G6 Pathfinders
+Tuesday,E510,Greg Porter,(1)8:25-9:05,G6 Explorers
+Tuesday,E510,Greg Porter,(2)9:10-09:50,G6 Explorers
+Tuesday,E510,Greg Porter,(5)12:55-13:35,G6 Discoverers
+Tuesday,E510,Greg Porter,(6)13:40-14:20,G6 Discoverers
+Tuesday,E510,Greg Porter,(7)14:40-15:20,G5 Visionaries
+Tuesday,E510,Greg Porter,(8)15:25-16:05,G5 Visionaries
+Tuesday,E512,Jessie Su,(1)8:25-9:05,G6 Seekers
+Tuesday,E512,Jessie Su,(2)9:10-09:50,G6 Seekers
+Tuesday,E512,Jessie Su,(5)12:55-13:35,G6 Inventors
+Tuesday,E512,Jessie Su,(6)13:40-14:20,G6 Inventors
+Tuesday,E512,Bryce Bedillion,(7)14:40-15:20,G5 Achievers
+Tuesday,E512,Bryce Bedillion,(8)15:25-16:05,G5 Achievers
+Tuesday,E514,Timothy Zabinski,(1)8:25-9:05,G6 Trailblazers
+Tuesday,E514,Timothy Zabinski,(2)9:10-09:50,G6 Trailblazers
+Tuesday,E514,Timothy Zabinski,(5)12:55-13:35,G6 Navigators
+Tuesday,E514,Timothy Zabinski,(6)13:40-14:20,G6 Navigators
+Tuesday,E514,Timothy Zabinski,(7)14:40-15:20,G5 Discoverers
+Tuesday,E514,Timothy Zabinski,(8)15:25-16:05,G5 Discoverers
+Tuesday,KCFS1,Carole Godfrey,(1)8:25-9:05,G2 Pathfinders
+Tuesday,KCFS1,Carole Godfrey,(2)9:10-09:50,G2 Pathfinders
+Tuesday,KCFS1,Carole Godfrey,(5)12:55-13:35,G1 Seekers
+Tuesday,KCFS1,Carole Godfrey,(6)13:40-14:20,G1 Seekers
+Tuesday,KCFS2,Ava Joy Melocotones,(1)8:25-9:05,G2 Adventurers
+Tuesday,KCFS2,Ava Joy Melocotones,(2)9:10-09:50,G2 Adventurers
+Tuesday,KCFS2,Ava Joy Melocotones,(5)12:55-13:35,G1 Inventors
+Tuesday,KCFS2,Ava Joy Melocotones,(6)13:40-14:20,G1 Inventors
+Tuesday,KCFS2,Ava Joy Melocotones,(7)14:40-15:20,G3 Voyagers
+Tuesday,KCFS2,Ava Joy Melocotones,(8)15:25-16:05,G3 Voyagers
+Tuesday,KCFS3,Caselyn Javier,(1)8:25-9:05,G4 Inventors
+Tuesday,KCFS3,Caselyn Javier,(2)9:10-09:50,G4 Inventors
+Tuesday,KCFS3,Caselyn Javier,(5)12:55-13:35,G4 Seekers
+Tuesday,KCFS3,Caselyn Javier,(6)13:40-14:20,G4 Seekers
+Tuesday,KCFS3,Caselyn Javier,(7)14:40-15:20,G5 Guardians
+Tuesday,KCFS3,Caselyn Javier,(8)15:25-16:05,G5 Guardians
+Tuesday,KCFS4,Elliot Turner,(1)8:25-9:05,G6 Inventors
+Tuesday,KCFS4,Elliot Turner,(2)9:10-09:50,G6 Inventors
+Tuesday,KCFS4,Elliot Turner,(5)12:55-13:35,G6 Seekers
+Tuesday,KCFS4,Elliot Turner,(6)13:40-14:20,G6 Seekers
+Tuesday,KCFS4,Elliot Turner,(7)14:40-15:20,G3 Guardians
+Tuesday,KCFS4,Elliot Turner,(8)15:25-16:05,G3 Guardians
+Tuesday,KCFS5,Adriaan Louw,(1)8:25-9:05,G6 Achievers
+Tuesday,KCFS5,Adriaan Louw,(2)9:10-09:50,G6 Achievers
+Tuesday,KCFS5,Adriaan Louw,(5)12:55-13:35,G6 Guardians
+Tuesday,KCFS5,Adriaan Louw,(6)13:40-14:20,G6 Guardians
+Tuesday,KCFS5,Adriaan Louw,(7)14:40-15:20,G5 Seekers
+Tuesday,KCFS5,Adriaan Louw,(8)15:25-16:05,G5 Seekers
+Tuesday,KCFS6,Marisa Chapman,(1)8:25-9:05,G4 Achievers
+Tuesday,KCFS6,Marisa Chapman,(2)9:10-09:50,G4 Achievers
+Tuesday,KCFS6,Marisa Chapman,(5)12:55-13:35,G4 Guardians
+Tuesday,KCFS6,Marisa Chapman,(6)13:40-14:20,G4 Guardians
+Tuesday,KCFS6,Marisa Chapman,(7)14:40-15:20,G3 Seekers
+Tuesday,KCFS6,Marisa Chapman,(8)15:25-16:05,G3 Seekers
+Wednesday,E101,張家芸 Kenny,(3)10:20-11:00,G1 Inventors
+Wednesday,E101,張家芸 Kenny,(4)11:05-11:45,G1 Visionaries
+Wednesday,E203,林慧君 Liza,(4)11:05-11:45,G1 Voyagers
+Wednesday,E301,朱韻伃 Ariel,(3)10:20-11:00,G1 Adventurers
+Wednesday,E301,朱韻伃 Ariel,(4)11:05-11:45,G1 Adventurers
+Wednesday,E306,石珈嘉 Kassie,(3)10:20-11:00,G1 Navigators
+Wednesday,E306,石珈嘉 Kassie,(4)11:05-11:45,G1 Navigators
+Wednesday,E312,高頌雯 Michelle,(3)10:20-11:00,G1 Trailblazers
+Wednesday,E312,高頌雯 Michelle,(4)11:05-11:45,G1 Trailblazers
+Wednesday,E409,簡安安 Ann,(3)10:20-11:00,G1 Pioneers
+Wednesday,E409,簡安安 Ann,(4)11:05-11:45,G1 Pioneers
+Wednesday,E103,林威德 Alvin,(1)8:25-9:05,G2 Innovators
+Wednesday,E103,林威德 Alvin,(2)9:10-09:50,G2 Visionaries
+Wednesday,E103,林威德 Alvin,(3)10:20-11:00,G2I
+Wednesday,E103,林威德 Alvin,(4)11:05-11:45,G2I
+Wednesday,E104,沈家琪 Kim,(1)8:25-9:05,G2 Achievers
+Wednesday,E104,沈家琪 Kim,(2)9:10-09:50,G2 Seekers
+Wednesday,E104,沈家琪 Kim,(3)10:20-11:00,G2H
+Wednesday,E104,沈家琪 Kim,(4)11:05-11:45,G2H
+Wednesday,E201,李若華 Samathan,(1)8:25-9:05,G2 Trailblazers
+Wednesday,E201,李若華 Samathan,(2)9:10-09:50,G2 Trailblazers
+Wednesday,E201,李若華 Samathan,(3)10:20-11:00,G2K
+Wednesday,E201,李若華 Samathan,(4)11:05-11:45,G2K
+Wednesday,E303,陳惠文 Julia,(1)8:25-9:05,G2 Navigators
+Wednesday,E303,陳惠文 Julia,(2)9:10-09:50,G2 Navigators
+Wednesday,E303,陳惠文 Julia,(3)10:20-11:00,G2M
+Wednesday,E303,陳惠文 Julia,(4)11:05-11:45,G2M
+Wednesday,E304,洪禎伶 Cheryl,(1)8:25-9:05,G2 Discoverers
+Wednesday,E304,洪禎伶 Cheryl,(2)9:10-09:50,G2 Discoverers
+Wednesday,E304,洪禎伶 Cheryl,(3)10:20-11:00,G2N
+Wednesday,E304,洪禎伶 Cheryl,(4)11:05-11:45,G2N
+Wednesday,E307,鄭婷芸 Tiffany,(3)10:20-11:00,G2J
+Wednesday,E307,鄭婷芸 Tiffany,(4)11:05-11:45,G2J
+Wednesday,E310,何真瑾 Evelyn,(1)8:25-9:05,G2 Guardians
+Wednesday,E310,何真瑾 Evelyn,(2)9:10-09:50,G2 Pathfinders
+Wednesday,E310,何真瑾 Evelyn,(3)10:20-11:00,G2L
+Wednesday,E310,何真瑾 Evelyn,(4)11:05-11:45,G2L
+Wednesday,E402,黃俐璇 Scarlett,(1)8:25-9:05,G4 Achievers
+Wednesday,E402,黃俐璇 Scarlett,(2)9:10-09:50,G4 Achievers
+Wednesday,E402,黃俐璇 Scarlett,(3)10:20-11:00,G3 Discoverers
+Wednesday,E402,黃俐璇 Scarlett,(4)11:05-11:45,G3 Discoverers
+Wednesday,E404,彭可鵑 Kate,(3)10:20-11:00,G3 Pathfinders
+Wednesday,E404,彭可鵑 Kate,(4)11:05-11:45,G3 Pathfinders
+Wednesday,E408,葛恆婉 Jenny,(1)8:25-9:05,G4 Discoverers
+Wednesday,E408,葛恆婉 Jenny,(2)9:10-09:50,G4 Discoverers
+Wednesday,E411,彭歆芸 Angel,(1)8:25-9:05,G4 Pathfinders
+Wednesday,E411,彭歆芸 Angel,(2)9:10-09:50,G4 Pathfinders
+Wednesday,E411,李曜宇 Victor,(3)10:20-11:00,G3 Achievers
+Wednesday,E411,李曜宇 Victor,(4)11:05-11:45,G3 Achievers
+Wednesday,E413,陳詩薇 Phoebe C.,(3)10:20-11:00,G3 Inventors
+Wednesday,E413,陳詩薇 Phoebe C.,(4)11:05-11:45,G3 Inventors
+Wednesday,E415,葉慎岑 Jojo,(3)10:20-11:00,G3 Visionaries
+Wednesday,E415,葉慎岑 Jojo,(4)11:05-11:45,G3 Visionaries
+Wednesday,E507,謝明儒 Rebecca,(1)8:25-9:05,G4 Inventors
+Wednesday,E507,謝明儒 Rebecca,(2)9:10-09:50,G4 Inventors
+Wednesday,E502,姜孟妤 Meg,(3)10:20-11:00,G5 Pathfinders
+Wednesday,E502,姜孟妤 Meg,(4)11:05-11:45,G5 Pathfinders
+Wednesday,E504,王紀剛 Ben,(1)8:25-9:05,G6 Voyagers
+Wednesday,E504,王紀剛 Ben,(2)9:10-09:50,G6 Voyagers
+Wednesday,E506,傅于菁 Josselyn,(1)8:25-9:05,G6 Achievers
+Wednesday,E506,傅于菁 Josselyn,(2)9:10-09:50,G6 Achievers
+Wednesday,E506,陳宥蓉 Joanne,(3)10:20-11:00,G5 Visionaries
+Wednesday,E506,陳宥蓉 Joanne,(4)11:05-11:45,G5 Visionaries
+Wednesday,E508,蔣令珮Phoebe,(1)8:25-9:05,G6 Pathfinders
+Wednesday,E508,蔣令珮Phoebe,(2)9:10-09:50,G6 Pathfinders
+Wednesday,E508,蔣令珮Phoebe,(3)10:20-11:00,G5 Inventors
+Wednesday,E508,蔣令珮Phoebe,(4)11:05-11:45,G5 Inventors
+Wednesday,E511,束昀庭 Tim,(1)8:25-9:05,G6 Discoverers
+Wednesday,E511,束昀庭 Tim,(2)9:10-09:50,G6 Discoverers
+Wednesday,E511,束昀庭 Tim,(3)10:20-11:00,G5 Achievers
+Wednesday,E511,束昀庭 Tim,(4)11:05-11:45,G5 Achievers
+Wednesday,E513,劉必喬 Charles,(1)8:25-9:05,G6 Inventors
+Wednesday,E513,劉必喬 Charles,(2)9:10-09:50,G6 Inventors
+Wednesday,E513,劉必喬 Charles,(3)10:20-11:00,G5 Discoverers
+Wednesday,E513,劉必喬 Charles,(4)11:05-11:45,G5 Discoverers
+Wednesday,E102,Jeffrey Hurd,(1)8:25-9:05,G2 Visionaries
+Wednesday,E102,Jeffrey Hurd,(2)9:10-09:50,G2 Innovators
+Wednesday,E102,Jeffrey Hurd,(3)10:20-11:00,G1 Visionaries
+Wednesday,E102,Jeffrey Hurd,(4)11:05-11:45,G1 Inventors
+Wednesday,E202,Sam Thompson,(1)8:25-9:05,G2 Inventers
+Wednesday,E202,Sam Thompson,(2)9:10-09:50,G2 Inventers
+Wednesday,E202,Sam Thompson,(3)10:20-11:00,G1 Voyagers
+Wednesday,E302,Carlo Van Rensburg,(1)8:25-9:05,G2 Explorers
+Wednesday,E302,Carlo Van Rensburg,(2)9:10-09:50,G2 Explorers
+Wednesday,E302,Carlo Van Rensburg,(3)10:20-11:00,G1 Seekers
+Wednesday,E302,Carlo Van Rensburg,(4)11:05-11:45,G1 Seekers
+Wednesday,E308,Sarah Liebenberg,(1)8:25-9:05,G2 Adventurers
+Wednesday,E308,Sarah Liebenberg,(2)9:10-09:50,G2 Adventurers
+Wednesday,E305,Jesse Mueller,(1)8:25-9:05,G2 Voyagers
+Wednesday,E305,Jesse Mueller,(2)9:10-09:50,G2 Voyagers
+Wednesday,E305,Jesse Mueller,(3)10:20-11:00,G1 Explorers
+Wednesday,E305,Jesse Mueller,(4)11:05-11:45,G1 Explorers
+Wednesday,E308,Jonathan Perry,(3)10:20-11:00,G1 Achievers
+Wednesday,E308,Jonathan Perry,(4)11:05-11:45,G1 Achievers
+Wednesday,E311,Fundiswa Ngcongo,(1)8:25-9:05,G2 Pathfinders
+Wednesday,E311,Fundiswa Ngcongo,(2)9:10-09:50,G2 Guardians
+Wednesday,E311,Fundiswa Ngcongo,(3)10:20-11:00,G1 Innovators
+Wednesday,E311,Fundiswa Ngcongo,(4)11:05-11:45,G1 Innovators
+Wednesday,E406,Nosiviwe Xwayi,(1)8:25-9:05,G2 Seekers
+Wednesday,E406,Nosiviwe Xwayi,(2)9:10-09:50,G2 Achievers
+Wednesday,E406,Nosiviwe Xwayi,(3)10:20-11:00,G1 Guardians
+Wednesday,E406,Nosiviwe Xwayi,(4)11:05-11:45,G1 Guardians
+Wednesday,E401,Thomas Mathias,(1)8:25-9:05,G4 Guardians
+Wednesday,E401,Thomas Mathias,(2)9:10-09:50,G4 Guardians
+Wednesday,E401,Thomas Mathias,(3)10:20-11:00,G3 Explorers
+Wednesday,E401,Thomas Mathias,(4)11:05-11:45,G3 Explorers
+Wednesday,E403,Adeleena Lee-Hussien,(1)8:25-9:05,G4 Visionaries
+Wednesday,E403,Adeleena Lee-Hussien,(2)9:10-09:50,G4 Visionaries
+Wednesday,E403,Adeleena Lee-Hussien,(3)10:20-11:00,G3 Trailblazers
+Wednesday,E403,Adeleena Lee-Hussien,(4)11:05-11:45,G3 Trailblazers
+Wednesday,E405,Jane Abasalie,(1)8:25-9:05,G4 Innovators
+Wednesday,E405,Jane Abasalie,(2)9:10-09:50,G4 Innovators
+Wednesday,E405,Jane Abasalie,(3)10:20-11:00,G3 Pioneers
+Wednesday,E405,Jane Abasalie,(4)11:05-11:45,G3 Pioneers
+Wednesday,E407,Mark Ajayi,(1)8:25-9:05,G4 Pioneers
+Wednesday,E407,Mark Ajayi,(2)9:10-09:50,G4 Pioneers
+Wednesday,E407,Mark Ajayi,(3)10:20-11:00,G3 Innovators
+Wednesday,E407,Mark Ajayi,(4)11:05-11:45,G3 Innovators
+Wednesday,E410,Jeffrey Doan,(1)8:25-9:05,G4 Seekers
+Wednesday,E410,Jeffrey Doan,(2)9:10-09:50,G4 Seekers
+Wednesday,E410,Jeffrey Doan,(3)10:20-11:00,G3 Guardians
+Wednesday,E410,Jeffrey Doan,(4)11:05-11:45,G3 Guardians
+Wednesday,E412,James Franklin,(1)8:25-9:05,G4 Explorers
+Wednesday,E412,James Franklin,(2)9:10-09:50,G4 Explorers
+Wednesday,E412,James Franklin,(3)10:20-11:00,G3 Voyagers
+Wednesday,E412,James Franklin,(4)11:05-11:45,G3 Voyagers
+Wednesday,E414,Destiny Mtika,(1)8:25-9:05,G4 Trailblazers
+Wednesday,E414,Destiny Mtika,(2)9:10-09:50,G4 Trailblazers
+Wednesday,E414,Destiny Mtika,(3)10:20-11:00,G3 Seekers
+Wednesday,E414,Destiny Mtika,(4)11:05-11:45,G3 Seekers
+Wednesday,E501,Russell Aranza,(1)8:25-9:05,G6 Innovators
+Wednesday,E501,Russell Aranza,(2)9:10-09:50,G6 Innovators
+Wednesday,E501,Russell Aranza,(3)10:20-11:00,G5 Seekers
+Wednesday,E501,Russell Aranza,(4)11:05-11:45,G5 Seekers
+Wednesday,E503,Jade Uys,(1)8:25-9:05,G6 Visionaries
+Wednesday,E503,Jade Uys,(2)9:10-09:50,G6 Visionaries
+Wednesday,E503,Jade Uys,(3)10:20-11:00,G5 Trailblazers
+Wednesday,E503,Jade Uys,(4)11:05-11:45,G5 Trailblazers
+Wednesday,E505,Adriaan Venter,(1)8:25-9:05,G6 Guardians
+Wednesday,E505,Adriaan Venter,(2)9:10-09:50,G6 Guardians
+Wednesday,E505,Adriaan Venter,(3)10:20-11:00,G5 Explorers
+Wednesday,E505,Adriaan Venter,(4)11:05-11:45,G5 Explorers
+Wednesday,E509,Richmond Rapelo,(1)8:25-9:05,G6 Pioneers
+Wednesday,E509,Richmond Rapelo,(2)9:10-09:50,G6 Pioneers
+Wednesday,E509,Richmond Rapelo,(3)10:20-11:00,G5 Guardians
+Wednesday,E509,Richmond Rapelo,(4)11:05-11:45,G5 Guardians
+Wednesday,E510,Greg Porter,(1)8:25-9:05,G6 Explorers
+Wednesday,E510,Greg Porter,(2)9:10-09:50,G6 Explorers
+Wednesday,E510,Greg Porter,(3)10:20-11:00,G5 Voyagers
+Wednesday,E510,Greg Porter,(4)11:05-11:45,G5 Voyagers
+Wednesday,E512,Jessie Su,(1)8:25-9:05,G6 Seekers
+Wednesday,E512,Jessie Su,(2)9:10-09:50,G6 Seekers
+Wednesday,E512,Jessie Su,(3)10:20-11:00,G5 Innovators
+Wednesday,E512,Jessie Su,(4)11:05-11:45,G5 Innovators
+Wednesday,E514,Timothy Zabinski,(1)8:25-9:05,G6 Trailblazers
+Wednesday,E514,Timothy Zabinski,(2)9:10-09:50,G6 Trailblazers
+Wednesday,E514,Timothy Zabinski,(3)10:20-11:00,G5 Pioneers
+Wednesday,E514,Timothy Zabinski,(4)11:05-11:45,G5 Pioneers
+Wednesday,KCFS1,Carole Godfrey,(3)10:20-11:00,G1 Discoverers
+Wednesday,KCFS1,Carole Godfrey,(4)11:05-11:45,G1 Discoverers
+Wednesday,KCFS1,John Adams Villamoran,(1)8:25-9:05,G4 Navigators
+Wednesday,KCFS1,John Adams Villamoran,(2)9:10-09:50,G4 Navigators
+Wednesday,KCFS2,Ava Joy Melocotones,(1)8:25-9:05,G2 Pioneers
+Wednesday,KCFS2,Ava Joy Melocotones,(2)9:10-09:50,G2 Pioneers
+Wednesday,KCFS2,Ava Joy Melocotones,(3)10:20-11:00,G1 Pathfinders
+Wednesday,KCFS2,Ava Joy Melocotones,(4)11:05-11:45,G1 Pathfinders
+Wednesday,KCFS3,Caselyn Javier,(1)8:25-9:05,G4 Voyagers
+Wednesday,KCFS3,Caselyn Javier,(2)9:10-09:50,G4 Voyagers
+Wednesday,KCFS3,Caselyn Javier,(3)10:20-11:00,G5 Navigators
+Wednesday,KCFS3,Caselyn Javier,(4)11:05-11:45,G5 Navigators
+Wednesday,KCFS4,Elliot Turner,(1)8:25-9:05,G6 Adventurers
+Wednesday,KCFS4,Elliot Turner,(2)9:10-09:50,G6 Adventurers
+Wednesday,KCFS4,Elliot Turner,(3)10:20-11:00,G3 Navigators
+Wednesday,KCFS4,Elliot Turner,(4)11:05-11:45,G3 Navigators
+Wednesday,KCFS5,Adriaan Louw,(1)8:25-9:05,G6 Navigators
+Wednesday,KCFS5,Adriaan Louw,(2)9:10-09:50,G6 Navigators
+Wednesday,KCFS5,Adriaan Louw,(3)10:20-11:00,G5 Adventurers
+Wednesday,KCFS5,Adriaan Louw,(4)11:05-11:45,G5 Adventurers
+Wednesday,KCFS6,Marisa Chapman,(1)8:25-9:05,G4 Adventurers
+Wednesday,KCFS6,Marisa Chapman,(2)9:10-09:50,G4 Adventurers
+Wednesday,KCFS6,Marisa Chapman,(3)10:20-11:00,G3 Adventurers
+Wednesday,KCFS6,Marisa Chapman,(4)11:05-11:45,G3 Adventurers
+Thursday,E101,張家芸 Kenny,(3)10:20-11:00,G1 Visionaries
+Thursday,E101,張家芸 Kenny,(4)11:05-11:45,G1 Visionaries
+Thursday,E101,張家芸 Kenny,(5)12:55-13:35,G1 Inventors
+Thursday,E101,張家芸 Kenny,(6)13:40-14:20,G1 Inventors
+Thursday,E203,林慧君 Liza,(3)10:20-11:00,G1 Discoverers
+Thursday,E203,林慧君 Liza,(4)11:05-11:45,G1 Discoverers
+Thursday,E203,林慧君 Liza,(5)12:55-13:35,G1 Discoverers
+Thursday,E301,朱韻伃 Ariel,(3)10:20-11:00,G1 Adventurers
+Thursday,E301,朱韻伃 Ariel,(4)11:05-11:45,G1 Adventurers
+Thursday,E301,朱韻伃 Ariel,(5)12:55-13:35,G1 Seekers
+Thursday,E301,朱韻伃 Ariel,(6)13:40-14:20,G1 Seekers
+Thursday,E306,石珈嘉 Kassie,(5)12:55-13:35,G1 Explorers
+Thursday,E306,石珈嘉 Kassie,(6)13:40-14:20,G1 Explorers
+Thursday,E309,顏思甄 Wendy,(3)10:20-11:00,G1 Pathfinders
+Thursday,E309,顏思甄 Wendy,(4)11:05-11:45,G1 Pathfinders
+Thursday,E309,顏思甄 Wendy,(5)12:55-13:35,G1 Achievers
+Thursday,E309,顏思甄 Wendy,(6)13:40-14:20,G1 Achievers
+Thursday,E312,高頌雯 Michelle,(3)10:20-11:00,G1 Trailblazers
+Thursday,E312,高頌雯 Michelle,(4)11:05-11:45,G1 Trailblazers
+Thursday,E312,高頌雯 Michelle,(5)12:55-13:35,G1 Innovators
+Thursday,E312,高頌雯 Michelle,(6)13:40-14:20,G1 Innovators
+Thursday,E409,簡安安 Ann,(3)10:20-11:00,G1 Pioneers
+Thursday,E409,簡安安 Ann,(4)11:05-11:45,G1 Pioneers
+Thursday,E409,簡安安 Ann,(5)12:55-13:35,G1 Guardians
+Thursday,E409,簡安安 Ann,(6)13:40-14:20,G1 Guardians
+Thursday,E103,林威德 Alvin,(1)8:25-9:05,G2 Visionaries
+Thursday,E103,林威德 Alvin,(2)9:10-09:50,G2 Visionaries
+Thursday,E103,林威德 Alvin,(7)14:40-15:20,G2 Innovators
+Thursday,E103,林威德 Alvin,(8)15:25-16:05,G2 Innovators
+Thursday,E104,沈家琪 Kim,(1)8:25-9:05,G2 Achievers
+Thursday,E104,沈家琪 Kim,(2)9:10-09:50,G2 Achievers
+Thursday,E104,沈家琪 Kim,(7)14:40-15:20,G2 Seekers
+Thursday,E104,沈家琪 Kim,(8)15:25-16:05,G2 Seekers
+Thursday,E201,李文歆 Peko,(7)14:40-15:20,G2 Inventers
+Thursday,E201,李文歆 Peko,(8)15:25-16:05,G2 Inventers
+Thursday,E201,李若華 Samathan,(1)8:25-9:05,G2 Trailblazers
+Thursday,E201,李若華 Samathan,(2)9:10-09:50,G2 Trailblazers
+Thursday,E303,陳惠文 Julia,(1)8:25-9:05,G2 Navigators
+Thursday,E303,陳惠文 Julia,(2)9:10-09:50,G2 Navigators
+Thursday,E303,陳惠文 Julia,(7)14:40-15:20,G2 Explorers
+Thursday,E303,陳惠文 Julia,(8)15:25-16:05,G2 Explorers
+Thursday,E304,洪禎伶 Cheryl,(1)8:25-9:05,G2 Discoverers
+Thursday,E304,洪禎伶 Cheryl,(2)9:10-09:50,G2 Discoverers
+Thursday,E304,洪禎伶 Cheryl,(7)14:40-15:20,G2 Voyagers
+Thursday,E304,洪禎伶 Cheryl,(8)15:25-16:05,G2 Voyagers
+Thursday,E307,鄭婷芸 Tiffany,(1)8:25-9:05,G2 Pioneers
+Thursday,E307,鄭婷芸 Tiffany,(2)9:10-09:50,G2 Pioneers
+Thursday,E307,鄭婷芸 Tiffany,(7)14:40-15:20,G2 Adventurers
+Thursday,E307,鄭婷芸 Tiffany,(8)15:25-16:05,G2 Pioneers
+Thursday,E310,何真瑾 Evelyn,(1)8:25-9:05,G2 Guardians
+Thursday,E310,何真瑾 Evelyn,(2)9:10-09:50,G2 Guardians
+Thursday,E310,何真瑾 Evelyn,(7)14:40-15:20,G2 Pathfinders
+Thursday,E310,何真瑾 Evelyn,(8)15:25-16:05,G2 Pathfinders
+Thursday,E402,黃俐璇 Scarlett,(1)8:25-9:05,G4 Achievers
+Thursday,E402,黃俐璇 Scarlett,(2)9:10-09:50,G4 Achievers
+Thursday,E402,黃俐璇 Scarlett,(3)10:20-11:00,G3 Discoverers
+Thursday,E402,黃俐璇 Scarlett,(5)12:55-13:35,G4 Guardians
+Thursday,E404,彭可鵑 Kate,(1)8:25-9:05,G4 Voyagers
+Thursday,E404,彭可鵑 Kate,(2)9:10-09:50,G4 Voyagers
+Thursday,E404,彭可鵑 Kate,(3)10:20-11:00,G3 Pathfinders
+Thursday,E404,彭可鵑 Kate,(5)12:55-13:35,G4 Visionaries
+Thursday,E404,彭可鵑 Kate,(7)14:40-15:20,G3 Pioneers
+Thursday,E404,彭可鵑 Kate,(8)15:25-16:05,G3 Pioneers
+Thursday,E408,葛恆婉 Jenny,(5)12:55-13:35,G4 Seekers
+Thursday,E408,林彥宇 Lynn,(3)10:20-11:00,G3 Adventurers
+Thursday,E411,彭歆芸 Angel,(5)12:55-13:35,G4 Explorers
+Thursday,E411,彭歆芸 Angel,(7)14:40-15:20,G3 Guardians
+Thursday,E411,彭歆芸 Angel,(8)15:25-16:05,G3 Guardians
+Thursday,E411,李曜宇 Victor,(3)10:20-11:00,G3 Achievers
+Thursday,E413,陳詩薇 Phoebe C.,(1)8:25-9:05,G4 Adventurers
+Thursday,E413,陳詩薇 Phoebe C.,(2)9:10-09:50,G4 Adventurers
+Thursday,E413,陳詩薇 Phoebe C.,(3)10:20-11:00,G3 Inventors
+Thursday,E413,陳詩薇 Phoebe C.,(5)12:55-13:35,G4 Innovators
+Thursday,E413,陳詩薇 Phoebe C.,(7)14:40-15:20,G3 Seekers
+Thursday,E413,陳詩薇 Phoebe C.,(8)15:25-16:05,G3 Seekers
+Thursday,E415,葉慎岑 Jojo,(1)8:25-9:05,G4 Navigators
+Thursday,E415,葉慎岑 Jojo,(2)9:10-09:50,G4 Navigators
+Thursday,E415,葉慎岑 Jojo,(3)10:20-11:00,G3 Voyagers
+Thursday,E415,葉慎岑 Jojo,(5)12:55-13:35,G4 Trailblazers
+Thursday,E507,謝明儒 Rebecca,(1)8:25-9:05,G4 Inventors
+Thursday,E507,謝明儒 Rebecca,(2)9:10-09:50,G4 Inventors
+Thursday,E507,謝明儒 Rebecca,(3)10:20-11:00,G3 Navigators
+Thursday,E507,謝明儒 Rebecca,(5)12:55-13:35,G4 Pioneers
+Thursday,E507,謝明儒 Rebecca,(7)14:40-15:20,G3 Explorers
+Thursday,E507,謝明儒 Rebecca,(8)15:25-16:05,G3 Explorers
+Thursday,E502,姜孟妤 Meg,(1)8:25-9:05,G6 Adventurers
+Thursday,E502,姜孟妤 Meg,(2)9:10-09:50,G6 Adventurers
+Thursday,E502,姜孟妤 Meg,(3)10:20-11:00,G5 Pathfinders
+Thursday,E502,姜孟妤 Meg,(7)14:40-15:20,G5 Trailblazers
+Thursday,E504,王紀剛 Ben,(3)10:20-11:00,G5 Navigators
+Thursday,E504,王紀剛 Ben,(5)12:55-13:35,G6 Visionaries
+Thursday,E504,王紀剛 Ben,(6)13:40-14:20,G6 Visionaries
+Thursday,E504,王紀剛 Ben,(7)14:40-15:20,G5 Explorers
+Thursday,E506,傅于菁 Josselyn,(1)8:25-9:05,G6 Achievers
+Thursday,E506,傅于菁 Josselyn,(2)9:10-09:50,G6 Achievers
+Thursday,E506,傅于菁 Josselyn,(5)12:55-13:35,G6 Guardians
+Thursday,E506,傅于菁 Josselyn,(6)13:40-14:20,G6 Guardians
+Thursday,E506,傅于菁 Josselyn,(7)14:40-15:20,G5 Voyagers
+Thursday,E506,陳宥蓉 Joanne,(3)10:20-11:00,G5 Visionaries
+Thursday,E508,蔣令珮Phoebe,(3)10:20-11:00,G5 Inventors
+Thursday,E508,蔣令珮Phoebe,(5)12:55-13:35,G6 Pioneers
+Thursday,E508,蔣令珮Phoebe,(6)13:40-14:20,G6 Pioneers
+Thursday,E508,蔣令珮Phoebe,(7)14:40-15:20,G5 Seekers
+Thursday,E511,束昀庭 Tim,(3)10:20-11:00,G5 Achievers
+Thursday,E511,束昀庭 Tim,(5)12:55-13:35,G6 Explorers
+Thursday,E511,束昀庭 Tim,(6)13:40-14:20,G6 Explorers
+Thursday,E511,束昀庭 Tim,(7)14:40-15:20,G5 Innovators
+Thursday,E513,劉必喬 Charles,(1)8:25-9:05,G6 Inventors
+Thursday,E513,劉必喬 Charles,(2)9:10-09:50,G6 Inventors
+Thursday,E513,劉必喬 Charles,(3)10:20-11:00,G5 Discoverers
+Thursday,E513,劉必喬 Charles,(5)12:55-13:35,G6 Seekers
+Thursday,E513,劉必喬 Charles,(6)13:40-14:20,G6 Seekers
+Thursday,E513,劉必喬 Charles,(7)14:40-15:20,G5 Pioneers
+Thursday,E515,許亦欣 Elena,(1)8:25-9:05,G6 Navigators
+Thursday,E515,許亦欣 Elena,(2)9:10-09:50,G6 Navigators
+Thursday,E515,許亦欣 Elena,(3)10:20-11:00,G5 Adventurers
+Thursday,E515,許亦欣 Elena,(7)14:40-15:20,G5 Guardians
+Thursday,E102,Jeffrey Hurd,(1)8:25-9:05,G2 Innovators
+Thursday,E102,Jeffrey Hurd,(2)9:10-09:50,G2 Innovators
+Thursday,E102,Jeffrey Hurd,(3)10:20-11:00,G1 Inventors
+Thursday,E102,Jeffrey Hurd,(4)11:05-11:45,G1 Inventors
+Thursday,E102,Jeffrey Hurd,(5)12:55-13:35,G1 Visionaries
+Thursday,E102,Jeffrey Hurd,(6)13:40-14:20,G1 Visionaries
+Thursday,E202,Sam Thompson,(1)8:25-9:05,G2 Inventers
+Thursday,E202,Sam Thompson,(2)9:10-09:50,G2 Inventers
+Thursday,E202,Sam Thompson,(3)10:20-11:00,G1 Voyagers
+Thursday,E202,Sam Thompson,(4)11:05-11:45,G1 Voyagers
+Thursday,E202,Sam Thompson,(6)13:40-14:20,G1 Discoverers
+Thursday,E202,Sam Thompson,(7)14:40-15:20,G2 Trailblazers
+Thursday,E202,Sam Thompson,(8)15:25-16:05,G2 Trailblazers
+Thursday,E302,Carlo Van Rensburg,(1)8:25-9:05,G2 Explorers
+Thursday,E302,Carlo Van Rensburg,(2)9:10-09:50,G2 Explorers
+Thursday,E302,Carlo Van Rensburg,(3)10:20-11:00,G1 Seekers
+Thursday,E302,Carlo Van Rensburg,(4)11:05-11:45,G1 Seekers
+Thursday,E302,Carlo Van Rensburg,(5)12:55-13:35,G1 Adventurers
+Thursday,E302,Carlo Van Rensburg,(6)13:40-14:20,G1 Adventurers
+Thursday,E308,Sarah Liebenberg,(1)8:25-9:05,G2 Adventurers
+Thursday,E308,Sarah Liebenberg,(2)9:10-09:50,G2 Adventurers
+Thursday,E308,Sarah Liebenberg,(8)15:25-16:05,G2 Adventurers
+Thursday,E305,Jesse Mueller,(1)8:25-9:05,G2 Voyagers
+Thursday,E305,Jesse Mueller,(2)9:10-09:50,G2 Voyagers
+Thursday,E305,Jesse Mueller,(3)10:20-11:00,G1 Navigators
+Thursday,E305,Jesse Mueller,(4)11:05-11:45,G1 Navigators
+Thursday,E305,Jesse Mueller,(7)14:40-15:20,G2 Discoverers
+Thursday,E305,Jesse Mueller,(8)15:25-16:05,G2 Discoverers
+Thursday,E308,Jonathan Perry,(5)12:55-13:35,G1 Pathfinders
+Thursday,E308,Jonathan Perry,(6)13:40-14:20,G1 Pathfinders
+Thursday,E308,Jonathan Perry,(7)14:40-15:20,G2 Pioneers
+Thursday,E311,Fundiswa Ngcongo,(1)8:25-9:05,G2 Pathfinders
+Thursday,E311,Fundiswa Ngcongo,(2)9:10-09:50,G2 Pathfinders
+Thursday,E311,Fundiswa Ngcongo,(3)10:20-11:00,G1 Innovators
+Thursday,E311,Fundiswa Ngcongo,(4)11:05-11:45,G1 Innovators
+Thursday,E311,Fundiswa Ngcongo,(5)12:55-13:35,G1 Trailblazers
+Thursday,E311,Fundiswa Ngcongo,(6)13:40-14:20,G1 Trailblazers
+Thursday,E406,Nosiviwe Xwayi,(3)10:20-11:00,G1 Guardians
+Thursday,E406,Nosiviwe Xwayi,(4)11:05-11:45,G1 Guardians
+Thursday,E406,Nosiviwe Xwayi,(5)12:55-13:35,G1 Pioneers
+Thursday,E406,Nosiviwe Xwayi,(6)13:40-14:20,G1 Pioneers
+Thursday,E406,Nosiviwe Xwayi,(7)14:40-15:20,G2 Achievers
+Thursday,E406,Nosiviwe Xwayi,(8)15:25-16:05,G2 Achievers
+Thursday,E401,Thomas Mathias,(1)8:25-9:05,G4 Guardians
+Thursday,E401,Thomas Mathias,(2)9:10-09:50,G4 Guardians
+Thursday,E401,Thomas Mathias,(3)10:20-11:00,G3 Explorers
+Thursday,E401,Thomas Mathias,(7)14:40-15:20,G3 Navigators
+Thursday,E401,Thomas Mathias,(8)15:25-16:05,G3 Navigators
+Thursday,E401,Aleksandra Cieslikowska,(5)12:55-13:35,G4 Achievers
+Thursday,E403,Adeleena Lee-Hussien,(1)8:25-9:05,G4 Visionaries
+Thursday,E403,Adeleena Lee-Hussien,(2)9:10-09:50,G4 Visionaries
+Thursday,E403,Adeleena Lee-Hussien,(3)10:20-11:00,G3 Trailblazers
+Thursday,E403,Adeleena Lee-Hussien,(5)12:55-13:35,G4 Voyagers
+Thursday,E403,Adeleena Lee-Hussien,(7)14:40-15:20,G3 Discoverers
+Thursday,E403,Adeleena Lee-Hussien,(8)15:25-16:05,G3 Discoverers
+Thursday,E405,Jane Abasalie,(1)8:25-9:05,G4 Innovators
+Thursday,E405,Jane Abasalie,(2)9:10-09:50,G4 Innovators
+Thursday,E405,Jane Abasalie,(3)10:20-11:00,G3 Pioneers
+Thursday,E405,Jane Abasalie,(5)12:55-13:35,G4 Adventurers
+Thursday,E405,Natacha Keys,(7)14:40-15:20,G3 Pathfinders
+Thursday,E405,Natacha Keys,(8)15:25-16:05,G3 Pathfinders
+Thursday,E407,Mark Ajayi,(1)8:25-9:05,G4 Pioneers
+Thursday,E407,Mark Ajayi,(2)9:10-09:50,G4 Pioneers
+Thursday,E407,Mark Ajayi,(3)10:20-11:00,G3 Innovators
+Thursday,E407,Mark Ajayi,(5)12:55-13:35,G4 Inventors
+Thursday,E407,Mark Ajayi,(7)14:40-15:20,G3 Adventurers
+Thursday,E407,Mark Ajayi,(8)15:25-16:05,G3 Adventurers
+Thursday,E410,Jeffrey Doan,(1)8:25-9:05,G4 Seekers
+Thursday,E410,Jeffrey Doan,(2)9:10-09:50,G4 Seekers
+Thursday,E410,Jeffrey Doan,(3)10:20-11:00,G3 Guardians
+Thursday,E410,Jeffrey Doan,(5)12:55-13:35,G4 Discoverers
+Thursday,E410,Jeffrey Doan,(7)14:40-15:20,G3 Achievers
+Thursday,E410,Jeffrey Doan,(8)15:25-16:05,G3 Achievers
+Thursday,E412,James Franklin,(1)8:25-9:05,G4 Explorers
+Thursday,E412,James Franklin,(2)9:10-09:50,G4 Explorers
+Thursday,E412,James Franklin,(3)10:20-11:00,G3 Visionaries
+Thursday,E412,James Franklin,(5)12:55-13:35,G4 Pathfinders
+Thursday,E412,James Franklin,(7)14:40-15:20,G3 Voyagers
+Thursday,E412,James Franklin,(8)15:25-16:05,G3 Voyagers
+Thursday,E414,Destiny Mtika,(1)8:25-9:05,G4 Trailblazers
+Thursday,E414,Destiny Mtika,(2)9:10-09:50,G4 Trailblazers
+Thursday,E414,Destiny Mtika,(3)10:20-11:00,G3 Seekers
+Thursday,E414,Destiny Mtika,(5)12:55-13:35,G4 Navigators
+Thursday,E414,Destiny Mtika,(7)14:40-15:20,G3 Inventors
+Thursday,E414,Destiny Mtika,(8)15:25-16:05,G3 Inventors
+Thursday,E501,Russell Aranza,(1)8:25-9:05,G6 Innovators
+Thursday,E501,Russell Aranza,(2)9:10-09:50,G6 Innovators
+Thursday,E501,Russell Aranza,(3)10:20-11:00,G5 Seekers
+Thursday,E501,Russell Aranza,(5)12:55-13:35,G6 Adventurers
+Thursday,E501,Russell Aranza,(6)13:40-14:20,G6 Adventurers
+Thursday,E501,Russell Aranza,(7)14:40-15:20,G5 Inventors
+Thursday,E503,Jade Uys,(1)8:25-9:05,G6 Visionaries
+Thursday,E503,Jade Uys,(2)9:10-09:50,G6 Visionaries
+Thursday,E503,Jade Uys,(3)10:20-11:00,G5 Trailblazers
+Thursday,E503,Jade Uys,(5)12:55-13:35,G6 Voyagers
+Thursday,E503,Jade Uys,(6)13:40-14:20,G6 Voyagers
+Thursday,E503,Jade Uys,(7)14:40-15:20,G5 Pathfinders
+Thursday,E505,Adriaan Venter,(1)8:25-9:05,G6 Guardians
+Thursday,E505,Adriaan Venter,(2)9:10-09:50,G6 Guardians
+Thursday,E505,Adriaan Venter,(3)10:20-11:00,G5 Explorers
+Thursday,E505,Adriaan Venter,(5)12:55-13:35,G6 Achievers
+Thursday,E505,Adriaan Venter,(6)13:40-14:20,G6 Achievers
+Thursday,E505,Adriaan Venter,(7)14:40-15:20,G5 Navigators
+Thursday,E509,Richmond Rapelo,(1)8:25-9:05,G6 Pioneers
+Thursday,E509,Richmond Rapelo,(2)9:10-09:50,G6 Pioneers
+Thursday,E509,Richmond Rapelo,(3)10:20-11:00,G5 Guardians
+Thursday,E509,Richmond Rapelo,(7)14:40-15:20,G5 Adventurers
+Thursday,E509,Bryce Bedillion,(5)12:55-13:35,G6 Pathfinders
+Thursday,E509,Bryce Bedillion,(6)13:40-14:20,G6 Pathfinders
+Thursday,E510,Greg Porter,(1)8:25-9:05,G6 Explorers
+Thursday,E510,Greg Porter,(2)9:10-09:50,G6 Explorers
+Thursday,E510,Greg Porter,(3)10:20-11:00,G5 Voyagers
+Thursday,E510,Greg Porter,(5)12:55-13:35,G6 Discoverers
+Thursday,E510,Greg Porter,(6)13:40-14:20,G6 Discoverers
+Thursday,E510,Greg Porter,(7)14:40-15:20,G5 Visionaries
+Thursday,E512,Jessie Su,(1)8:25-9:05,G6 Seekers
+Thursday,E512,Jessie Su,(2)9:10-09:50,G6 Seekers
+Thursday,E512,Jessie Su,(3)10:20-11:00,G5 Innovators
+Thursday,E512,Jessie Su,(5)12:55-13:35,G6 Inventors
+Thursday,E512,Jessie Su,(6)13:40-14:20,G6 Inventors
+Thursday,E512,Bryce Bedillion,(7)14:40-15:20,G5 Achievers
+Thursday,E514,Timothy Zabinski,(1)8:25-9:05,G6 Trailblazers
+Thursday,E514,Timothy Zabinski,(2)9:10-09:50,G6 Trailblazers
+Thursday,E514,Timothy Zabinski,(3)10:20-11:00,G5 Pioneers
+Thursday,E514,Timothy Zabinski,(5)12:55-13:35,G6 Navigators
+Thursday,E514,Timothy Zabinski,(6)13:40-14:20,G6 Navigators
+Thursday,E514,Timothy Zabinski,(7)14:40-15:20,G5 Discoverers
+Thursday,KCFS1,Carole Godfrey,(3)10:20-11:00,G1 Achievers
+Thursday,KCFS1,Carole Godfrey,(4)11:05-11:45,G1 Achievers
+Thursday,KCFS1,Carole Godfrey,(5)12:55-13:35,G1 Voyagers
+Thursday,KCFS1,Carole Godfrey,(6)13:40-14:20,G1 Voyagers
+Thursday,KCFS1,Carole Godfrey,(7)14:40-15:20,G2 Visionaries
+Thursday,KCFS1,Carole Godfrey,(8)15:25-16:05,G2 Visionaries
+Thursday,KCFS1,Harry Keys,(1)8:25-9:05,G6 Voyagers
+Thursday,KCFS1,Harry Keys,(2)9:10-09:50,G6 Voyagers
+Thursday,KCFS2,Ava Joy Melocotones,(1)8:25-9:05,G2 Seekers
+Thursday,KCFS2,Ava Joy Melocotones,(2)9:10-09:50,G2 Seekers
+Thursday,KCFS2,Ava Joy Melocotones,(3)10:20-11:00,G1 Explorers
+Thursday,KCFS2,Ava Joy Melocotones,(4)11:05-11:45,G1 Explorers
+Thursday,KCFS2,Ava Joy Melocotones,(5)12:55-13:35,G1 Navigators
+Thursday,KCFS2,Ava Joy Melocotones,(6)13:40-14:20,G1 Navigators
+Thursday,KCFS2,John,(7)14:40-15:20,G2 Guardians
+Thursday,KCFS2,John,(8)15:25-16:05,G2 Guardians
+Thursday,KCFS3,Caselyn Javier,(1)8:25-9:05,G4 Pathfinders
+Thursday,KCFS3,Caselyn Javier,(2)9:10-09:50,G4 Pathfinders
+Thursday,KCFS3,Caselyn Javier,(7)14:40-15:20,G3 Visionaries
+Thursday,KCFS3,Caselyn Javier,(8)15:25-16:05,G3 Visionaries
+Thursday,KCFS4,Elliot Turner,(1)8:25-9:05,G6 Pathfinders
+Thursday,KCFS4,Elliot Turner,(2)9:10-09:50,G6 Pathfinders
+Thursday,KCFS4,Elliot Turner,(5)12:55-13:35,G6 Trailblazers
+Thursday,KCFS4,Elliot Turner,(6)13:40-14:20,G6 Trailblazers
+Thursday,KCFS4,Elliot Turner,(7)14:40-15:20,G3 Trailblazers
+Thursday,KCFS4,Elliot Turner,(8)15:25-16:05,G3 Trailblazers
+Thursday,KCFS5,Adriaan Louw,(1)8:25-9:05,G6 Discoverers
+Thursday,KCFS5,Adriaan Louw,(2)9:10-09:50,G6 Discoverers
+Thursday,KCFS5,Adriaan Louw,(5)12:55-13:35,G6 Innovators
+Thursday,KCFS5,Adriaan Louw,(6)13:40-14:20,G6 Innovators
+Thursday,KCFS5,Adriaan Louw,(7)14:40-15:20,G2 Navigators
+Thursday,KCFS5,Adriaan Louw,(8)15:25-16:05,G2 Navigators
+Thursday,KCFS6,Marisa Chapman,(1)8:25-9:05,G4 Discoverers
+Thursday,KCFS6,Marisa Chapman,(2)9:10-09:50,G4 Discoverers
+Thursday,KCFS6,Marisa Chapman,(7)14:40-15:20,G3 Innovators
+Thursday,KCFS6,Marisa Chapman,(8)15:25-16:05,G3 Innovators
+Friday,E101,張家芸 Kenny,(3)10:20-11:00,G1 Visionaries
+Friday,E101,張家芸 Kenny,(4)11:05-11:45,G1 Visionaries
+Friday,E101,張家芸 Kenny,(5)12:55-13:35,G1 Inventors
+Friday,E101,張家芸 Kenny,(6)13:40-14:20,G1 Inventors
+Friday,E203,林慧君 Liza,(3)10:20-11:00,G1 Discoverers
+Friday,E203,林慧君 Liza,(4)11:05-11:45,G1 Discoverers
+Friday,E203,林慧君 Liza,(5)12:55-13:35,G1 Voyagers
+Friday,E203,林慧君 Liza,(6)13:40-14:20,G1 Voyagers
+Friday,E301,朱韻伃 Ariel,(3)10:20-11:00,G1 Adventurers
+Friday,E301,朱韻伃 Ariel,(4)11:05-11:45,G1 Adventurers
+Friday,E301,朱韻伃 Ariel,(5)12:55-13:35,G1 Seekers
+Friday,E301,朱韻伃 Ariel,(6)13:40-14:20,G1 Seekers
+Friday,E306,石珈嘉 Kassie,(3)10:20-11:00,G1 Navigators
+Friday,E306,石珈嘉 Kassie,(4)11:05-11:45,G1 Navigators
+Friday,E306,石珈嘉 Kassie,(5)12:55-13:35,G1 Explorers
+Friday,E306,石珈嘉 Kassie,(6)13:40-14:20,G1 Explorers
+Friday,E309,顏思甄 Wendy,(3)10:20-11:00,G1 Pathfinders
+Friday,E309,顏思甄 Wendy,(4)11:05-11:45,G1 Pathfinders
+Friday,E309,顏思甄 Wendy,(5)12:55-13:35,G1 Achievers
+Friday,E309,顏思甄 Wendy,(6)13:40-14:20,G1 Achievers
+Friday,E312,高頌雯 Michelle,(3)10:20-11:00,G1 Innovators
+Friday,E312,高頌雯 Michelle,(4)11:05-11:45,G1 Innovators
+Friday,E409,簡安安 Ann,(3)10:20-11:00,G1 Pioneers
+Friday,E409,簡安安 Ann,(5)12:55-13:35,G1 Guardians
+Friday,E103,林威德 Alvin,(1)8:25-9:05,G2 Visionaries
+Friday,E103,林威德 Alvin,(2)9:10-09:50,G2 Visionaries
+Friday,E104,沈家琪 Kim,(1)8:25-9:05,G2 Achievers
+Friday,E104,沈家琪 Kim,(2)9:10-09:50,G2 Achievers
+Friday,E104,沈家琪 Kim,(7)14:40-15:20,G2 Seekers
+Friday,E104,沈家琪 Kim,(8)15:25-16:05,G2 Seekers
+Friday,E201,李文歆 Peko,(7)14:40-15:20,G2 Inventers
+Friday,E201,李文歆 Peko,(8)15:25-16:05,G2 Inventers
+Friday,E201,李若華 Samathan,(1)8:25-9:05,G2 Trailblazers
+Friday,E303,陳惠文 Julia,(1)8:25-9:05,G2 Navigators
+Friday,E303,陳惠文 Julia,(2)9:10-09:50,G2 Navigators
+Friday,E304,洪禎伶 Cheryl,(1)8:25-9:05,G2 Voyagers
+Friday,E304,洪禎伶 Cheryl,(2)9:10-09:50,G2 Voyagers
+Friday,E307,鄭婷芸 Tiffany,(1)8:25-9:05,G2 Pioneers
+Friday,E307,鄭婷芸 Tiffany,(2)9:10-09:50,G2 Pioneers
+Friday,E307,鄭婷芸 Tiffany,(7)14:40-15:20,G2 Adventurers
+Friday,E307,鄭婷芸 Tiffany,(8)15:25-16:05,G2 Adventurers
+Friday,E310,何真瑾 Evelyn,(1)8:25-9:05,G2 Guardians
+Friday,E310,何真瑾 Evelyn,(2)9:10-09:50,G2 Guardians
+Friday,E310,何真瑾 Evelyn,(7)14:40-15:20,G2 Pathfinders
+Friday,E310,何真瑾 Evelyn,(8)15:25-16:05,G2 Pathfinders
+Friday,E402,黃俐璇 Scarlett,(1)8:25-9:05,G4 Achievers
+Friday,E402,黃俐璇 Scarlett,(5)12:55-13:35,G4 Guardians
+Friday,E402,黃俐璇 Scarlett,(6)13:40-14:20,G4 Guardians
+Friday,E402,黃俐璇 Scarlett,(7)14:40-15:20,G3 Trailblazers
+Friday,E404,彭可鵑 Kate,(1)8:25-9:05,G4 Voyagers
+Friday,E404,彭可鵑 Kate,(7)14:40-15:20,G3 Pioneers
+Friday,E408,葛恆婉 Jenny,(1)8:25-9:05,G4 Discoverers
+Friday,E408,葛恆婉 Jenny,(5)12:55-13:35,G4 Seekers
+Friday,E408,葛恆婉 Jenny,(6)13:40-14:20,G4 Seekers
+Friday,E408,葛恆婉 Jenny,(7)14:40-15:20,G3 Innovators
+Friday,E408,林彥宇 Lynn,(3)10:20-11:00,G3 Adventurers
+Friday,E408,林彥宇 Lynn,(4)11:05-11:45,G3 Adventurers
+Friday,E411,彭歆芸 Angel,(1)8:25-9:05,G4 Pathfinders
+Friday,E411,彭歆芸 Angel,(5)12:55-13:35,G4 Explorers
+Friday,E411,彭歆芸 Angel,(6)13:40-14:20,G4 Explorers
+Friday,E411,彭歆芸 Angel,(7)14:40-15:20,G3 Guardians
+Friday,E411,李曜宇 Victor,(3)10:20-11:00,G3 Achievers
+Friday,E411,李曜宇 Victor,(4)11:05-11:45,G3 Achievers
+Friday,E413,陳詩薇 Phoebe C.,(1)8:25-9:05,G4 Adventurers
+Friday,E413,陳詩薇 Phoebe C.,(3)10:20-11:00,G3 Inventors
+Friday,E413,陳詩薇 Phoebe C.,(4)11:05-11:45,G3 Inventors
+Friday,E413,陳詩薇 Phoebe C.,(7)14:40-15:20,G3 Seekers
+Friday,E415,葉慎岑 Jojo,(1)8:25-9:05,G4 Navigators
+Friday,E415,葉慎岑 Jojo,(3)10:20-11:00,G3 Voyagers
+Friday,E415,葉慎岑 Jojo,(4)11:05-11:45,G3 Voyagers
+Friday,E415,葉慎岑 Jojo,(7)14:40-15:20,G3 Visionaries
+Friday,E507,謝明儒 Rebecca,(1)8:25-9:05,G4 Inventors
+Friday,E507,謝明儒 Rebecca,(3)10:20-11:00,G3 Navigators
+Friday,E507,謝明儒 Rebecca,(4)11:05-11:45,G3 Navigators
+Friday,E507,謝明儒 Rebecca,(5)12:55-13:35,G4 Pioneers
+Friday,E507,謝明儒 Rebecca,(6)13:40-14:20,G4 Pioneers
+Friday,E507,謝明儒 Rebecca,(7)14:40-15:20,G3 Explorers
+Friday,E502,姜孟妤 Meg,(1)8:25-9:05,G6 Adventurers
+Friday,E502,姜孟妤 Meg,(5)12:55-13:35,G6 Innovators
+Friday,E504,王紀剛 Ben,(1)8:25-9:05,G6 Voyagers
+Friday,E504,王紀剛 Ben,(3)10:20-11:00,G5 Navigators
+Friday,E504,王紀剛 Ben,(4)11:05-11:45,G5 Navigators
+Friday,E504,王紀剛 Ben,(5)12:55-13:35,G6 Visionaries
+Friday,E504,王紀剛 Ben,(7)14:40-15:20,G5 Explorers
+Friday,E504,王紀剛 Ben,(8)15:25-16:05,G5 Explorers
+Friday,E506,傅于菁 Josselyn,(1)8:25-9:05,G6 Achievers
+Friday,E506,傅于菁 Josselyn,(5)12:55-13:35,G6 Guardians
+Friday,E506,陳宥蓉 Joanne,(3)10:20-11:00,G5 Visionaries
+Friday,E506,陳宥蓉 Joanne,(4)11:05-11:45,G5 Visionaries
+Friday,E508,蔣令珮Phoebe,(1)8:25-9:05,G6 Pathfinders
+Friday,E508,蔣令珮Phoebe,(3)10:20-11:00,G5 Inventors
+Friday,E508,蔣令珮Phoebe,(4)11:05-11:45,G5 Inventors
+Friday,E508,蔣令珮Phoebe,(5)12:55-13:35,G6 Pioneers
+Friday,E508,蔣令珮Phoebe,(7)14:40-15:20,G5 Seekers
+Friday,E508,蔣令珮Phoebe,(8)15:25-16:05,G5 Seekers
+Friday,E511,束昀庭 Tim,(1)8:25-9:05,G6 Discoverers
+Friday,E511,束昀庭 Tim,(3)10:20-11:00,G5 Achievers
+Friday,E511,束昀庭 Tim,(4)11:05-11:45,G5 Achievers
+Friday,E511,束昀庭 Tim,(5)12:55-13:35,G6 Explorers
+Friday,E513,劉必喬 Charles,(1)8:25-9:05,G6 Inventors
+Friday,E513,劉必喬 Charles,(5)12:55-13:35,G6 Seekers
+Friday,E513,劉必喬 Charles,(7)14:40-15:20,G5 Pioneers
+Friday,E513,劉必喬 Charles,(8)15:25-16:05,G5 Pioneers
+Friday,E515,許亦欣 Elena,(1)8:25-9:05,G6 Navigators
+Friday,E515,許亦欣 Elena,(3)10:20-11:00,G5 Adventurers
+Friday,E515,許亦欣 Elena,(4)11:05-11:45,G5 Adventurers
+Friday,E515,許亦欣 Elena,(5)12:55-13:35,G6 Pathfinders
+Friday,E515,許亦欣 Elena,(7)14:40-15:20,G5 Guardians
+Friday,E515,許亦欣 Elena,(8)15:25-16:05,G5 Guardians
+Friday,E102,Jeffrey Hurd,(1)8:25-9:05,G2 Innovators
+Friday,E102,Jeffrey Hurd,(2)9:10-09:50,G2 Innovators
+Friday,E102,Jeffrey Hurd,(3)10:20-11:00,G1 Inventors
+Friday,E102,Jeffrey Hurd,(4)11:05-11:45,G1 Inventors
+Friday,E102,Jeffrey Hurd,(7)14:40-15:20,G2 Visionaries
+Friday,E102,Jeffrey Hurd,(8)15:25-16:05,G2 Visionaries
+Friday,E202,Sam Thompson,(2)9:10-09:50,G2 Trailblazers
+Friday,E202,Sam Thompson,(3)10:20-11:00,G1 Voyagers
+Friday,E202,Sam Thompson,(4)11:05-11:45,G1 Voyagers
+Friday,E202,Sam Thompson,(5)12:55-13:35,G1 Discoverers
+Friday,E202,Sam Thompson,(6)13:40-14:20,G1 Discoverers
+Friday,E202,Sam Thompson,(7)14:40-15:20,G2 Trailblazers
+Friday,E202,Sam Thompson,(8)15:25-16:05,G2 Trailblazers
+Friday,E302,Carlo Van Rensburg,(1)8:25-9:05,G2 Explorers
+Friday,E302,Carlo Van Rensburg,(2)9:10-09:50,G2 Explorers
+Friday,E302,Carlo Van Rensburg,(3)10:20-11:00,G1 Seekers
+Friday,E302,Carlo Van Rensburg,(4)11:05-11:45,G1 Seekers
+Friday,E302,Carlo Van Rensburg,(5)12:55-13:35,G1 Adventurers
+Friday,E302,Carlo Van Rensburg,(6)13:40-14:20,G1 Adventurers
+Friday,E302,Sarah Liebenberg,(7)14:40-15:20,G2 Navigators
+Friday,E302,Sarah Liebenberg,(8)15:25-16:05,G2 Navigators
+Friday,E305,Jesse Mueller,(3)10:20-11:00,G1 Explorers
+Friday,E305,Jesse Mueller,(4)11:05-11:45,G1 Explorers
+Friday,E305,Jesse Mueller,(5)12:55-13:35,G1 Navigators
+Friday,E305,Jesse Mueller,(6)13:40-14:20,G1 Navigators
+Friday,E305,Jesse Mueller,(7)14:40-15:20,G2 Discoverers
+Friday,E305,Jesse Mueller,(8)15:25-16:05,G2 Discoverers
+Friday,E308,Jonathan Perry,(3)10:20-11:00,G1 Achievers
+Friday,E308,Jonathan Perry,(4)11:05-11:45,G1 Achievers
+Friday,E308,Jonathan Perry,(5)12:55-13:35,G1 Pathfinders
+Friday,E308,Jonathan Perry,(6)13:40-14:20,G1 Pathfinders
+Friday,E308,Jonathan Perry,(7)14:40-15:20,G2 Pioneers
+Friday,E308,Jonathan Perry,(8)15:25-16:05,G2 Pioneers
+Friday,E308,Sarah Liebenberg,(1)8:25-9:05,G2 Adventurers
+Friday,E308,Sarah Liebenberg,(2)9:10-09:50,G2 Adventurers
+Friday,E311,Fundiswa Ngcongo,(1)8:25-9:05,G2 Pathfinders
+Friday,E311,Fundiswa Ngcongo,(2)9:10-09:50,G2 Pathfinders
+Friday,E311,Fundiswa Ngcongo,(5)12:55-13:35,G1 Innovators
+Friday,E311,Fundiswa Ngcongo,(6)13:40-14:20,G1 Innovators
+Friday,E311,Fundiswa Ngcongo,(7)14:40-15:20,G2 Guardians
+Friday,E311,Fundiswa Ngcongo,(8)15:25-16:05,G2 Guardians
+Friday,E406,Nosiviwe Xwayi,(1)8:25-9:05,G2 Seekers
+Friday,E406,Nosiviwe Xwayi,(2)9:10-09:50,G2 Seekers
+Friday,E406,Nosiviwe Xwayi,(4)11:05-11:45,G1 Pioneers
+Friday,E406,Nosiviwe Xwayi,(6)13:40-14:20,G1 Guardians
+Friday,E406,Nosiviwe Xwayi,(7)14:40-15:20,G2 Achievers
+Friday,E406,Nosiviwe Xwayi,(8)15:25-16:05,G2 Achievers
+Friday,E401,Thomas Mathias,(1)8:25-9:05,G4 Guardians
+Friday,E401,Thomas Mathias,(3)10:20-11:00,G3 Explorers
+Friday,E401,Thomas Mathias,(4)11:05-11:45,G3 Explorers
+Friday,E401,Thomas Mathias,(7)14:40-15:20,G3 Navigators
+Friday,E401,Aleksandra Cieslikowska,(5)12:55-13:35,G4 Achievers
+Friday,E401,Aleksandra Cieslikowska,(6)13:40-14:20,G4 Achievers
+Friday,E403,Adeleena Lee-Hussien,(1)8:25-9:05,G4 Visionaries
+Friday,E403,Adeleena Lee-Hussien,(3)10:20-11:00,G3 Trailblazers
+Friday,E403,Adeleena Lee-Hussien,(4)11:05-11:45,G3 Trailblazers
+Friday,E403,Adeleena Lee-Hussien,(5)12:55-13:35,G4 Voyagers
+Friday,E403,Adeleena Lee-Hussien,(6)13:40-14:20,G4 Voyagers
+Friday,E403,Adeleena Lee-Hussien,(7)14:40-15:20,G3 Discoverers
+Friday,E405,Jane Abasalie,(1)8:25-9:05,G4 Innovators
+Friday,E405,Jane Abasalie,(3)10:20-11:00,G3 Pioneers
+Friday,E405,Jane Abasalie,(4)11:05-11:45,G3 Pioneers
+Friday,E405,Jane Abasalie,(5)12:55-13:35,G4 Adventurers
+Friday,E405,Jane Abasalie,(6)13:40-14:20,G4 Adventurers
+Friday,E405,Natacha Keys,(7)14:40-15:20,G3 Pathfinders
+Friday,E407,Mark Ajayi,(1)8:25-9:05,G4 Pioneers
+Friday,E407,Mark Ajayi,(3)10:20-11:00,G3 Innovators
+Friday,E407,Mark Ajayi,(4)11:05-11:45,G3 Innovators
+Friday,E407,Mark Ajayi,(5)12:55-13:35,G4 Inventors
+Friday,E407,Mark Ajayi,(6)13:40-14:20,G4 Inventors
+Friday,E407,Mark Ajayi,(7)14:40-15:20,G3 Adventurers
+Friday,E410,Jeffrey Doan,(1)8:25-9:05,G4 Seekers
+Friday,E410,Jeffrey Doan,(3)10:20-11:00,G3 Guardians
+Friday,E410,Jeffrey Doan,(4)11:05-11:45,G3 Guardians
+Friday,E410,Jeffrey Doan,(5)12:55-13:35,G4 Discoverers
+Friday,E410,Jeffrey Doan,(6)13:40-14:20,G4 Discoverers
+Friday,E410,Jeffrey Doan,(7)14:40-15:20,G3 Achievers
+Friday,E412,James Franklin,(1)8:25-9:05,G4 Explorers
+Friday,E412,James Franklin,(3)10:20-11:00,G3 Visionaries
+Friday,E412,James Franklin,(4)11:05-11:45,G3 Visionaries
+Friday,E412,James Franklin,(5)12:55-13:35,G4 Pathfinders
+Friday,E412,James Franklin,(6)13:40-14:20,G4 Pathfinders
+Friday,E412,James Franklin,(7)14:40-15:20,G3 Voyagers
+Friday,E414,Destiny Mtika,(1)8:25-9:05,G4 Trailblazers
+Friday,E414,Destiny Mtika,(3)10:20-11:00,G3 Seekers
+Friday,E414,Destiny Mtika,(4)11:05-11:45,G3 Seekers
+Friday,E414,Destiny Mtika,(5)12:55-13:35,G4 Navigators
+Friday,E414,Destiny Mtika,(6)13:40-14:20,G4 Navigators
+Friday,E414,Destiny Mtika,(7)14:40-15:20,G3 Inventors
+Friday,E501,Russell Aranza,(1)8:25-9:05,G6 Innovators
+Friday,E501,Russell Aranza,(3)10:20-11:00,G5 Seekers
+Friday,E501,Russell Aranza,(4)11:05-11:45,G5 Seekers
+Friday,E501,Russell Aranza,(5)12:55-13:35,G6 Adventurers
+Friday,E501,Russell Aranza,(7)14:40-15:20,G5 Inventors
+Friday,E501,Russell Aranza,(8)15:25-16:05,G5 Inventors
+Friday,E503,Jade Uys,(1)8:25-9:05,G6 Visionaries
+Friday,E503,Jade Uys,(3)10:20-11:00,G5 Trailblazers
+Friday,E503,Jade Uys,(4)11:05-11:45,G5 Trailblazers
+Friday,E503,Jade Uys,(5)12:55-13:35,G6 Voyagers
+Friday,E503,Jade Uys,(7)14:40-15:20,G5 Pathfinders
+Friday,E503,Jade Uys,(8)15:25-16:05,G5 Pathfinders
+Friday,E505,Adriaan Venter,(1)8:25-9:05,G6 Guardians
+Friday,E505,Adriaan Venter,(3)10:20-11:00,G5 Explorers
+Friday,E505,Adriaan Venter,(4)11:05-11:45,G5 Explorers
+Friday,E505,Adriaan Venter,(5)12:55-13:35,G6 Achievers
+Friday,E505,Adriaan Venter,(7)14:40-15:20,G5 Navigators
+Friday,E505,Adriaan Venter,(8)15:25-16:05,G5 Navigators
+Friday,E509,Richmond Rapelo,(1)8:25-9:05,G6 Pioneers
+Friday,E509,Richmond Rapelo,(3)10:20-11:00,G5 Guardians
+Friday,E509,Richmond Rapelo,(4)11:05-11:45,G5 Guardians
+Friday,E509,Richmond Rapelo,(7)14:40-15:20,G5 Adventurers
+Friday,E509,Richmond Rapelo,(8)15:25-16:05,G5 Adventurers
+Friday,E509,Bryce Bedillion,(1)8:25-9:05,G6 Pathfinders
+Friday,E509,Bryce Bedillion,(5)12:55-13:35,G6 Pathfinders
+Friday,E510,Greg Porter,(1)8:25-9:05,G6 Explorers
+Friday,E510,Greg Porter,(3)10:20-11:00,G5 Voyagers
+Friday,E510,Greg Porter,(4)11:05-11:45,G5 Voyagers
+Friday,E510,Greg Porter,(5)12:55-13:35,G6 Discoverers
+Friday,E510,Greg Porter,(7)14:40-15:20,G5 Visionaries
+Friday,E510,Greg Porter,(8)15:25-16:05,G5 Visionaries
+Friday,E512,Jessie Su,(1)8:25-9:05,G6 Seekers
+Friday,E512,Jessie Su,(3)10:20-11:00,G5 Innovators
+Friday,E512,Jessie Su,(4)11:05-11:45,G5 Innovators
+Friday,E512,Jessie Su,(5)12:55-13:35,G6 Inventors
+Friday,E512,Bryce Bedillion,(7)14:40-15:20,G5 Achievers
+Friday,E512,Bryce Bedillion,(8)15:25-16:05,G5 Achievers
+Friday,E514,Timothy Zabinski,(1)8:25-9:05,G6 Trailblazers
+Friday,E514,Timothy Zabinski,(3)10:20-11:00,G5 Pioneers
+Friday,E514,Timothy Zabinski,(4)11:05-11:45,G5 Pioneers
+Friday,E514,Timothy Zabinski,(5)12:55-13:35,G6 Navigators
+Friday,E514,Timothy Zabinski,(7)14:40-15:20,G5 Discoverers
+Friday,E514,Timothy Zabinski,(8)15:25-16:05,G5 Discoverers
+Friday,KCFS1,Carole Godfrey,(3)10:20-11:00,G1 Trailblazers
+Friday,KCFS1,Carole Godfrey,(4)11:05-11:45,G1 Trailblazers
+Friday,KCFS1,Carole Godfrey,(5)12:55-13:35,G1 Visionaries
+Friday,KCFS1,Carole Godfrey,(6)13:40-14:20,G1 Visionaries
+Friday,KCFS1,Carole Godfrey,(7)14:40-15:20,G5 Voyagers
+Friday,KCFS1,Carole Godfrey,(8)15:25-16:05,G5 Voyagers
+Friday,KCFS2,Ava Joy Melocotones,(3)10:20-11:00,G1 Guardians
+Friday,KCFS2,Ava Joy Melocotones,(4)11:05-11:45,G1 Guardians
+Friday,KCFS2,Ava Joy Melocotones,(5)12:55-13:35,G1 Pioneers
+Friday,KCFS2,Ava Joy Melocotones,(6)13:40-14:20,G1 Pioneers
+Friday,KCFS2,Ava Joy Melocotones,(7)14:40-15:20,G2 Explorers
+Friday,KCFS2,Ava Joy Melocotones,(8)15:25-16:05,G2 Explorers
+Friday,KCFS3,Caselyn Javier,(3)10:20-11:00,G5 Pathfinders
+Friday,KCFS3,Caselyn Javier,(4)11:05-11:45,G5 Pathfinders
+Friday,KCFS3,Caselyn Javier,(5)12:55-13:35,G4 Trailblazers
+Friday,KCFS3,Caselyn Javier,(6)13:40-14:20,G4 Trailblazers
+Friday,KCFS3,Caselyn Javier,(7)14:40-15:20,G5 Trailblazers
+Friday,KCFS3,Caselyn Javier,(8)15:25-16:05,G5 Trailblazers
+Friday,KCFS4,Elliot Turner,(3)10:20-11:00,G3 Pathfinders
+Friday,KCFS4,Elliot Turner,(4)11:05-11:45,G3 Pathfinders
+Friday,KCFS4,John Adams Villamoran,(5)12:55-13:35,G4 Visionaries
+Friday,KCFS4,John Adams Villamoran,(6)13:40-14:20,G4 Visionaries
+Friday,KCFS4,Harry Keys,(7)14:40-15:20,G5 Innovators
+Friday,KCFS4,Harry Keys,(8)15:25-16:05,G5 Innovators
+Friday,KCFS5,Adriaan Louw,(1)8:25-9:05,G2 Discoverers
+Friday,KCFS5,Adriaan Louw,(2)9:10-09:50,G2 Discoverers
+Friday,KCFS5,Adriaan Louw,(3)10:20-11:00,G5 Discoverers
+Friday,KCFS5,Adriaan Louw,(4)11:05-11:45,G5 Discoverers
+Friday,KCFS5,Adriaan Louw,(7)14:40-15:20,G2 Voyagers
+Friday,KCFS5,Adriaan Louw,(8)15:25-16:05,G2 Voyagers
+Friday,KCFS6,Marisa Chapman,(1)8:25-9:05,G2 Inventers
+Friday,KCFS6,Marisa Chapman,(2)9:10-09:50,G2 Inventers
+Friday,KCFS6,Marisa Chapman,(3)10:20-11:00,G3 Discoverers
+Friday,KCFS6,Marisa Chapman,(4)11:05-11:45,G3 Discoverers
+Friday,KCFS6,Marisa Chapman,(5)12:55-13:35,G4 Innovators
+Friday,KCFS6,Marisa Chapman,(6)13:40-14:20,G4 Innovators
+Friday,KCFS6,Marisa Chapman,(7)14:40-15:20,G2 Innovators
+Friday,KCFS6,Marisa Chapman,(8)15:25-16:05,G2 Innovators

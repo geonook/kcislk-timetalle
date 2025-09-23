@@ -10,8 +10,8 @@ def load_timetable_data(csv_file_path=None):
     """載入課表資料到資料庫"""
 
     if csv_file_path is None:
-        # 使用預設的英文課表檔案路徑
-        csv_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'english_timetable_template.csv')
+        # 使用完整的英文課表檔案路徑
+        csv_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'english_timetable_complete.csv')
 
     # 檢查檔案是否存在
     if not os.path.exists(csv_file_path):
