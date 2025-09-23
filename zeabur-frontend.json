@@ -1,12 +1,13 @@
 {
   "name": "kcislk-timetable-frontend",
   "app": {
-    "type": "node",
-    "buildCommand": "cd frontend && npm install && npm run build:zeabur",
-    "outputDirectory": "frontend/dist",
-    "installCommand": "cd frontend && npm install",
+    "type": "nodejs",
+    "buildCommand": "npm install && npm run build:zeabur",
+    "outputDirectory": "dist",
+    "installCommand": "npm install",
     "framework": "vite",
-    "rootDirectory": "frontend"
+    "rootDirectory": "frontend",
+    "nodeVersion": "18"
   },
   "domain": {
     "custom": false
