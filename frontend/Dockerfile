@@ -14,7 +14,7 @@ RUN npm ci
 COPY . .
 
 # 執行建置
-RUN npm run build:production
+RUN npm run build:zeabur
 
 # 第二階段：使用 Nginx 提供靜態檔案
 FROM nginx:alpine
