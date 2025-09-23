@@ -1,11 +1,17 @@
 import os
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, render_template
 from flask_cors import CORS
 from src.models.timetable import db
 from src.routes.timetable import timetable_bp
 from src.routes.student import student_bp
 
-app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
+# Configure Flask app with both static and template folders
+template_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'templates')
+static_dir = os.path.join(os.path.dirname(__file__), 'static')
+
+app = Flask(__name__,
+           static_folder=static_dir,
+           template_folder=template_dir)
 app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
 
 # Enable CORS for all routes
@@ -31,21 +37,26 @@ with app.app_context():
     db.create_all()
     print("Database tables created successfully.")
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def serve(path):
-    static_folder_path = app.static_folder
-    if static_folder_path is None:
-            return "Static folder not configured", 404
+# Frontend page routes
+@app.route('/')
+def index():
+    """班級課表查詢首頁"""
+    return render_template('index.html')
 
-    if path != "" and os.path.exists(os.path.join(static_folder_path, path)):
-        return send_from_directory(static_folder_path, path)
+@app.route('/student')
+def student_timetable():
+    """學生課表查詢頁面"""
+    return render_template('student.html')
+
+# Static file serving
+@app.route('/<path:filename>')
+def serve_static(filename):
+    """處理靜態檔案請求"""
+    static_folder_path = app.static_folder
+    if static_folder_path and os.path.exists(os.path.join(static_folder_path, filename)):
+        return send_from_directory(static_folder_path, filename)
     else:
-        index_path = os.path.join(static_folder_path, 'index.html')
-        if os.path.exists(index_path):
-            return send_from_directory(static_folder_path, 'index.html')
-        else:
-            return "index.html not found", 404
+        return "File not found", 404
 
 
 

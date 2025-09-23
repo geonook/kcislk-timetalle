@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="{% if dark_mode %}dark{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}課表查詢系統{% endblock %}</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        accent: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e'
+                        }
+                    },
+                    borderRadius: {
+                        'notion': '8px'
+                    },
+                    boxShadow: {
+                        'notion': '0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06)'
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.3s ease-out',
+                        'slide-down': 'slideDown 0.3s ease-out',
+                        'fade-in': 'fadeIn 0.3s ease-out'
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        /* Loading spinner animation */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+
+        /* Dark mode scrollbar */
+        .dark ::-webkit-scrollbar-track {
+            background: #374151;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #6b7280;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+    </style>
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-200">
+    <div class="min-h-screen flex flex-col">
+        <!-- Navigation -->
+        <nav class="bg-white dark:bg-gray-800 shadow-notion border-b border-gray-200 dark:border-gray-700">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <!-- Logo and Title -->
+                    <div class="flex items-center space-x-4">
+                        <div class="w-8 h-8 bg-accent-500 rounded-notion flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h1 class="text-lg font-semibold text-gray-900 dark:text-white">KCISLK 課表查詢系統</h1>
+                    </div>
+
+                    <!-- Navigation Links -->
+                    <div class="flex items-center space-x-6">
+                        <a href="/" class="{% if request.endpoint == 'index' %}text-accent-600 dark:text-accent-400 font-medium{% else %}text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400{% endif %} transition-colors">
+                            班級課表
+                        </a>
+                        <a href="/student" class="{% if request.endpoint == 'student_timetable' %}text-accent-600 dark:text-accent-400 font-medium{% else %}text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400{% endif %} transition-colors">
+                            學生課表
+                        </a>
+
+                        <!-- Dark Mode Toggle -->
+                        <button id="theme-toggle" class="p-2 rounded-notion text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                            <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                            </svg>
+                            <svg id="theme-toggle-light-icon" class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-1 py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 mt-auto">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center text-sm text-gray-600 dark:text-gray-400">
+                    <p>© 2024 康橋國際學校林口校區. 版權所有.</p>
+                    <p class="mt-1">課表查詢系統 - 為教學服務而設計</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Dark mode toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            htmlElement.classList.add('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            const theme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+
+        // Loading state management
+        function showLoading(target) {
+            if (target) {
+                target.innerHTML = '<div class="flex justify-center py-8"><div class="w-8 h-8 border-4 border-accent-200 border-t-accent-600 rounded-full animate-spin"></div></div>';
+            }
+        }
+
+        function hideLoading() {
+            // Loading will be replaced by actual content
+        }
+
+        // Error handling
+        function showError(message, target) {
+            if (target) {
+                target.innerHTML = `
+                    <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-notion p-4">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-red-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span class="text-red-700 dark:text-red-300">${message}</span>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Smooth animations for dynamic content
+        function animateElement(element, animationClass = 'animate-fade-in') {
+            element.classList.add(animationClass);
+        }
+    </script>
+
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

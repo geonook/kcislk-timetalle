@@ -1,0 +1,393 @@
+{% extends "base.html" %}
+
+{% block title %}學生課表查詢 - 課表查詢系統{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- 頁面標題 -->
+    <div class="text-center py-6">
+        <div class="w-12 h-12 mx-auto bg-accent-100 dark:bg-accent-900 rounded-notion flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent-600 dark:text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+        </div>
+        <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">學生課表查詢系統</h1>
+        <p class="text-gray-600 dark:text-gray-400">搜尋學生姓名或學號來查看完整的課表安排</p>
+    </div>
+
+    <!-- 學生搜尋 -->
+    <div class="max-w-lg mx-auto">
+        <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="w-5 h-5 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </div>
+            <input
+                type="text"
+                id="student-search"
+                placeholder="請輸入學生姓名或學號..."
+                class="w-full pl-10 pr-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-notion focus:outline-none focus:ring-2 focus:ring-accent-500 dark:focus:ring-accent-400 focus:border-transparent text-gray-900 dark:text-white transition-colors"
+                autocomplete="off"
+            />
+        </div>
+
+        <!-- 搜尋結果下拉 -->
+        <div id="search-dropdown" class="absolute z-10 w-full mt-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-notion shadow-lg hidden max-h-60 overflow-y-auto">
+            <!-- 搜尋結果將在這裡顯示 -->
+        </div>
+
+        <!-- 載入指示器 -->
+        <div id="search-loading" class="flex justify-center mt-4 hidden">
+            <div class="text-sm text-gray-500 dark:text-gray-400">搜尋中...</div>
+        </div>
+    </div>
+
+    <!-- 學生資訊和課表顯示區域 -->
+    <div id="student-content" class="hidden animate-slide-up">
+        <!-- 學生基本資訊 -->
+        <div id="student-info" class="bg-white dark:bg-gray-800 rounded-notion shadow-notion p-6 mb-6">
+            <!-- 動態載入學生資訊 -->
+        </div>
+
+        <!-- 學生課表 -->
+        <div id="student-timetable">
+            <!-- 動態載入課表 -->
+        </div>
+    </div>
+
+    <!-- 錯誤顯示 -->
+    <div id="error-container" class="hidden max-w-md mx-auto"></div>
+
+    <!-- 歡迎畫面 -->
+    <div id="welcome-screen" class="text-center py-16">
+        <div class="max-w-2xl mx-auto">
+            <div class="w-24 h-24 mx-auto mb-8 bg-gray-100 dark:bg-gray-700 rounded-notion flex items-center justify-center">
+                <svg class="w-12 h-12 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">歡迎使用學生課表查詢</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-12">請在上方搜尋框中輸入學生姓名或學號來查看完整課表</p>
+
+            <!-- 功能特色 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-gray-800 rounded-notion p-6 shadow-notion">
+                    <div class="w-12 h-12 bg-accent-100 dark:bg-accent-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-accent-600 dark:text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-gray-900 dark:text-white mb-3">智能搜尋</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">支援中文姓名和英文姓名搜尋</p>
+                    <div class="flex justify-center">
+                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-accent-100 text-accent-800 dark:bg-accent-900 dark:text-accent-200">
+                            雙語支援
+                        </span>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-notion p-6 shadow-notion">
+                    <div class="w-12 h-12 bg-accent-100 dark:bg-accent-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-accent-600 dark:text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-gray-900 dark:text-white mb-3">完整課表</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">顯示英文班級、EV & myReading 和 Home Room 課程</p>
+                    <div class="flex justify-center">
+                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-accent-100 text-accent-800 dark:bg-accent-900 dark:text-accent-200">
+                            多課程類型
+                        </span>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-notion p-6 shadow-notion">
+                    <div class="w-12 h-12 bg-accent-100 dark:bg-accent-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-accent-600 dark:text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-gray-900 dark:text-white mb-3">詳細資訊</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">提供完整的週課表資訊和統計數據</p>
+                    <div class="flex justify-center">
+                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-accent-100 text-accent-800 dark:bg-accent-900 dark:text-accent-200">
+                            資訊豐富
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('student-search');
+    const searchDropdown = document.getElementById('search-dropdown');
+    const searchLoading = document.getElementById('search-loading');
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const studentContent = document.getElementById('student-content');
+    const studentInfo = document.getElementById('student-info');
+    const studentTimetable = document.getElementById('student-timetable');
+    const errorContainer = document.getElementById('error-container');
+
+    let searchTimeout;
+    let selectedStudent = null;
+
+    // 搜尋輸入處理
+    searchInput.addEventListener('input', function() {
+        const query = this.value.trim();
+
+        clearTimeout(searchTimeout);
+
+        if (query.length < 2) {
+            hideDropdown();
+            return;
+        }
+
+        searchTimeout = setTimeout(() => {
+            searchStudents(query);
+        }, 300);
+    });
+
+    // 點擊外部關閉下拉
+    document.addEventListener('click', function(event) {
+        if (!searchInput.contains(event.target) && !searchDropdown.contains(event.target)) {
+            hideDropdown();
+        }
+    });
+
+    async function searchStudents(query) {
+        searchLoading.classList.remove('hidden');
+
+        try {
+            const response = await fetch(`/api/students/search?q=${encodeURIComponent(query)}`);
+            const data = await response.json();
+
+            if (data.success && data.students) {
+                displaySearchResults(data.students);
+            } else {
+                showDropdownError('搜尋失敗');
+            }
+        } catch (error) {
+            showDropdownError('網路錯誤');
+        } finally {
+            searchLoading.classList.add('hidden');
+        }
+    }
+
+    function displaySearchResults(students) {
+        if (students.length === 0) {
+            searchDropdown.innerHTML = '<div class="p-4 text-gray-500 dark:text-gray-400 text-center">找不到符合的學生</div>';
+        } else {
+            searchDropdown.innerHTML = students.map(student => `
+                <div class="student-item p-4 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer border-b border-gray-200 dark:border-gray-600 last:border-b-0"
+                     data-student='${JSON.stringify(student)}'>
+                    <div class="font-medium text-gray-900 dark:text-white">${student.student_name}</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">學號: ${student.student_id}</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                        英文班級: ${student.english_class_name} | Home Room: ${student.home_room_class_name}
+                    </div>
+                </div>
+            `).join('');
+
+            // 添加點擊事件
+            searchDropdown.querySelectorAll('.student-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const student = JSON.parse(this.dataset.student);
+                    selectStudent(student);
+                });
+            });
+        }
+
+        showDropdown();
+    }
+
+    function showDropdownError(message) {
+        searchDropdown.innerHTML = `<div class="p-4 text-red-500 text-center">${message}</div>`;
+        showDropdown();
+    }
+
+    function showDropdown() {
+        searchDropdown.classList.remove('hidden');
+    }
+
+    function hideDropdown() {
+        searchDropdown.classList.add('hidden');
+    }
+
+    async function selectStudent(student) {
+        selectedStudent = student;
+        searchInput.value = student.student_name;
+        hideDropdown();
+
+        welcomeScreen.style.display = 'none';
+        errorContainer.classList.add('hidden');
+
+        showLoading(studentContent);
+        studentContent.classList.remove('hidden');
+
+        try {
+            const response = await fetch(`/api/students/${student.student_id}`);
+            const data = await response.json();
+
+            if (data.success) {
+                displayStudentInfo(data.student);
+                displayStudentTimetables(data.timetables);
+            } else {
+                showError(data.error || '無法載入學生資料', errorContainer);
+                studentContent.classList.add('hidden');
+                errorContainer.classList.remove('hidden');
+            }
+        } catch (error) {
+            showError('網路錯誤，請稍後再試', errorContainer);
+            studentContent.classList.add('hidden');
+            errorContainer.classList.remove('hidden');
+        }
+    }
+
+    function displayStudentInfo(student) {
+        studentInfo.innerHTML = `
+            <div class="flex items-start space-x-4">
+                <div class="w-16 h-16 bg-accent-100 dark:bg-accent-900 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg class="w-8 h-8 text-accent-600 dark:text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">${student.student_name}</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <span class="text-gray-600 dark:text-gray-400">學號:</span>
+                            <span class="text-gray-900 dark:text-white font-medium">${student.student_id}</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600 dark:text-gray-400">英文班級:</span>
+                            <span class="text-gray-900 dark:text-white font-medium">${student.english_class_name}</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600 dark:text-gray-400">Home Room:</span>
+                            <span class="text-gray-900 dark:text-white font-medium">${student.home_room_class_name}</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600 dark:text-gray-400">EV & myReading:</span>
+                            <span class="text-gray-900 dark:text-white font-medium">${student.ev_myreading_class_name}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function displayStudentTimetables(timetables) {
+        const timetableTypes = [
+            { key: 'english_timetable', name: '英文班級課表', icon: 'M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v9a2 2 0 01-2 2h-5l-4 4z' },
+            { key: 'homeroom_timetable', name: 'Home Room課表', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
+            { key: 'ev_myreading_timetable', name: 'EV & myReading課表', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' }
+        ];
+
+        const timetableHTML = timetableTypes.map(type => {
+            const timetable = timetables[type.key];
+            if (!timetable || Object.keys(timetable).length === 0) {
+                return `
+                    <div class="bg-white dark:bg-gray-800 rounded-notion shadow-notion p-6">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-6 h-6 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${type.icon}"/>
+                            </svg>
+                            <h4 class="text-lg font-semibold text-gray-900 dark:text-white">${type.name}</h4>
+                        </div>
+                        <div class="text-center py-8 text-gray-500 dark:text-gray-400">
+                            無課表資料
+                        </div>
+                    </div>
+                `;
+            }
+
+            return `
+                <div class="bg-white dark:bg-gray-800 rounded-notion shadow-notion p-6">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-6 h-6 text-accent-600 dark:text-accent-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${type.icon}"/>
+                        </svg>
+                        <h4 class="text-lg font-semibold text-gray-900 dark:text-white">${type.name}</h4>
+                    </div>
+                    <div class="overflow-x-auto">
+                        ${renderTimetable(timetable)}
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        studentTimetable.innerHTML = `
+            <div class="space-y-6">
+                ${timetableHTML}
+            </div>
+        `;
+    }
+
+    function renderTimetable(timetable) {
+        const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+        const dayNames = ['星期一', '星期二', '星期三', '星期四', '星期五'];
+        const periods = ['1', '2', '3', '4', '5', '6', '7', '8'];
+        const periodTimes = [
+            '08:20-09:05', '09:15-10:00', '10:20-11:05', '11:15-12:00',
+            '13:20-14:05', '14:15-15:00', '15:20-16:05', '16:15-17:00'
+        ];
+
+        return `
+            <table class="w-full text-sm">
+                <thead class="bg-gray-50 dark:bg-gray-700">
+                    <tr>
+                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">節次</th>
+                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">時間</th>
+                        ${dayNames.map(day => `
+                            <th class="px-3 py-2 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">${day}</th>
+                        `).join('')}
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200 dark:divide-gray-600">
+                    ${periods.map((period, periodIndex) => `
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                            <td class="px-3 py-3 text-sm font-medium text-gray-900 dark:text-white">第${period}節</td>
+                            <td class="px-3 py-3 text-xs text-gray-500 dark:text-gray-400">${periodTimes[periodIndex]}</td>
+                            ${days.map(day => {
+                                const schedule = timetable[day] && timetable[day][period];
+                                return `
+                                    <td class="px-3 py-3">
+                                        ${schedule ? `
+                                            <div class="bg-accent-50 dark:bg-accent-900/30 rounded-lg p-2 border border-accent-200 dark:border-accent-700">
+                                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-1">
+                                                    ${schedule.subject || ''}
+                                                </div>
+                                                ${schedule.teacher ? `
+                                                    <div class="text-xs text-gray-600 dark:text-gray-300">
+                                                        ${schedule.teacher}
+                                                    </div>
+                                                ` : ''}
+                                                ${schedule.classroom ? `
+                                                    <div class="text-xs text-accent-600 dark:text-accent-400 font-medium">
+                                                        ${schedule.classroom}
+                                                    </div>
+                                                ` : ''}
+                                            </div>
+                                        ` : `
+                                            <div class="text-center text-gray-400 dark:text-gray-600 text-xs py-2">
+                                                無課程
+                                            </div>
+                                        `}
+                                    </td>
+                                `;
+                            }).join('')}
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        `;
+    }
+});
+</script>
+{% endblock %}
