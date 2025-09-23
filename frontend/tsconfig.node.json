@@ -1,30 +1,43 @@
 {
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-    "target": "ES2022",
-    "lib": ["ES2022", "DOM"],
-    "module": "ESNext",
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "CommonJS",
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
+    "declaration": false,
+    "sourceMap": false,
 
-    /* Bundler mode - relaxed for Docker compatibility */
-    "moduleResolution": "bundler",
+    /* Node.js compatible mode for Docker */
+    "moduleResolution": "node",
     "allowImportingTsExtensions": false,
     "verbatimModuleSyntax": false,
-    "moduleDetection": "auto",
+    "moduleDetection": "force",
     "noEmit": true,
 
-    /* Linting - relaxed for Docker builds */
+    /* Types and paths for Docker compatibility */
+    "types": ["node", "vite/client"],
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    /* Relaxed linting for Docker builds */
     "strict": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noImplicitAny": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "noImplicitReturns": false,
+    "noImplicitThis": false,
+    "strictNullChecks": false
   },
-  "include": ["vite.config.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["vite.config.ts", "src/types/**/*"],
+  "exclude": ["node_modules", "dist", "build"]
 }

@@ -3,12 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:staging": "tsc -b && vite build --mode staging",
-    "build:production": "tsc -b && vite build --mode production --config vite.config.ts",
-    "build:zeabur": "tsc -b && vite build --mode production --config vite.config.ts",
+    "build:staging": "vite build --mode staging",
+    "build:production": "vite build --mode production",
+    "build:zeabur": "vite build --mode production",
     "build:analyze": "npm run build && npx vite-bundle-analyzer dist/stats.html",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

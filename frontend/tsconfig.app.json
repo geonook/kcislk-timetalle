@@ -12,8 +12,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
 
-    /* Bundler mode - relaxed for Docker compatibility */
-    "moduleResolution": "bundler",
+    /* Node.js compatible mode for Docker */
+    "moduleResolution": "node",
     "allowImportingTsExtensions": false,
     "verbatimModuleSyntax": false,
     "moduleDetection": "auto",
