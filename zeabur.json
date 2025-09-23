@@ -10,7 +10,8 @@
   "environment": {
     "PORT": "8080",
     "FLASK_ENV": "production",
-    "DATABASE_PATH": "/app/data/app.db"
+    "DATABASE_PATH": "/app/data/app.db",
+    "ALLOWED_ORIGINS": "https://kcislk-timetable-frontend.zeabur.app,https://*.zeabur.app"
   },
   "volumes": [
     {

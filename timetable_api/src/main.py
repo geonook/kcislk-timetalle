@@ -9,10 +9,23 @@ from src.routes.student import student_bp
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
 
-# Enable CORS for React frontend
-CORS(app, origins=['http://localhost:3000', 'http://127.0.0.1:3000'],
+# Enable CORS for React frontend (local development and Zeabur deployment)
+allowed_origins = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'https://*.zeabur.app',
+    'https://kcislk-timetable-frontend.zeabur.app',
+    # Add specific frontend domain when available
+]
+
+# Get allowed origins from environment or use defaults
+custom_origins = os.getenv('ALLOWED_ORIGINS', '').split(',') if os.getenv('ALLOWED_ORIGINS') else []
+all_origins = allowed_origins + [origin.strip() for origin in custom_origins if origin.strip()]
+
+CORS(app, origins=all_origins,
      methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-     allow_headers=['Content-Type', 'Authorization'])
+     allow_headers=['Content-Type', 'Authorization'],
+     supports_credentials=False)
 
 app.register_blueprint(timetable_bp, url_prefix='/api')
 app.register_blueprint(student_bp, url_prefix='/api')
