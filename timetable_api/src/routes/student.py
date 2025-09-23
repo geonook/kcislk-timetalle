@@ -155,37 +155,107 @@ def get_student_timetable(student_id):
         # 查找學生
         student = Student.query.filter_by(student_id=student_id).first()
         if not student:
-            return jsonify({'error': '找不到該學生'}), 404
-        
-        # 取得英文班課表
-        english_timetable = EnglishTimetable.query.filter_by(
+            return jsonify({'success': False, 'error': '找不到該學生'}), 404
+
+        # 取得所有相關課表
+        all_classes = []
+
+        # 英文班課表
+        english_classes = EnglishTimetable.query.filter_by(
             class_name=student.english_class_name
         ).all()
-        
-        # 取得 EV & myReading 班課表
-        ev_myreading_timetable = []
+        for cls in english_classes:
+            all_classes.append({
+                'day': cls.day,
+                'period': cls.period,
+                'time': f'{cls.period}',
+                'classroom': cls.classroom,
+                'teacher': cls.teacher,
+                'subject': f'English - {cls.class_name}',
+                'class_type': 'english'
+            })
+
+        # EV & myReading 班課表
         if student.ev_myreading_class_name:
-            ev_myreading_timetable = EnglishTimetable.query.filter_by(
+            ev_classes = EnglishTimetable.query.filter_by(
                 class_name=student.ev_myreading_class_name
             ).all()
-        
-        # 取得 Home Room 課表
-        homeroom_timetable = HomeRoomTimetable.query.filter_by(
+            for cls in ev_classes:
+                all_classes.append({
+                    'day': cls.day,
+                    'period': cls.period,
+                    'time': f'{cls.period}',
+                    'classroom': cls.classroom,
+                    'teacher': cls.teacher,
+                    'subject': f'EV & myReading - {cls.class_name}',
+                    'class_type': 'ev_myreading'
+                })
+
+        # Home Room 課表
+        homeroom_classes = HomeRoomTimetable.query.filter_by(
             home_room_class_name=student.home_room_class_name
         ).all()
-        
-        # 組織課表資料
-        timetable_data = {
-            'student': student.to_dict(),
-            'english_classes': [t.to_dict() for t in english_timetable],
-            'ev_myreading_classes': [t.to_dict() for t in ev_myreading_timetable],
-            'homeroom_classes': [t.to_dict() for t in homeroom_timetable]
+        for cls in homeroom_classes:
+            all_classes.append({
+                'day': cls.day,
+                'period': cls.period,
+                'time': f'{cls.period}',
+                'classroom': cls.classroom,
+                'teacher': cls.teacher,
+                'subject': cls.course_name,
+                'class_type': 'homeroom'
+            })
+
+        # 組織課表資料以匹配前端期望的格式
+        days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+        timetables = {
+            'english_timetable': {},
+            'homeroom_timetable': {},
+            'ev_myreading_timetable': {}
         }
-        
-        return jsonify(timetable_data)
-        
+
+        # 為每天初始化空的時段
+        for day in days:
+            for timetable_type in timetables:
+                timetables[timetable_type][day] = {}
+
+        # 將課程分配到相應的課表類型和時段
+        for cls in all_classes:
+            day = cls['day']
+            period = str(cls['period']).replace('(', '').replace(')', '').split(')')[0]
+
+            course_data = {
+                'subject': cls['subject'],
+                'teacher': cls['teacher'],
+                'classroom': cls['classroom'],
+                'period': cls['period'],
+                'time': cls['time']
+            }
+
+            if cls['class_type'] == 'english':
+                timetables['english_timetable'][day][period] = course_data
+            elif cls['class_type'] == 'homeroom':
+                timetables['homeroom_timetable'][day][period] = course_data
+            elif cls['class_type'] == 'ev_myreading':
+                timetables['ev_myreading_timetable'][day][period] = course_data
+
+        return jsonify({
+            'success': True,
+            'student': student.to_dict(),
+            'timetables': timetables,
+            'statistics': {
+                'total_classes': len(all_classes),
+                'days_with_classes': len([day for day in days if any(
+                    len(timetables[tt][day]) > 0 for tt in timetables
+                )]),
+                'english_classes': len([cls for cls in all_classes if cls['class_type'] == 'english']),
+                'ev_myreading_classes': len([cls for cls in all_classes if cls['class_type'] == 'ev_myreading']),
+                'homeroom_classes': len([cls for cls in all_classes if cls['class_type'] == 'homeroom'])
+            }
+        })
+
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 @student_bp.route('/students/<student_id>/timetable/weekly', methods=['GET'])
 def get_student_weekly_timetable(student_id):
