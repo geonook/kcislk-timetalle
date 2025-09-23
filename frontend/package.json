@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "build:staging": "tsc -b && vite build --mode staging",
-    "build:production": "tsc -b && vite build --mode production",
+    "build:production": "tsc -b && vite build --mode production --config vite.config.ts",
     "build:zeabur": "tsc -b && vite build --mode production --config vite.config.ts",
     "build:analyze": "npm run build && npx vite-bundle-analyzer dist/stats.html",
     "lint": "eslint .",
