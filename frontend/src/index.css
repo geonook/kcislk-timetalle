@@ -121,4 +121,17 @@
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom);
   }
+
+  /* Course type color utilities */
+  .course-english {
+    @apply bg-course-english-50 dark:bg-course-english-900/20 border-course-english-200 dark:border-course-english-800;
+  }
+
+  .course-homeroom {
+    @apply bg-course-homeroom-50 dark:bg-course-homeroom-900/20 border-course-homeroom-200 dark:border-course-homeroom-800;
+  }
+
+  .course-ev {
+    @apply bg-course-ev-50 dark:bg-course-ev-900/20 border-course-ev-200 dark:border-course-ev-800;
+  }
 }
