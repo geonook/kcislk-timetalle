@@ -79,7 +79,7 @@ export const apiService = {
   },
 
   async getClassTimetable(className: string): Promise<ClassTimetableResponse> {
-    const response = await api.get<ClassTimetableResponse>(`/classes/${encodeURIComponent(className)}/timetable`);
+    const response = await api.get<ClassTimetableResponse>(`/timetable/${encodeURIComponent(className)}`);
     return response.data;
   },
 };
