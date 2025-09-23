@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function displayStudentTimetables(timetables) {
         try {
-            console.log('Displaying student timetables:', timetables);
+            console.log('Displaying merged student timetables:', timetables);
 
             // Ensure timetables is an object
             if (!timetables || typeof timetables !== 'object') {
@@ -322,73 +322,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const timetableTypes = [
-                { key: 'english_timetable', name: '英文班級課表', icon: 'M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v9a2 2 0 01-2 2h-5l-4 4z' },
-                { key: 'homeroom_timetable', name: 'Home Room課表', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
-                { key: 'ev_myreading_timetable', name: 'EV & myReading課表', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' }
-            ];
+            // Use the new merged timetable renderer
+            const mergedTimetableHTML = renderMergedTimetable(timetables);
+            console.log('Merged timetable rendered successfully');
 
-            const timetableHTML = timetableTypes.map(type => {
-                try {
-                    const timetable = timetables[type.key];
-                    console.log(`Processing ${type.key}:`, timetable);
-
-                    if (!timetable || Object.keys(timetable).length === 0) {
-                        return `
-                            <div class="bg-white dark:bg-gray-800 rounded-notion shadow-notion p-6">
-                                <div class="flex items-center mb-4">
-                                    <svg class="w-6 h-6 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${type.icon}"/>
-                                    </svg>
-                                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white">${type.name}</h4>
-                                </div>
-                                <div class="text-center py-8 text-gray-500 dark:text-gray-400">
-                                    無課表資料
-                                </div>
-                            </div>
-                        `;
-                    }
-
-                    const renderedTable = renderTimetable(timetable);
-                    console.log(`Rendered table for ${type.key}:`, renderedTable ? 'Success' : 'Failed');
-
-                    return `
-                        <div class="bg-white dark:bg-gray-800 rounded-notion shadow-notion p-6">
-                            <div class="flex items-center mb-4">
-                                <svg class="w-6 h-6 text-accent-600 dark:text-accent-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${type.icon}"/>
-                                </svg>
-                                <h4 class="text-lg font-semibold text-gray-900 dark:text-white">${type.name}</h4>
-                            </div>
-                            <div class="overflow-x-auto">
-                                ${renderedTable}
-                            </div>
-                        </div>
-                    `;
-                } catch (error) {
-                    console.error(`Error rendering ${type.key}:`, error);
-                    return `
-                        <div class="bg-white dark:bg-gray-800 rounded-notion shadow-notion p-6">
-                            <div class="flex items-center mb-4">
-                                <svg class="w-6 h-6 text-red-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${type.icon}"/>
-                                </svg>
-                                <h4 class="text-lg font-semibold text-gray-900 dark:text-white">${type.name}</h4>
-                            </div>
-                            <div class="text-center py-8 text-red-500 dark:text-red-400">
-                                課表渲染錯誤: ${error.message}
-                            </div>
-                        </div>
-                    `;
-                }
-            }).join('');
-
-            console.log('Final timetableHTML generated, setting innerHTML');
-            studentTimetable.innerHTML = `
-                <div class="space-y-6">
-                    ${timetableHTML}
-                </div>
-            `;
+            // Set the merged timetable as the content
+            studentTimetable.innerHTML = mergedTimetableHTML;
             console.log('Timetable display completed successfully');
 
             // Ensure loading overlay is hidden after content is populated
@@ -483,6 +422,161 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (error) {
             console.error('Error in renderTimetable:', error);
             return `<div class="text-center py-4 text-red-500">課表渲染錯誤: ${error.message}</div>`;
+        }
+    }
+
+    function renderMergedTimetable(timetables) {
+        try {
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+            const dayNames = ['星期一', '星期二', '星期三', '星期四', '星期五'];
+            const periods = ['1', '2', '3', '4', '5', '6', '7', '8'];
+            const periodTimes = [
+                '08:20-09:05', '09:15-10:00', '10:20-11:05', '11:15-12:00',
+                '13:20-14:05', '14:15-15:00', '15:20-16:05', '16:15-17:00'
+            ];
+
+            console.log('Rendering merged timetable:', timetables);
+
+            // Course type configurations with colors and labels
+            const courseTypes = {
+                'english_timetable': {
+                    label: '英文',
+                    color: 'bg-blue-50 border-blue-200 text-blue-800',
+                    darkColor: 'dark:bg-blue-900/30 dark:border-blue-700 dark:text-blue-200'
+                },
+                'homeroom_timetable': {
+                    label: 'HR',
+                    color: 'bg-green-50 border-green-200 text-green-800',
+                    darkColor: 'dark:bg-green-900/30 dark:border-green-700 dark:text-green-200'
+                },
+                'ev_myreading_timetable': {
+                    label: 'EV',
+                    color: 'bg-purple-50 border-purple-200 text-purple-800',
+                    darkColor: 'dark:bg-purple-900/30 dark:border-purple-700 dark:text-purple-200'
+                }
+            };
+
+            // Merge all timetables into a single structure
+            const mergedTimetable = {};
+            for (const day of days) {
+                mergedTimetable[day] = {};
+                for (const period of periods) {
+                    mergedTimetable[day][period] = [];
+                }
+            }
+
+            // Collect courses from all timetable types
+            for (const [timetableType, timetable] of Object.entries(timetables)) {
+                if (!timetable || typeof timetable !== 'object') continue;
+
+                const typeConfig = courseTypes[timetableType];
+                if (!typeConfig) continue;
+
+                for (const day of days) {
+                    if (!timetable[day]) continue;
+
+                    for (const timeKey in timetable[day]) {
+                        // Find which period this course belongs to
+                        for (const period of periods) {
+                            if (timeKey.startsWith(period)) {
+                                const course = timetable[day][timeKey];
+                                if (course) {
+                                    mergedTimetable[day][period].push({
+                                        ...course,
+                                        type: timetableType,
+                                        typeConfig: typeConfig
+                                    });
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return `
+                <div class="bg-white dark:bg-gray-800 rounded-notion shadow-notion p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-xl font-semibold text-gray-900 dark:text-white">學生課表</h4>
+                        <div class="flex items-center space-x-4 text-sm">
+                            <div class="flex items-center space-x-1">
+                                <div class="w-3 h-3 rounded bg-blue-200"></div>
+                                <span class="text-gray-600 dark:text-gray-400">英文班級</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-3 h-3 rounded bg-green-200"></div>
+                                <span class="text-gray-600 dark:text-gray-400">Home Room</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-3 h-3 rounded bg-purple-200"></div>
+                                <span class="text-gray-600 dark:text-gray-400">EV & myReading</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-50 dark:bg-gray-700">
+                                <tr>
+                                    <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">節次</th>
+                                    <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">時間</th>
+                                    ${dayNames.map(day => `
+                                        <th class="px-3 py-2 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">${day}</th>
+                                    `).join('')}
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-600">
+                                ${periods.map((period, periodIndex) => `
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                                        <td class="px-3 py-3 text-sm font-medium text-gray-900 dark:text-white">第${period}節</td>
+                                        <td class="px-3 py-3 text-xs text-gray-500 dark:text-gray-400">${periodTimes[periodIndex]}</td>
+                                        ${days.map(day => {
+                                            const courses = mergedTimetable[day][period];
+
+                                            return `
+                                                <td class="px-3 py-3 min-w-[120px]">
+                                                    ${courses.length > 0 ? `
+                                                        <div class="space-y-1">
+                                                            ${courses.map(course => `
+                                                                <div class="rounded-lg p-2 border ${course.typeConfig.color} ${course.typeConfig.darkColor}">
+                                                                    <div class="text-xs font-medium mb-1">
+                                                                        <span class="inline-block px-1 py-0.5 rounded text-xs font-bold bg-white/30">
+                                                                            ${course.typeConfig.label}
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="text-sm font-medium mb-1">
+                                                                        ${course.subject || ''}
+                                                                    </div>
+                                                                    ${course.teacher ? `
+                                                                        <div class="text-xs opacity-75">
+                                                                            ${course.teacher}
+                                                                        </div>
+                                                                    ` : ''}
+                                                                    ${course.classroom ? `
+                                                                        <div class="text-xs font-medium">
+                                                                            ${course.classroom}
+                                                                        </div>
+                                                                    ` : ''}
+                                                                </div>
+                                                            `).join('')}
+                                                        </div>
+                                                    ` : `
+                                                        <div class="text-center text-gray-400 dark:text-gray-600 text-xs py-2">
+                                                            無課程
+                                                        </div>
+                                                    `}
+                                                </td>
+                                            `;
+                                        }).join('')}
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+        } catch (error) {
+            console.error('Error in renderMergedTimetable:', error);
+            return `<div class="text-center py-4 text-red-500">合併課表渲染錯誤: ${error.message}</div>`;
         }
     }
 
