@@ -1,0 +1,74 @@
+{
+  "site": {
+    "title": "KCISLK Timetable Query System",
+    "class_timetable": "Class Timetables",
+    "student_timetable": "Student Timetables"
+  },
+  "student_page": {
+    "title": "Student Timetable Query System",
+    "subtitle": "Search for student names or student IDs to view complete timetable arrangements",
+    "search_placeholder": "Enter student name or student ID...",
+    "searching": "Searching...",
+    "loading": "Loading...",
+    "no_results": "No students found",
+    "network_error": "Network error, please try again later",
+    "welcome_title": "Welcome to Student Timetable Query",
+    "welcome_subtitle": "Please enter a student name or ID in the search box above to view the complete timetable"
+  },
+  "features": {
+    "smart_search": "Smart Search",
+    "smart_search_desc": "Supports both Chinese and English name searches",
+    "dual_language": "Bilingual Support",
+    "complete_schedule": "Complete Schedule",
+    "complete_schedule_desc": "Display detailed timetable information for all subjects",
+    "unified_view": "Unified View",
+    "responsive_design": "Responsive Design",
+    "responsive_design_desc": "Supports mobile phones, tablets, computers and other devices",
+    "device_friendly": "Device Friendly"
+  },
+  "timetable": {
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "period": "Period {0}",
+    "teacher": "Teacher",
+    "classroom": "Classroom",
+    "course_type": "Course Type",
+    "english_class": "English Class",
+    "homeroom_class": "Homeroom Class",
+    "ev_myreading": "EV & myReading",
+    "legend": "Course Type Legend",
+    "no_classes": "No classes in this period"
+  },
+  "student_info": {
+    "student_id": "Student ID",
+    "student_name": "Student Name",
+    "english_class": "English Class",
+    "homeroom_class": "Homeroom Class",
+    "ev_myreading_class": "EV & myReading Class",
+    "grade": "Grade",
+    "class_info": "Class Information"
+  },
+  "common": {
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "print": "Print",
+    "export": "Export"
+  },
+  "footer": {
+    "copyright": "© 2024 Kang Chiao International School Linkou Campus. All rights reserved.",
+    "description": "Timetable Query System - Designed for Educational Services"
+  }
+}

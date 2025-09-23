@@ -1,0 +1,74 @@
+{
+  "site": {
+    "title": "KCISLK 課表查詢系統",
+    "class_timetable": "班級課表",
+    "student_timetable": "學生課表"
+  },
+  "student_page": {
+    "title": "學生課表查詢系統",
+    "subtitle": "搜尋學生姓名或學號來查看完整的課表安排",
+    "search_placeholder": "請輸入學生姓名或學號...",
+    "searching": "搜尋中...",
+    "loading": "載入中...",
+    "no_results": "沒有找到相關學生",
+    "network_error": "網路錯誤，請稍後再試",
+    "welcome_title": "歡迎使用學生課表查詢",
+    "welcome_subtitle": "請在上方搜尋框中輸入學生姓名或學號來查看完整課表"
+  },
+  "features": {
+    "smart_search": "智能搜尋",
+    "smart_search_desc": "支援中文姓名和英文姓名搜尋",
+    "dual_language": "雙語支援",
+    "complete_schedule": "完整課表",
+    "complete_schedule_desc": "顯示所有科目的詳細課表資訊",
+    "unified_view": "統一檢視",
+    "responsive_design": "響應式設計",
+    "responsive_design_desc": "支援手機、平板、電腦等各種裝置",
+    "device_friendly": "裝置友善"
+  },
+  "timetable": {
+    "monday": "星期一",
+    "tuesday": "星期二",
+    "wednesday": "星期三",
+    "thursday": "星期四",
+    "friday": "星期五",
+    "period": "第{0}節",
+    "teacher": "教師",
+    "classroom": "教室",
+    "course_type": "課程類型",
+    "english_class": "英文班",
+    "homeroom_class": "導師班",
+    "ev_myreading": "EV & myReading",
+    "legend": "課程類型說明",
+    "no_classes": "本時段無課程"
+  },
+  "student_info": {
+    "student_id": "學號",
+    "student_name": "姓名",
+    "english_class": "英文班級",
+    "homeroom_class": "導師班級",
+    "ev_myreading_class": "EV & myReading班級",
+    "grade": "年級",
+    "class_info": "班級資訊"
+  },
+  "common": {
+    "error": "錯誤",
+    "success": "成功",
+    "cancel": "取消",
+    "confirm": "確認",
+    "close": "關閉",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步",
+    "save": "儲存",
+    "delete": "刪除",
+    "edit": "編輯",
+    "view": "檢視",
+    "print": "列印",
+    "export": "匯出"
+  },
+  "footer": {
+    "copyright": "© 2024 康橋國際學校林口校區. 版權所有.",
+    "description": "課表查詢系統 - 為教學服務而設計"
+  }
+}

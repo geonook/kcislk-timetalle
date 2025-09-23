@@ -8,6 +8,9 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Internationalization -->
+    <script src="/static/js/i18n.js"></script>
+
     <!-- Custom Tailwind Configuration -->
     <script>
         tailwind.config = {
@@ -110,17 +113,27 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                             </svg>
                         </div>
-                        <h1 class="text-lg font-semibold text-gray-900 dark:text-white">KCISLK 課表查詢系統</h1>
+                        <h1 class="text-lg font-semibold text-gray-900 dark:text-white" data-i18n="site.title">KCISLK 課表查詢系統</h1>
                     </div>
 
                     <!-- Navigation Links -->
                     <div class="flex items-center space-x-6">
-                        <a href="/" class="{% if request.endpoint == 'index' %}text-accent-600 dark:text-accent-400 font-medium{% else %}text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400{% endif %} transition-colors">
+                        <a href="/" class="{% if request.endpoint == 'index' %}text-accent-600 dark:text-accent-400 font-medium{% else %}text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400{% endif %} transition-colors" data-i18n="site.class_timetable">
                             班級課表
                         </a>
-                        <a href="/student" class="{% if request.endpoint == 'student_timetable' %}text-accent-600 dark:text-accent-400 font-medium{% else %}text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400{% endif %} transition-colors">
+                        <a href="/student" class="{% if request.endpoint == 'student_timetable' %}text-accent-600 dark:text-accent-400 font-medium{% else %}text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400{% endif %} transition-colors" data-i18n="site.student_timetable">
                             學生課表
                         </a>
+
+                        <!-- Language Toggle -->
+                        <button id="language-toggle" class="p-2 rounded-notion text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" title="切換語言 / Switch Language">
+                            <svg id="lang-zh-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10m0 0l-3-3m3 3l-3 3m-6 1h10M8 16l3-3-3-3"/>
+                            </svg>
+                            <svg id="lang-en-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
+                            </svg>
+                        </button>
 
                         <!-- Dark Mode Toggle -->
                         <button id="theme-toggle" class="p-2 rounded-notion text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
@@ -147,8 +160,8 @@
         <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 mt-auto">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center text-sm text-gray-600 dark:text-gray-400">
-                    <p>© 2024 康橋國際學校林口校區. 版權所有.</p>
-                    <p class="mt-1">課表查詢系統 - 為教學服務而設計</p>
+                    <p data-i18n="footer.copyright">© 2024 康橋國際學校林口校區. 版權所有.</p>
+                    <p class="mt-1" data-i18n="footer.description">課表查詢系統 - 為教學服務而設計</p>
                 </div>
             </div>
         </footer>
