@@ -13,9 +13,9 @@ app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
 allowed_origins = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'https://*.zeabur.app',
+    'https://kcislk-timetable.zeabur.app',
     'https://kcislk-timetable-frontend.zeabur.app',
-    # Add specific frontend domain when available
+    # Add any additional frontend domains
 ]
 
 # Get allowed origins from environment or use defaults
