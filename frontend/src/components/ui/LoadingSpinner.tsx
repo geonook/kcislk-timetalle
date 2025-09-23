@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { LoadingSpinnerProps } from '../../types';
+import type { LoadingSpinnerProps } from '../../types';
 
 export default function LoadingSpinner({
   size = 'md',

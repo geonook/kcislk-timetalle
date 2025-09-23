@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { UserIcon } from '@heroicons/react/24/outline';
-import { StudentCardProps } from '../../types';
+import type { StudentCardProps } from '../../types';
 
 export default function StudentCard({ student, onClick, className = '' }: StudentCardProps) {
   const { t } = useTranslation();

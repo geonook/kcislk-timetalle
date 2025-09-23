@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { SearchBoxProps } from '../../types';
+import type { SearchBoxProps } from '../../types';
 import LoadingSpinner from './LoadingSpinner';
 
 export default function SearchBox({

@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { TimetableGridProps, TimetableEntry, WEEKDAYS, COURSE_TYPE_COLORS } from '../../types';
+import type { TimetableGridProps, TimetableEntry } from '../../types';
+import { WEEKDAYS, COURSE_TYPE_COLORS } from '../../types';
 
 export default function TimetableGrid({
   timetableData,
@@ -13,8 +14,9 @@ export default function TimetableGrid({
   const getAllPeriods = () => {
     const periods = new Set<number>();
     WEEKDAYS.forEach(day => {
-      if (timetableData[day]) {
-        Object.keys(timetableData[day]).forEach(period => {
+      const dayTimetable = timetableData[day as keyof typeof timetableData];
+      if (dayTimetable) {
+        Object.keys(dayTimetable).forEach(period => {
           periods.add(parseInt(period));
         });
       }
@@ -25,7 +27,8 @@ export default function TimetableGrid({
   const periods = getAllPeriods();
 
   const getCellContent = (day: string, period: number) => {
-    const entry = timetableData[day]?.[period.toString()];
+    const dayTimetable = timetableData[day as keyof typeof timetableData];
+    const entry = dayTimetable?.[period.toString()];
     return entry || null;
   };
 

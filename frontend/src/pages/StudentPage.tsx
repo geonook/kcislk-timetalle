@@ -8,7 +8,7 @@ import LoadingSpinner from '../components/ui/LoadingSpinner';
 import StudentCard from '../components/ui/StudentCard';
 import TimetableGrid from '../components/timetable/TimetableGrid';
 import { UserIcon } from '@heroicons/react/24/outline';
-import { Student, StudentTimetableResponse } from '../types';
+import type { Student, StudentTimetableResponse } from '../types';
 
 export default function StudentPage() {
   const { t } = useTranslation();

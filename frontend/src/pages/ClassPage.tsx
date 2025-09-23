@@ -5,6 +5,32 @@ import { apiService } from '../services/api';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import TimetableGrid from '../components/timetable/TimetableGrid';
 import { ArrowLeftIcon, AcademicCapIcon } from '@heroicons/react/24/outline';
+import type { WeeklyTimetable, TimetableDisplay, DayTimetable, TimetableEntry } from '../types';
+
+// Convert WeeklyTimetable to TimetableDisplay format
+function convertWeeklyToDisplay(weeklyTimetable: WeeklyTimetable): TimetableDisplay {
+  const result: TimetableDisplay = {
+    Monday: {},
+    Tuesday: {},
+    Wednesday: {},
+    Thursday: {},
+    Friday: {},
+  };
+
+  // Convert each day's array to indexed object
+  Object.entries(weeklyTimetable).forEach(([day, entries]) => {
+    const dayKey = day as keyof TimetableDisplay;
+    const dayTimetable: DayTimetable = {};
+
+    entries.forEach((entry: TimetableEntry) => {
+      dayTimetable[entry.period.toString()] = entry;
+    });
+
+    result[dayKey] = dayTimetable;
+  });
+
+  return result;
+}
 
 export default function ClassPage() {
   const { className } = useParams<{ className: string }>();
@@ -115,7 +141,7 @@ export default function ClassPage() {
       {timetableData && (
         <div>
           <TimetableGrid
-            timetableData={timetableData.timetable}
+            timetableData={convertWeeklyToDisplay(timetableData.timetable)}
             title={`${decodeURIComponent(className)} 週課表`}
             subtitle={`班級: ${timetableData.class_name}`}
           />

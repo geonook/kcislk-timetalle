@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {
+import type {
   Student,
   StudentSearchResponse,
   StudentTimetableResponse,

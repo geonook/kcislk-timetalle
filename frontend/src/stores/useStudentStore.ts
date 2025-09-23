@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Student } from '../types';
+import type { Student } from '../types';
 
 interface StudentState {
   selectedStudent?: Student;

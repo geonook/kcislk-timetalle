@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Theme, Language } from '../types';
+import type { Theme, Language } from '../types';
 
 interface AppState {
   theme: Theme;
