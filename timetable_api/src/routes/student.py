@@ -100,10 +100,42 @@ def get_student_by_id(student_id):
             day_classes.sort(key=lambda x: x['period'])
             weekly_timetable[day] = day_classes
         
+        # 組織課表資料以匹配前端期望的格式
+        timetables = {
+            'english_timetable': {},
+            'homeroom_timetable': {},
+            'ev_myreading_timetable': {}
+        }
+
+        # 將課表按類型和結構組織
+        for day in days:
+            day_classes = weekly_timetable[day]
+
+            # 初始化每天的時段
+            for timetable_type in timetables:
+                timetables[timetable_type][day] = {}
+
+            # 將課程分配到相應的課表類型
+            for cls in day_classes:
+                period = str(cls['period']).replace('(', '').replace(')', '').split(')')[0]
+
+                course_data = {
+                    'subject': cls['course_name'],
+                    'teacher': cls['teacher'],
+                    'classroom': cls['classroom']
+                }
+
+                if cls['class_type'] == 'english':
+                    timetables['english_timetable'][day][period] = course_data
+                elif cls['class_type'] == 'homeroom':
+                    timetables['homeroom_timetable'][day][period] = course_data
+                elif cls['class_type'] == 'ev_myreading':
+                    timetables['ev_myreading_timetable'][day][period] = course_data
+
         return jsonify({
             'success': True,
             'student': student.to_dict(),
-            'timetable': weekly_timetable,
+            'timetables': timetables,
             'statistics': {
                 'total_classes': len(all_classes),
                 'days_with_classes': len([day for day in days if weekly_timetable[day]]),
