@@ -62,7 +62,7 @@ export const apiService = {
   // Student-related endpoints
   async searchStudents(query: string): Promise<Student[]> {
     const response = await api.get<StudentSearchResponse>('/students/search', {
-      params: { query },
+      params: { q: query },
     });
     return response.data.students;
   },
