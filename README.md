@@ -1,58 +1,64 @@
 # KCISLK 課表查詢系統
 
-康橋國際學校林口校區小學部課表查詢系統
+康橋國際學校林口校區小學部課表查詢系統 - Flask 單體應用架構
 
-## 📋 專案簡介
+## 🚀 特色功能
 
-本系統提供康橋國際學校林口校區小學部的課表查詢功能，支援：
-- 班級課表查詢（週課表、日課表）
-- 教師課表查詢
-- 教室使用狀況查詢
-- 中英文雙語介面
-- 響應式網頁設計
+- **班級課表查詢** - 完整週課表顯示
+- **學生課表查詢** - 支援多班級類型（英文班級、Home Room、EV & myReading）
+- **智能搜尋** - 中英文姓名、學號搜尋
+- **響應式設計** - 支援手機、平板、電腦
+- **深色模式** - 自動切換主題
+- **單體架構** - 簡化部署與維護
 
-## 🚀 快速開始
+## 🛠️ 技術架構
 
-### 環境需求
+- **後端**: Python 3.11 + Flask
+- **前端**: Jinja2 模板 + Tailwind CSS
+- **資料庫**: SQLite / PostgreSQL
+- **部署**: Docker + Zeabur
 
-- Python 3.11+
-- Node.js 16+
-- SQLite 3 (開發環境)
+## 📦 快速啟動
 
-### 安裝步驟
+### 本地開發
 
-1. **啟動 Python 虛擬環境**
 ```bash
-source timetable_api/venv/bin/activate  # Linux/Mac
-# 或
-timetable_api\venv\Scripts\activate     # Windows
-```
+# 1. 進入專案目錄
+cd kcislk-timetable/timetable_api
 
-2. **安裝 Python 相依套件**
-```bash
+# 2. 建立虛擬環境
+python -m venv venv
+source venv/bin/activate  # macOS/Linux
+# 或 venv\Scripts\activate  # Windows
+
+# 3. 安裝依賴
 pip install -r requirements.txt
+
+# 4. 啟動應用
+python run_server.py
 ```
 
-3. **安裝 Node.js 套件**
+### Docker 部署
+
 ```bash
-npm install
+# 建構映像檔
+docker build -t kcislk-timetable .
+
+# 運行容器
+docker run -p 8080:8080 kcislk-timetable
 ```
 
-4. **初始化資料庫**
+### Docker Compose
+
 ```bash
-python manage.py db init
-python manage.py db migrate
-python manage.py db upgrade
+docker-compose up -d
 ```
 
-5. **啟動開發伺服器**
-```bash
-# 後端 API
-python app.py
+## 🌐 訪問應用
 
-# 前端應用
-npm run dev
-```
+- **首頁（班級課表）**: http://localhost:8080
+- **學生課表**: http://localhost:8080/student
+- **API 文檔**: http://localhost:8080/api/classes
 
 ## 📁 專案結構
 

@@ -38,9 +38,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Frontend build artifacts (will be built fresh)
-frontend/dist/
-frontend/build/
+# Build artifacts
+dist/
+build/
 
 # Claude files
 .claude/
