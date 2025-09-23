@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  :root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-feature-settings: 'cv11', 'ss01';
+    font-variant-numeric: tabular-nums;
+    @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-200;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  /* Loading spinner */
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Notion-style radius */
+  .rounded-notion {
+    border-radius: 8px;
+  }
+
+  /* Notion-style shadow */
+  .shadow-notion {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Custom button styles */
+  .btn-primary {
+    @apply bg-accent-500 hover:bg-accent-600 text-white font-medium py-2 px-4 rounded-notion transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-medium py-2 px-4 rounded-notion transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+  }
+
+  /* Form input styles */
+  .input-primary {
+    @apply w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-notion focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-200;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-notion shadow-notion border border-gray-200 dark:border-gray-700;
+  }
+
+  /* Animation utilities */
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slideUp {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-slideDown {
+    animation: slideDown 0.3s ease-out;
+  }
+}
+
+/* Custom utility styles */
+@layer utilities {
+  /* Text utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Focus utilities */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2;
+  }
+
+  /* Gradient utilities */
+  .gradient-primary {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  }
+
+  /* Safe area utilities */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

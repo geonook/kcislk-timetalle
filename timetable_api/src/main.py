@@ -1,21 +1,18 @@
 import os
-from flask import Flask, send_from_directory, render_template
+from flask import Flask
 from flask_cors import CORS
 from src.models.timetable import db
 from src.routes.timetable import timetable_bp
 from src.routes.student import student_bp
 
-# Configure Flask app with both static and template folders
-template_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'templates')
-static_dir = os.path.join(os.path.dirname(__file__), 'static')
-
-app = Flask(__name__,
-           static_folder=static_dir,
-           template_folder=template_dir)
+# Configure Flask app as pure API service (no static/template folders)
+app = Flask(__name__)
 app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
 
-# Enable CORS for all routes
-CORS(app)
+# Enable CORS for React frontend
+CORS(app, origins=['http://localhost:3000', 'http://127.0.0.1:3000'],
+     methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+     allow_headers=['Content-Type', 'Authorization'])
 
 app.register_blueprint(timetable_bp, url_prefix='/api')
 app.register_blueprint(student_bp, url_prefix='/api')
@@ -72,26 +69,30 @@ with app.app_context():
     # 初始化數據
     initialize_data()
 
-# Frontend page routes
+# API Routes
 @app.route('/')
-def index():
-    """班級課表查詢首頁"""
-    return render_template('index.html')
+def api_info():
+    """API 資訊端點"""
+    return {
+        'name': 'KCISLK 課表查詢系統 API',
+        'version': '1.0.0',
+        'description': '康橋國際學校林口校區小學部課表查詢系統 API',
+        'endpoints': {
+            'health': '/health',
+            'students': '/api/students',
+            'timetables': '/api/timetables'
+        },
+        'status': 'running'
+    }
 
-@app.route('/student')
-def student_timetable():
-    """學生課表查詢頁面"""
-    return render_template('student.html')
-
-# Static file serving
-@app.route('/<path:filename>')
-def serve_static(filename):
-    """處理靜態檔案請求"""
-    static_folder_path = app.static_folder
-    if static_folder_path and os.path.exists(os.path.join(static_folder_path, filename)):
-        return send_from_directory(static_folder_path, filename)
-    else:
-        return "File not found", 404
+@app.route('/health')
+def health_check():
+    """健康檢查端點"""
+    return {
+        'status': 'healthy',
+        'service': 'kcislk-timetable-api',
+        'version': '1.0.0'
+    }
 
 
 
