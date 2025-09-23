@@ -1,10 +1,11 @@
 # CLAUDE.md - KCISLK 課表查詢系統
 
-> **Documentation Version**: 1.0
-> **Last Updated**: 2025-01-22
+> **Documentation Version**: 2.0
+> **Last Updated**: 2025-01-23
 > **Project**: KCISLK 課表查詢系統
 > **Description**: 康橋國際學校林口校區小學部課表查詢系統，支援班級與學生課表查詢，並提供中英文雙語介面
-> **Features**: GitHub auto-backup, Task agents, technical debt prevention
+> **Features**: GitHub auto-backup, Task agents, technical debt prevention, i18n system, production-ready deployment
+> **Current Status**: 生產環境就緒，支援 Zeabur 部署，完整國際化系統
 
 This file provides essential guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
@@ -77,50 +78,71 @@ This file provides essential guidance to Claude Code (claude.ai/code) when worki
 
 ### 🎯 **專案目標**
 建立一個完整的課表查詢系統，提供以下功能：
-- 班級課表查詢（週課表、日課表）
-- 教師課表查詢
-- 教室使用狀況查詢
-- 中英文雙語介面
-- 響應式網頁設計（支援手機、平板、電腦）
+- ✅ 學生課表查詢（支援多課表類型整合）
+- ✅ 智能搜尋功能（中英文姓名、學號）
+- ✅ 中英文雙語介面（完整 i18n 系統）
+- ✅ 響應式網頁設計（支援手機、平板、電腦）
+- ✅ 深色模式支援
+- ✅ 三種課表類型統一顯示（英文班、Home Room、EV & myReading）
+- ✅ 生產環境部署就緒（Zeabur 雲端平台）
 
 ### 📁 **專案結構**
 ```
 kcislk-timetable/
-├── src/
-│   ├── main/
-│   │   ├── python/        # Flask 後端 API
-│   │   │   ├── core/      # 核心業務邏輯
-│   │   │   ├── models/    # SQLAlchemy 資料模型
-│   │   │   ├── routes/    # API 路由定義
-│   │   │   ├── services/  # 業務服務層
-│   │   │   └── utils/     # 工具函數
-│   │   ├── javascript/    # 前端應用
-│   │   │   ├── components/# React/Vue 元件
-│   │   │   ├── pages/     # 頁面元件
-│   │   │   ├── services/  # API 呼叫服務
-│   │   │   └── utils/     # 前端工具函數
-│   │   └── resources/
-│   │       ├── config/    # 設定檔案
-│   │       └── assets/    # 靜態資源（圖片、字型等）
-│   └── test/
-│       ├── unit/          # 單元測試
-│       └── integration/   # 整合測試
-├── database/              # 資料庫相關
-│   ├── schema.sql        # 資料庫架構
-│   ├── migrations/       # 資料庫遷移檔案
-│   └── seeds/           # 測試資料
-├── docs/                 # 專案文檔
-│   ├── api/             # API 文檔
-│   ├── database/        # 資料庫設計文檔
-│   └── user/            # 使用者手冊
-└── output/              # 輸出檔案（報表、匯出資料等）
+├── timetable_api/                    # 主要應用目錄
+│   ├── src/                         # 源代碼
+│   │   ├── main.py                  # Flask 主應用
+│   │   ├── data_loader.py           # 課表數據載入器
+│   │   ├── data_loader_student.py   # 學生數據載入器
+│   │   ├── models/                  # SQLAlchemy 資料模型
+│   │   │   ├── student.py           # 學生模型
+│   │   │   ├── timetable.py         # 課表模型
+│   │   │   └── user.py              # 用戶模型
+│   │   ├── routes/                  # Flask API 路由
+│   │   │   ├── student.py           # 學生相關路由
+│   │   │   ├── timetable.py         # 課表相關路由
+│   │   │   └── user.py              # 用戶相關路由
+│   │   ├── static/                  # 靜態資源（生產就緒）
+│   │   │   ├── css/                 # Tailwind CSS 生產版本
+│   │   │   │   └── tailwind.min.css # 本地 CSS 檔案
+│   │   │   ├── js/                  # JavaScript 模組
+│   │   │   │   └── i18n.js          # 國際化系統
+│   │   │   └── locales/             # 語言資源檔案
+│   │   │       ├── zh-TW.json       # 繁體中文
+│   │   │       └── en-US.json       # 英文
+│   │   └── database/                # SQLite 數據庫
+│   │       └── app.db               # 應用數據庫
+│   ├── templates/                   # Jinja2 模板檔案
+│   │   ├── base.html                # 基礎模板（支援 i18n）
+│   │   ├── index.html               # 首頁模板
+│   │   └── student.html             # 學生查詢頁面
+│   ├── data/                        # CSV 數據檔案
+│   │   ├── english_timetable.csv    # 英文班課表數據
+│   │   ├── homeroom_timetable.csv   # 導師班課表數據
+│   │   ├── ev_myreading_timetable.csv # EV & myReading 課表數據
+│   │   └── students.csv             # 學生基本資料
+│   ├── requirements.txt             # Python 依賴套件
+│   ├── run_server.py                # 服務器啟動腳本
+│   └── venv/                        # Python 虛擬環境
+├── docs/                            # 專案文檔
+│   ├── api/                         # API 文檔
+│   └── database/                    # 資料庫設計文檔
+├── database/                        # 資料庫設計相關
+├── output/                          # 輸出檔案
+├── Dockerfile                       # Docker 容器化設定
+├── docker-compose.yml               # Docker Compose 設定
+├── zeabur.json                      # Zeabur 部署設定
+├── README.md                        # 專案說明
+└── CLAUDE.md                        # 開發指南（本檔案）
 ```
 
 ### 🛠️ **技術棧**
-- **後端**: Python 3.11, Flask, SQLAlchemy
-- **前端**: JavaScript/TypeScript, React/Vue, Tailwind CSS
-- **資料庫**: SQLite (開發), PostgreSQL (生產)
-- **部署**: Docker, GitHub Actions
+- **後端**: Python 3.11, Flask, SQLAlchemy, Flask-CORS
+- **前端**: Jinja2 模板 + Vanilla JavaScript + Tailwind CSS (本地生產版本)
+- **國際化**: 自建 i18n 系統（JavaScript + JSON 語言檔案）
+- **資料庫**: SQLite (開發與生產)
+- **部署**: Docker + Zeabur 雲端平台
+- **版本控制**: Git + GitHub 自動備份
 
 ### 🌐 **GitHub Repository**
 - **URL**: https://github.com/geonook/kcislk-timetable.git
@@ -151,37 +173,54 @@ kcislk-timetable/
 - 預留擴充欄位供未來使用
 
 ### 🌍 **國際化(i18n)支援**
-- 前端使用 i18next 處理多語言
-- 後端 API 回應包含語言代碼
-- 資料庫儲存多語言內容
-- 預設語言：繁體中文(zh-TW)、英文(en-US)
+- **實現方式**: 自建 JavaScript i18n 系統
+- **語言檔案**: JSON 格式，分別為 zh-TW.json 和 en-US.json
+- **功能特色**:
+  - 即時語言切換（無需重新載入頁面）
+  - localStorage 持久化語言偏好
+  - 支援佔位符替換（例如：{0}, {1}）
+  - 自動更新頁面上所有 `[data-i18n]` 元素
+- **支援語言**: 繁體中文(zh-TW)、英文(en-US)
+- **檔案位置**: `timetable_api/src/static/locales/`
 
 ## 🚀 COMMON COMMANDS
 
 ```bash
+# 進入專案目錄
+cd kcislk-timetable/timetable_api
+
 # Python 虛擬環境
-source timetable_api/venv/bin/activate  # 啟用虛擬環境
+python -m venv venv                      # 建立虛擬環境（首次）
+source venv/bin/activate                 # 啟用虛擬環境 (macOS/Linux)
+# 或 venv\Scripts\activate              # Windows
 pip install -r requirements.txt         # 安裝相依套件
 
-# 前端開發
-npm install                              # 安裝 Node.js 套件
-npm run dev                              # 開發模式
-npm run build                            # 建置生產版本
+# 啟動應用程式
+python run_server.py                    # 預設在 http://localhost:8080 啟動
 
-# 資料庫
-python manage.py db init                 # 初始化資料庫
-python manage.py db migrate              # 建立遷移
-python manage.py db upgrade              # 執行遷移
+# 指定埠號啟動
+PORT=5000 python run_server.py          # 在指定埠號啟動
 
-# 測試
-pytest                                   # 執行所有測試
-pytest src/test/unit/                   # 執行單元測試
-pytest src/test/integration/            # 執行整合測試
+# 開發模式（自動重載）
+export FLASK_ENV=development            # 設定開發模式
+python run_server.py                    # 啟動開發服務器
 
-# Git 與 GitHub
+# 資料庫操作（自動執行）
+# 應用程式會自動檢查並初始化 SQLite 資料庫
+# 自動載入 CSV 數據檔案到資料庫
+
+# Git 與 GitHub 備份
 git add .                               # 暫存所有變更
 git commit -m "描述"                    # 提交變更
 git push origin main                    # 推送至 GitHub
+
+# Docker 部署
+docker build -t kcislk-timetable .      # 建立 Docker 映像
+docker run -p 8080:8080 kcislk-timetable # 運行容器
+
+# Docker Compose
+docker-compose up -d                    # 後台運行
+docker-compose down                     # 停止服務
 ```
 
 ## 🚨 TECHNICAL DEBT PREVENTION

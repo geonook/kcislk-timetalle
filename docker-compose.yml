@@ -1,27 +1,88 @@
+# KCISLK 課表查詢系統 - Docker Compose Configuration
 version: '3.8'
 
 services:
-  app:
+  # Backend API Service
+  backend:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.backend
+    container_name: kcislk-backend
     ports:
-      - "8080:8080"
+      - "8081:8081"
     environment:
-      - PORT=8080
       - FLASK_ENV=production
-      - DATABASE_PATH=/app/data/app.db
+      - PORT=8081
+      - DATABASE_URL=sqlite:///data/timetable.db
     volumes:
-      # Mount a volume for persistent database storage
-      - app_data:/app/data
+      - ./data:/app/data
+      - ./logs:/app/logs
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+      test: ["CMD", "curl", "-f", "http://localhost:8081/health"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 40s
+    networks:
+      - kcislk-network
+
+  # Frontend Service
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: kcislk-frontend
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - ./configs/nginx/kcislk-timetable-docker:/etc/nginx/conf.d/default.conf:ro
+      # Uncomment for SSL certificates
+      # - ./ssl:/etc/ssl/certs:ro
+    networks:
+      - kcislk-network
+
+  # Database backup service (optional)
+  db-backup:
+    image: alpine:latest
+    container_name: kcislk-backup
+    volumes:
+      - ./data:/data
+      - ./backups:/backups
+    environment:
+      - BACKUP_SCHEDULE=0 2 * * *  # Daily at 2 AM
+    command: |
+      sh -c '
+        apk add --no-cache sqlite
+        while true; do
+          echo "Creating backup at $$(date)"
+          sqlite3 /data/timetable.db ".backup /backups/timetable_$$(date +%Y%m%d_%H%M%S).db"
+          find /backups -name "timetable_*.db" -mtime +30 -delete
+          sleep 86400  # Sleep for 24 hours
+        done
+      '
+    restart: unless-stopped
+    depends_on:
+      - backend
+    networks:
+      - kcislk-network
+
+networks:
+  kcislk-network:
+    driver: bridge
 
 volumes:
-  app_data:
+  data:
+    driver: local
+  logs:
+    driver: local
+  backups:
     driver: local
