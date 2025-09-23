@@ -6,9 +6,18 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 from src.models.timetable import db, Timetable, ClassInfo, Teacher, Classroom, Period
 from src.main import app
 
-def load_timetable_data(csv_file_path):
+def load_timetable_data(csv_file_path=None):
     """載入課表資料到資料庫"""
-    
+
+    if csv_file_path is None:
+        # 使用預設的英文課表檔案路徑
+        csv_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'english_timetable_template.csv')
+
+    # 檢查檔案是否存在
+    if not os.path.exists(csv_file_path):
+        print(f"錯誤：找不到檔案 {csv_file_path}")
+        return False
+
     # 讀取CSV檔案
     df = pd.read_csv(csv_file_path, sep=',')
     
@@ -83,14 +92,14 @@ def load_timetable_data(csv_file_path):
         
         # 提交所有變更
         db.session.commit()
-        
+
         print(f"成功載入 {len(df)} 筆課表資料")
         print(f"班級數量: {len(unique_classes)}")
         print(f"教師數量: {len(unique_teachers)}")
         print(f"教室數量: {len(unique_classrooms)}")
         print(f"節次數量: {len(periods_data)}")
+        return True
 
 if __name__ == '__main__':
-    csv_file = '/home/ubuntu/upload/students_classschedule-english_timetable_template.csv'
-    load_timetable_data(csv_file)
+    load_timetable_data()
 

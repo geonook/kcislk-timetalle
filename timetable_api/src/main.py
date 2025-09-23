@@ -31,11 +31,46 @@ os.makedirs(os.path.dirname(db_path), exist_ok=True)
 # 初始化資料庫
 db.init_app(app)
 
+def initialize_data():
+    """初始化數據庫並載入初始數據"""
+    from src.data_loader import load_timetable_data
+    from src.data_loader_student import load_all_data
+
+    print("檢查數據庫是否需要初始化...")
+
+    # 檢查是否已有數據
+    from src.models.timetable import ClassInfo
+    if ClassInfo.query.count() == 0:
+        print("數據庫為空，開始載入初始數據...")
+
+        # 載入課表數據
+        try:
+            success1 = load_timetable_data()
+            success2 = load_all_data()
+
+            if success1:
+                print("✅ 課表數據載入成功")
+            else:
+                print("❌ 課表數據載入失敗")
+
+            if success2:
+                print("✅ 學生數據載入成功")
+            else:
+                print("❌ 學生數據載入失敗")
+
+        except Exception as e:
+            print(f"❌ 數據載入過程中發生錯誤: {e}")
+    else:
+        print("✅ 數據庫已有數據，跳過初始化")
+
 print("Attempting to create application context...")
 with app.app_context():
     print("Application context entered. Attempting to create database tables...")
     db.create_all()
     print("Database tables created successfully.")
+
+    # 初始化數據
+    initialize_data()
 
 # Frontend page routes
 @app.route('/')

@@ -15,6 +15,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # 複製後端源碼和模板
 COPY timetable_api/ ./
 
+# 確保數據目錄存在
+RUN mkdir -p data
+
 # 設置環境變數
 ENV FLASK_APP=run_server.py
 ENV FLASK_ENV=production
