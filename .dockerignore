@@ -32,7 +32,6 @@ Thumbs.db
 
 # Git
 .git/
-.gitignore
 
 # Python cache
 __pycache__/
@@ -55,6 +54,4 @@ frontend/build/
 logs/
 *.log
 
-# Documentation (not needed for deployment)
-*.md
-docs/
+# 注意：移除了 *.md 和 docs/ 排除規則，確保不會意外排除重要檔案

@@ -1,6 +1,13 @@
 # Stage 1: 建置前端
 FROM node:18-alpine AS frontend-builder
 
+WORKDIR /app
+
+# 調試：列出構建上下文
+RUN echo "=== 檢查構建上下文 ==="
+COPY . /tmp/build-context/
+RUN ls -la /tmp/build-context/ && echo "=== frontend 目錄 ===" && ls -la /tmp/build-context/frontend/ || echo "frontend 目錄不存在"
+
 WORKDIR /app/frontend
 
 # 複製前端 package.json 並安裝依賴
@@ -15,6 +22,11 @@ RUN npm run build
 FROM python:3.11-slim AS backend
 
 WORKDIR /app
+
+# 調試：再次檢查構建上下文
+RUN echo "=== 後端階段：檢查構建上下文 ==="
+COPY . /tmp/build-context/
+RUN ls -la /tmp/build-context/ && echo "=== timetable_api 目錄 ===" && ls -la /tmp/build-context/timetable_api/ || echo "timetable_api 目錄不存在"
 
 # 安裝系統依賴
 RUN apt-get update && apt-get install -y \
@@ -41,6 +53,9 @@ EXPOSE 8080
 
 # 建立資料目錄
 RUN mkdir -p /app/data
+
+# 最終調試：確認所有檔案
+RUN echo "=== 最終檔案檢查 ===" && ls -la && echo "=== src 目錄 ===" && ls -la src/ || echo "src 目錄不存在"
 
 # 啟動命令
 CMD ["python", "run_server.py"]
