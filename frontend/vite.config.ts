@@ -1,6 +1,6 @@
-import { defineConfig, loadEnv } from 'vite'
-import react from '@vitejs/plugin-react'
-import path from 'path'
+import { defineConfig, loadEnv } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'node:path';
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -48,7 +48,7 @@ export default defineConfig(({ mode }) => {
       assetsInlineLimit: 4096,
     },
     define: {
-      __APP_VERSION__: JSON.stringify(env.VITE_APP_VERSION || process.env.npm_package_version || '1.0.0'),
+      __APP_VERSION__: JSON.stringify(env.VITE_APP_VERSION || '1.0.0'),
       __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
       __DEV_MODE__: JSON.stringify(env.VITE_DEV_MODE === 'true'),
       __LOG_LEVEL__: JSON.stringify(env.VITE_LOG_LEVEL || 'info'),

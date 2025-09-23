@@ -22,7 +22,7 @@ i18n
     resources,
     lng: 'zh-TW', // default language
     fallbackLng: 'zh-TW',
-    debug: process.env.NODE_ENV === 'development',
+    debug: import.meta.env.VITE_DEV_MODE === 'true',
 
     interpolation: {
       escapeValue: false, // React already does escaping
