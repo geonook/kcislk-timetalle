@@ -92,8 +92,8 @@ export default function HomePage() {
           {t('pages.home.subtitle')}
         </p>
 
-        {/* Decorative elements */}
-        <div className="flex justify-center space-x-2 mt-6">
+        {/* Decorative elements - adjusted for mobile spacing */}
+        <div className="flex justify-center space-x-2 mt-8 mb-8 sm:mb-12">
           <div className="w-2 h-2 bg-accent-500 rounded-full animate-pulse"></div>
           <div className="w-2 h-2 bg-accent-400 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
           <div className="w-2 h-2 bg-accent-300 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
