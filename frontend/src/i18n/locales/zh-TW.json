@@ -35,10 +35,8 @@
       "unifiedTimetable": "統一課表",
       "completeTimetable": "{{name}} 的完整課表",
       "searchInstruction": "請在上方搜尋框輸入學生姓名開始搜尋",
-      "searchMode": "搜尋模式",
-      "browseMode": "瀏覽模式",
       "browseSubtitle": "瀏覽所有學生並選擇查看課表",
-      "browseAllStudents": "瀏覽所有學生",
+      "searchStudents": "搜尋學生",
       "browsePlaceholder": "篩選學生姓名、學號或班級...",
       "loadingAllStudents": "載入所有學生中...",
       "loadStudentsError": "載入學生失敗",
@@ -46,7 +44,9 @@
       "allStudents": "所有學生",
       "noMatchingStudents": "沒有符合條件的學生",
       "noStudentsAvailable": "暫無學生資料",
-      "tryDifferentSearch": "請嘗試其他搜尋條件"
+      "tryDifferentSearch": "請嘗試其他搜尋條件",
+      "backToStudentList": "返回學生列表",
+      "viewingTimetable": "查看 {{name}} 的課表"
     },
     "class": {
       "title": "班級課表",

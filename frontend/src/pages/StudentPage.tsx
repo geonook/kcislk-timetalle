@@ -2,57 +2,42 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { apiService } from '../services/api';
-import { useStudentStore } from '../stores/useStudentStore';
 import SearchBox from '../components/ui/SearchBox';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import StudentCard from '../components/ui/StudentCard';
 import UnifiedTimetableGrid from '../components/timetable/UnifiedTimetableGrid';
 import { mergeStudentTimetables, hasAnyTimetableData } from '../utils/timetableUtils';
-import { UserIcon, MagnifyingGlassIcon, ViewColumnsIcon } from '@heroicons/react/24/outline';
+import { UserIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import type { Student, StudentTimetableResponse } from '../types';
 
 export default function StudentPage() {
   const { t } = useTranslation();
-  const {
-    selectedStudent,
-    searchResults,
-    searchQuery,
-    isSearching,
-    searchError,
-    setSelectedStudent,
-    setSearchResults,
-    setSearchQuery,
-    setIsSearching,
-    setSearchError,
-    clearSearch
-  } = useStudentStore();
+  const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
 
   const [studentTimetable, setStudentTimetable] = useState<StudentTimetableResponse | null>(null);
   const [timetableError, setTimetableError] = useState<string | null>(null);
-  const [viewMode, setViewMode] = useState<'search' | 'browse'>('search');
   const [allStudents, setAllStudents] = useState<Student[]>([]);
   const [filteredStudents, setFilteredStudents] = useState<Student[]>([]);
-  const [browseQuery, setBrowseQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  // Search students mutation
-  const searchMutation = useMutation({
-    mutationFn: apiService.searchStudents,
-    onMutate: () => {
-      setIsSearching(true);
-      setSearchError(undefined);
-    },
-    onSuccess: (data) => {
-      setSearchResults(data);
-      setIsSearching(false);
-    },
-    onError: (error) => {
-      setSearchError(error instanceof Error ? error.message : t('pages.student.error'));
-      setIsSearching(false);
-    },
-  });
+  // Handle search filtering
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    if (query.trim() === '') {
+      setFilteredStudents(allStudents);
+    } else {
+      const filtered = allStudents.filter(student =>
+        student.student_name.toLowerCase().includes(query.toLowerCase()) ||
+        student.student_id.toLowerCase().includes(query.toLowerCase()) ||
+        student.english_class_name.toLowerCase().includes(query.toLowerCase()) ||
+        student.home_room_class_name.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredStudents(filtered);
+    }
+  };
 
   // Get student timetable mutation
-  // Fetch all students for browse mode
+  // Fetch all students
   const {
     data: studentsData,
     isLoading: isLoadingAllStudents,
@@ -60,7 +45,6 @@ export default function StudentPage() {
   } = useQuery({
     queryKey: ['all-students'],
     queryFn: apiService.getAllStudents,
-    enabled: viewMode === 'browse',
   });
 
   useEffect(() => {
@@ -92,46 +76,12 @@ export default function StudentPage() {
     },
   });
 
-  const handleSearch = (query: string) => {
-    if (query.trim()) {
-      searchMutation.mutate(query.trim());
-    }
-  };
 
-  // Handle view mode switching
-  const switchToSearchMode = () => {
-    setViewMode('search');
-    if (selectedStudent) {
-      setSelectedStudent(null);
-      setStudentTimetable(null);
-      setTimetableError(null);
-    }
-  };
-
-  const switchToBrowseMode = () => {
-    setViewMode('browse');
-    if (searchResults.length > 0 || selectedStudent) {
-      clearSearch();
-      setSelectedStudent(null);
-      setStudentTimetable(null);
-      setTimetableError(null);
-    }
-  };
-
-  // Handle browse mode filtering
-  const handleBrowseSearch = (query: string) => {
-    setBrowseQuery(query);
-    if (query.trim() === '') {
-      setFilteredStudents(allStudents);
-    } else {
-      const filtered = allStudents.filter(student =>
-        student.student_name.toLowerCase().includes(query.toLowerCase()) ||
-        student.student_id.toLowerCase().includes(query.toLowerCase()) ||
-        student.english_class_name.toLowerCase().includes(query.toLowerCase()) ||
-        student.home_room_class_name.toLowerCase().includes(query.toLowerCase())
-      );
-      setFilteredStudents(filtered);
-    }
+  // Handle back to student list
+  const handleBackToList = () => {
+    setSelectedStudent(null);
+    setStudentTimetable(null);
+    setTimetableError(null);
   };
 
   const handleStudentClick = (student: Student) => {
@@ -158,10 +108,10 @@ export default function StudentPage() {
 
   const handleClearSearch = () => {
     console.log('用戶點擊清除搜尋');
-    clearSearch();
+    setSearchQuery('');
+    setFilteredStudents(allStudents);
     setStudentTimetable(null);
     setTimetableError(null);
-    // 重置 mutation 狀態
     timetableMutation.reset();
   };
 
@@ -175,35 +125,22 @@ export default function StudentPage() {
 
   return (
     <div className="max-w-6xl mx-auto">
-      {/* Mode Selector */}
-      <div className="mb-8">
-        <div className="flex justify-center">
-          <div className="inline-flex bg-white dark:bg-gray-800 rounded-2xl p-2 shadow-lg border border-gray-200 dark:border-gray-700">
+      {/* Breadcrumb Navigation */}
+      {selectedStudent && (
+        <div className="mb-8">
+          <nav className="flex items-center space-x-2 text-sm font-medium mb-6">
             <button
-              onClick={switchToSearchMode}
-              className={`flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
-                viewMode === 'search'
-                  ? 'bg-accent-500 text-white shadow-md'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
-              }`}
+              onClick={handleBackToList}
+              className="inline-flex items-center px-4 py-2 rounded-xl text-accent-600 hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300 bg-accent-50 hover:bg-accent-100 dark:bg-accent-900/20 dark:hover:bg-accent-900/30 transition-all duration-200"
             >
-              <MagnifyingGlassIcon className="h-5 w-5 mr-2" />
-              {t('pages.student.searchMode')}
+              <ArrowLeftIcon className="h-4 w-4 mr-2" />
+              {t('pages.student.backToStudentList')}
             </button>
-            <button
-              onClick={switchToBrowseMode}
-              className={`flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-200 ml-2 ${
-                viewMode === 'browse'
-                  ? 'bg-accent-500 text-white shadow-md'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
-              }`}
-            >
-              <ViewColumnsIcon className="h-5 w-5 mr-2" />
-              {t('pages.student.browseMode')}
-            </button>
-          </div>
+            <span className="text-gray-400">/</span>
+            <span className="text-gray-600 dark:text-gray-400">{selectedStudent.student_name}</span>
+          </nav>
         </div>
-      </div>
+      )}
 
       {/* Premium Hero Section */}
       <div className="text-center mb-12">
@@ -231,7 +168,7 @@ export default function StudentPage() {
         </h1>
 
         <p className="text-xl font-medium text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-          {viewMode === 'search' ? t('pages.student.subtitle') : t('pages.student.browseSubtitle')}
+          {selectedStudent ? t('pages.student.viewingTimetable', { name: selectedStudent.student_name }) : t('pages.student.browseSubtitle')}
         </p>
 
         {/* Decorative elements */}
@@ -242,8 +179,8 @@ export default function StudentPage() {
         </div>
       </div>
 
-      {/* Search Mode Section */}
-      {viewMode === 'search' && (
+      {/* Search Section */}
+      {!selectedStudent && (
         <div className="mb-12">
           <div className="max-w-lg mx-auto">
             <div className="relative">
@@ -251,14 +188,12 @@ export default function StudentPage() {
               <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-50 to-white dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 rounded-2xl shadow-lg opacity-80 pointer-events-none"></div>
               <div className="relative p-6 backdrop-blur-sm">
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 text-center">
-                  🔍 {t('pages.student.searchPlaceholder')}
+                  🔍 {t('pages.student.searchStudents')}
                 </h2>
                 <SearchBox
                   value={searchQuery}
-                  onChange={setSearchQuery}
-                  onSubmit={handleSearch}
-                  placeholder={t('pages.student.searchPlaceholder')}
-                  loading={isSearching}
+                  onChange={handleSearch}
+                  placeholder={t('pages.student.browsePlaceholder')}
                   className="w-full"
                 />
               </div>
@@ -267,27 +202,9 @@ export default function StudentPage() {
         </div>
       )}
 
-      {/* Browse Mode Section */}
-      {viewMode === 'browse' && (
+      {/* Students Grid */}
+      {!selectedStudent && (
         <div className="mb-12">
-          <div className="max-w-lg mx-auto mb-8">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-50 to-white dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 rounded-2xl shadow-lg opacity-80 pointer-events-none"></div>
-              <div className="relative p-6 backdrop-blur-sm">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 text-center">
-                  📚 {t('pages.student.browseAllStudents')}
-                </h2>
-                <SearchBox
-                  value={browseQuery}
-                  onChange={handleBrowseSearch}
-                  placeholder={t('pages.student.browsePlaceholder')}
-                  className="w-full"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Students Grid */}
           {isLoadingAllStudents ? (
             <div className="py-12">
               <LoadingSpinner
@@ -322,11 +239,11 @@ export default function StudentPage() {
             <div>
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  {browseQuery ? `${t('pages.student.filteredStudents')} (${filteredStudents.length})` : `${t('pages.student.allStudents')} (${allStudents.length})`}
+                  {searchQuery ? `${t('pages.student.filteredStudents')} (${filteredStudents.length})` : `${t('pages.student.allStudents')} (${allStudents.length})`}
                 </h2>
-                {browseQuery && (
+                {searchQuery && (
                   <button
-                    onClick={() => handleBrowseSearch('')}
+                    onClick={() => handleSearch('')}
                     className="text-accent-600 hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300 text-sm font-medium"
                   >
                     {t('common.clear')}
@@ -347,76 +264,13 @@ export default function StudentPage() {
             <div className="text-center py-12">
               <UserIcon className="mx-auto h-12 w-12 text-gray-400" />
               <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-white">
-                {browseQuery ? t('pages.student.noMatchingStudents') : t('pages.student.noStudentsAvailable')}
+                {searchQuery ? t('pages.student.noMatchingStudents') : t('pages.student.noStudentsAvailable')}
               </h3>
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                {browseQuery ? t('pages.student.tryDifferentSearch') : t('messages.contactAdmin')}
+                {searchQuery ? t('pages.student.tryDifferentSearch') : t('messages.contactAdmin')}
               </p>
             </div>
           )}
-        </div>
-      )}
-
-      {/* Search Error */}
-      {viewMode === 'search' && searchError && (
-        <div className="mt-4 max-w-md mx-auto">
-          <div className="bg-red-50 dark:bg-red-900/50 border border-red-200 dark:border-red-800 rounded-md p-4">
-            <div className="flex">
-              <div className="flex-shrink-0">
-                <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div className="ml-3">
-                <p className="text-sm text-red-800 dark:text-red-200">
-                  {searchError}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Clear Button */}
-      {viewMode === 'search' && (searchResults.length > 0 || selectedStudent) && (
-        <div className="mt-4 text-center">
-          <button
-            onClick={handleClearSearch}
-            className="btn-secondary"
-          >
-            {t('common.clear')}
-          </button>
-        </div>
-      )}
-
-      {/* Search Results */}
-      {viewMode === 'search' && searchResults.length > 0 && !selectedStudent && (
-        <div className="mb-8">
-          <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
-            {t('pages.student.searchResults')} ({searchResults.length})
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {searchResults.map((student) => (
-              <StudentCard
-                key={student.student_id}
-                student={student}
-                onClick={handleStudentClick}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* No Results */}
-      {viewMode === 'search' && searchQuery && searchResults.length === 0 && !isSearching && !searchError && (
-        <div className="text-center py-12">
-          <UserIcon className="mx-auto h-12 w-12 text-gray-400" />
-          <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-white">
-            {t('pages.student.noResults')}
-          </h3>
-          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            {t('messages.tryDifferentKeyword')}
-          </p>
         </div>
       )}
 
@@ -653,18 +507,6 @@ export default function StudentPage() {
         </div>
       )}
 
-      {/* Empty State */}
-      {viewMode === 'search' && !searchQuery && !selectedStudent && searchResults.length === 0 && (
-        <div className="text-center py-12">
-          <UserIcon className="mx-auto h-12 w-12 text-gray-400" />
-          <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-white">
-            {t('pages.student.selectStudent')}
-          </h3>
-          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            {t('pages.student.searchInstruction')}
-          </p>
-        </div>
-      )}
     </div>
   );
 }

@@ -30,10 +30,8 @@
       "unifiedTimetable": "Unified Timetable",
       "completeTimetable": "{{name}}'s Complete Timetable",
       "searchInstruction": "Please enter a student name in the search box above to start searching",
-      "searchMode": "Search Mode",
-      "browseMode": "Browse Mode",
       "browseSubtitle": "Browse all students and select to view timetable",
-      "browseAllStudents": "Browse All Students",
+      "searchStudents": "Search Students",
       "browsePlaceholder": "Filter by name, ID, or class...",
       "loadingAllStudents": "Loading all students...",
       "loadStudentsError": "Failed to load students",
@@ -41,7 +39,9 @@
       "allStudents": "All Students",
       "noMatchingStudents": "No matching students found",
       "noStudentsAvailable": "No students available",
-      "tryDifferentSearch": "Please try different search criteria"
+      "tryDifferentSearch": "Please try different search criteria",
+      "backToStudentList": "Back to Student List",
+      "viewingTimetable": "Viewing {{name}}'s Timetable"
     },
     "class": {
       "title": "Class Timetable",
