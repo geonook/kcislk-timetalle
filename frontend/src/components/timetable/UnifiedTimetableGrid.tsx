@@ -79,7 +79,7 @@ export default function UnifiedTimetableGrid({
             </p>
           )}
           <p className="text-gray-500 dark:text-gray-400">
-            暫無課表資料
+            {t('messages.noTimetableData')}
           </p>
         </div>
       </div>
@@ -221,7 +221,7 @@ export default function UnifiedTimetableGrid({
           </div>
           <div className="flex items-center text-gray-500 dark:text-gray-400 bg-white/50 dark:bg-gray-900/50 px-3 py-1.5 rounded-full">
             <span className="mr-2">💡</span>
-            <span className="text-xs font-medium">同一時段多種課程會一起顯示</span>
+            <span className="text-xs font-medium">{t('timetable.multipleCoursesTip')}</span>
           </div>
         </div>
       </div>

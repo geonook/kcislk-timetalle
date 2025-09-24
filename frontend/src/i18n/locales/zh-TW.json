@@ -29,7 +29,12 @@
       "loading": "搜尋中...",
       "error": "搜尋失敗",
       "noResults": "未找到學生",
-      "selectStudent": "請選擇學生"
+      "selectStudent": "請選擇學生",
+      "searchResults": "搜尋結果",
+      "statistics": "課表統計",
+      "unifiedTimetable": "統一課表",
+      "completeTimetable": "{{name}} 的完整課表",
+      "searchInstruction": "請在上方搜尋框輸入學生姓名開始搜尋"
     },
     "class": {
       "title": "班級課表",
@@ -47,8 +52,9 @@
     },
     "notFound": {
       "title": "頁面不存在",
-      "description": "抱歉，您訪問的頁面不存在。",
-      "goHome": "返回首頁"
+      "description": "抱歉，您要尋找的頁面不存在。可能已被移除、重新命名或暫時無法使用。",
+      "backToHome": "返回首頁",
+      "suggestion": "或使用上方導航列返回其他頁面"
     }
   },
   "timetable": {
@@ -78,7 +84,8 @@
     "emptySlot": "空堂",
     "teacher": "老師",
     "classroom": "教室",
-    "subject": "科目"
+    "subject": "科目",
+    "multipleCoursesTip": "同一時段多種課程會一起顯示"
   },
   "student": {
     "info": {

@@ -24,7 +24,12 @@
       "loading": "Searching...",
       "error": "Search failed",
       "noResults": "No students found",
-      "selectStudent": "Please select a student"
+      "selectStudent": "Please select a student",
+      "searchResults": "Search Results",
+      "statistics": "Timetable Statistics",
+      "unifiedTimetable": "Unified Timetable",
+      "completeTimetable": "{{name}}'s Complete Timetable",
+      "searchInstruction": "Please enter a student name in the search box above to start searching"
     },
     "class": {
       "title": "Class Timetable",
@@ -42,8 +47,9 @@
     },
     "notFound": {
       "title": "Page Not Found",
-      "description": "Sorry, the page you're looking for doesn't exist.",
-      "goHome": "Go Home"
+      "description": "Sorry, the page you're looking for doesn't exist. It may have been removed, renamed, or is temporarily unavailable.",
+      "backToHome": "Go Home",
+      "suggestion": "Or use the navigation bar above to return to other pages"
     }
   },
   "timetable": {
@@ -73,7 +79,8 @@
     "emptySlot": "Free Period",
     "teacher": "Teacher",
     "classroom": "Classroom",
-    "subject": "Subject"
+    "subject": "Subject",
+    "multipleCoursesTip": "Multiple courses at the same time will be displayed together"
   },
   "student": {
     "info": {
