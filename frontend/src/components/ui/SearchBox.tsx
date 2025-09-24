@@ -44,7 +44,7 @@ export default function SearchBox({
     <form onSubmit={handleSubmit} className={`relative group ${className}`}>
       <div className="relative">
         {/* Background glow effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-accent-500/10 to-accent-600/10 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-accent-500/10 to-accent-600/10 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
 
         <div className="relative">
           {/* Search icon container */}

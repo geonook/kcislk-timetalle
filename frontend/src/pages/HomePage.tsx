@@ -74,7 +74,7 @@ export default function HomePage() {
           {/* Main icon */}
           <div className="relative flex justify-center">
             <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300 animate-pulse-glow"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300 animate-pulse-glow pointer-events-none"></div>
               <div className="relative w-20 h-20 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-300">
                 <AcademicCapIcon className="h-12 w-12 text-white" />
               </div>
@@ -105,7 +105,7 @@ export default function HomePage() {
         <div className="max-w-lg mx-auto">
           <div className="relative">
             {/* Search background decoration */}
-            <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-50 to-white dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 rounded-2xl shadow-lg opacity-80"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-50 to-white dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 rounded-2xl shadow-lg opacity-80 pointer-events-none"></div>
             <div className="relative p-6 backdrop-blur-sm">
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 text-center">
                 🔍 {t('pages.home.searchPlaceholder')}
@@ -152,7 +152,7 @@ export default function HomePage() {
                 className="group relative card p-6 hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 text-left overflow-hidden"
               >
                 {/* Background gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-accent-50/30 dark:to-accent-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-accent-50/30 dark:to-accent-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
 
                 {/* Content */}
                 <div className="relative z-10">

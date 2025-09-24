@@ -153,7 +153,7 @@ export default function ClassPage() {
             {/* Icon */}
             <div className="flex-shrink-0">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl blur opacity-75"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl blur opacity-75 pointer-events-none"></div>
                 <div className="relative w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl flex items-center justify-center shadow-lg">
                   <AcademicCapIcon className="h-9 w-9 text-white" />
                 </div>
