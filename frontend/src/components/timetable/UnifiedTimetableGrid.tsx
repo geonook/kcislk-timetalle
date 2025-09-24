@@ -188,7 +188,7 @@ export default function UnifiedTimetableGrid({
                       ) : (
                         <div className="flex flex-col items-center justify-center py-8 text-gray-400 dark:text-gray-500">
                           <div className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mb-2">
-                            <span className="text-lg">🌙</span>
+                            <div className="w-2 h-2 rounded-full bg-gray-400 dark:bg-gray-500"></div>
                           </div>
                           <span className="text-xs italic font-medium">{t('timetable.emptySlot')}</span>
                         </div>
