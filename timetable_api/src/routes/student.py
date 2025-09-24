@@ -8,9 +8,12 @@ def get_all_students():
     """取得所有學生列表"""
     try:
         students = Student.query.all()
-        return jsonify([student.to_dict() for student in students])
+        return jsonify({
+            'success': True,
+            'students': [student.to_dict() for student in students]
+        })
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 @student_bp.route('/students/search', methods=['GET'])
 def search_students():
