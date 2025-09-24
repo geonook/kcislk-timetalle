@@ -41,14 +41,14 @@ export default function StudentCard({ student, onClick, className = '' }: Studen
       `}
     >
       {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-accent-50/30 dark:to-accent-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-accent-50/30 dark:to-accent-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
 
       <div className="relative z-10">
         <div className="flex items-start space-x-4">
           {/* Enhanced avatar */}
           <div className="flex-shrink-0">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl blur opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl blur opacity-0 group-hover:opacity-75 transition-opacity duration-300 pointer-events-none"></div>
               <div className="relative w-12 h-12 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
                 <UserIcon className="h-7 w-7 text-white" />
               </div>
@@ -116,7 +116,7 @@ export default function StudentCard({ student, onClick, className = '' }: Studen
       </div>
 
       {/* Hover effect border */}
-      <div className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-accent-200 dark:group-hover:border-accent-700 transition-colors duration-300"></div>
+      <div className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-accent-200 dark:group-hover:border-accent-700 transition-colors duration-300 pointer-events-none"></div>
     </button>
   );
 }
