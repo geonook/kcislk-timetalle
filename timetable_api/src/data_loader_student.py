@@ -81,8 +81,8 @@ def load_english_timetable_data():
 def load_homeroom_timetable_data():
     """載入 Home Room 課表資料到資料庫"""
     try:
-        # 設定 Home Room 課表 CSV 檔案路徑
-        csv_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'homeroom_timetable_template.csv')
+        # 設定 Home Room 課表 CSV 檔案路徑 - 使用新的完整資料檔案
+        csv_file_path = '/Users/chenzehong/Desktop/kcislk-timetable/students_class schedule - homeroom_timetable_template.csv'
 
         # 清空現有資料
         HomeRoomTimetable.query.delete()
@@ -93,18 +93,25 @@ def load_homeroom_timetable_data():
             db.session.commit()
             return True
 
-        # 讀取 Home Room 課表 CSV
+        # 讀取 Home Room 課表 CSV - 新格式: Day, Home Room Class Name, Period, Classroom, Teacher, Course Name
         homeroom_df = pd.read_csv(csv_file_path)
+        print(f"讀取到 {len(homeroom_df)} 筆 Home Room 課表資料")
+        print(f"CSV 欄位: {list(homeroom_df.columns)}")
 
-        # 載入 Home Room 課表資料
+        # 載入 Home Room 課表資料 - 調整欄位對應新格式
         for _, row in homeroom_df.iterrows():
+            # 處理空值：將 NaN 或空值轉換為預設值
+            teacher = row['Teacher'] if pd.notna(row['Teacher']) else 'TBD'
+            classroom = row['Classroom'] if pd.notna(row['Classroom']) else 'TBD'
+            course_name = row['Course Name'] if pd.notna(row['Course Name']) else 'TBD'
+
             homeroom_entry = HomeRoomTimetable(
-                home_room_class_name=row['Home Room Class Name'],
+                home_room_class_name=str(row['Home Room Class Name']),  # 確保轉為字串
                 day=row['Day'],
                 period=row['Period'],
-                classroom=row['Classroom'],
-                teacher=row['Teacher'],
-                course_name=row['Course Name']
+                classroom=classroom,
+                teacher=teacher,
+                course_name=course_name
             )
             db.session.add(homeroom_entry)
 
@@ -114,6 +121,8 @@ def load_homeroom_timetable_data():
 
     except Exception as e:
         print(f"處理 Home Room 課表資料時發生錯誤: {e}")
+        import traceback
+        traceback.print_exc()
         db.session.rollback()
         return False
 
