@@ -1,6 +1,8 @@
 {
   "app": {
     "title": "KCISLK 課表查詢系統",
+    "titleShort": "KCISLK",
+    "titleMedium": "KCISLK 課表",
     "description": "康橋國際學校林口校區小學部課表查詢系統"
   },
   "navigation": {

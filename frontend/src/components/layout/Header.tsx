@@ -48,7 +48,10 @@ export default function Header() {
             </div>
             <div>
               <h1 className="text-xl font-bold bg-gradient-to-r from-gray-900 via-accent-700 to-accent-600 dark:from-white dark:via-accent-300 dark:to-accent-200 bg-clip-text text-transparent">
-                {t('app.title')}
+                {/* 響應式標題：極小螢幕顯示短版，中等螢幕顯示中版，大螢幕顯示完整版 */}
+                <span className="block sm:hidden">{t('app.titleShort')}</span>
+                <span className="hidden sm:block md:hidden">{t('app.titleMedium')}</span>
+                <span className="hidden md:block">{t('app.title')}</span>
               </h1>
               <p className="text-sm text-gray-500 dark:text-gray-400 hidden sm:block group-hover:text-accent-500 dark:group-hover:text-accent-400 transition-colors duration-200">
                 {t('app.description')}

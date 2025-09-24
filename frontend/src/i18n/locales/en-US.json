@@ -1,6 +1,8 @@
 {
   "app": {
     "title": "KCISLK Timetable System",
+    "titleShort": "KCISLK",
+    "titleMedium": "KCISLK Timetable",
     "description": "KCIS Linkou Elementary Timetable Query System"
   },
   "navigation": {
