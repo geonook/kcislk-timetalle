@@ -67,7 +67,7 @@ export default function Header() {
           </nav>
 
           {/* Settings */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             {/* Theme selector */}
             <Menu as="div" className="relative">
               <Menu.Button className="p-2 rounded-md text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500">

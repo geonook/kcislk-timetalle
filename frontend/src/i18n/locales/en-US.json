@@ -38,6 +38,7 @@
     }
   },
   "timetable": {
+    "period": "Period",
     "periods": {
       "1": "Period 1",
       "2": "Period 2",
@@ -103,5 +104,15 @@
   "language": {
     "zh-TW": "繁體中文",
     "en-US": "English"
+  },
+  "messages": {
+    "noClassesFound": "No classes found",
+    "noClassesAvailable": "No classes available",
+    "tryDifferentKeyword": "Please try a different search keyword",
+    "contactAdmin": "Please contact administrator to add class data",
+    "showingResults": "Showing {{filtered}} of {{total}} classes",
+    "totalClasses": "Total {{count}} classes",
+    "noTimetableData": "No timetable data available",
+    "tryLaterOrContact": "Please try later or contact administrator"
   }
 }

@@ -126,10 +126,10 @@ export default function HomePage() {
             <div className="col-span-full text-center py-12">
               <AcademicCapIcon className="mx-auto h-12 w-12 text-gray-400" />
               <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-white">
-                {searchQuery ? '找不到符合的班級' : '暫無班級資料'}
+                {searchQuery ? t('messages.noClassesFound') : t('messages.noClassesAvailable')}
               </h3>
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                {searchQuery ? '請嘗試其他搜尋關鍵字' : '請聯繫管理員添加班級資料'}
+                {searchQuery ? t('messages.tryDifferentKeyword') : t('messages.contactAdmin')}
               </p>
               {searchQuery && (
                 <button
@@ -149,11 +149,11 @@ export default function HomePage() {
         <div className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
           {searchQuery ? (
             <p>
-              顯示 {filteredClasses.length} 個班級，共 {classes.length} 個班級
+              {t('messages.showingResults', { filtered: filteredClasses.length, total: classes.length })}
             </p>
           ) : (
             <p>
-              共 {classes.length} 個班級
+              {t('messages.totalClasses', { count: classes.length })}
             </p>
           )}
         </div>

@@ -66,7 +66,7 @@ export default function TimetableGrid({
             </p>
           )}
           <p className="text-gray-500 dark:text-gray-400">
-            暫無課表資料
+            {t('messages.noTimetableData')}
           </p>
         </div>
       </div>
@@ -93,7 +93,7 @@ export default function TimetableGrid({
           <thead className="bg-gray-50 dark:bg-gray-800">
             <tr>
               <th scope="col" className="px-3 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                節次
+                {t('timetable.period')}
               </th>
               {WEEKDAYS.map((day) => (
                 <th

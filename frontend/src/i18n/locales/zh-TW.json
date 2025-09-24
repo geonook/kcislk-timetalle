@@ -38,6 +38,7 @@
     }
   },
   "timetable": {
+    "period": "節次",
     "periods": {
       "1": "第一節",
       "2": "第二節",
@@ -103,5 +104,15 @@
   "language": {
     "zh-TW": "繁體中文",
     "en-US": "English"
+  },
+  "messages": {
+    "noClassesFound": "找不到符合的班級",
+    "noClassesAvailable": "暫無班級資料",
+    "tryDifferentKeyword": "請嘗試其他搜尋關鍵字",
+    "contactAdmin": "請聯繫管理員添加班級資料",
+    "showingResults": "顯示 {{filtered}} 個班級，共 {{total}} 個班級",
+    "totalClasses": "共 {{count}} 個班級",
+    "noTimetableData": "暫無課表資料",
+    "tryLaterOrContact": "請稍後再試或聯繫管理員"
   }
 }
