@@ -6,7 +6,8 @@ KCISLK 課表查詢系統提供 RESTful API，支援學生課表查詢和班級�
 
 ## 基本資訊
 
-- **基礎 URL**: `http://localhost:8080/api`
+- **開發環境**: `http://localhost:8081/api`
+- **生產環境**: `https://kcislk-backend.zeabur.app/api`
 - **格式**: JSON
 - **編碼**: UTF-8
 
@@ -128,29 +129,38 @@ GET /api/students/{student_id}/timetable/weekly
 }
 ```
 
-### 班級課表 API
+### 班級相關 API
 
 #### 1. 取得所有班級
 ```http
 GET /api/classes
 ```
 
+**說明**: 此 API 支援回傳英文班級和 Homeroom 班級列表
+
 **回應**:
 ```json
 {
   "success": true,
   "classes": [
-    "1A_English",
-    "1A_HomeRoom",
-    "1B_English",
-    "2A_English"
-  ]
+    "G1 Achievers",
+    "G1 Pioneers",
+    "101",
+    "102",
+    "201",
+    "202"
+  ],
+  "counts": {
+    "english_classes": 16,
+    "homeroom_classes": 42,
+    "total_classes": 58
+  }
 }
 ```
 
 #### 2. 取得班級週課表
 ```http
-GET /api/timetable/{class_name}
+GET /api/timetables/{class_name}
 ```
 
 **回應**:
@@ -175,7 +185,7 @@ GET /api/timetable/{class_name}
 
 #### 3. 取得班級日課表
 ```http
-GET /api/timetable/{class_name}/{day}
+GET /api/timetables/{class_name}/{day}
 ```
 
 **參數**:
@@ -348,17 +358,28 @@ const getClassTimetable = async (className) => {
 ```python
 import requests
 
+# API Base URL
+API_BASE = "http://localhost:8081/api"  # 開發環境
+# API_BASE = "https://kcislk-backend.zeabur.app/api"  # 生產環境
+
 # 搜尋學生
 def search_students(query):
-    response = requests.get(f"http://localhost:8080/api/students/search?q={query}")
+    response = requests.get(f"{API_BASE}/students/search?q={query}")
     return response.json()
 
 # 取得學生課表
 def get_student_timetable(student_id):
-    response = requests.get(f"http://localhost:8080/api/students/{student_id}/timetable/weekly")
+    response = requests.get(f"{API_BASE}/students/{student_id}/timetable/weekly")
+    return response.json()
+
+# 取得所有班級
+def get_all_classes():
+    response = requests.get(f"{API_BASE}/classes")
     return response.json()
 ```
 
 ---
 
-*最後更新: 2025-01-22*
+*最後更新: 2025-09-24*
+*版本: 2.0*
+*狀態: 生產環境已部署*
