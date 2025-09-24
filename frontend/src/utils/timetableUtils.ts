@@ -7,6 +7,7 @@ import { WEEKDAYS } from '../types';
  * @returns 統一課表數據結構
  */
 export function mergeStudentTimetables(timetableData: StudentTimetableResponse['timetables']): UnifiedTimetableDisplay {
+
   const unifiedTimetable: UnifiedTimetableDisplay = {
     Monday: {},
     Tuesday: {},
