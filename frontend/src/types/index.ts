@@ -104,7 +104,7 @@ export interface ClassListResponse {
 export interface ClassTimetableResponse {
   success: boolean;
   class_name: string;
-  timetable: WeeklyTimetable;
+  timetable: TimetableDisplay;
 }
 
 // Component Props Types

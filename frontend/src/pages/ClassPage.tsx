@@ -7,32 +7,9 @@ import LoadingSpinner from '../components/ui/LoadingSpinner';
 import TimetableGrid from '../components/timetable/TimetableGrid';
 import SearchBox from '../components/ui/SearchBox';
 import { ArrowLeftIcon, AcademicCapIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import type { WeeklyTimetable, TimetableDisplay, DayTimetable, TimetableEntry } from '../types';
+import type { TimetableDisplay, DayTimetable, TimetableEntry } from '../types';
 
-// Convert WeeklyTimetable to TimetableDisplay format
-function convertWeeklyToDisplay(weeklyTimetable: WeeklyTimetable): TimetableDisplay {
-  const result: TimetableDisplay = {
-    Monday: {},
-    Tuesday: {},
-    Wednesday: {},
-    Thursday: {},
-    Friday: {},
-  };
-
-  // Convert each day's array to indexed object
-  Object.entries(weeklyTimetable).forEach(([day, entries]) => {
-    const dayKey = day as keyof TimetableDisplay;
-    const dayTimetable: DayTimetable = {};
-
-    entries.forEach((entry: TimetableEntry) => {
-      dayTimetable[entry.period.toString()] = entry;
-    });
-
-    result[dayKey] = dayTimetable;
-  });
-
-  return result;
-}
+// API now returns TimetableDisplay format directly, no conversion needed
 
 export default function ClassPage() {
   const { className } = useParams<{ className: string }>();
@@ -331,7 +308,7 @@ export default function ClassPage() {
 
           {/* Timetable Grid */}
           <TimetableGrid
-            timetableData={convertWeeklyToDisplay(timetableData.timetable)}
+            timetableData={timetableData.timetable}
             title={`${decodeURIComponent(currentClassName)} ${t('pages.class.weeklyTimetable')}`}
             subtitle={`${t('pages.class.className')}: ${timetableData.class_name}`}
           />

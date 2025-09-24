@@ -146,8 +146,8 @@ export default function Header() {
                               language === option.key ? 'text-accent-600 dark:text-accent-400 bg-accent-50 dark:bg-accent-900/20' : 'text-gray-900 dark:text-gray-100'
                             } group flex w-full items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200`}
                           >
-                            <span className="mr-3 text-sm">
-                              {option.key === 'zh-TW' ? '🇹🇼' : '🇺🇸'}
+                            <span className="mr-3 text-sm font-semibold text-gray-500 dark:text-gray-400">
+                              {option.key === 'zh-TW' ? '中' : 'EN'}
                             </span>
                             {option.label}
                           </button>
