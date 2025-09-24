@@ -6,7 +6,8 @@ import { useStudentStore } from '../stores/useStudentStore';
 import SearchBox from '../components/ui/SearchBox';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import StudentCard from '../components/ui/StudentCard';
-import TimetableGrid from '../components/timetable/TimetableGrid';
+import UnifiedTimetableGrid from '../components/timetable/UnifiedTimetableGrid';
+import { mergeStudentTimetables, hasAnyTimetableData } from '../utils/timetableUtils';
 import { UserIcon } from '@heroicons/react/24/outline';
 import type { Student, StudentTimetableResponse } from '../types';
 
@@ -258,28 +259,21 @@ export default function StudentPage() {
                 </div>
               )}
 
-              {/* English Timetable */}
-              <TimetableGrid
-                timetableData={studentTimetable.timetables.english_timetable}
-                title={t('timetable.courseTypes.english')}
-                subtitle={selectedStudent.english_class_name}
-              />
-
-              {/* Homeroom Timetable */}
-              <TimetableGrid
-                timetableData={studentTimetable.timetables.homeroom_timetable}
-                title={t('timetable.courseTypes.homeroom')}
-                subtitle={selectedStudent.home_room_class_name}
-              />
-
-              {/* EV & myReading Timetable */}
-              {selectedStudent.ev_myreading_class_name && (
-                <TimetableGrid
-                  timetableData={studentTimetable.timetables.ev_myreading_timetable}
-                  title={t('timetable.courseTypes.ev_myreading')}
-                  subtitle={selectedStudent.ev_myreading_class_name}
-                />
-              )}
+              {/* Unified Timetable */}
+              {(() => {
+                const unifiedTimetable = mergeStudentTimetables(studentTimetable.timetables);
+                return hasAnyTimetableData(unifiedTimetable) ? (
+                  <UnifiedTimetableGrid
+                    timetableData={unifiedTimetable}
+                    title="統一課表"
+                    subtitle={`${selectedStudent.student_name} 的完整課表`}
+                  />
+                ) : (
+                  <div className="card p-6 text-center">
+                    <p className="text-gray-500 dark:text-gray-400">暫無課表資料</p>
+                  </div>
+                );
+              })()}
             </div>
           )}
         </div>

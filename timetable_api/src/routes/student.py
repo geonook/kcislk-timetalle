@@ -117,12 +117,19 @@ def get_student_by_id(student_id):
 
             # 將課程分配到相應的課表類型
             for cls in day_classes:
-                period = str(cls['period']).replace('(', '').replace(')', '').split(')')[0]
+                # 正確處理 period 字段
+                period_raw = str(cls['period']).strip()
+                import re
+                period_match = re.search(r'(\d+)', period_raw)
+                period = period_match.group(1) if period_match else period_raw
 
                 course_data = {
                     'subject': cls['course_name'],
+                    'course_name': cls['course_name'],
                     'teacher': cls['teacher'],
-                    'classroom': cls['classroom']
+                    'classroom': cls['classroom'],
+                    'period': int(period) if period.isdigit() else 0,
+                    'class_type': cls['class_type']
                 }
 
                 if cls['class_type'] == 'english':
@@ -222,14 +229,21 @@ def get_student_timetable(student_id):
         # 將課程分配到相應的課表類型和時段
         for cls in all_classes:
             day = cls['day']
-            period = str(cls['period']).replace('(', '').replace(')', '').split(')')[0]
+            # 正確處理 period 字段 - 移除括號並提取數字
+            period_raw = str(cls['period']).strip()
+            # 處理可能的格式: "第18節" -> "18", "(18)" -> "18", "18" -> "18"
+            import re
+            period_match = re.search(r'(\d+)', period_raw)
+            period = period_match.group(1) if period_match else period_raw
 
             course_data = {
                 'subject': cls['subject'],
+                'course_name': cls['subject'],  # 確保有 course_name 字段
                 'teacher': cls['teacher'],
                 'classroom': cls['classroom'],
-                'period': cls['period'],
-                'time': cls['time']
+                'period': int(period) if period.isdigit() else 0,
+                'time': cls['time'],
+                'class_type': cls['class_type']
             }
 
             if cls['class_type'] == 'english':

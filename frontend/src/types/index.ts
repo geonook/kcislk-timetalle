@@ -52,6 +52,25 @@ export interface TimetableDisplay {
   Friday: DayTimetable;
 }
 
+// Unified Timetable Types (for merged display)
+export interface UnifiedTimetableEntry {
+  period: number;
+  time?: string;
+  entries: TimetableEntry[]; // Multiple entries for same time slot
+}
+
+export interface UnifiedDayTimetable {
+  [period: string]: TimetableEntry[];
+}
+
+export interface UnifiedTimetableDisplay {
+  Monday: UnifiedDayTimetable;
+  Tuesday: UnifiedDayTimetable;
+  Wednesday: UnifiedDayTimetable;
+  Thursday: UnifiedDayTimetable;
+  Friday: UnifiedDayTimetable;
+}
+
 // Student Timetable Response
 export interface StudentTimetableResponse {
   success: boolean;
@@ -91,6 +110,13 @@ export interface ClassTimetableResponse {
 // Component Props Types
 export interface TimetableGridProps {
   timetableData: TimetableDisplay;
+  title: string;
+  subtitle?: string;
+  className?: string;
+}
+
+export interface UnifiedTimetableGridProps {
+  timetableData: UnifiedTimetableDisplay;
   title: string;
   subtitle?: string;
   className?: string;
