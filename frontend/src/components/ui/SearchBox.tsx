@@ -48,7 +48,7 @@ export default function SearchBox({
 
         <div className="relative">
           {/* Search icon container */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 sm:pl-4">
             <div className={`transition-all duration-200 ${
               loading ? 'scale-110' : localValue ? 'text-accent-500 scale-110' : 'text-gray-400'
             }`}>
@@ -68,7 +68,7 @@ export default function SearchBox({
             placeholder={displayPlaceholder}
             disabled={disabled || loading}
             className={`
-              w-full pl-12 pr-12 py-3.5
+              w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 sm:py-3.5
               bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm
               border-2 border-gray-200 dark:border-gray-700
               rounded-2xl shadow-sm
@@ -92,7 +92,7 @@ export default function SearchBox({
             <button
               type="button"
               onClick={handleClear}
-              className="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200 hover:scale-110"
+              className="absolute inset-y-0 right-0 flex items-center pr-3 sm:pr-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200 hover:scale-110"
             >
               <div className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
                 <XMarkIcon className="h-4 w-4" />

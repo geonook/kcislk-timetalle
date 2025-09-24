@@ -64,8 +64,8 @@ export default function HomePage() {
   return (
     <div className="max-w-6xl mx-auto">
       {/* Hero Section */}
-      <div className="text-center mb-12">
-        <div className="relative mb-8">
+      <div className="text-center mb-6 sm:mb-12">
+        <div className="relative mb-4 sm:mb-8">
           {/* Background decoration */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-32 h-32 bg-gradient-to-br from-accent-200 to-accent-300 dark:from-accent-800 dark:to-accent-700 rounded-full opacity-20 blur-2xl"></div>
@@ -75,25 +75,25 @@ export default function HomePage() {
           <div className="relative flex justify-center">
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300 animate-pulse-glow pointer-events-none"></div>
-              <div className="relative w-20 h-20 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-300">
-                <AcademicCapIcon className="h-12 w-12 text-white" />
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-300">
+                <AcademicCapIcon className="h-8 w-8 sm:h-12 sm:w-12 text-white" />
               </div>
             </div>
           </div>
         </div>
 
-        <h1 className="text-5xl font-bold mb-4">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
           <span className="bg-gradient-to-r from-gray-900 via-accent-700 to-accent-600 dark:from-white dark:via-accent-300 dark:to-accent-200 bg-clip-text text-transparent">
             {t('pages.home.title')}
           </span>
         </h1>
 
-        <p className="text-xl font-medium text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-base sm:text-lg md:text-xl font-medium text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed px-4">
           {t('pages.home.subtitle')}
         </p>
 
         {/* Decorative elements - adjusted for mobile spacing */}
-        <div className="flex justify-center space-x-2 mt-8 mb-8 sm:mb-12">
+        <div className="flex justify-center space-x-2 mt-4 sm:mt-6 mb-4 sm:mb-8">
           <div className="w-2 h-2 bg-accent-500 rounded-full animate-pulse"></div>
           <div className="w-2 h-2 bg-accent-400 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
           <div className="w-2 h-2 bg-accent-300 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
@@ -101,13 +101,13 @@ export default function HomePage() {
       </div>
 
       {/* Enhanced Search Section */}
-      <div className="mb-12">
-        <div className="max-w-lg mx-auto">
+      <div className="mb-8 sm:mb-12">
+        <div className="max-w-lg mx-auto px-4">
           <div className="relative">
             {/* Search background decoration */}
             <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-50 to-white dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 rounded-2xl shadow-lg opacity-80 pointer-events-none"></div>
-            <div className="relative p-6 backdrop-blur-sm">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 text-center">
+            <div className="relative p-4 sm:p-6 backdrop-blur-sm">
+              <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4 text-center">
                 🔍 {t('pages.home.searchPlaceholder')}
               </h2>
               <SearchBox
@@ -123,7 +123,7 @@ export default function HomePage() {
 
       {/* Enhanced Loading State */}
       {isLoading && (
-        <div className="py-16">
+        <div className="py-8 sm:py-16">
           <div className="text-center">
             <div className="relative mb-8">
               <div className="w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl flex items-center justify-center mx-auto mb-4 animate-pulse-glow">
@@ -143,7 +143,7 @@ export default function HomePage() {
 
       {/* Classes Grid */}
       {!isLoading && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 px-2 sm:px-0">
           {filteredClasses.length > 0 ? (
             filteredClasses.map((className) => (
               <button
@@ -225,11 +225,11 @@ export default function HomePage() {
 
       {/* Enhanced Stats */}
       {!isLoading && classes.length > 0 && (
-        <div className="mt-12">
-          <div className="card p-6 bg-gradient-to-r from-accent-50 to-accent-100 dark:from-accent-900/20 dark:to-accent-800/30 border-accent-200 dark:border-accent-700">
-            <div className="flex items-center justify-center space-x-8">
+        <div className="mt-6 sm:mt-12 px-2 sm:px-0">
+          <div className="card p-4 sm:p-6 bg-gradient-to-r from-accent-50 to-accent-100 dark:from-accent-900/20 dark:to-accent-800/30 border-accent-200 dark:border-accent-700">
+            <div className="flex items-center justify-center space-x-4 sm:space-x-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent-600 dark:text-accent-400 mb-1">
+                <div className="text-2xl sm:text-3xl font-bold text-accent-600 dark:text-accent-400 mb-1">
                   {searchQuery ? filteredClasses.length : classes.length}
                 </div>
                 <div className="text-sm font-medium text-accent-700 dark:text-accent-300">
@@ -241,7 +241,7 @@ export default function HomePage() {
                 <>
                   <div className="text-2xl text-accent-400">/</div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-gray-600 dark:text-gray-400 mb-1">
+                    <div className="text-xl sm:text-2xl font-bold text-gray-600 dark:text-gray-400 mb-1">
                       {classes.length}
                     </div>
                     <div className="text-sm font-medium text-gray-700 dark:text-gray-300">
