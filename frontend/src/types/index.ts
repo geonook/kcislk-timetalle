@@ -139,8 +139,9 @@ export interface SearchBoxProps {
 }
 
 export interface LoadingSpinnerProps {
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
   text?: string;
+  variant?: 'spinner' | 'dots' | 'pulse' | 'gradient' | 'modern';
   className?: string;
 }
 

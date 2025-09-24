@@ -48,51 +48,83 @@ export default function ClassPage() {
 
   if (!className) {
     return (
-      <div className="text-center py-12">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-          班級名稱無效
-        </h1>
-        <Link to="/classes" className="btn-primary">
-          返回班級列表
-        </Link>
+      <div className="max-w-4xl mx-auto">
+        <div className="card p-12 text-center shadow-lg">
+          <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-red-100 to-red-200 dark:from-red-900/20 dark:to-red-800/30 rounded-3xl flex items-center justify-center">
+            <svg className="h-10 w-10 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.96-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
+            </svg>
+          </div>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            {t('pages.class.invalidClassName')}
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400 mb-6">
+            {t('pages.class.invalidClassNameDescription')}
+          </p>
+          <Link to="/classes" className="btn-primary inline-flex items-center space-x-2">
+            <ArrowLeftIcon className="h-4 w-4" />
+            <span>{t('pages.class.backToClassList')}</span>
+          </Link>
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="max-w-4xl mx-auto">
-        {/* Back Button */}
-        <div className="mb-6">
-          <Link
-            to="/classes"
-            className="inline-flex items-center text-accent-600 hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300"
-          >
-            <ArrowLeftIcon className="h-5 w-5 mr-2" />
-            返回班級列表
-          </Link>
+      <div className="max-w-6xl mx-auto">
+        {/* Enhanced Breadcrumb */}
+        <div className="mb-8">
+          <nav className="flex items-center space-x-2 text-sm font-medium">
+            <Link
+              to="/classes"
+              className="inline-flex items-center px-4 py-2 rounded-xl text-accent-600 hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300 bg-accent-50 hover:bg-accent-100 dark:bg-accent-900/20 dark:hover:bg-accent-900/30 transition-all duration-200"
+            >
+              <ArrowLeftIcon className="h-4 w-4 mr-2" />
+              {t('pages.class.backToClassList')}
+            </Link>
+            <span className="text-gray-400">/</span>
+            <span className="text-gray-600 dark:text-gray-400">{t('pages.class.error')}</span>
+          </nav>
         </div>
 
-        {/* Error State */}
-        <div className="text-center py-12">
-          <div className="max-w-md mx-auto">
-            <div className="text-red-500 mb-4">
-              <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.96-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
-              </svg>
+        {/* Enhanced Error State */}
+        <div className="card p-12 text-center shadow-lg">
+          <div className="max-w-lg mx-auto">
+            {/* Error illustration */}
+            <div className="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-red-100 to-red-200 dark:from-red-900/20 dark:to-red-800/30 rounded-3xl flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <svg className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.96-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
+                </svg>
+              </div>
             </div>
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
+
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               {t('pages.class.error')}
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
               {error instanceof Error ? error.message : t('common.error')}
             </p>
-            <button
-              onClick={() => window.location.reload()}
-              className="btn-primary"
-            >
-              {t('common.retry')}
-            </button>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => window.location.reload()}
+                className="btn-primary inline-flex items-center space-x-2"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                <span>{t('common.retry')}</span>
+              </button>
+              <Link
+                to="/classes"
+                className="btn-secondary inline-flex items-center space-x-2"
+              >
+                <ArrowLeftIcon className="h-4 w-4" />
+                <span>{t('pages.class.backToClassList')}</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -101,49 +133,110 @@ export default function ClassPage() {
 
   return (
     <div className="max-w-6xl mx-auto">
-      {/* Header */}
-      <div className="mb-6">
-        <div className="flex items-center justify-between">
+      {/* Enhanced Breadcrumb Navigation */}
+      <div className="mb-8">
+        <nav className="flex items-center space-x-2 text-sm font-medium mb-6">
           <Link
             to="/classes"
-            className="inline-flex items-center text-accent-600 hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300"
+            className="inline-flex items-center px-4 py-2 rounded-xl text-accent-600 hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300 bg-accent-50 hover:bg-accent-100 dark:bg-accent-900/20 dark:hover:bg-accent-900/30 transition-all duration-200"
           >
-            <ArrowLeftIcon className="h-5 w-5 mr-2" />
-            返回班級列表
+            <ArrowLeftIcon className="h-4 w-4 mr-2" />
+            {t('pages.class.backToClassList')}
           </Link>
-        </div>
+          <span className="text-gray-400">/</span>
+          <span className="text-gray-600 dark:text-gray-400">{decodeURIComponent(className)}</span>
+        </nav>
 
-        <div className="mt-4 flex items-center">
-          <AcademicCapIcon className="h-8 w-8 text-accent-600 mr-3" />
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-              {decodeURIComponent(className)} - {t('pages.class.title')}
-            </h1>
-            <p className="text-gray-600 dark:text-gray-400 mt-1">
-              班級週課表
-            </p>
+        {/* Enhanced Header Section */}
+        <div className="card p-8 bg-gradient-to-r from-white via-gray-50 to-white dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 shadow-lg">
+          <div className="flex items-start space-x-6">
+            {/* Icon */}
+            <div className="flex-shrink-0">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl blur opacity-75"></div>
+                <div className="relative w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl flex items-center justify-center shadow-lg">
+                  <AcademicCapIcon className="h-9 w-9 text-white" />
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="flex-1">
+              <div className="flex items-start justify-between">
+                <div>
+                  <h1 className="text-3xl font-bold mb-3">
+                    <span className="bg-gradient-to-r from-gray-900 via-accent-700 to-accent-600 dark:from-white dark:via-accent-300 dark:to-accent-200 bg-clip-text text-transparent">
+                      {decodeURIComponent(className)}
+                    </span>
+                  </h1>
+                  <p className="text-xl font-medium text-gray-600 dark:text-gray-400 mb-4">
+                    {t('pages.class.weeklyTimetable')}
+                  </p>
+
+                  {/* Class info badges */}
+                  <div className="flex flex-wrap gap-2">
+                    <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300">
+                      📅 {t('pages.class.title')}
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
+                      🏫 {t('pages.class.classroom')}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Status indicator */}
+                {!isLoading && timetableData && (
+                  <div className="text-center">
+                    <div className="w-3 h-3 bg-green-400 rounded-full mb-2 animate-pulse"></div>
+                    <span className="text-xs font-medium text-green-600 dark:text-green-400">
+                      {t('common.loaded')}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Loading State */}
+      {/* Enhanced Loading State */}
       {isLoading && (
-        <div className="py-12">
-          <LoadingSpinner
-            size="lg"
-            text={t('pages.class.loading')}
-            className="justify-center"
-          />
+        <div className="card p-16 text-center shadow-lg">
+          <div className="max-w-md mx-auto">
+            <div className="relative mb-8">
+              <div className="w-20 h-20 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl flex items-center justify-center mx-auto mb-6 animate-pulse-glow">
+                <AcademicCapIcon className="h-10 w-10 text-white animate-pulse" />
+              </div>
+              <LoadingSpinner size="lg" className="justify-center" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              {t('pages.class.loading')}
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              {t('pages.class.loadingDescription')}
+            </p>
+          </div>
         </div>
       )}
 
-      {/* Timetable */}
+      {/* Enhanced Timetable Section */}
       {timetableData && (
-        <div>
+        <div className="space-y-6">
+          {/* Timetable Header */}
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+              📋 {t('pages.class.timetableTitle')}
+            </h2>
+            <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+              {t('pages.class.lastUpdated')}: {new Date().toLocaleDateString()}
+            </div>
+          </div>
+
+          {/* Timetable Grid */}
           <TimetableGrid
             timetableData={convertWeeklyToDisplay(timetableData.timetable)}
-            title={`${decodeURIComponent(className)} 週課表`}
-            subtitle={`班級: ${timetableData.class_name}`}
+            title={`${decodeURIComponent(className)} ${t('pages.class.weeklyTimetable')}`}
+            subtitle={`${t('pages.class.className')}: ${timetableData.class_name}`}
           />
         </div>
       )}

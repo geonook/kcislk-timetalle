@@ -34,7 +34,16 @@
     "class": {
       "title": "班級課表",
       "loading": "載入課表中...",
-      "error": "載入課表失敗"
+      "error": "載入課表失敗",
+      "invalidClassName": "無效的班級名稱",
+      "invalidClassNameDescription": "提供的班級名稱無效或不存在，請檢查並重新輸入正確的班級名稱。",
+      "backToClassList": "返回班級列表",
+      "weeklyTimetable": "週課表",
+      "classroom": "教室",
+      "loadingDescription": "正在載入班級課表資料，請稍候...",
+      "timetableTitle": "課表資訊",
+      "lastUpdated": "最後更新",
+      "className": "班級名稱"
     },
     "notFound": {
       "title": "頁面不存在",
@@ -99,7 +108,8 @@
     "clear": "清除",
     "back": "返回",
     "next": "下一步",
-    "previous": "上一步"
+    "previous": "上一步",
+    "loaded": "已載入"
   },
   "theme": {
     "light": "淺色模式",

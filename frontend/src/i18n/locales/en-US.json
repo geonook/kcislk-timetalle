@@ -29,7 +29,16 @@
     "class": {
       "title": "Class Timetable",
       "loading": "Loading timetable...",
-      "error": "Failed to load timetable"
+      "error": "Failed to load timetable",
+      "invalidClassName": "Invalid Class Name",
+      "invalidClassNameDescription": "The provided class name is invalid or does not exist. Please check and enter the correct class name.",
+      "backToClassList": "Back to Class List",
+      "weeklyTimetable": "Weekly Timetable",
+      "classroom": "Classroom",
+      "loadingDescription": "Loading class timetable data, please wait...",
+      "timetableTitle": "Timetable Information",
+      "lastUpdated": "Last Updated",
+      "className": "Class Name"
     },
     "notFound": {
       "title": "Page Not Found",
@@ -94,7 +103,8 @@
     "clear": "Clear",
     "back": "Back",
     "next": "Next",
-    "previous": "Previous"
+    "previous": "Previous",
+    "loaded": "Loaded"
   },
   "theme": {
     "light": "Light Mode",
