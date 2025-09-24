@@ -269,8 +269,12 @@ export default function StudentPage() {
                     subtitle={`${selectedStudent.student_name} 的完整課表`}
                   />
                 ) : (
-                  <div className="card p-6 text-center">
-                    <p className="text-gray-500 dark:text-gray-400">暫無課表資料</p>
+                  <div className="card p-8 text-center shadow-lg">
+                    <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-2xl flex items-center justify-center">
+                      <span className="text-4xl">📅</span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">暫無課表資料</h3>
+                    <p className="text-gray-500 dark:text-gray-400">請稍後再試或聯絡管理員</p>
                   </div>
                 );
               })()}
