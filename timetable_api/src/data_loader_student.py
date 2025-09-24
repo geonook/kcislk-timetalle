@@ -81,8 +81,8 @@ def load_english_timetable_data():
 def load_homeroom_timetable_data():
     """載入 Home Room 課表資料到資料庫"""
     try:
-        # 設定 Home Room 課表 CSV 檔案路徑 - 使用新的完整資料檔案
-        csv_file_path = '/Users/chenzehong/Desktop/kcislk-timetable/students_class schedule - homeroom_timetable_template.csv'
+        # 設定 Home Room 課表 CSV 檔案路徑 - 使用相對路徑
+        csv_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'homeroom_timetable_complete.csv')
 
         # 清空現有資料
         HomeRoomTimetable.query.delete()
