@@ -5,8 +5,7 @@ import {
   SunIcon,
   MoonIcon,
   ComputerDesktopIcon,
-  LanguageIcon,
-  AcademicCapIcon
+  LanguageIcon
 } from '@heroicons/react/24/outline';
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
@@ -43,8 +42,8 @@ export default function Header() {
           <Link to="/classes" className="flex items-center space-x-3 group">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-              <div className="relative w-10 h-10 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                <AcademicCapIcon className="h-6 w-6 text-white" />
+              <div className="relative w-10 h-10 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 overflow-hidden">
+                <img src="/kcislk-logo.png" alt="KCISLK Logo" className="w-8 h-8 object-contain" />
               </div>
             </div>
             <div>
