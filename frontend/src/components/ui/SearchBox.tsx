@@ -145,12 +145,6 @@ export default function SearchBox({
         </button>
       )}
 
-      {/* Subtle animation for input focus */}
-      <style jsx>{`
-        .group:focus-within .absolute.inset-0 {
-          opacity: 1;
-        }
-      `}</style>
     </form>
   );
 }

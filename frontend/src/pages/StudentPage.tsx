@@ -388,7 +388,7 @@ export default function StudentPage() {
                     </div>
                   </div>
                 </div>
-              )}"
+              )}
 
               {/* Unified Timetable */}
               {(() => {
