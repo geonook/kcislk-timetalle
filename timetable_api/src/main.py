@@ -50,7 +50,14 @@ def initialize_data():
 
     # 檢查是否已有數據
     from src.models.timetable import ClassInfo
-    if ClassInfo.query.count() == 0:
+    from src.models.student import HomeRoomTimetable
+
+    class_info_count = ClassInfo.query.count()
+    homeroom_count = HomeRoomTimetable.query.count()
+
+    print(f"現有資料狀況: ClassInfo={class_info_count}, HomeRoom={homeroom_count}")
+
+    if class_info_count == 0:
         print("數據庫為空，開始載入初始數據...")
 
         # 載入課表數據
@@ -70,8 +77,18 @@ def initialize_data():
 
         except Exception as e:
             print(f"❌ 數據載入過程中發生錯誤: {e}")
+    elif homeroom_count == 0:
+        print("HomeRoom 資料缺失，只載入學生相關資料...")
+        try:
+            success = load_all_data()
+            if success:
+                print("✅ 學生資料補載入成功")
+            else:
+                print("❌ 學生資料補載入失敗")
+        except Exception as e:
+            print(f"❌ 學生資料載入過程中發生錯誤: {e}")
     else:
-        print("✅ 數據庫已有數據，跳過初始化")
+        print("✅ 數據庫已有完整數據，跳過初始化")
 
 print("Attempting to create application context...")
 with app.app_context():
