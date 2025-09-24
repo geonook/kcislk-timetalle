@@ -7,13 +7,31 @@ timetable_bp = Blueprint('timetable', __name__)
 
 @timetable_bp.route('/classes', methods=['GET'])
 def get_all_classes():
-    """取得所有班級列表"""
+    """取得所有班級列表 - 包含英文班級和 Homeroom 班級"""
     try:
-        classes = ClassInfo.query.all()
-        class_names = [cls.class_name for cls in classes]
+        # 1. 獲取英文班級名稱
+        english_classes = ClassInfo.query.all()
+        english_class_names = [cls.class_name for cls in english_classes]
+
+        # 2. 獲取所有 Homeroom 班級名稱
+        homeroom_classes = set()
+        homeroom_records = HomeRoomTimetable.query.all()
+        for record in homeroom_records:
+            homeroom_classes.add(record.home_room_class_name)
+
+        homeroom_class_names = list(homeroom_classes)
+
+        # 3. 合併兩個列表
+        all_class_names = english_class_names + homeroom_class_names
+
         return jsonify({
             'success': True,
-            'classes': sorted(class_names)
+            'classes': sorted(all_class_names),
+            'counts': {
+                'english_classes': len(english_class_names),
+                'homeroom_classes': len(homeroom_class_names),
+                'total_classes': len(all_class_names)
+            }
         })
     except Exception as e:
         return jsonify({
