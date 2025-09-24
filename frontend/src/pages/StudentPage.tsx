@@ -28,6 +28,7 @@ export default function StudentPage() {
   } = useStudentStore();
 
   const [studentTimetable, setStudentTimetable] = useState<StudentTimetableResponse | null>(null);
+  const [timetableError, setTimetableError] = useState<string | null>(null);
 
   // Search students mutation
   const searchMutation = useMutation({
@@ -49,11 +50,23 @@ export default function StudentPage() {
   // Get student timetable mutation
   const timetableMutation = useMutation({
     mutationFn: apiService.getStudentTimetable,
+    onMutate: () => {
+      console.log('開始載入學生課表...');
+      setTimetableError(null);
+      setStudentTimetable(null);
+    },
     onSuccess: (data) => {
+      console.log('學生課表載入成功:', data);
       setStudentTimetable(data);
+      setTimetableError(null);
     },
     onError: (error) => {
-      console.error('Failed to load student timetable:', error);
+      console.error('學生課表載入失敗:', error);
+      const errorMessage = error instanceof Error
+        ? error.message
+        : '無法載入學生課表，請檢查網路連接或稍後再試';
+      setTimetableError(errorMessage);
+      setStudentTimetable(null);
     },
   });
 
@@ -64,14 +77,42 @@ export default function StudentPage() {
   };
 
   const handleStudentClick = (student: Student) => {
-    setSelectedStudent(student);
-    setStudentTimetable(null);
-    timetableMutation.mutate(student.student_id);
+    console.log('用戶點擊學生卡片:', student);
+
+    // 防止重複點擊
+    if (timetableMutation.isPending) {
+      console.log('課表載入中，忽略重複點擊');
+      return;
+    }
+
+    try {
+      setSelectedStudent(student);
+      setStudentTimetable(null);
+      setTimetableError(null);
+
+      console.log('發送課表請求，學生ID:', student.student_id);
+      timetableMutation.mutate(student.student_id);
+    } catch (error) {
+      console.error('處理學生點擊時發生錯誤:', error);
+      setTimetableError('處理請求時發生錯誤，請重試');
+    }
   };
 
   const handleClearSearch = () => {
+    console.log('用戶點擊清除搜尋');
     clearSearch();
     setStudentTimetable(null);
+    setTimetableError(null);
+    // 重置 mutation 狀態
+    timetableMutation.reset();
+  };
+
+  const handleRetryTimetable = () => {
+    if (selectedStudent) {
+      console.log('用戶點擊重試載入課表');
+      setTimetableError(null);
+      timetableMutation.mutate(selectedStudent.student_id);
+    }
   };
 
   return (
@@ -302,22 +343,40 @@ export default function StudentPage() {
           )}
 
           {/* Timetable Error */}
-          {timetableMutation.error && (
-            <div className="text-center py-12">
-              <div className="text-red-500 mb-4">
-                <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.96-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
-                </svg>
+          {(timetableMutation.error || timetableError) && (
+            <div className="mb-8">
+              <div className="card p-8 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+                <div className="text-center">
+                  <div className="text-red-500 mb-4">
+                    <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.96-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
+                    載入課表失敗
+                  </h3>
+                  <p className="text-red-700 dark:text-red-300 mb-6">
+                    {timetableError || (timetableMutation.error instanceof Error
+                      ? timetableMutation.error.message
+                      : '無法載入學生課表')}
+                  </p>
+                  <div className="flex justify-center space-x-3">
+                    <button
+                      onClick={handleRetryTimetable}
+                      disabled={timetableMutation.isPending}
+                      className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {timetableMutation.isPending ? '載入中...' : '重試載入'}
+                    </button>
+                    <button
+                      onClick={handleClearSearch}
+                      className="btn-secondary"
+                    >
+                      返回搜尋
+                    </button>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                {t('pages.class.error')}
-              </h3>
-              <button
-                onClick={() => timetableMutation.mutate(selectedStudent.student_id)}
-                className="btn-primary"
-              >
-                {t('common.retry')}
-              </button>
             </div>
           )}
 

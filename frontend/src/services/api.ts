@@ -37,11 +37,38 @@ api.interceptors.response.use(
   },
   (error) => {
     console.error('API Response Error:', error);
-    if (error.response) {
+
+    let errorMessage = '網路連接錯誤，請檢查網路連接';
+
+    if (error.code === 'ECONNABORTED') {
+      errorMessage = '請求超時，請稍後再試';
+    } else if (error.response) {
       console.error('Error Status:', error.response.status);
       console.error('Error Data:', error.response.data);
+
+      switch (error.response.status) {
+        case 404:
+          errorMessage = '找不到請求的資源';
+          break;
+        case 500:
+          errorMessage = '伺服器內部錯誤，請稍後再試';
+          break;
+        case 503:
+          errorMessage = '服務暫時無法使用，請稍後再試';
+          break;
+        default:
+          errorMessage = error.response.data?.message || `請求失敗 (${error.response.status})`;
+      }
+    } else if (error.request) {
+      errorMessage = '無法連接到伺服器，請檢查網路連接';
     }
-    return Promise.reject(error);
+
+    // 創建包含友好錯誤訊息的錯誤對象
+    const enhancedError = new Error(errorMessage);
+    enhancedError.name = 'APIError';
+    (enhancedError as any).originalError = error;
+
+    return Promise.reject(enhancedError);
   }
 );
 

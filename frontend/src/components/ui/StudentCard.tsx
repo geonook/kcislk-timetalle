@@ -5,9 +5,28 @@ import type { StudentCardProps } from '../../types';
 export default function StudentCard({ student, onClick, className = '' }: StudentCardProps) {
   const { t } = useTranslation();
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    console.log('StudentCard 點擊事件觸發:', student.student_name);
+
+    // 防止快速重複點擊
+    if ((e.target as HTMLButtonElement).disabled) {
+      console.log('按鈕已禁用，忽略點擊');
+      return;
+    }
+
+    try {
+      onClick(student);
+    } catch (error) {
+      console.error('StudentCard 點擊處理發生錯誤:', error);
+    }
+  };
+
   return (
     <button
-      onClick={() => onClick(student)}
+      onClick={handleClick}
       className={`
         relative card p-6 group w-full text-left overflow-hidden
         hover:shadow-2xl transition-all duration-300
@@ -17,6 +36,7 @@ export default function StudentCard({ student, onClick, className = '' }: Studen
         dark:from-gray-800 dark:via-gray-750 dark:to-gray-800
         border border-gray-200 dark:border-gray-700
         hover:border-accent-300 dark:hover:border-accent-600
+        active:scale-100 active:shadow-lg
         ${className}
       `}
     >
