@@ -14,7 +14,12 @@
       "subtitle": "選擇班級查看週課表",
       "searchPlaceholder": "搜尋班級名稱...",
       "loading": "載入中...",
-      "error": "載入失敗"
+      "error": "載入失敗",
+      "clickToView": "點擊查看課表",
+      "matchingClasses": "符合條件",
+      "totalClasses": "總計班級",
+      "allClasses": "全部班級",
+      "loadingDescription": "正在載入班級資料，請稍候..."
     },
     "student": {
       "title": "學生課表查詢",
