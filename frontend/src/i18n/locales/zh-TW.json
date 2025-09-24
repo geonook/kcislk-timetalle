@@ -34,7 +34,19 @@
       "statistics": "課表統計",
       "unifiedTimetable": "統一課表",
       "completeTimetable": "{{name}} 的完整課表",
-      "searchInstruction": "請在上方搜尋框輸入學生姓名開始搜尋"
+      "searchInstruction": "請在上方搜尋框輸入學生姓名開始搜尋",
+      "searchMode": "搜尋模式",
+      "browseMode": "瀏覽模式",
+      "browseSubtitle": "瀏覽所有學生並選擇查看課表",
+      "browseAllStudents": "瀏覽所有學生",
+      "browsePlaceholder": "篩選學生姓名、學號或班級...",
+      "loadingAllStudents": "載入所有學生中...",
+      "loadStudentsError": "載入學生失敗",
+      "filteredStudents": "篩選結果",
+      "allStudents": "所有學生",
+      "noMatchingStudents": "沒有符合條件的學生",
+      "noStudentsAvailable": "暫無學生資料",
+      "tryDifferentSearch": "請嘗試其他搜尋條件"
     },
     "class": {
       "title": "班級課表",
@@ -48,7 +60,12 @@
       "loadingDescription": "正在載入班級課表資料，請稍候...",
       "timetableTitle": "課表資訊",
       "lastUpdated": "最後更新",
-      "className": "班級名稱"
+      "className": "班級名稱",
+      "searchOtherClasses": "搜尋其他班級",
+      "searchPlaceholder": "輸入班級名稱...",
+      "searchResults": "搜尋結果",
+      "currentClass": "目前班級",
+      "noClassesFound": "找不到符合的班級"
     },
     "notFound": {
       "title": "頁面不存在",

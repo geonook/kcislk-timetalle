@@ -1,10 +1,12 @@
-import { useParams, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from '@tanstack/react-query';
 import { apiService } from '../services/api';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import TimetableGrid from '../components/timetable/TimetableGrid';
-import { ArrowLeftIcon, AcademicCapIcon } from '@heroicons/react/24/outline';
+import SearchBox from '../components/ui/SearchBox';
+import { ArrowLeftIcon, AcademicCapIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import type { WeeklyTimetable, TimetableDisplay, DayTimetable, TimetableEntry } from '../types';
 
 // Convert WeeklyTimetable to TimetableDisplay format
@@ -35,18 +37,57 @@ function convertWeeklyToDisplay(weeklyTimetable: WeeklyTimetable): TimetableDisp
 export default function ClassPage() {
   const { className } = useParams<{ className: string }>();
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [availableClasses, setAvailableClasses] = useState<string[]>([]);
+  const [filteredClasses, setFilteredClasses] = useState<string[]>([]);
+  const [currentClassName, setCurrentClassName] = useState(className || '');
+
+  // Fetch all classes for search functionality
+  const { data: classesData } = useQuery({
+    queryKey: ['classes'],
+    queryFn: apiService.getClasses,
+  });
+
+  useEffect(() => {
+    if (classesData) {
+      setAvailableClasses(classesData);
+      setFilteredClasses(classesData);
+    }
+  }, [classesData]);
 
   const {
     data: timetableData,
     isLoading,
     error
   } = useQuery({
-    queryKey: ['class-timetable', className],
-    queryFn: () => apiService.getClassTimetable(className!),
-    enabled: !!className,
+    queryKey: ['class-timetable', currentClassName],
+    queryFn: () => apiService.getClassTimetable(currentClassName),
+    enabled: !!currentClassName,
   });
 
-  if (!className) {
+  // Handle class search
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    if (query.trim() === '') {
+      setFilteredClasses(availableClasses);
+    } else {
+      const filtered = availableClasses.filter(cls =>
+        cls.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredClasses(filtered);
+    }
+  };
+
+  // Handle class selection from search results
+  const handleClassSelect = (selectedClass: string) => {
+    setCurrentClassName(selectedClass);
+    navigate(`/class/${encodeURIComponent(selectedClass)}`, { replace: true });
+    setSearchQuery('');
+    setFilteredClasses(availableClasses);
+  };
+
+  if (!currentClassName) {
     return (
       <div className="max-w-4xl mx-auto">
         <div className="card p-12 text-center shadow-lg">
@@ -144,7 +185,7 @@ export default function ClassPage() {
             {t('pages.class.backToClassList')}
           </Link>
           <span className="text-gray-400">/</span>
-          <span className="text-gray-600 dark:text-gray-400">{decodeURIComponent(className)}</span>
+          <span className="text-gray-600 dark:text-gray-400">{decodeURIComponent(currentClassName)}</span>
         </nav>
 
         {/* Enhanced Header Section */}
@@ -166,7 +207,7 @@ export default function ClassPage() {
                 <div>
                   <h1 className="text-3xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-gray-900 via-accent-700 to-accent-600 dark:from-white dark:via-accent-300 dark:to-accent-200 bg-clip-text text-transparent">
-                      {decodeURIComponent(className)}
+                      {decodeURIComponent(currentClassName)}
                     </span>
                   </h1>
                   <p className="text-xl font-medium text-gray-600 dark:text-gray-400 mb-4">
@@ -196,6 +237,62 @@ export default function ClassPage() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Search Section */}
+      <div className="mb-8">
+        <div className="card p-6 bg-gradient-to-r from-white via-gray-50 to-white dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 shadow-lg">
+          <div className="flex items-center space-x-4 mb-4">
+            <MagnifyingGlassIcon className="h-6 w-6 text-accent-500" />
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+              {t('pages.class.searchOtherClasses')}
+            </h2>
+          </div>
+
+          <SearchBox
+            value={searchQuery}
+            onChange={handleSearch}
+            placeholder={t('pages.class.searchPlaceholder')}
+            className="mb-4"
+          />
+
+          {/* Search Results */}
+          {searchQuery && filteredClasses.length > 0 && (
+            <div className="mt-4">
+              <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+                {t('pages.class.searchResults')} ({filteredClasses.length})
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-h-48 overflow-y-auto">
+                {filteredClasses.map((cls) => (
+                  <button
+                    key={cls}
+                    onClick={() => handleClassSelect(cls)}
+                    className={`p-3 rounded-xl text-left transition-all duration-200 ${
+                      cls === currentClassName
+                        ? 'bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 border-2 border-accent-500'
+                        : 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-2 border-gray-200 dark:border-gray-600 hover:border-accent-300 dark:hover:border-accent-600 hover:bg-accent-50 dark:hover:bg-accent-900/20'
+                    }`}
+                  >
+                    <div className="font-medium text-sm">{cls}</div>
+                    {cls === currentClassName && (
+                      <div className="text-xs text-accent-600 dark:text-accent-400 mt-1">
+                        {t('pages.class.currentClass')}
+                      </div>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {searchQuery && filteredClasses.length === 0 && (
+            <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl text-center">
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                {t('pages.class.noClassesFound')}
+              </p>
+            </div>
+          )}
         </div>
       </div>
 
@@ -235,7 +332,7 @@ export default function ClassPage() {
           {/* Timetable Grid */}
           <TimetableGrid
             timetableData={convertWeeklyToDisplay(timetableData.timetable)}
-            title={`${decodeURIComponent(className)} ${t('pages.class.weeklyTimetable')}`}
+            title={`${decodeURIComponent(currentClassName)} ${t('pages.class.weeklyTimetable')}`}
             subtitle={`${t('pages.class.className')}: ${timetableData.class_name}`}
           />
         </div>

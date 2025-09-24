@@ -66,7 +66,7 @@ api.interceptors.response.use(
     // 創建包含友好錯誤訊息的錯誤對象
     const enhancedError = new Error(errorMessage);
     enhancedError.name = 'APIError';
-    (enhancedError as any).originalError = error;
+    (enhancedError as Error & { originalError?: unknown }).originalError = error;
 
     return Promise.reject(enhancedError);
   }
@@ -87,6 +87,11 @@ export const apiService = {
   },
 
   // Student-related endpoints
+  async getAllStudents(): Promise<Student[]> {
+    const response = await api.get<StudentSearchResponse>('/students');
+    return response.data.students;
+  },
+
   async searchStudents(query: string): Promise<Student[]> {
     const response = await api.get<StudentSearchResponse>('/students/search', {
       params: { q: query },
