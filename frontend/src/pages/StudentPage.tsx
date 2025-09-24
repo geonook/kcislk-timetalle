@@ -288,9 +288,9 @@ export default function StudentPage() {
                   <div className="flex items-start space-x-6 flex-1">
                     {/* Avatar */}
                     <div className="flex-shrink-0">
-                      <div className="relative">
+                      <div className="relative z-0">
                         <div className="absolute inset-0 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl blur opacity-75 pointer-events-none"></div>
-                        <div className="relative w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <div className="relative w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center shadow-lg z-0">
                           <UserIcon className="h-9 w-9 text-white" />
                         </div>
                       </div>

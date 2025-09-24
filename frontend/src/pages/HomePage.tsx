@@ -126,7 +126,7 @@ export default function HomePage() {
         <div className="py-6 sm:py-12 md:py-16">
           <div className="text-center">
             <div className="relative mb-8">
-              <div className="w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl flex items-center justify-center mx-auto mb-4 animate-pulse-glow">
+              <div className="w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl flex items-center justify-center mx-auto mb-4 animate-pulse-glow z-0 relative">
                 <AcademicCapIcon className="h-9 w-9 text-white animate-pulse" />
               </div>
               <LoadingSpinner size="lg" className="justify-center" />
