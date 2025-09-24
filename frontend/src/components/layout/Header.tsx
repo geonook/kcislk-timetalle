@@ -77,10 +77,10 @@ export default function Header() {
           </nav>
 
           {/* Settings */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 sm:space-x-3">
             {/* Theme selector */}
             <Menu as="div" className="relative">
-              <Menu.Button className="p-3 rounded-2xl text-gray-600 dark:text-gray-400 bg-white/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 shadow-sm">
+              <Menu.Button className="p-2.5 sm:p-3 rounded-2xl text-gray-600 dark:text-gray-400 bg-white/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center">
                 {theme === 'light' && <SunIcon className="h-5 w-5" />}
                 {theme === 'dark' && <MoonIcon className="h-5 w-5" />}
                 {theme === 'system' && <ComputerDesktopIcon className="h-5 w-5" />}
@@ -94,7 +94,7 @@ export default function Header() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute right-0 mt-3 w-52 origin-top-right bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 focus:outline-none z-[9999] border border-white/20">
+                <Menu.Items className="absolute right-0 mt-3 w-52 origin-top-right bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 focus:outline-none z-[99999] border border-white/20">
                   <div className="p-2">
                     {themeOptions.map((option) => (
                       <Menu.Item key={option.key}>
@@ -120,7 +120,7 @@ export default function Header() {
 
             {/* Language selector - Premium unified design */}
             <Menu as="div" className="relative">
-              <Menu.Button className="p-3 rounded-2xl text-gray-600 dark:text-gray-400 bg-white/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 shadow-sm">
+              <Menu.Button className="p-2.5 sm:p-3 rounded-2xl text-gray-600 dark:text-gray-400 bg-white/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center">
                 <LanguageIcon className="h-5 w-5" />
               </Menu.Button>
               <Transition
@@ -132,7 +132,7 @@ export default function Header() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute right-0 mt-3 w-48 origin-top-right bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 focus:outline-none z-[9999] border border-white/20">
+                <Menu.Items className="absolute right-0 mt-3 w-48 origin-top-right bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 focus:outline-none z-[99999] border border-white/20">
                   <div className="p-2">
                     {languageOptions.map((option) => (
                       <Menu.Item key={option.key}>
@@ -165,7 +165,7 @@ export default function Header() {
           {/* Mobile navigation toggle - Premium design */}
           <div className="md:hidden">
             <Menu as="div" className="relative">
-              <Menu.Button className="p-3 rounded-2xl text-gray-600 dark:text-gray-400 bg-white/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 shadow-sm">
+              <Menu.Button className="p-2.5 sm:p-3 rounded-2xl text-gray-600 dark:text-gray-400 bg-white/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center">
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
@@ -179,7 +179,7 @@ export default function Header() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute right-0 mt-3 w-56 origin-top-right bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 focus:outline-none z-[9999] border border-white/20">
+                <Menu.Items className="absolute right-0 mt-3 w-56 origin-top-right bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 focus:outline-none z-[99999] border border-white/20">
                   <div className="p-2">
                     {navigation.map((item) => (
                       <Menu.Item key={item.name}>

@@ -64,8 +64,8 @@ export default function HomePage() {
   return (
     <div className="max-w-6xl mx-auto">
       {/* Hero Section */}
-      <div className="text-center mb-6 sm:mb-12">
-        <div className="relative mb-4 sm:mb-8">
+      <div className="text-center mb-4 sm:mb-8 md:mb-12">
+        <div className="relative mb-3 sm:mb-6 md:mb-8">
           {/* Background decoration */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-32 h-32 bg-gradient-to-br from-accent-200 to-accent-300 dark:from-accent-800 dark:to-accent-700 rounded-full opacity-20 blur-2xl"></div>
@@ -75,25 +75,25 @@ export default function HomePage() {
           <div className="relative flex justify-center">
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300 animate-pulse-glow pointer-events-none"></div>
-              <div className="relative w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-300">
-                <AcademicCapIcon className="h-8 w-8 sm:h-12 sm:w-12 text-white" />
+              <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-300">
+                <AcademicCapIcon className="h-7 w-7 sm:h-8 sm:w-8 md:h-12 md:w-12 text-white" />
               </div>
             </div>
           </div>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4">
           <span className="bg-gradient-to-r from-gray-900 via-accent-700 to-accent-600 dark:from-white dark:via-accent-300 dark:to-accent-200 bg-clip-text text-transparent">
             {t('pages.home.title')}
           </span>
         </h1>
 
-        <p className="text-base sm:text-lg md:text-xl font-medium text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed px-4">
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed px-4">
           {t('pages.home.subtitle')}
         </p>
 
         {/* Decorative elements - adjusted for mobile spacing */}
-        <div className="flex justify-center space-x-2 mt-4 sm:mt-6 mb-4 sm:mb-8">
+        <div className="flex justify-center space-x-2 mt-3 sm:mt-4 md:mt-6 mb-3 sm:mb-6 md:mb-8">
           <div className="w-2 h-2 bg-accent-500 rounded-full animate-pulse"></div>
           <div className="w-2 h-2 bg-accent-400 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
           <div className="w-2 h-2 bg-accent-300 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
@@ -101,13 +101,13 @@ export default function HomePage() {
       </div>
 
       {/* Enhanced Search Section */}
-      <div className="mb-8 sm:mb-12">
+      <div className="mb-6 sm:mb-10 md:mb-12">
         <div className="max-w-lg mx-auto px-4">
           <div className="relative">
             {/* Search background decoration */}
             <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-50 to-white dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 rounded-2xl shadow-lg opacity-80 pointer-events-none"></div>
-            <div className="relative p-4 sm:p-6 backdrop-blur-sm">
-              <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4 text-center">
+            <div className="relative p-3 sm:p-4 md:p-6 backdrop-blur-sm">
+              <h2 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 dark:text-white mb-2 sm:mb-3 md:mb-4 text-center">
                 🔍 {t('pages.home.searchPlaceholder')}
               </h2>
               <SearchBox
@@ -123,7 +123,7 @@ export default function HomePage() {
 
       {/* Enhanced Loading State */}
       {isLoading && (
-        <div className="py-8 sm:py-16">
+        <div className="py-6 sm:py-12 md:py-16">
           <div className="text-center">
             <div className="relative mb-8">
               <div className="w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl flex items-center justify-center mx-auto mb-4 animate-pulse-glow">
@@ -225,7 +225,7 @@ export default function HomePage() {
 
       {/* Enhanced Stats */}
       {!isLoading && classes.length > 0 && (
-        <div className="mt-6 sm:mt-12 px-2 sm:px-0">
+        <div className="mt-4 sm:mt-8 md:mt-12 px-2 sm:px-0">
           <div className="card p-4 sm:p-6 bg-gradient-to-r from-accent-50 to-accent-100 dark:from-accent-900/20 dark:to-accent-800/30 border-accent-200 dark:border-accent-700">
             <div className="flex items-center justify-center space-x-4 sm:space-x-8">
               <div className="text-center">

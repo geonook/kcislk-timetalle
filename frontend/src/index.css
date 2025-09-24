@@ -6,6 +6,10 @@
 @layer base {
   :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    /* Z-index variables for consistent layering */
+    --z-dropdown: 99999;
+    --z-modal: 99998;
+    --z-overlay: 99997;
   }
 
   html {
