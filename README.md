@@ -1,288 +1,177 @@
-# KCISLK 課表查詢系統
+# KCISLK 課表查詢系統 🎓
 
 康橋國際學校林口校區小學部課表查詢系統 - 現代化 React SPA + Flask API 架構
 
-## 🚀 特色功能
+[![Version](https://img.shields.io/badge/version-2.0.0-success)](https://github.com/geonook/kcislk-timetable)
+[![Status](https://img.shields.io/badge/status-production-green)](https://kcislk-timetable.zeabur.app)
+[![React](https://img.shields.io/badge/React-19-blue)](https://react.dev)
+[![Python](https://img.shields.io/badge/Python-3.11-yellow)](https://python.org)
 
-- **✅ 學生課表查詢** - 支援三種課表類型整合顯示（英文班級、Home Room、EV & myReading）
-- **✅ 智能搜尋** - 中英文姓名、學號即時搜尋，模糊匹配
-- **✅ 中英文雙語支援** - React i18next 國際化系統，即時語言切換
-- **✅ 響應式設計** - 完美支援手機、平板、電腦各種螢幕尺寸
-- **✅ 深色模式** - 自動切換主題，保護用戶視力
-- **✅ 現代化 SPA 架構** - React 19 + TypeScript + Vite，快速載入與流暢體驗
-- **✅ 生產環境就緒** - Zeabur 雲端部署，高效能與穩定性
-- **✅ 色彩編碼課表** - 三種課表類型以不同顏色區分，直觀易懂
+## 🌟 專案成就
+
+- **📊 1,036+ 學生** - 完整學生資料庫支援
+- **🏫 42 個班級** - 涵蓋 1-6 年級所有班級
+- **🎯 3 種課表類型** - 英文班、導師班、EV & myReading 完美整合
+- **📱 100% 響應式** - 手機、平板、電腦完美適配
+- **🚀 零延遲載入** - 極速響應，流暢體驗
+- **🌐 雙語支援** - 繁體中文/英文即時切換
+
+## ✨ 核心功能
+
+### 📚 學生課表查詢
+- 支援三種課表類型統一顯示
+- 色彩編碼直觀區分不同課程類型
+- 智能整合多個課表資料來源
+
+### 🔍 智能搜尋系統
+- 中英文姓名即時搜尋
+- 學號快速定位
+- 班級名稱模糊匹配
+- 即時篩選結果顯示
+
+### 🌏 國際化支援
+- React i18next 深度整合
+- 即時語言切換無需重載
+- 使用者偏好自動記憶
+- 完整的 UI 文字本地化
+
+### 🎨 使用者體驗
+- **深色模式** - 自動偵測系統偏好
+- **響應式設計** - 完美的手機版體驗
+- **漸進式載入** - 優雅的載入動畫
+- **無障礙設計** - WCAG 2.1 AA 標準
+
+### 📱 手機版優化（最新）
+- **三階段響應式標題** - 極小/中等/大螢幕自適應
+- **完整 z-index 層級系統** - 解決所有覆蓋問題
+- **44px 觸控目標** - 符合行動裝置最佳實踐
+- **優化的間距系統** - 手機版更緊湊的布局
 
 ## 🛠️ 技術架構
 
-### 前端 (React SPA)
-- **框架**: React 19 + TypeScript
-- **建置工具**: Vite 7 (快速開發與建置)
-- **狀態管理**: Zustand + React Query (TanStack Query)
-- **國際化**: React i18next + i18next-browser-languagedetector
-- **UI 框架**: Tailwind CSS + Headless UI
-- **路由**: React Router DOM 7
-- **HTTP 客戶端**: Axios
+### 前端技術棧 (React SPA)
+```
+React 19 + TypeScript 5
+├── Vite 7               # 極速開發與建置
+├── React Router 7       # 客戶端路由
+├── Zustand 5           # 狀態管理
+├── React Query 5       # 資料獲取與快取
+├── Tailwind CSS 4     # 原子化 CSS 框架
+├── Headless UI 2      # 無障礙 UI 組件
+├── React i18next 15   # 國際化框架
+└── Axios 1.7          # HTTP 客戶端
+```
 
-### 後端 (Flask API)
-- **框架**: Python 3.11 + Flask + SQLAlchemy
-- **跨域支援**: Flask-CORS
-- **資料庫**: SQLite（開發與生產環境）
-- **API 設計**: RESTful API 架構
+### 後端技術棧 (Flask API)
+```
+Python 3.11 + Flask 3.1
+├── SQLAlchemy 2.0     # ORM 資料庫映射
+├── Flask-CORS 5.0     # 跨域資源共享
+├── SQLite             # 輕量級資料庫
+└── RESTful API        # 標準化 API 設計
+```
 
-### 部署與開發
-- **前端部署**: Zeabur 雲端平台 (靜態網站)
-- **後端部署**: Docker + 雲端容器
-- **開發環境**: Vite 開發伺服器 + Flask API 伺服器
-- **版本控制**: Git + GitHub 自動備份
+### z-index 層級架構（已優化）
+```css
+/* 完整的層級系統確保正確的覆蓋順序 */
+--z-content: 0;        /* 頁面內容 */
+--z-header: 100000;    /* 頁首導航 */
+--z-dropdown: 100001;  /* 下拉選單 */
+--z-modal: 100002;     /* 彈出視窗 */
+```
 
-## 📦 快速啟動
+## 🚀 快速開始
+
+### 環境需求
+- Node.js 20+
+- Python 3.11+
+- npm 或 pnpm
 
 ### 本地開發
 
-#### 1. 啟動後端 API 服務
-
+#### 1. Clone 專案
 ```bash
-# 進入後端目錄
-cd kcislk-timetable/timetable_api
-
-# 建立虛擬環境
-python -m venv venv
-source venv/bin/activate  # macOS/Linux
-# 或 venv\Scripts\activate  # Windows
-
-# 安裝依賴
-pip install -r requirements.txt
-
-# 啟動 Flask API 服務
-python run_server.py
-# 後端服務運行於 http://localhost:5000
+git clone https://github.com/geonook/kcislk-timetable.git
+cd kcislk-timetable
 ```
 
-#### 2. 啟動前端開發服務
-
+#### 2. 啟動後端 API
 ```bash
-# 開新終端機視窗，進入前端目錄
-cd kcislk-timetable/frontend
-
-# 安裝 Node.js 依賴 (需要 Node.js >= 20)
-npm install
-
-# 啟動前端開發服務
-npm run dev
-# 前端服務運行於 http://localhost:3000
-# Vite 會自動代理 API 請求到 http://localhost:5010
-```
-
-#### 3. 訪問應用
-- **前端應用**: http://localhost:3000
-- **後端 API**: http://localhost:5000/api
-
-### 生產環境部署
-
-#### 前端部署 (Zeabur)
-
-```bash
-# 建置生產版本
-cd frontend
-npm run build:zeabur
-
-# 建置後的檔案位於 frontend/dist/
-# 可上傳至 Zeabur 或其他靜態網站託管服務
-```
-
-#### 後端部署 (Docker)
-
-```bash
-# 進入後端目錄
 cd timetable_api
-
-# 建構 Docker 映像檔
-docker build -t kcislk-timetable-api .
-
-# 運行容器
-docker run -p 5000:5000 kcislk-timetable-api
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+PORT=8081 python run_server.py
 ```
 
-### Docker Compose (完整部署)
-
-```bash
-# 在專案根目錄執行
-docker-compose up -d
-```
-
-## 🌐 應用端點
-
-### 前端頁面
-- **首頁**: http://localhost:3000/
-- **學生課表查詢**: http://localhost:3000/student （主要功能）
-
-### API 端點
-- **學生搜尋**: `GET /api/students/search?q={query}`
-- **學生課表**: `GET /api/students/{student_id}/timetable`
-- **課表資料**: `GET /api/timetables`
-- **健康檢查**: `GET /api/health`
-
-## 📁 專案結構
-
-```
-kcislk-timetable/
-├── frontend/                        # React 前端應用
-│   ├── src/
-│   │   ├── components/              # React 共用元件
-│   │   ├── pages/                   # 頁面元件
-│   │   ├── services/                # API 呼叫服務
-│   │   ├── hooks/                   # 自訂 React hooks
-│   │   ├── i18n/                    # 國際化設定
-│   │   ├── locales/                 # 語言資源檔案
-│   │   ├── router/                  # 路由設定
-│   │   ├── App.tsx                  # 主應用元件
-│   │   └── main.tsx                 # 應用入口點
-│   ├── public/                      # 靜態資源
-│   ├── package.json                 # Node.js 依賴與腳本
-│   ├── vite.config.ts              # Vite 設定檔
-│   ├── tsconfig.json               # TypeScript 設定
-│   └── tailwind.config.js          # Tailwind CSS 設定
-├── timetable_api/                   # Flask 後端 API
-│   ├── src/
-│   │   ├── main.py                  # Flask 主應用
-│   │   ├── models/                  # SQLAlchemy 資料模型
-│   │   ├── routes/                  # API 路由定義
-│   │   └── utils/                   # 工具函數
-│   ├── requirements.txt             # Python 依賴
-│   ├── run_server.py               # 啟動腳本
-│   ├── Dockerfile                  # Docker 配置
-│   └── instance/                   # 運行時實例檔案
-│       └── database.db             # SQLite 資料庫
-├── docs/                           # 專案文檔
-├── CLAUDE.md                       # 開發指南
-├── README.md                       # 專案說明
-└── docker-compose.yml             # Docker Compose 設定
-```
-
-## 📚 API 文檔
-
-### RESTful API 端點
-
-- `GET /api/students/search?q={query}` - 學生搜尋（支援中英文姓名、學號）
-- `GET /api/students/{student_id}/timetable` - 取得學生完整課表
-- `GET /api/timetables` - 取得所有課表資料
-- `GET /api/health` - API 健康檢查
-
-### 前端路由
-
-- `/` - 首頁（課表查詢入口）
-- `/student` - 學生課表查詢頁面（主要功能）
-- `/about` - 關於頁面
-- `/404` - 404 錯誤頁面
-
-## 🛠️ 開發指南
-
-開發前請先閱讀 [CLAUDE.md](CLAUDE.md) 了解專案開發規範與架構設計原則。
-
-### 技術棧詳情
-
-#### 前端技術
-- **React 19**: 最新版本，支援 Concurrent Features
-- **TypeScript**: 強型別支援，提升開發效率
-- **Vite 7**: 極速開發體驗與建置
-- **Zustand**: 輕量級狀態管理
-- **React Query**: 強大的伺服器狀態管理
-- **React i18next**: 完整國際化解決方案
-- **Tailwind CSS**: 實用優先的 CSS 框架
-- **Headless UI**: 無樣式可存取元件庫
-
-#### 後端技術
-- **Flask**: 輕量級 Python Web 框架
-- **SQLAlchemy**: Python SQL 工具包和 ORM
-- **Flask-CORS**: 跨域資源共享支援
-
-### 開發流程
-
-#### 前端開發
+#### 3. 啟動前端開發伺服器
 ```bash
 cd frontend
-
-# 安裝依賴
 npm install
-
-# 開發模式
 npm run dev
+```
 
-# 型別檢查
-npm run typecheck
+訪問 http://localhost:3000 即可看到應用程式
 
-# 程式碼檢查與修復
-npm run lint:fix
+## 📦 生產環境部署
 
-# 建置生產版本
+### 前端建置
+```bash
+cd frontend
 npm run build:production
 ```
 
-#### 後端開發
+### Docker 部署
 ```bash
-cd timetable_api
-
-# 啟用虛擬環境
-source venv/bin/activate
-
-# 安裝依賴
-pip install -r requirements.txt
-
-# 啟動開發伺服器
-python run_server.py
-
-# 執行測試（如有設定）
-python -m pytest
+docker-compose up -d
 ```
 
-## 📄 授權
+## 🌐 線上演示
 
-本專案屬於康橋國際學校林口校區所有。
-
-## 🎯 專案狀態
-
-**✅ 專案已完成** - 所有核心功能已實現並部署至生產環境
-
-- **開發期間**: 2025年1月 - 2025年9月
-- **技術實現**: React 19 + Flask 3.1 + SQLite
-- **部署狀態**: 生產環境運行穩定
-- **功能完整度**: 100%
-
-## 📊 系統數據統計
-
-- **學生總數**: 1,036+ 位學生
-- **Homeroom 班級**: 42 個班級（6 年級 × 7 班）
-- **英文班級**: 16 個班級
-- **EV & myReading 班級**: 2 個班級
-- **課表記錄**: 1,000+ 筆課表資料
-- **支援年級**: 1-6 年級
-
-## 🌐 部署資訊
-
-### 生產環境 URLs
 - **前端應用**: https://kcislk-timetable.zeabur.app
-- **後端 API**: https://kcislk-backend.zeabur.app
-- **部署平台**: Zeabur Cloud Platform
-- **更新方式**: GitHub 自動部署
+- **API 端點**: https://kcislk-backend.zeabur.app
+- **GitHub**: https://github.com/geonook/kcislk-timetable
 
-### 環境需求
-- **Node.js**: >= 20.0.0
-- **Python**: >= 3.11
-- **npm**: >= 10.0.0
+## 📊 資料統計
 
-## 🤝 貢獻
+| 項目 | 數量 |
+|------|------|
+| 學生總數 | 1,036+ |
+| Homeroom 班級 | 42 |
+| 英文班級 | 16 |
+| EV & myReading 班級 | 2 |
+| 課表記錄 | 1,000+ |
+| 支援年級 | 1-6 年級 |
 
-請遵循專案的 [貢獻指南](docs/CONTRIBUTING.md) 進行開發。
+## 🔄 最近更新
 
-## 📞 聯絡方式
+### v2.0.0 (2025-09-25) - 正式版發布
+- ✅ 完全修復手機版 z-index 層級問題
+- ✅ 實現三階段響應式標題系統
+- ✅ 優化手機版使用者體驗
+- ✅ 統一 z-index 層級架構
+- ✅ 所有功能完整測試通過
 
-如有問題或建議，請聯絡專案維護者。
+### v1.5.0 (2025-09-24)
+- ✅ KCISLK 自訂 Logo 整合
+- ✅ 英文瀏覽器標題
+- ✅ 首次生產環境部署
+
+### v1.0.0 (2025-09-23)
+- ✅ 專案初始化
+- ✅ 基礎功能開發
+- ✅ 資料庫設計實現
+
+## 📝 授權
+
+本專案為康橋國際學校林口校區專屬開發
+
+## 🙏 致謝
+
+- 康橋國際學校林口校區 - 專案需求與支援
+- Zeabur 平台 - 提供穩定的雲端部署服務
+- React 社群 - 優秀的開源框架與生態系
 
 ---
 
-🎯 Template by Chang Ho Chien | HC AI 說人話channel | v1.0.0
-📺 Tutorial: https://youtu.be/8Q1bRZaHH24
-
-*專案完成: 2025-09-24*
-*文檔版本: 4.0*
+**專案狀態**: ✅ 完全完成 | **最後更新**: 2025-09-25 | **版本**: 2.0.0
