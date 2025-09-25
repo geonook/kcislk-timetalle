@@ -158,7 +158,7 @@ export default function HomePage() {
                 <div className="relative z-0">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                      <div className="w-12 h-12 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 z-0 relative">
                         <AcademicCapIcon className="h-7 w-7 text-white" />
                       </div>
                     </div>

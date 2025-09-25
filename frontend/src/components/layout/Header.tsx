@@ -94,7 +94,7 @@ export default function Header() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute right-0 mt-3 w-52 origin-top-right bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 focus:outline-none z-[99999] border border-white/20">
+                <Menu.Items className="absolute right-0 mt-3 w-52 origin-top-right bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 focus:outline-none z-[100001] border border-white/20">
                   <div className="p-2">
                     {themeOptions.map((option) => (
                       <Menu.Item key={option.key}>
@@ -132,7 +132,7 @@ export default function Header() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute right-0 mt-3 w-48 origin-top-right bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 focus:outline-none z-[99999] border border-white/20">
+                <Menu.Items className="absolute right-0 mt-3 w-48 origin-top-right bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 focus:outline-none z-[100001] border border-white/20">
                   <div className="p-2">
                     {languageOptions.map((option) => (
                       <Menu.Item key={option.key}>
@@ -179,7 +179,7 @@ export default function Header() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute right-0 mt-3 w-56 origin-top-right bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 focus:outline-none z-[99999] border border-white/20">
+                <Menu.Items className="absolute right-0 mt-3 w-56 origin-top-right bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 focus:outline-none z-[100001] border border-white/20">
                   <div className="p-2">
                     {navigation.map((item) => (
                       <Menu.Item key={item.name}>
