@@ -32,7 +32,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg shadow-lg border-b border-gray-200/50 dark:border-gray-700/50">
+    <header className="relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg shadow-lg border-b border-gray-200/50 dark:border-gray-700/50 z-[100000]">
       {/* Premium background gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-accent-50/30 via-transparent to-accent-50/30 dark:from-accent-900/10 dark:via-transparent dark:to-accent-900/10 pointer-events-none"></div>
 

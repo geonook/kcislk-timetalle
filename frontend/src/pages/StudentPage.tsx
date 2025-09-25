@@ -152,9 +152,9 @@ export default function StudentPage() {
 
           {/* Main icon */}
           <div className="relative flex justify-center">
-            <div className="group relative">
+            <div className="group relative z-0">
               <div className="absolute inset-0 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300 animate-pulse-glow pointer-events-none"></div>
-              <div className="relative w-20 h-20 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-300">
+              <div className="relative w-20 h-20 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-300 z-0">
                 <UserIcon className="h-12 w-12 text-white" />
               </div>
             </div>

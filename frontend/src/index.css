@@ -7,9 +7,10 @@
   :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     /* Z-index variables for consistent layering */
-    --z-dropdown: 99999;
-    --z-modal: 99998;
-    --z-overlay: 99997;
+    --z-header: 100000;
+    --z-dropdown: 100001;
+    --z-modal: 100002;
+    --z-overlay: 99999;
   }
 
   html {
