@@ -2,6 +2,18 @@ import { useTranslation } from 'react-i18next';
 import type { TimetableGridProps, TimetableEntry } from '../../types';
 import { WEEKDAYS, COURSE_TYPE_COLORS } from '../../types';
 
+// Period time mappings for KCISLK
+const PERIOD_TIMES: { [key: number]: string } = {
+  1: '8:25-9:05',
+  2: '9:10-9:50',
+  3: '10:20-11:00',
+  4: '11:05-11:45',
+  5: '13:00-13:40',
+  6: '13:45-14:25',
+  7: '14:40-15:20',
+  8: '15:25-16:05'
+};
+
 export default function TimetableGrid({
   timetableData,
   title,
@@ -10,18 +22,9 @@ export default function TimetableGrid({
 }: TimetableGridProps) {
   const { t } = useTranslation();
 
-  // Get all periods from the timetable data
+  // Always show all 8 periods regardless of data
   const getAllPeriods = () => {
-    const periods = new Set<number>();
-    WEEKDAYS.forEach(day => {
-      const dayTimetable = timetableData[day as keyof typeof timetableData];
-      if (dayTimetable) {
-        Object.keys(dayTimetable).forEach(period => {
-          periods.add(parseInt(period));
-        });
-      }
-    });
-    return Array.from(periods).sort((a, b) => a - b);
+    return [1, 2, 3, 4, 5, 6, 7, 8];
   };
 
   const periods = getAllPeriods();
@@ -192,11 +195,18 @@ export default function TimetableGrid({
                           </div>
                         </div>
                       ) : (
-                        <div className="flex flex-col items-center justify-center py-8 text-gray-400 dark:text-gray-500">
-                          <div className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mb-2">
-                            <div className="w-2 h-2 rounded-full bg-gray-400 dark:bg-gray-500"></div>
+                        <div className="p-3">
+                          <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700 p-4 text-center">
+                            <div className="mb-2">
+                              <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">
+                                {t('timetable.emptySlot')}
+                              </span>
+                            </div>
+                            <div className="flex items-center justify-center text-gray-400 dark:text-gray-500">
+                              <span className="mr-1.5 text-xs">⏰</span>
+                              <span className="text-xs font-medium">{PERIOD_TIMES[period]}</span>
+                            </div>
                           </div>
-                          <span className="text-xs italic font-medium">{t('timetable.emptySlot')}</span>
                         </div>
                       )}
                     </td>
