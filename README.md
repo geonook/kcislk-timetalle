@@ -2,7 +2,7 @@
 
 康橋國際學校林口校區小學部課表查詢系統 - 現代化 React SPA + Flask API 架構
 
-[![Version](https://img.shields.io/badge/version-2.0.0-success)](https://github.com/geonook/kcislk-timetable)
+[![Version](https://img.shields.io/badge/version-2.1.0-success)](https://github.com/geonook/kcislk-timetable)
 [![Status](https://img.shields.io/badge/status-production-green)](https://kcislk-timetable.zeabur.app)
 [![React](https://img.shields.io/badge/React-19-blue)](https://react.dev)
 [![Python](https://img.shields.io/badge/Python-3.11-yellow)](https://python.org)
@@ -22,6 +22,7 @@
 - 支援三種課表類型統一顯示
 - 色彩編碼直觀區分不同課程類型
 - 智能整合多個課表資料來源
+- **英文班級純淨顯示** - 英文班級課表只顯示英文課程，確保數據準確性
 
 ### 🔍 智能搜尋系統
 - 中英文姓名即時搜尋
