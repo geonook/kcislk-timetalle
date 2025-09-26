@@ -2,7 +2,7 @@
 
 康橋國際學校林口校區小學部課表查詢系統 - 現代化 React SPA + Flask API 架構
 
-[![Version](https://img.shields.io/badge/version-2.1.0-success)](https://github.com/geonook/kcislk-timetable)
+[![Version](https://img.shields.io/badge/version-2.2.0-success)](https://github.com/geonook/kcislk-timetable)
 [![Status](https://img.shields.io/badge/status-production-green)](https://kcislk-timetable.zeabur.app)
 [![React](https://img.shields.io/badge/React-19-blue)](https://react.dev)
 [![Python](https://img.shields.io/badge/Python-3.11-yellow)](https://python.org)
@@ -23,6 +23,7 @@
 - 色彩編碼直觀區分不同課程類型
 - 智能整合多個課表資料來源
 - **英文班級純淨顯示** - 英文班級課表只顯示英文課程，確保數據準確性
+- **完整8堂課表顯示** - 所有班級課表始終顯示每日完整8個時段（8:25-16:05）
 
 ### 🔍 智能搜尋系統
 - 中英文姓名即時搜尋
@@ -42,11 +43,17 @@
 - **漸進式載入** - 優雅的載入動畫
 - **無障礙設計** - WCAG 2.1 AA 標準
 
-### 📱 手機版優化（最新）
+### 📱 手機版優化
 - **三階段響應式標題** - 極小/中等/大螢幕自適應
 - **完整 z-index 層級系統** - 解決所有覆蓋問題
 - **44px 觸控目標** - 符合行動裝置最佳實踐
 - **優化的間距系統** - 手機版更緊湊的布局
+
+### ⏰ 課表顯示優化（最新 v2.2.0）
+- **完整時段顯示** - 每日固定顯示完整8個時段
+- **精確時間對應** - 每個時段顯示具體上課時間
+- **空堂標示清晰** - 空堂明確標示為 "Free Period" 並顯示時間
+- **統一顯示邏輯** - 英文班與Homeroom班級均顯示完整格式
 
 ## 🛠️ 技術架構
 
