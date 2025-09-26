@@ -5,6 +5,25 @@ from collections import defaultdict
 
 timetable_bp = Blueprint('timetable', __name__)
 
+def is_english_class(class_name):
+    """判斷是否為英文班級格式 (如: G1 Adventurers, G2 Pathfinders 等)"""
+    if not class_name:
+        return False
+
+    # 英文班級格式: G + 數字 + 空格 + 英文名稱
+    # 例如: G1 Adventurers, G2 Pathfinders, G3 Visionaries
+    parts = class_name.split(' ', 1)
+    if len(parts) != 2:
+        return False
+
+    grade_part, name_part = parts
+    # 檢查年級部分格式: G + 數字
+    if not (grade_part.startswith('G') and len(grade_part) >= 2 and grade_part[1:].isdigit()):
+        return False
+
+    # 檢查名稱部分是否為英文
+    return name_part.replace(' ', '').isalpha() and name_part[0].isupper()
+
 @timetable_bp.route('/classes', methods=['GET'])
 def get_all_classes():
     """取得所有班級列表 - 包含英文班級和 Homeroom 班級"""
@@ -73,42 +92,31 @@ def get_class_timetable(class_name):
                 'class_type': 'english'
             })
 
-        # 2. 查詢 homeroom 課表 - 根據班級名稱匹配 home_room_class_name
-        # 注意：這裡假設 class_name 可能需要映射到 home_room_class_name
-        # 先嘗試直接匹配
-        homeroom_courses = HomeRoomTimetable.query.filter_by(home_room_class_name=class_name).all()
+        # 2. 查詢 homeroom 課表 - 但對英文班級跳過此查詢
+        # 英文班級（如 G1 Adventurers）應該只顯示英文課程，不包含 homeroom 課程
+        if not is_english_class(class_name):
+            # 只對非英文班級查詢 homeroom 課程
+            # 根據班級名稱匹配 home_room_class_name
+            homeroom_courses = HomeRoomTimetable.query.filter_by(home_room_class_name=class_name).all()
 
-        # 如果沒有找到，嘗試用英文班名稱查找對應的學生，然後獲取他們的 homeroom
-        if not homeroom_courses:
-            from src.models.student import Student
-            # 查找屬於這個英文班的學生
-            students = Student.query.filter_by(english_class_name=class_name).all()
-            homeroom_classes = set(student.home_room_class_name for student in students)
+            for course in homeroom_courses:
+                has_courses = True
+                # 解析節次
+                try:
+                    period_num = int(course.period.split(')')[0].replace('(', ''))
+                    time_range = course.period.split(')')[-1] if ')' in course.period else course.period
+                except:
+                    period_num = 0
+                    time_range = course.period
 
-            # 獲取所有相關 homeroom 班級的課表
-            for homeroom_class in homeroom_classes:
-                homeroom_courses.extend(
-                    HomeRoomTimetable.query.filter_by(home_room_class_name=homeroom_class).all()
-                )
-
-        for course in homeroom_courses:
-            has_courses = True
-            # 解析節次
-            try:
-                period_num = int(course.period.split(')')[0].replace('(', ''))
-                time_range = course.period.split(')')[-1] if ')' in course.period else course.period
-            except:
-                period_num = 0
-                time_range = course.period
-
-            result_timetable[course.day].append({
-                'period': period_num,
-                'time': time_range,
-                'teacher': course.teacher,
-                'classroom': course.classroom,
-                'course_name': course.course_name,
-                'class_type': 'homeroom'
-            })
+                result_timetable[course.day].append({
+                    'period': period_num,
+                    'time': time_range,
+                    'teacher': course.teacher,
+                    'classroom': course.classroom,
+                    'course_name': course.course_name,
+                    'class_type': 'homeroom'
+                })
 
         # 3. 查詢原有的 Timetable 表
         regular_courses = Timetable.query.filter_by(class_name=class_name).all()
