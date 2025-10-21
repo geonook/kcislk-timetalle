@@ -1,5 +1,18 @@
-# 單階段建構：Flask 單體應用
-FROM python:3.11-slim
+# Stage 1: 建置前端
+FROM node:18-alpine AS frontend-builder
+
+WORKDIR /app/frontend
+
+# 複製前端 package.json 並安裝依賴
+COPY frontend/package*.json ./
+RUN npm install
+
+# 複製前端源碼並建置
+COPY frontend/ ./
+RUN npm run build -- --config vite.config.docker.js
+
+# Stage 2: 建置 Python 後端
+FROM python:3.11-slim AS backend
 
 WORKDIR /app
 
@@ -12,11 +25,11 @@ RUN apt-get update && apt-get install -y \
 COPY timetable_api/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 複製後端源碼和模板
+# 複製後端源碼
 COPY timetable_api/ ./
 
-# 確保數據目錄存在
-RUN mkdir -p data
+# 從前端建置階段複製靜態檔案
+COPY --from=frontend-builder /app/frontend/dist ./src/static/
 
 # 設置環境變數
 ENV FLASK_APP=run_server.py
