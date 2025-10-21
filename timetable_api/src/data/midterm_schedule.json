@@ -1,0 +1,121 @@
+{
+  "exam_name": "2025 Fall Semester Midterm Assessment",
+  "exam_name_zh": "114學年度第一學期期中評量",
+  "exam_dates": [
+    {
+      "date": "2025-11-04",
+      "day_name": "Tuesday",
+      "day_name_zh": "星期二",
+      "exam_sessions": [
+        {
+          "period": 5,
+          "time": "12:55-13:35",
+          "grades": ["G4", "G6"],
+          "exam_type": "IT Assessment",
+          "exam_type_zh": "外籍英師考試"
+        },
+        {
+          "period": 6,
+          "time": "13:40-14:20",
+          "grades": ["G4", "G6"],
+          "exam_type": "IT Assessment",
+          "exam_type_zh": "外籍英師考試"
+        },
+        {
+          "period": 7,
+          "time": "14:40-15:20",
+          "grades": ["G3", "G5"],
+          "exam_type": "IT Assessment",
+          "exam_type_zh": "外籍英師考試"
+        },
+        {
+          "period": 8,
+          "time": "15:25-16:05",
+          "grades": ["G3", "G5"],
+          "exam_type": "IT Assessment",
+          "exam_type_zh": "外籍英師考試"
+        }
+      ]
+    },
+    {
+      "date": "2025-11-05",
+      "day_name": "Wednesday",
+      "day_name_zh": "星期三",
+      "exam_sessions": [
+        {
+          "period": 3,
+          "time": "10:20-11:00",
+          "grades": ["G2", "G4", "G6"],
+          "exam_type": "LT Assessment",
+          "exam_type_zh": "中籍英師考試"
+        },
+        {
+          "period": 4,
+          "time": "11:05-11:45",
+          "grades": ["G2", "G4", "G6"],
+          "exam_type": "LT Assessment",
+          "exam_type_zh": "中籍英師考試"
+        },
+        {
+          "period": 5,
+          "time": "12:55-13:35",
+          "grades": ["G1", "G3", "G5"],
+          "exam_type": "LT Assessment",
+          "exam_type_zh": "中籍英師考試"
+        },
+        {
+          "period": 6,
+          "time": "13:40-14:20",
+          "grades": ["G1", "G3", "G5"],
+          "exam_type": "LT Assessment",
+          "exam_type_zh": "中籍英師考試"
+        }
+      ]
+    },
+    {
+      "date": "2025-11-06",
+      "day_name": "Thursday",
+      "day_name_zh": "星期四",
+      "exam_sessions": [
+        {
+          "period": 3,
+          "time": "10:20-11:00",
+          "grades": ["G2"],
+          "exam_type": "IT Assessment",
+          "exam_type_zh": "外籍英師考試"
+        },
+        {
+          "period": 4,
+          "time": "11:05-11:45",
+          "grades": ["G2"],
+          "exam_type": "IT Assessment",
+          "exam_type_zh": "外籍英師考試"
+        },
+        {
+          "period": 5,
+          "time": "12:55-13:35",
+          "grades": ["G1"],
+          "exam_type": "IT Assessment",
+          "exam_type_zh": "外籍英師考試"
+        },
+        {
+          "period": 6,
+          "time": "13:40-14:20",
+          "grades": ["G1"],
+          "exam_type": "IT Assessment",
+          "exam_type_zh": "外籍英師考試"
+        }
+      ]
+    }
+  ],
+  "period_schedule": [
+    {"period": 1, "time": "8:25-9:05"},
+    {"period": 2, "time": "9:10-9:50"},
+    {"period": 3, "time": "10:20-11:00"},
+    {"period": 4, "time": "11:05-11:45"},
+    {"period": 5, "time": "12:55-13:35"},
+    {"period": 6, "time": "13:40-14:20"},
+    {"period": 7, "time": "14:40-15:20"},
+    {"period": 8, "time": "15:25-16:05"}
+  ]
+}
