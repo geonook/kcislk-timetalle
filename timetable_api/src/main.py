@@ -5,6 +5,9 @@ from src.models.timetable import db
 from src.routes.timetable import timetable_bp
 from src.routes.student import student_bp
 
+# Import exam models to ensure they are registered with SQLAlchemy
+from src.models import exam
+
 # Configure Flask app as pure API service (no static/template folders)
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
@@ -30,6 +33,10 @@ CORS(app, origins=all_origins,
 app.register_blueprint(timetable_bp, url_prefix='/api')
 app.register_blueprint(student_bp, url_prefix='/api')
 
+# Import and register exam blueprint
+from src.routes.exam import exam_bp
+app.register_blueprint(exam_bp, url_prefix='/api')
+
 # Database configuration
 db_path = os.environ.get('DATABASE_PATH', os.path.join(os.path.dirname(__file__), 'database', 'app.db'))
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}"
@@ -45,6 +52,8 @@ def initialize_data():
     """初始化數據庫並載入初始數據"""
     from src.data_loader import load_timetable_data
     from src.data_loader_student import load_all_data
+    from src.data_loader_exam import load_all_exam_data
+    from src.models.exam import ExamSession
 
     print("檢查數據庫是否需要初始化...")
 
@@ -54,8 +63,9 @@ def initialize_data():
 
     class_info_count = ClassInfo.query.count()
     homeroom_count = HomeRoomTimetable.query.count()
+    exam_session_count = ExamSession.query.count()
 
-    print(f"現有資料狀況: ClassInfo={class_info_count}, HomeRoom={homeroom_count}")
+    print(f"現有資料狀況: ClassInfo={class_info_count}, HomeRoom={homeroom_count}, ExamSession={exam_session_count}")
 
     if class_info_count == 0:
         print("數據庫為空，開始載入初始數據...")
@@ -90,6 +100,18 @@ def initialize_data():
     else:
         print("✅ 數據庫已有完整數據，跳過初始化")
 
+    # 載入考試資料（如果尚未載入）
+    if exam_session_count == 0:
+        print("\n開始載入期中考試資料...")
+        try:
+            success = load_all_exam_data()
+            if not success:
+                print("❌ 考試資料載入失敗")
+        except Exception as e:
+            print(f"❌ 考試資料載入過程中發生錯誤: {e}")
+    else:
+        print("✅ 考試資料已存在，跳過載入")
+
 print("Attempting to create application context...")
 with app.app_context():
     print("Application context entered. Attempting to create database tables...")
@@ -105,12 +127,17 @@ def api_info():
     """API 資訊端點"""
     return {
         'name': 'KCISLK 課表查詢系統 API',
-        'version': '1.0.0',
-        'description': '康橋國際學校林口校區小學部課表查詢系統 API',
+        'version': '2.3.0',
+        'description': '康橋國際學校林口校區小學部課表查詢系統 API - 支援期中考監考管理',
         'endpoints': {
             'health': '/health',
             'students': '/api/students',
-            'timetables': '/api/timetables'
+            'timetables': '/api/timetables',
+            'exam_sessions': '/api/exams/sessions',
+            'exam_classes': '/api/exams/classes',
+            'exam_proctors': '/api/exams/proctors',
+            'exam_export': '/api/exams/export/csv',
+            'exam_stats': '/api/exams/stats'
         },
         'status': 'running'
     }
