@@ -16,8 +16,10 @@ app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
 allowed_origins = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
+    'http://localhost:5173',  # Vite dev server
     'https://kcislk-timetable.zeabur.app',
     'https://kcislk-timetable-frontend.zeabur.app',
+    'https://kcislk-backend.zeabur.app',  # Backend domain (may serve frontend)
     # Add any additional frontend domains
 ]
 
