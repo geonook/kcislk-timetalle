@@ -2,6 +2,8 @@
 期中考資料載入器
 載入 2025 Fall Semester Midterm Assessment 的考試場次和班級資訊
 """
+import pandas as pd
+import os
 from src.models.timetable import db
 from src.models.exam import ExamSession, ClassExamInfo
 from src.models.student import Student, HomeRoomTimetable
@@ -186,6 +188,22 @@ def load_exam_sessions():
 def load_class_exam_info():
     """載入 84 個班級的考試資訊"""
 
+    # 載入教師對應表
+    csv_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'class_teachers.csv')
+
+    if not os.path.exists(csv_file_path):
+        print(f"⚠️  找不到教師對應檔案：{csv_file_path}")
+        teacher_map = {}
+    else:
+        teachers_df = pd.read_csv(csv_file_path)
+        teacher_map = {}
+        for _, row in teachers_df.iterrows():
+            teacher_map[row['EnglishName']] = {
+                'LT': row['system_display_lt'],
+                'IT': row['system_display_it']
+            }
+        print(f"✅ 成功載入 {len(teacher_map)} 個班級的教師對應資料")
+
     # 班級資料：ClassName, Level, Students
     class_data = [
         # G1 - 14 個班級
@@ -321,11 +339,8 @@ def load_class_exam_info():
             if existing:
                 continue
 
-            # 查詢班級導師（從 HomeRoomTimetable）
-            teacher = None
-            homeroom = HomeRoomTimetable.query.filter_by(home_room_class_name=class_name).first()
-            if homeroom:
-                teacher = homeroom.teacher
+            # 查詢教師（從教師對應表，根據考試類型 LT 或 IT）
+            teacher = teacher_map.get(class_name, {}).get(exam_type, None)
 
             # 建立班級考試資訊
             class_exam_info = ClassExamInfo(
