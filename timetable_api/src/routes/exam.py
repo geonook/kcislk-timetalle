@@ -469,7 +469,9 @@ def export_grade_band_to_csv(grade_band):
 
         # 準備回應
         output.seek(0)
-        filename = f'midterm_exam_{grade_band.replace(" ", "_").replace("\'", "")}.csv'
+        # 清理 grade_band 字串，移除空格和單引號
+        cleaned_grade_band = grade_band.replace(" ", "_").replace("'", "")
+        filename = f'midterm_exam_{cleaned_grade_band}.csv'
         return Response(
             output.getvalue(),
             mimetype='text/csv',
