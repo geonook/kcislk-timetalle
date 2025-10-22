@@ -8,6 +8,7 @@
   "navigation": {
     "classes": "Class Timetables",
     "students": "Student Timetables",
+    "examProctor": "Exam Proctors",
     "home": "Home"
   },
   "pages": {

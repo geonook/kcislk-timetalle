@@ -18,6 +18,7 @@ export default function Header() {
   const navigation = [
     { name: t('navigation.classes'), href: '/classes' },
     { name: t('navigation.students'), href: '/students' },
+    { name: t('navigation.examProctor'), href: '/exam-proctor' },
   ];
 
   const themeOptions = [

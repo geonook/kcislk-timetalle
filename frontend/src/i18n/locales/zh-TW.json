@@ -8,6 +8,7 @@
   "navigation": {
     "classes": "班級課表",
     "students": "學生課表",
+    "examProctor": "期中考監考",
     "home": "首頁"
   },
   "pages": {
