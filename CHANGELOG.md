@@ -5,6 +5,70 @@
 格式基於 [Keep a Changelog](https://keepachangelog.com/zh-TW/1.0.0/)，
 版本號碼遵循 [語義化版本](https://semver.org/lang/zh-TW/)。
 
+## [2.3.0] - 2025-10-22 📋 期中考監考管理系統
+
+### ✨ 重大新增功能
+- **期中考監考管理系統**
+  - 支援 2025 Fall Semester Midterm Assessment（11/4-11/6）
+  - 12 個 GradeBand 完整覆蓋（G1-G6 LT's & IT's）
+  - 84 個班級 × 2 考試類型 = 168 筆完整記錄
+  - LT 和 IT 教師資料 100% 完整對應
+
+### 📊 資料管理
+- **新增 3 個資料模型**
+  - ExamSession：考試場次資料（12 個 GradeBand）
+  - ClassExamInfo：班級考試資訊（168 筆記錄）
+  - ProctorAssignment：監考老師分配（支援批次更新）
+- **新增教師對應表**
+  - class_teachers.csv：84 個班級的 LT/IT 教師完整資料
+  - 自動載入機制，確保資料完整性
+
+### 🎯 功能特色
+- **智能分類顯示**
+  - 按考試日期分組（11/4 Tuesday, 11/5 Wednesday, 11/6 Thursday）
+  - 按 GradeBand 查看班級考試資訊
+  - 即時統計監考分配進度
+- **批次操作**
+  - 支援批次更新監考老師分配
+  - 一鍵保存所有變更
+  - 即時驗證資料完整性
+- **CSV 匯出功能**
+  - 15 欄位完整格式（ClassName, Grade, Teacher, Level, Classroom, GradeBand, Duration, Periods, Self-Study, Preparation, ExamTime, Proctor, Subject, Count, Students）
+  - 支援全部匯出或按 GradeBand 匯出
+  - 符合學校行政需求
+
+### 🏗️ API 端點（8 個新增）
+- `GET /api/exams/sessions` - 取得所有考試場次
+- `GET /api/exams/classes` - 取得所有班級考試資訊
+- `GET /api/exams/classes/grade-band/<grade_band>` - 按 GradeBand 查詢
+- `POST /api/exams/proctors` - 新增監考分配
+- `PUT /api/exams/proctors/<id>` - 更新監考分配
+- `POST /api/exams/proctors/batch` - 批次更新監考分配
+- `GET /api/exams/export/csv` - 匯出 CSV（全部或指定 GradeBand）
+- `GET /api/exams/stats` - 取得統計資料
+
+### 🐛 問題修復
+- **修復期中考教師欄位 NULL 問題**
+  - 原本教師欄位為空，無法正確顯示
+  - 建立 LT/IT 教師對應表，完整填充 168 筆記錄
+  - 資料完整度達 100%（168/168）
+- **修復 CORS 設定錯誤**
+  - 新增缺少的允許域名（localhost:5173, backend domain）
+  - 修正 Zeabur 環境變數萬用字元問題
+  - 確保前後端正常通訊
+- **修復 Python f-string 語法錯誤**
+  - 解決 Zeabur 部署時的語法錯誤
+  - 修正 CSV 匯出檔名生成邏輯
+
+### 📈 資料統計
+- 12 個 GradeBand 考試場次
+- 84 個參與班級（G1: 14, G2: 14, G3: 13, G4: 13, G5: 14, G6: 16）
+- 168 筆班級考試記錄（84 班 × 2 考試類型）
+- 100% 教師資料完整度（168/168 筆都有教師資料）
+
+### 🏷️ 版本重要性
+此版本是**功能擴展版本**，在原有課表查詢系統基礎上，新增完整的期中考監考管理功能，大幅提升系統的實用價值和行政效率。
+
 ## [2.2.0] - 2025-09-26 📊 完整課表顯示優化版本
 
 ### ✨ 重要功能優化

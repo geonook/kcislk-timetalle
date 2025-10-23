@@ -1,7 +1,7 @@
 {
   "name": "kcislk-timetable-frontend",
   "private": true,
-  "version": "2.2.0",
+  "version": "2.3.0",
   "type": "module",
   "description": "KCISLK Timetable System - Modern React frontend application for Kang Chiao International School Linkou Campus",
   "author": "Chang Ho Chien",
