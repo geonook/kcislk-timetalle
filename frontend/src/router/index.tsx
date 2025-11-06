@@ -27,10 +27,14 @@ export const router = createBrowserRouter([
         path: 'class/:className',
         element: <ClassPage />,
       },
-      {
-        path: 'exam-proctor',
-        element: <ExamProctorPage />,
-      },
+      // 條件式路由：只在環境變數啟用時註冊期中考監考路由
+      ...(import.meta.env.VITE_ENABLE_EXAM_PROCTOR === 'true'
+        ? [{
+            path: 'exam-proctor',
+            element: <ExamProctorPage />,
+          }]
+        : []
+      ),
       {
         path: '*',
         element: <NotFoundPage />,

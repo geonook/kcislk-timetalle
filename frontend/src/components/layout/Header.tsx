@@ -18,7 +18,11 @@ export default function Header() {
   const navigation = [
     { name: t('navigation.classes'), href: '/classes' },
     { name: t('navigation.students'), href: '/students' },
-    { name: t('navigation.examProctor'), href: '/exam-proctor' },
+    // 條件式顯示：只在環境變數啟用時顯示期中考監考功能
+    ...(import.meta.env.VITE_ENABLE_EXAM_PROCTOR === 'true'
+      ? [{ name: t('navigation.examProctor'), href: '/exam-proctor' }]
+      : []
+    ),
   ];
 
   const themeOptions = [
@@ -194,7 +198,7 @@ export default function Header() {
                             } group flex w-full items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200`}
                           >
                             <span className="mr-3 text-lg">
-                              {item.href === '/classes' ? '📚' : '👥'}
+                              {item.href === '/classes' ? '📚' : item.href === '/students' ? '👥' : '📋'}
                             </span>
                             {item.name}
                           </Link>
