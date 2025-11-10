@@ -1,29 +1,21 @@
 # KCISLK 課表查詢系統 - Frontend Dockerfile
-# Multi-stage build for production deployment
+# Production deployment with simplified build process
 
 # Build stage
 FROM node:20-alpine AS builder
 
-# Set working directory
-WORKDIR /app/frontend
+WORKDIR /app
 
-# Copy package files
-COPY frontend/package*.json ./
+# Copy entire project
+COPY . .
 
-# Install ALL dependencies (including devDependencies for build tools like vite)
-# Use --legacy-peer-deps to handle peer dependency conflicts
-RUN npm ci --legacy-peer-deps
-
-# Copy source code
-COPY frontend/ ./
-
-# Build application for production
-RUN npm run build:production
+# Build frontend application
+RUN cd frontend && npm ci --legacy-peer-deps && npm run build:production
 
 # Production stage
-FROM nginx:alpine AS production
+FROM nginx:alpine
 
-# Install additional packages if needed
+# Install additional packages
 RUN apk add --no-cache curl
 
 # Copy built React application
@@ -41,8 +33,8 @@ RUN chmod +x /usr/local/bin/health-check.sh
 
 # Add labels for documentation
 LABEL maintainer="KCISLK IT Team"
-LABEL description="KCISLK 課表查詢系統 Frontend"
-LABEL version="1.0.0"
+LABEL description="KCISLK 課表查詢系統 Frontend - Production"
+LABEL version="2.3.1"
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
