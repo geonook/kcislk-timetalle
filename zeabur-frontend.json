@@ -2,12 +2,12 @@
   "name": "kcislk-timetable-frontend",
   "build": {
     "rootDirectory": "frontend",
-    "buildCommand": "npm install && npm run build:production",
+    "buildCommand": "npm run build:production",
     "outputDirectory": "dist"
   },
   "deploy": {
     "framework": "vite",
-    "installCommand": "npm install"
+    "installCommand": "npm ci"
   },
   "environment": {
     "NODE_VERSION": "18",

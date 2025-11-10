@@ -2,12 +2,12 @@
   "name": "kcislk-timetable-frontend-staging",
   "build": {
     "rootDirectory": "frontend",
-    "buildCommand": "npm install && npm run build:staging",
+    "buildCommand": "npm run build:staging",
     "outputDirectory": "dist"
   },
   "deploy": {
     "framework": "vite",
-    "installCommand": "npm install"
+    "installCommand": "npm ci"
   },
   "environment": {
     "NODE_VERSION": "18"
