@@ -2,7 +2,7 @@
   "name": "kcislk-timetable-system",
   "app": {
     "type": "dockerfile",
-    "dockerfile": "Dockerfile"
+    "dockerfile": "Dockerfile.backend"
   },
   "domain": {
     "custom": false
