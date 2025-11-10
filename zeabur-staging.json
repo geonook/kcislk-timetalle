@@ -1,0 +1,16 @@
+{
+  "name": "kcislk-timetable-frontend-staging",
+  "build": {
+    "rootDirectory": "frontend",
+    "buildCommand": "npm run build:staging",
+    "outputDirectory": "dist"
+  },
+  "deploy": {
+    "framework": "vite",
+    "installCommand": "npm ci --legacy-peer-deps"
+  },
+  "environment": {
+    "NODE_VERSION": "20",
+    "VITE_ENABLE_EXAM_PROCTOR": "true"
+  }
+}
