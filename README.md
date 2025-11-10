@@ -174,6 +174,61 @@ docker-compose up -d
 - **API 端點**: https://kcislk-backend.zeabur.app
 - **GitHub**: https://github.com/geonook/kcislk-timetable
 
+## 🌍 多環境開發架構
+
+### 環境對比
+
+本專案提供 Production、Staging、Local 三個環境，支援完整的開發與測試流程：
+
+| 環境 | Git 分支 | 前端 URL | 後端 URL | 用途 | 成本 |
+|------|----------|----------|----------|------|------|
+| **Production** | main | [kcislk-timetable.zeabur.app](https://kcislk-timetable.zeabur.app) | [kcislk-backend.zeabur.app](https://kcislk-backend.zeabur.app) | 正式生產環境 | 正常費用 |
+| **Staging** | develop | [frontend-develop.zeabur.app](https://frontend-develop.zeabur.app) | [kcislk-backend.zeabur.app](https://kcislk-backend.zeabur.app) | 測試環境（共享生產後端） | $0 |
+| **Local** | develop | localhost:3000 | [kcislk-backend.zeabur.app](https://kcislk-backend.zeabur.app) | 本機開發（共享生產後端） | $0 |
+
+### 共享後端架構
+
+**設計理念：**
+- 所有環境共享同一個生產後端 API
+- 保證資料一致性，避免資料孤島
+- 節省成本，無需部署多個後端實例
+- 簡化維護，單一資料庫管理
+
+### Git 工作流程
+
+```bash
+# 1. 開發新功能（develop 分支）
+git checkout develop
+# 編輯代碼...
+git commit -m "feat: 新功能"
+git push origin develop
+# → 自動部署至 Staging: frontend-develop.zeabur.app
+
+# 2. 測試完成後發布（main 分支）
+git checkout main
+git merge develop
+git push origin main
+# → 自動部署至 Production: kcislk-timetable.zeabur.app
+```
+
+### 環境變數配置
+
+每個環境使用不同的環境變數配置：
+
+```bash
+# Production (.env.production)
+VITE_API_BASE_URL=https://kcislk-backend.zeabur.app/api
+VITE_ENABLE_EXAM_PROCTOR=false  # 期中考功能關閉
+
+# Staging (Zeabur 環境變數)
+VITE_API_BASE_URL=https://kcislk-backend.zeabur.app/api
+VITE_ENABLE_EXAM_PROCTOR=true   # 測試環境啟用所有功能
+
+# Local (.env)
+VITE_API_BASE_URL=https://kcislk-backend.zeabur.app/api
+VITE_ENABLE_EXAM_PROCTOR=true   # 開發環境啟用所有功能
+```
+
 ## 📊 資料統計
 
 | 項目 | 數量 |

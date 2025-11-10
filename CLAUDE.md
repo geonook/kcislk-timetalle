@@ -255,6 +255,183 @@ kcislk-timetable/
 - **資料庫**: SQLite (生產環境)
 - **部署**: 容器化部署，自動擴展
 
+## 🌍 **多環境開發架構**
+
+### 環境概覽
+
+本專案採用多環境開發架構，提供生產、測試、開發三個獨立環境：
+
+| 環境 | Git 分支 | 前端 URL | 後端 URL | 用途 | 成本 |
+|------|----------|----------|----------|------|------|
+| **Production** | main | https://kcislk-timetable.zeabur.app | https://kcislk-backend.zeabur.app | 正式生產環境 | 正常費用 |
+| **Staging** | develop | https://frontend-develop.zeabur.app | https://kcislk-backend.zeabur.app | 測試環境（共享生產後端） | $0 (僅前端) |
+| **Local** | develop | http://localhost:3000 | https://kcislk-backend.zeabur.app | 本機開發環境（共享生產後端） | $0 |
+
+### 架構設計原則
+
+**共享後端架構 (Shared Backend)**
+- 所有環境共享同一個生產後端 API (https://kcislk-backend.zeabur.app)
+- 保證資料一致性，避免資料孤島
+- 節省成本，無需部署多個後端實例
+- 簡化維護，單一資料庫管理
+
+**前端多實例部署**
+- Production Frontend: main 分支自動部署至 Zeabur
+- Staging Frontend: develop 分支自動部署至 Zeabur
+- Local Frontend: 本機開發，手動啟動 Vite 開發服務器
+
+### Git 分支策略
+
+```
+main (生產分支)
+  ├── 自動部署至 Production Frontend
+  └── 僅接受來自 develop 的 PR
+
+develop (開發分支)
+  ├── 自動部署至 Staging Frontend
+  ├── 本機開發監聽此分支
+  └── 功能完成後合併至 main
+```
+
+### 開發工作流程
+
+#### 1. 日常開發流程
+```bash
+# 切換至 develop 分支
+git checkout develop
+
+# 開發新功能
+# 編輯 frontend/ 目錄下的檔案
+
+# 測試（本機環境）
+cd frontend
+npm run dev
+# 訪問 http://localhost:3000 測試
+
+# 提交變更
+git add .
+git commit -m "feat: 新功能描述"
+git push origin develop
+
+# 自動部署至 Staging 環境
+# Zeabur 自動監聽 develop 分支並部署至
+# https://frontend-develop.zeabur.app
+```
+
+#### 2. 發布至生產環境
+```bash
+# 在 Staging 測試完成後
+git checkout main
+git merge develop
+
+# 推送至生產分支
+git push origin main
+
+# 自動部署至 Production 環境
+# Zeabur 自動監聽 main 分支並部署至
+# https://kcislk-timetable.zeabur.app
+```
+
+### 環境變數配置
+
+#### Production Frontend (.env.production)
+```bash
+VITE_API_BASE_URL=https://kcislk-backend.zeabur.app/api
+VITE_APP_NAME=KCISLK Timetable System
+VITE_ENABLE_EXAM_PROCTOR=false
+```
+
+#### Staging Frontend (Zeabur 環境變數)
+```bash
+VITE_API_BASE_URL=https://kcislk-backend.zeabur.app/api
+VITE_APP_NAME=KCISLK Timetable System (Staging)
+VITE_ENABLE_EXAM_PROCTOR=true  # 測試環境啟用所有功能
+```
+
+#### Local Development (.env)
+```bash
+VITE_API_BASE_URL=https://kcislk-backend.zeabur.app/api
+VITE_APP_NAME=KCISLK Timetable System (Dev)
+VITE_ENABLE_EXAM_PROCTOR=true
+```
+
+### CORS 配置
+
+後端 API 已配置允許所有環境的前端訪問：
+
+```python
+# timetable_api/src/main.py
+allowed_origins = [
+    # Local development
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://localhost:5173',
+    # Production
+    'https://kcislk-timetable.zeabur.app',
+    'https://kcislk-timetable-frontend.zeabur.app',
+    'https://kcislk-backend.zeabur.app',
+    # Staging
+    'https://kcislk-timetable-staging.zeabur.app',
+    'https://frontend-develop.zeabur.app',
+]
+```
+
+### Zeabur 部署配置
+
+#### Frontend Staging 部署 (zeabur.json)
+```json
+{
+  "name": "kcislk-timetable-frontend-staging",
+  "build": {
+    "rootDirectory": "frontend",
+    "buildCommand": "npm install && npm run build:staging",
+    "outputDirectory": "dist"
+  },
+  "deploy": {
+    "framework": "vite",
+    "installCommand": "npm install"
+  },
+  "environment": {
+    "NODE_VERSION": "18"
+  }
+}
+```
+
+#### Backend 部署 (zeabur-backend.json)
+```json
+{
+  "name": "kcislk-timetable-system",
+  "app": {
+    "type": "dockerfile",
+    "dockerfile": "Dockerfile.backend"
+  },
+  "environment": {
+    "PORT": "8080",
+    "FLASK_ENV": "production",
+    "DATABASE_PATH": "/app/data/app.db",
+    "ALLOWED_ORIGINS": "https://kcislk-timetable.zeabur.app,https://kcislk-timetable-frontend.zeabur.app,https://kcislk-backend.zeabur.app"
+  }
+}
+```
+
+### 測試建議
+
+#### Staging 環境測試
+- 所有新功能先在 Staging 測試
+- 測試期間限定功能（如期中考監考）
+- 測試中英文雙語切換
+- 測試響應式設計（手機、平板、電腦）
+- 測試深色模式切換
+
+#### 生產環境部署前檢查
+- [ ] Staging 環境測試通過
+- [ ] 無 console 錯誤或警告
+- [ ] 功能開關正確配置
+- [ ] CORS 配置無誤
+- [ ] 環境變數正確設定
+- [ ] TypeScript 類型檢查通過 (`npm run typecheck`)
+- [ ] ESLint 檢查通過 (`npm run lint`)
+
 ## 🚀 COMMON COMMANDS
 
 ### 開發環境啟動
