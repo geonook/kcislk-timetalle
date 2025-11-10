@@ -1,0 +1,15 @@
+{
+  "name": "kcislk-timetable-frontend",
+  "build": {
+    "rootDirectory": "frontend",
+    "buildCommand": "npm run build:production",
+    "outputDirectory": "dist"
+  },
+  "deploy": {
+    "framework": "vite",
+    "installCommand": "npm install"
+  },
+  "environment": {
+    "NODE_VERSION": "20"
+  }
+}
