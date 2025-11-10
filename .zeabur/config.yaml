@@ -1,0 +1,31 @@
+# Zeabur 專案配置檔案
+# 明確指定前端服務的建置方式
+
+services:
+  # Frontend Service - React + Vite
+  frontend:
+    # 服務根目錄
+    path: frontend
+
+    # 框架類型
+    framework: vite
+
+    # Node.js 版本
+    nodeVersion: "20"
+
+    # 安裝指令
+    installCommand: npm ci --legacy-peer-deps
+
+    # 建置指令
+    buildCommand: npm run build:production
+
+    # 輸出目錄
+    outputDirectory: dist
+
+    # 環境變數
+    env:
+      NODE_VERSION: "20"
+      NODE_ENV: production
+      VITE_API_BASE_URL: https://kcislk-backend.zeabur.app/api
+      VITE_APP_NAME: KCISLK Timetable System
+      VITE_ENABLE_EXAM_PROCTOR: "false"

@@ -1,0 +1,17 @@
+{
+  "name": "kcislk-timetable-monorepo",
+  "version": "2.3.1",
+  "private": true,
+  "description": "KCISLK Timetable System - Monorepo for Frontend (React) and Backend (Flask)",
+  "workspaces": [
+    "frontend"
+  ],
+  "engines": {
+    "node": "20.x",
+    "npm": ">=10.0.0"
+  },
+  "scripts": {
+    "build": "cd frontend && npm run build:production",
+    "build:staging": "cd frontend && npm run build:staging"
+  }
+}
