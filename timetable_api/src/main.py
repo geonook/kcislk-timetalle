@@ -17,9 +17,10 @@ allowed_origins = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
     'http://localhost:5173',  # Vite dev server
-    'https://kcislk-timetable.zeabur.app',
-    'https://kcislk-timetable-frontend.zeabur.app',
+    'https://kcislk-timetable.zeabur.app',  # Production Frontend
+    'https://kcislk-timetable-frontend.zeabur.app',  # Production Frontend (alternative)
     'https://kcislk-backend.zeabur.app',  # Backend domain (may serve frontend)
+    'https://kcislk-timetable-staging.zeabur.app',  # Staging Frontend
     # Add any additional frontend domains
 ]
 
