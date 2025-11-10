@@ -7,7 +7,7 @@
   },
   "deploy": {
     "framework": "vite",
-    "installCommand": "npm install"
+    "installCommand": "npm ci --legacy-peer-deps"
   },
   "environment": {
     "NODE_VERSION": "20"
