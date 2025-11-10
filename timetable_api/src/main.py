@@ -20,7 +20,8 @@ allowed_origins = [
     'https://kcislk-timetable.zeabur.app',  # Production Frontend
     'https://kcislk-timetable-frontend.zeabur.app',  # Production Frontend (alternative)
     'https://kcislk-backend.zeabur.app',  # Backend domain (may serve frontend)
-    'https://kcislk-timetable-staging.zeabur.app',  # Staging Frontend
+    'https://kcislk-timetable-staging.zeabur.app',  # Staging Frontend (planned)
+    'https://frontend-develop.zeabur.app',  # Staging Frontend (actual)
     # Add any additional frontend domains
 ]
 
