@@ -4,6 +4,7 @@ from flask_cors import CORS
 from src.models.timetable import db
 from src.routes.timetable import timetable_bp
 from src.routes.student import student_bp
+from src.routes.teacher import teacher_bp
 
 # Import exam models to ensure they are registered with SQLAlchemy
 from src.models import exam
@@ -36,6 +37,7 @@ CORS(app, origins=all_origins,
 
 app.register_blueprint(timetable_bp, url_prefix='/api')
 app.register_blueprint(student_bp, url_prefix='/api')
+app.register_blueprint(teacher_bp, url_prefix='/api')
 
 # Import and register exam blueprint
 from src.routes.exam import exam_bp
