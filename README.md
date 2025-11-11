@@ -2,7 +2,7 @@
 
 康橋國際學校林口校區小學部課表查詢系統 - 現代化 React SPA + Flask API 架構
 
-[![Version](https://img.shields.io/badge/version-2.3.1-success)](https://github.com/geonook/kcislk-timetable)
+[![Version](https://img.shields.io/badge/version-2.4.0-success)](https://github.com/geonook/kcislk-timetable)
 [![Status](https://img.shields.io/badge/status-production-green)](https://kcislk-timetable.zeabur.app)
 [![React](https://img.shields.io/badge/React-19-blue)](https://react.dev)
 [![Python](https://img.shields.io/badge/Python-3.11-yellow)](https://python.org)
@@ -24,6 +24,14 @@
 - 智能整合多個課表資料來源
 - **英文班級純淨顯示** - 英文班級課表只顯示英文課程，確保數據準確性
 - **完整8堂課表顯示** - 所有班級課表始終顯示每日完整8個時段（8:25-16:05）
+- **A4 標準列印功能** - 一鍵列印學生課表，支援 PDF 下載
+
+### 👨‍🏫 教師課表查詢（v2.4.0 新增）
+- **66 位教師完整覆蓋** - 支援所有中英文教師姓名搜尋
+- **跨班級課表聚合** - 自動整合教師所有教學班級課表
+- **教學統計分析** - 顯示總課數、教學班級數、各類課程統計
+- **紫色主題配色** - 與學生頁面（藍色）明確視覺區分
+- **A4 標準列印功能** - 一鍵列印教師課表，支援 PDF 下載
 
 ### 📋 期中考監考管理（v2.3.0 新增，v2.3.1 支援功能開關）
 - **12 個 GradeBand 完整覆蓋** - G1-G6 各 LT's 和 IT's 考試場次
@@ -244,6 +252,15 @@ VITE_ENABLE_EXAM_PROCTOR=true   # 開發環境啟用所有功能
 | **教師資料完整度** | **100%** |
 
 ## 🔄 最近更新
+
+### v2.4.0 (2025-11-11) - 教師課表查詢與A4列印功能
+- ✅ 新增教師課表查詢功能（66 位教師完整覆蓋）
+- ✅ 支援跨班級課表聚合與教學統計分析
+- ✅ 實作 A4 標準列印功能（學生與教師課表）
+- ✅ 零依賴 CSS @media print 解決方案
+- ✅ 支援 PDF 下載與自訂文件標題
+- ✅ 完整的教師頁面多語言翻譯（中英文）
+- ✅ 紫色主題配色與學生頁面視覺區分
 
 ### v2.3.2 (2025-11-10) - 部署基礎設施優化
 - ✅ 簡化 Dockerfile 配置，減少建置複雜度
