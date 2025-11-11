@@ -6,7 +6,7 @@ services:
   backend:
     build:
       context: .
-      dockerfile: Dockerfile.backend
+      dockerfile: Dockerfile.backend.docker
     container_name: kcislk-backend
     ports:
       - "8081:8081"
@@ -30,7 +30,7 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: Dockerfile.frontend
+      dockerfile: Dockerfile.frontend.docker
     container_name: kcislk-frontend
     ports:
       - "80:80"

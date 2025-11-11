@@ -1,4 +1,5 @@
 {
+  "$schema": "https://zeabur.com/schema.json",
   "name": "kcislk-timetable-frontend-staging",
   "build": {
     "rootDirectory": "frontend",
@@ -12,5 +13,6 @@
   "environment": {
     "NODE_VERSION": "20",
     "VITE_ENABLE_EXAM_PROCTOR": "true"
-  }
+  },
+  "_comment": "此配置使用 Vite 靜態托管模式部署，不使用 Dockerfile。Frontend 透過 CORS 直接呼叫 Backend API (https://kcislk-backend.zeabur.app/api)。Dockerfile.frontend.docker 僅用於本地 Docker Compose 開發環境。"
 }
