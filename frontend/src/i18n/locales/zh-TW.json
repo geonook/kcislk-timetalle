@@ -8,6 +8,7 @@
   "navigation": {
     "classes": "班級課表",
     "students": "學生課表",
+    "teachers": "教師課表",
     "examProctor": "期中考監考",
     "home": "首頁"
   },
@@ -50,6 +51,23 @@
       "tryDifferentSearch": "請嘗試其他搜尋條件",
       "backToStudentList": "返回學生列表",
       "viewingTimetable": "查看 {{name}} 的課表"
+    },
+    "teacher": {
+      "title": "教師課表查詢",
+      "searchSubtitle": "搜尋教師並查看教學課表",
+      "searchPlaceholder": "請輸入教師姓名...",
+      "searchTeachers": "搜尋教師",
+      "searching": "搜尋中...",
+      "searchError": "搜尋失敗",
+      "searchResults": "搜尋結果",
+      "noMatchingTeachers": "沒有符合條件的教師",
+      "tryDifferentSearch": "請嘗試其他搜尋條件",
+      "backToTeacherList": "返回教師列表",
+      "viewingTimetable": "查看 {{name}} 的課表",
+      "statistics": "教學統計",
+      "unifiedTimetable": "統一課表",
+      "completeTimetable": "{{name}} 的完整課表",
+      "clickToView": "點擊查看課表"
     },
     "class": {
       "title": "班級課表",
@@ -122,6 +140,19 @@
       "englishClasses": "英文課堂",
       "homeroomClasses": "導師課堂",
       "evClasses": "EV課堂"
+    }
+  },
+  "teacher": {
+    "info": {
+      "teacher": "教師"
+    },
+    "statistics": {
+      "totalClasses": "總課堂數",
+      "daysWithClasses": "上課天數",
+      "englishClasses": "英文課堂",
+      "homeroomClasses": "導師課堂",
+      "evClasses": "EV課堂",
+      "uniqueClasses": "教學班級"
     }
   },
   "common": {

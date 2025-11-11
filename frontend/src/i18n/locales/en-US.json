@@ -8,6 +8,7 @@
   "navigation": {
     "classes": "Class Timetables",
     "students": "Student Timetables",
+    "teachers": "Teacher Timetables",
     "examProctor": "Exam Proctors",
     "home": "Home"
   },
@@ -45,6 +46,23 @@
       "tryDifferentSearch": "Please try different search criteria",
       "backToStudentList": "Back to Student List",
       "viewingTimetable": "Viewing {{name}}'s Timetable"
+    },
+    "teacher": {
+      "title": "Teacher Timetable Query",
+      "searchSubtitle": "Search for teachers and view teaching timetables",
+      "searchPlaceholder": "Enter teacher name...",
+      "searchTeachers": "Search Teachers",
+      "searching": "Searching...",
+      "searchError": "Search failed",
+      "searchResults": "Search Results",
+      "noMatchingTeachers": "No matching teachers found",
+      "tryDifferentSearch": "Please try different search criteria",
+      "backToTeacherList": "Back to Teacher List",
+      "viewingTimetable": "Viewing {{name}}'s Timetable",
+      "statistics": "Teaching Statistics",
+      "unifiedTimetable": "Unified Timetable",
+      "completeTimetable": "{{name}}'s Complete Timetable",
+      "clickToView": "Click to view timetable"
     },
     "class": {
       "title": "Class Timetable",
@@ -117,6 +135,19 @@
       "englishClasses": "English Classes",
       "homeroomClasses": "Homeroom Classes",
       "evClasses": "EV Classes"
+    }
+  },
+  "teacher": {
+    "info": {
+      "teacher": "Teacher"
+    },
+    "statistics": {
+      "totalClasses": "Total Classes",
+      "daysWithClasses": "Days with Classes",
+      "englishClasses": "English Classes",
+      "homeroomClasses": "Homeroom Classes",
+      "evClasses": "EV Classes",
+      "uniqueClasses": "Classes Taught"
     }
   },
   "common": {
