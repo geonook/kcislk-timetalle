@@ -108,6 +108,11 @@ export const apiService = {
   },
 
   // Teacher-related endpoints
+  async getAllTeachers(): Promise<Teacher[]> {
+    const response = await api.get<TeacherSearchResponse>('/teachers');
+    return response.data.teachers;
+  },
+
   async searchTeachers(query: string): Promise<Teacher[]> {
     const response = await api.get<TeacherSearchResponse>('/teachers/search', {
       params: { q: query },

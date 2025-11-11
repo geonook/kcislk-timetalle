@@ -258,18 +258,18 @@
 }
 
 /* ======================================
-   A4 列印樣式
+   A4 列印樣式 - 單頁優化版
    ====================================== */
 @media print {
-  /* A4 頁面設定 */
+  /* A4 頁面設定 - 緊湊邊距 */
   @page {
-    size: A4;           /* 210mm × 297mm */
-    margin: 20mm;       /* 上下左右邊距 */
+    size: A4 portrait;  /* 210mm × 297mm 直向 */
+    margin: 10mm 8mm;   /* 上下 10mm，左右 8mm（更緊湊） */
   }
 
   body {
-    font-size: 10pt;
-    line-height: 1.4;
+    font-size: 8pt;         /* 縮小字體（10pt → 8pt） */
+    line-height: 1.2;       /* 更緊湊的行距（1.4 → 1.2） */
     color: #000 !important;
     background: #fff !important;
   }
@@ -285,7 +285,13 @@
   .breadcrumb,
   header,
   footer,
-  .sidebar {
+  .sidebar,
+  /* 新增：隱藏統計資料和圖例 */
+  .stats-panel,
+  .statistics-dashboard,
+  .legend,
+  .course-legend,
+  .print-button {
     display: none !important;
   }
 
@@ -295,12 +301,15 @@
     border: 1px solid #000;
     page-break-inside: avoid;
     background: #fff !important;
+    padding: 4pt !important;  /* 縮小內距 */
   }
 
   /* 表格優化 */
   table {
     page-break-inside: avoid;
     border-collapse: collapse;
+    width: 100% !important;
+    font-size: 7pt !important;  /* 表格字體更小 */
   }
 
   thead {
@@ -314,7 +323,35 @@
 
   td, th {
     border: 1px solid #333 !important;
-    padding: 4pt;
+    padding: 2pt !important;    /* 縮小 padding（4pt → 2pt） */
+    font-size: 7pt !important;
+  }
+
+  /* 課程卡片緊湊化 */
+  .course-card,
+  .timetable-cell {
+    padding: 2pt !important;
+    margin: 1pt !important;
+    font-size: 7pt !important;
+  }
+
+  /* 標題區域縮小 */
+  h1 {
+    font-size: 12pt !important;
+    margin: 2pt 0 !important;
+    padding: 2pt 0 !important;
+  }
+
+  h2 {
+    font-size: 10pt !important;
+    margin: 2pt 0 !important;
+    padding: 2pt 0 !important;
+  }
+
+  h3 {
+    font-size: 9pt !important;
+    margin: 1pt 0 !important;
+    padding: 1pt 0 !important;
   }
 
   /* 強制顯示背景色 */
@@ -349,5 +386,36 @@
   /* 確保課表可見 */
   .timetable-grid {
     display: block !important;
+  }
+
+  /* 緊湊化所有間距 */
+  .p-6 {
+    padding: 3pt !important;
+  }
+
+  .p-4 {
+    padding: 2pt !important;
+  }
+
+  .p-3 {
+    padding: 1pt !important;
+  }
+
+  .m-6, .my-6, .mt-6, .mb-6 {
+    margin: 2pt !important;
+  }
+
+  .m-4, .my-4, .mt-4, .mb-4 {
+    margin: 1pt !important;
+  }
+
+  /* 移除背景漸層和陰影效果 */
+  .shadow, .shadow-lg, .shadow-md, .shadow-sm {
+    box-shadow: none !important;
+  }
+
+  .bg-gradient-to-r,
+  .bg-gradient-to-br {
+    background: #fff !important;
   }
 }

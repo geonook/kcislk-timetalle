@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useMutation } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
 import { apiService } from '../services/api';
 import SearchBox from '../components/ui/SearchBox';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
@@ -16,25 +16,24 @@ export default function TeacherPage() {
   const [selectedTeacher, setSelectedTeacher] = useState<Teacher | null>(null);
   const [teacherTimetable, setTeacherTimetable] = useState<TeacherTimetableResponse | null>(null);
   const [timetableError, setTimetableError] = useState<string | null>(null);
-  const [searchResults, setSearchResults] = useState<Teacher[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Search teachers mutation
-  const searchMutation = useMutation({
-    mutationFn: apiService.searchTeachers,
-    onMutate: () => {
-      console.log('開始搜尋教師...');
-      setSearchResults([]);
-    },
-    onSuccess: (data) => {
-      console.log('教師搜尋成功:', data);
-      setSearchResults(data);
-    },
-    onError: (error) => {
-      console.error('教師搜尋失敗:', error);
-      setSearchResults([]);
-    },
+  // Fetch all teachers once (like StudentPage pattern)
+  const { data: allTeachers = [], isLoading: isLoadingTeachers } = useQuery({
+    queryKey: ['teachers'],
+    queryFn: apiService.getAllTeachers,
+    staleTime: 5 * 60 * 1000, // 5 分鐘內不重新請求
   });
+
+  // Client-side filtering (instant response)
+  const filteredTeachers = useMemo(() => {
+    if (!searchQuery.trim()) return [];
+
+    const query = searchQuery.toLowerCase().trim();
+    return allTeachers.filter(teacher =>
+      teacher.teacher_name.toLowerCase().includes(query)
+    );
+  }, [searchQuery, allTeachers]);
 
   // Get teacher timetable mutation
   const timetableMutation = useMutation({
@@ -59,14 +58,9 @@ export default function TeacherPage() {
     },
   });
 
-  // Handle search
+  // Handle search (now just updates state, filtering is instant)
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    if (query.trim() !== '') {
-      searchMutation.mutate(query);
-    } else {
-      setSearchResults([]);
-    }
   };
 
   // Handle back to teacher list
@@ -101,11 +95,9 @@ export default function TeacherPage() {
   const handleClearSearch = () => {
     console.log('用戶點擊清除搜尋');
     setSearchQuery('');
-    setSearchResults([]);
     setTeacherTimetable(null);
     setTimetableError(null);
     timetableMutation.reset();
-    searchMutation.reset();
   };
 
   const handleRetryTimetable = () => {
@@ -187,7 +179,7 @@ export default function TeacherPage() {
                   value={searchQuery}
                   onChange={handleSearch}
                   placeholder={t('pages.teacher.searchPlaceholder')}
-                  loading={searchMutation.isPending}
+                  loading={isLoadingTeachers}
                   className="w-full"
                 />
               </div>
@@ -199,7 +191,7 @@ export default function TeacherPage() {
       {/* Search Results */}
       {!selectedTeacher && searchQuery && (
         <div className="mb-12">
-          {searchMutation.isPending ? (
+          {isLoadingTeachers ? (
             <div className="py-12">
               <LoadingSpinner
                 size="lg"
@@ -207,33 +199,33 @@ export default function TeacherPage() {
                 className="justify-center"
               />
             </div>
-          ) : searchMutation.error ? (
+          ) : filteredTeachers.length === 0 ? (
             <div className="text-center py-12">
-              <div className="card p-8 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 max-w-md mx-auto">
-                <div className="text-red-500 mb-4">
+              <div className="card p-8 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 max-w-md mx-auto">
+                <div className="text-yellow-500 mb-4">
                   <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.96-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
                   </svg>
                 </div>
                 <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                  {t('pages.teacher.searchError')}
+                  {t('pages.teacher.noResults')}
                 </h3>
-                <p className="text-red-700 dark:text-red-300 mb-4">
-                  {searchMutation.error instanceof Error ? searchMutation.error.message : t('common.error')}
+                <p className="text-yellow-700 dark:text-yellow-300 mb-4">
+                  找不到符合「{searchQuery}」的教師，請嘗試其他關鍵字
                 </p>
                 <button
-                  onClick={() => handleSearch(searchQuery)}
+                  onClick={handleClearSearch}
                   className="btn-primary"
                 >
-                  {t('common.retry')}
+                  {t('common.clear')}
                 </button>
               </div>
             </div>
-          ) : searchResults.length > 0 ? (
+          ) : (
             <div>
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  {t('pages.teacher.searchResults')} ({searchResults.length})
+                  {t('pages.teacher.searchResults')} ({filteredTeachers.length})
                 </h2>
                 <button
                   onClick={handleClearSearch}
@@ -243,7 +235,7 @@ export default function TeacherPage() {
                 </button>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {searchResults.map((teacher) => (
+                {filteredTeachers.map((teacher) => (
                   <TeacherCard
                     key={teacher.id}
                     teacher={teacher}
@@ -251,16 +243,6 @@ export default function TeacherPage() {
                   />
                 ))}
               </div>
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <AcademicCapIcon className="mx-auto h-12 w-12 text-gray-400" />
-              <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-white">
-                {t('pages.teacher.noMatchingTeachers')}
-              </h3>
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                {t('pages.teacher.tryDifferentSearch')}
-              </p>
             </div>
           )}
         </div>
