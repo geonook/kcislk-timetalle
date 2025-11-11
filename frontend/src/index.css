@@ -256,3 +256,98 @@
     @apply transition-all duration-300 hover:shadow-xl hover:scale-105 hover:-translate-y-1;
   }
 }
+
+/* ======================================
+   A4 列印樣式
+   ====================================== */
+@media print {
+  /* A4 頁面設定 */
+  @page {
+    size: A4;           /* 210mm × 297mm */
+    margin: 20mm;       /* 上下左右邊距 */
+  }
+
+  body {
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  /* 隱藏不需要列印的元素 */
+  .no-print,
+  nav,
+  button,
+  .search-box,
+  .back-button,
+  .theme-toggle,
+  .language-toggle,
+  .breadcrumb,
+  header,
+  footer,
+  .sidebar {
+    display: none !important;
+  }
+
+  /* 課表容器優化 */
+  .card {
+    box-shadow: none;
+    border: 1px solid #000;
+    page-break-inside: avoid;
+    background: #fff !important;
+  }
+
+  /* 表格優化 */
+  table {
+    page-break-inside: avoid;
+    border-collapse: collapse;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  td, th {
+    border: 1px solid #333 !important;
+    padding: 4pt;
+  }
+
+  /* 強制顯示背景色 */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* 深色模式強制轉換為淺色 */
+  .dark {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .dark * {
+    background: transparent !important;
+    color: inherit !important;
+  }
+
+  /* 隱藏非課表內容 */
+  .student-cards,
+  .teacher-cards {
+    display: none !important;
+  }
+
+  /* 優化列印時的標題 */
+  h1, h2, h3 {
+    page-break-after: avoid;
+    color: #000 !important;
+  }
+
+  /* 確保課表可見 */
+  .timetable-grid {
+    display: block !important;
+  }
+}

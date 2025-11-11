@@ -5,6 +5,7 @@ import { apiService } from '../services/api';
 import SearchBox from '../components/ui/SearchBox';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import TeacherCard from '../components/ui/TeacherCard';
+import PrintButton from '../components/ui/PrintButton';
 import UnifiedTimetableGrid from '../components/timetable/UnifiedTimetableGrid';
 import { mergeStudentTimetables, hasAnyTimetableData } from '../utils/timetableUtils';
 import { AcademicCapIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
@@ -374,11 +375,14 @@ export default function TeacherPage() {
               {teacherTimetable.statistics && (
                 <div className="card p-8 shadow-xl bg-gradient-to-br from-white via-gray-50/50 to-white dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 border border-gray-200 dark:border-gray-700">
                   {/* Header */}
-                  <div className="flex items-center space-x-3 mb-6">
-                    <div className="w-1 h-8 bg-gradient-to-b from-purple-500 to-purple-600 rounded-full"></div>
-                    <h3 className="text-xl font-bold bg-gradient-to-r from-gray-900 via-purple-700 to-purple-600 dark:from-white dark:via-purple-300 dark:to-purple-200 bg-clip-text text-transparent">
-                      📊 {t('pages.teacher.statistics')}
-                    </h3>
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-1 h-8 bg-gradient-to-b from-purple-500 to-purple-600 rounded-full"></div>
+                      <h3 className="text-xl font-bold bg-gradient-to-r from-gray-900 via-purple-700 to-purple-600 dark:from-white dark:via-purple-300 dark:to-purple-200 bg-clip-text text-transparent">
+                        📊 {t('pages.teacher.statistics')}
+                      </h3>
+                    </div>
+                    <PrintButton documentTitle={`${selectedTeacher.teacher_name}_課表`} />
                   </div>
 
                   {/* Stats Grid */}
