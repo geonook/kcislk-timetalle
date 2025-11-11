@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from '../App';
 import HomePage from '../pages/HomePage';
 import StudentPage from '../pages/StudentPage';
+import TeacherPage from '../pages/TeacherPage';
 import ClassPage from '../pages/ClassPage';
 import ExamProctorPage from '../pages/ExamProctorPage';
 import NotFoundPage from '../pages/NotFoundPage';
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
       {
         path: 'students',
         element: <StudentPage />,
+      },
+      {
+        path: 'teachers',
+        element: <TeacherPage />,
       },
       {
         path: 'class/:className',
