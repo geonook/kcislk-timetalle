@@ -3,6 +3,9 @@ import type {
   Student,
   StudentSearchResponse,
   StudentTimetableResponse,
+  Teacher,
+  TeacherSearchResponse,
+  TeacherTimetableResponse,
   ClassListResponse,
   ClassTimetableResponse,
   ApiResponse,
@@ -101,6 +104,19 @@ export const apiService = {
 
   async getStudentTimetable(studentId: string): Promise<StudentTimetableResponse> {
     const response = await api.get<StudentTimetableResponse>(`/students/${studentId}/timetable`);
+    return response.data;
+  },
+
+  // Teacher-related endpoints
+  async searchTeachers(query: string): Promise<Teacher[]> {
+    const response = await api.get<TeacherSearchResponse>('/teachers/search', {
+      params: { q: query },
+    });
+    return response.data.teachers;
+  },
+
+  async getTeacherTimetable(teacherName: string): Promise<TeacherTimetableResponse> {
+    const response = await api.get<TeacherTimetableResponse>(`/teachers/${encodeURIComponent(teacherName)}/timetable`);
     return response.data;
   },
 

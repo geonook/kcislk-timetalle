@@ -220,6 +220,41 @@ export interface StudentStore {
   clearSearch: () => void;
 }
 
+// Teacher Types
+export interface Teacher {
+  id: number;
+  teacher_name: string;
+}
+
+export interface TeacherSearchResponse {
+  success: boolean;
+  teachers: Teacher[];
+}
+
+export interface TeacherTimetableResponse {
+  success: boolean;
+  teacher: Teacher;
+  timetables: {
+    english_timetable: TimetableDisplay;
+    homeroom_timetable: TimetableDisplay;
+    ev_myreading_timetable: TimetableDisplay;
+  };
+  statistics: {
+    total_classes: number;
+    days_with_classes: number;
+    english_classes: number;
+    homeroom_classes: number;
+    ev_myreading_classes: number;
+    unique_classes: number;
+  };
+}
+
+export interface TeacherCardProps {
+  teacher: Teacher;
+  onClick: (teacher: Teacher) => void;
+  className?: string;
+}
+
 // Environment Types
 export interface EnvConfig {
   apiBaseUrl: string;
