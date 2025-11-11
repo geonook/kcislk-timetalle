@@ -240,6 +240,307 @@ GET /api/search?class_name={class_name}&teacher={teacher}&classroom={classroom}&
 }
 ```
 
+### 期中考監考相關 API (v2.3.0 新增)
+
+#### 1. 取得所有考試場次
+```http
+GET /api/exams/sessions
+```
+
+**說明**: 取得所有期中考試場次資訊（12 個 GradeBand）
+
+**回應**:
+```json
+{
+  "success": true,
+  "sessions": [
+    {
+      "id": 1,
+      "grade_band": "G1 LT's",
+      "exam_date": "2025-11-04",
+      "exam_time": "8:30-10:00",
+      "duration": "90 minutes",
+      "periods": "1-2",
+      "self_study": "10:00-10:30",
+      "preparation": "10:30-11:00",
+      "total_classes": 7
+    },
+    {
+      "id": 2,
+      "grade_band": "G1 IT's",
+      "exam_date": "2025-11-04",
+      "exam_time": "11:00-12:30",
+      "duration": "90 minutes",
+      "periods": "3-4",
+      "self_study": "12:30-13:00",
+      "preparation": "13:00-13:30",
+      "total_classes": 7
+    }
+  ],
+  "count": 12
+}
+```
+
+#### 2. 取得所有班級考試資訊
+```http
+GET /api/exams/classes
+```
+
+**說明**: 取得所有班級的考試安排（168 筆記錄）
+
+**回應**:
+```json
+{
+  "success": true,
+  "classes": [
+    {
+      "id": 1,
+      "exam_session_id": 1,
+      "class_name": "101",
+      "grade": "G1",
+      "teacher": "王小華",
+      "level": "LT's",
+      "subject": "Language Arts",
+      "student_count": 25,
+      "proctor_name": "李老師",
+      "classroom": "E101",
+      "grade_band": "G1 LT's",
+      "exam_date": "2025-11-04",
+      "exam_time": "8:30-10:00"
+    }
+  ],
+  "count": 168,
+  "statistics": {
+    "total_grade_bands": 12,
+    "total_classes": 84,
+    "total_exams": 168,
+    "assigned_proctors": 145,
+    "unassigned_proctors": 23
+  }
+}
+```
+
+#### 3. 按 GradeBand 查詢班級考試資訊
+```http
+GET /api/exams/classes/grade-band/{grade_band}
+```
+
+**參數**:
+- `grade_band` (string): GradeBand 名稱（例如：G1 LT's, G2 IT's）
+
+**回應**:
+```json
+{
+  "success": true,
+  "grade_band": "G1 LT's",
+  "session": {
+    "exam_date": "2025-11-04",
+    "exam_time": "8:30-10:00",
+    "duration": "90 minutes",
+    "periods": "1-2"
+  },
+  "classes": [
+    {
+      "id": 1,
+      "class_name": "101",
+      "teacher": "王小華",
+      "subject": "Language Arts",
+      "student_count": 25,
+      "proctor_name": "李老師",
+      "classroom": "E101"
+    }
+  ],
+  "count": 7
+}
+```
+
+#### 4. 新增監考分配
+```http
+POST /api/exams/proctors
+```
+
+**Request Body**:
+```json
+{
+  "class_exam_id": 1,
+  "proctor_name": "王老師",
+  "classroom": "E101"
+}
+```
+
+**回應**:
+```json
+{
+  "success": true,
+  "message": "監考分配已新增",
+  "proctor_assignment": {
+    "id": 1,
+    "class_exam_id": 1,
+    "proctor_name": "王老師",
+    "classroom": "E101",
+    "assigned_at": "2025-11-04T10:30:00Z"
+  }
+}
+```
+
+#### 5. 更新監考分配
+```http
+PUT /api/exams/proctors/{id}
+```
+
+**參數**:
+- `id` (integer): 監考分配 ID
+
+**Request Body**:
+```json
+{
+  "proctor_name": "李老師",
+  "classroom": "E102"
+}
+```
+
+**回應**:
+```json
+{
+  "success": true,
+  "message": "監考分配已更新",
+  "proctor_assignment": {
+    "id": 1,
+    "proctor_name": "李老師",
+    "classroom": "E102",
+    "updated_at": "2025-11-04T11:00:00Z"
+  }
+}
+```
+
+#### 6. 批次更新監考分配
+```http
+POST /api/exams/proctors/batch
+```
+
+**說明**: 批次更新多個班級的監考分配
+
+**Request Body**:
+```json
+{
+  "assignments": [
+    {
+      "class_exam_id": 1,
+      "proctor_name": "王老師",
+      "classroom": "E101"
+    },
+    {
+      "class_exam_id": 2,
+      "proctor_name": "李老師",
+      "classroom": "E102"
+    },
+    {
+      "class_exam_id": 3,
+      "proctor_name": "張老師",
+      "classroom": "E103"
+    }
+  ]
+}
+```
+
+**回應**:
+```json
+{
+  "success": true,
+  "message": "批次更新完成",
+  "updated_count": 3,
+  "failed_count": 0,
+  "results": [
+    {
+      "class_exam_id": 1,
+      "status": "success",
+      "proctor_assignment_id": 1
+    },
+    {
+      "class_exam_id": 2,
+      "status": "success",
+      "proctor_assignment_id": 2
+    },
+    {
+      "class_exam_id": 3,
+      "status": "success",
+      "proctor_assignment_id": 3
+    }
+  ]
+}
+```
+
+#### 7. 匯出 CSV
+```http
+GET /api/exams/export/csv?grade_band={grade_band}
+```
+
+**參數**:
+- `grade_band` (string, 選填): 指定 GradeBand，留空則匯出全部
+
+**說明**: 匯出 15 欄位完整格式的監考分配資料
+
+**CSV 欄位**:
+- ClassName（班級名稱）
+- Grade（年級）
+- Teacher（教師）
+- Level（程度：IT's / LT's）
+- Classroom（教室）
+- GradeBand（考試級別）
+- Duration（考試時長）
+- Periods（節次）
+- Self-Study（自習時段）
+- Preparation（準備時段）
+- ExamTime（考試時間）
+- Proctor（監考老師）
+- Subject（科目）
+- Count（學生人數）
+- Students（學生名單）
+
+**回應**: CSV 檔案下載（Content-Type: text/csv）
+
+#### 8. 取得統計資料
+```http
+GET /api/exams/stats
+```
+
+**回應**:
+```json
+{
+  "success": true,
+  "statistics": {
+    "total_sessions": 12,
+    "total_classes": 84,
+    "total_exams": 168,
+    "assigned_proctors": 145,
+    "unassigned_proctors": 23,
+    "assignment_rate": 86.3,
+    "by_date": {
+      "2025-11-04": {
+        "grade_bands": 4,
+        "exams": 56,
+        "assigned": 48,
+        "unassigned": 8
+      },
+      "2025-11-05": {
+        "grade_bands": 4,
+        "exams": 56,
+        "assigned": 50,
+        "unassigned": 6
+      },
+      "2025-11-06": {
+        "grade_bands": 4,
+        "exams": 56,
+        "assigned": 47,
+        "unassigned": 9
+      }
+    }
+  }
+}
+```
+
+---
+
 ### 資源列表 API
 
 #### 1. 取得所有教師
@@ -380,6 +681,6 @@ def get_all_classes():
 
 ---
 
-*最後更新: 2025-09-24*
-*版本: 2.0*
+*最後更新: 2025-11-10*
+*版本: v2.3.2*
 *狀態: 生產環境已部署*

@@ -5,6 +5,75 @@
 格式基於 [Keep a Changelog](https://keepachangelog.com/zh-TW/1.0.0/)，
 版本號碼遵循 [語義化版本](https://semver.org/lang/zh-TW/)。
 
+## [2.3.2] - 2025-11-10 🛠️ 部署基礎設施優化
+
+### 🔧 部署優化
+- **Zeabur 配置優化**
+  - 簡化 Dockerfile 配置，統一使用 `COPY . .` 減少建置複雜度
+  - 新增 `.zeabur/config.yaml` 明確指定建置方式
+  - 新增根目錄 `package.json` 協助 Zeabur 正確偵測 Node.js 專案
+  - 修正專案結構，移除根目錄 `requirements.txt` 防止誤判為 Python 專案
+
+- **Docker 建置改進**
+  - 統一使用 Node 20.x（符合 React 19 要求）
+  - 採用 `npm ci --legacy-peer-deps` 確保依賴安裝一致性
+  - 優化 Dockerfile 多階段建置流程
+
+### ✨ 環境管理完善
+- **Staging 環境配置**
+  - 補充 `frontend/.env.staging` 的 `VITE_ENABLE_EXAM_PROCTOR=true` 設定
+  - 確保 `develop` 分支自動部署到 Staging 環境
+  - 統一前端環境變數配置，避免功能開關遺漏
+
+- **多環境架構**
+  - Production (main) 和 Staging (develop) 雙環境工作流程完善
+  - 環境變數配置一致性檢查機制
+  - 支援 Staging 測試通過後推送至 Production
+
+### 📚 文檔更新
+- **新增 ZEABUR-SETUP.md**
+  - 完整的 Production/Staging 多環境配置指南
+  - 詳細的環境變數設定說明
+  - Zeabur 服務配置步驟和驗證清單
+  - 標準開發工作流程和常見問題排除
+
+### 🐛 問題修復
+- **專案類型偵測**
+  - 修正 Zeabur 將前端誤判為 Python/Flask 專案的問題
+  - 解決 Production 環境顯示 Flask API 而非 React 前端的錯誤
+  - 確保 Zeabur 正確識別為 Node.js/Vite 專案
+
+- **建置失敗修復**
+  - 解決 `/bin/sh: vite: not found` 錯誤
+  - 修復 Node 版本不匹配導致的建置問題
+  - 修正依賴安裝失敗（改用 npm ci）
+
+### 🎯 技術改進
+- **配置檔案清理**
+  - 移除衝突的配置檔案（zbpack.json, zeabur-frontend.json）
+  - 統一使用 `zeabur.json`（Production）和 `zeabur-staging.json`（Staging）
+  - 確保配置檔案命名一致性
+
+- **後端依賴管理**
+  - 補充 `timetable_api/requirements.txt` 的 `pandas==2.2.0`（data_loader 依賴）
+  - 移除未使用的 `numpy` 套件
+  - 確保後端套件完整性
+
+### 📊 影響範圍
+- Zeabur 部署配置和建置流程
+- Staging/Production 雙環境架構
+- Docker 容器化建置
+- 前端環境變數管理
+- 後端 Python 依賴套件
+
+### 🎉 部署成果
+- ✅ Production 環境正確顯示 React 前端應用
+- ✅ Staging 環境功能開關完整設定
+- ✅ 雙環境工作流程清晰明確
+- ✅ 零技術債務，配置檔案整潔
+
+---
+
 ## [2.3.1] - 2025-11-06 🎚️ 功能開關機制
 
 ### ✨ 新增功能
