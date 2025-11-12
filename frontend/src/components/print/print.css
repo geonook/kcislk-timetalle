@@ -10,24 +10,20 @@
 
 /* 列印時顯示 */
 @media print {
-  /* 隱藏所有非列印內容 */
-  body > *:not(.printable-timetable),
-  header, nav, footer, aside,
-  .no-print, [class*="hero"], [class*="card"],
-  [class*="statistics"], [class*="btn"],
-  [class*="search"], [class*="breadcrumb"] {
+  /* 隱藏整個 React 應用 */
+  #root {
     display: none !important;
   }
 
-  /* 顯示列印組件 */
+  /* 只顯示列印組件（已透過 Portal 掛載到 body） */
   .printable-timetable {
     display: block !important;
-    visibility: visible !important;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    min-height: 100vh !important;
+    background: white !important;
   }
 
   /* 頁面設定：A4 直式，8mm 邊界 */

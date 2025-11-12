@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { apiService } from '../services/api';
@@ -463,15 +464,18 @@ export default function TeacherPage() {
         </div>
       )}
 
-      {/* Hidden Print Component */}
+      {/* Hidden Print Component - Using Portal to render outside #root */}
       {selectedTeacher && teacherTimetable && (() => {
         const unifiedTimetable = mergeStudentTimetables(teacherTimetable.timetables);
-        return hasAnyTimetableData(unifiedTimetable) ? (
-          <PrintableTimetable
-            timetableData={unifiedTimetable}
-            teacherName={selectedTeacher.teacher_name}
-          />
-        ) : null;
+        return hasAnyTimetableData(unifiedTimetable)
+          ? createPortal(
+              <PrintableTimetable
+                timetableData={unifiedTimetable}
+                teacherName={selectedTeacher.teacher_name}
+              />,
+              document.body
+            )
+          : null;
       })()}
 
     </div>
