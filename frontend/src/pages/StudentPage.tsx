@@ -115,8 +115,7 @@ export default function StudentPage() {
 
   const handleClearSearch = () => {
     console.log('用戶點擊清除搜尋');
-    setSearchQuery('');
-    setFilteredStudents(allStudents);
+    setSearchQuery(''); // useMemo will automatically recalculate filteredStudents
     setStudentTimetable(null);
     setTimetableError(null);
     timetableMutation.reset();
