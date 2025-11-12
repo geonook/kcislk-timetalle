@@ -7,8 +7,9 @@ import LoadingSpinner from '../components/ui/LoadingSpinner';
 import TeacherCard from '../components/ui/TeacherCard';
 import PrintButton from '../components/ui/PrintButton';
 import UnifiedTimetableGrid from '../components/timetable/UnifiedTimetableGrid';
+import PrintableTimetable from '../components/print/PrintableTimetable';
 import { mergeStudentTimetables, hasAnyTimetableData } from '../utils/timetableUtils';
-import { AcademicCapIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { AcademicCapIcon, ArrowLeftIcon, PrinterIcon } from '@heroicons/react/24/outline';
 import type { Teacher, TeacherTimetableResponse } from '../types';
 
 export default function TeacherPage() {
@@ -27,7 +28,7 @@ export default function TeacherPage() {
 
   // Client-side filtering (instant response)
   const filteredTeachers = useMemo(() => {
-    if (!searchQuery.trim()) return [];
+    if (!searchQuery.trim()) return allTeachers;
 
     const query = searchQuery.toLowerCase().trim();
     return allTeachers.filter(teacher =>
@@ -189,7 +190,7 @@ export default function TeacherPage() {
       )}
 
       {/* Search Results */}
-      {!selectedTeacher && searchQuery && (
+      {!selectedTeacher && (
         <div className="mb-12">
           {isLoadingTeachers ? (
             <div className="py-12">
@@ -364,7 +365,13 @@ export default function TeacherPage() {
                         📊 {t('pages.teacher.statistics')}
                       </h3>
                     </div>
-                    <PrintButton documentTitle={`${selectedTeacher.teacher_name}_課表`} />
+                    <button
+                      onClick={() => window.print()}
+                      className="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 text-white rounded-xl font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    >
+                      <PrinterIcon className="h-5 w-5 mr-2" />
+                      列印課表
+                    </button>
                   </div>
 
                   {/* Stats Grid */}
@@ -455,6 +462,17 @@ export default function TeacherPage() {
           )}
         </div>
       )}
+
+      {/* Hidden Print Component */}
+      {selectedTeacher && teacherTimetable && (() => {
+        const unifiedTimetable = mergeStudentTimetables(teacherTimetable.timetables);
+        return hasAnyTimetableData(unifiedTimetable) ? (
+          <PrintableTimetable
+            timetableData={unifiedTimetable}
+            teacherName={selectedTeacher.teacher_name}
+          />
+        ) : null;
+      })()}
 
     </div>
   );
