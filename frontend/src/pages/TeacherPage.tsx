@@ -10,7 +10,7 @@ import PrintButton from '../components/ui/PrintButton';
 import UnifiedTimetableGrid from '../components/timetable/UnifiedTimetableGrid';
 import PrintableTimetable from '../components/print/PrintableTimetable';
 import { mergeStudentTimetables, hasAnyTimetableData } from '../utils/timetableUtils';
-import { AcademicCapIcon, ArrowLeftIcon, PrinterIcon } from '@heroicons/react/24/outline';
+import { AcademicCapIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import type { Teacher, TeacherTimetableResponse } from '../types';
 
 export default function TeacherPage() {
@@ -366,13 +366,10 @@ export default function TeacherPage() {
                         📊 {t('pages.teacher.statistics')}
                       </h3>
                     </div>
-                    <button
-                      onClick={() => window.print()}
-                      className="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 text-white rounded-xl font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
-                    >
-                      <PrinterIcon className="h-5 w-5 mr-2" />
-                      列印課表
-                    </button>
+                    <PrintButton
+                      documentTitle={`${selectedTeacher.teacher_name}_Timetable`}
+                      className="px-4 py-2 bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 text-white rounded-xl font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    />
                   </div>
 
                   {/* Stats Grid */}

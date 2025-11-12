@@ -431,7 +431,7 @@ export default function StudentPage() {
                         📊 {t('pages.student.statistics')}
                       </h3>
                     </div>
-                    <PrintButton documentTitle={`${selectedStudent.student_name}_課表`} />
+                    <PrintButton documentTitle={`${selectedStudent.student_name}_Timetable`} />
                   </div>
 
                   {/* Stats Grid */}
