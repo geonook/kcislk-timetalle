@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import type { UnifiedTimetableData } from '../../types';
+import type { UnifiedTimetableDisplay } from '../../types';
 import './print.css';
 
 interface PrintableTimetableProps {
-  timetableData: UnifiedTimetableData;
+  timetableData: UnifiedTimetableDisplay;
   teacherName: string;
 }
 
@@ -103,15 +103,18 @@ export default function PrintableTimetable({ timetableData, teacherName }: Print
                 <div className="period-time">{timeSlots[period]}</div>
               </td>
               {days.map(day => {
-                const course = timetableData[day]?.[period];
+                const courses = timetableData[day]?.[period];
 
-                if (!course) {
+                if (!courses || courses.length === 0) {
                   return (
                     <td key={day} className="empty-cell">
                       <div className="free-period">Free</div>
                     </td>
                   );
                 }
+
+                // 如果有多個課程，只顯示第一個（教師不應該同時有多個課程）
+                const course = courses[0];
 
                 // 3行顯示格式
                 const classAbbrev = abbreviateClass(course.class_name || '');
