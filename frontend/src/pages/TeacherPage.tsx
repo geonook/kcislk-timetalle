@@ -467,15 +467,22 @@ export default function TeacherPage() {
       {/* Hidden Print Component - Using Portal to render outside #root */}
       {selectedTeacher && teacherTimetable && (() => {
         const unifiedTimetable = mergeStudentTimetables(teacherTimetable.timetables);
-        return hasAnyTimetableData(unifiedTimetable)
-          ? createPortal(
-              <PrintableTimetable
-                timetableData={unifiedTimetable}
-                teacherName={selectedTeacher.teacher_name}
-              />,
-              document.body
-            )
-          : null;
+
+        // Debug: 強制渲染以測試
+        console.log('🖨️ Print Component - Rendering check:', {
+          hasTeacher: !!selectedTeacher,
+          hasTimetable: !!teacherTimetable,
+          hasData: hasAnyTimetableData(unifiedTimetable),
+          unifiedTimetable
+        });
+
+        return createPortal(
+          <PrintableTimetable
+            timetableData={unifiedTimetable}
+            teacherName={selectedTeacher.teacher_name}
+          />,
+          document.body
+        );
       })()}
 
     </div>

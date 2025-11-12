@@ -7,31 +7,17 @@ interface PrintableTimetableProps {
   teacherName: string;
 }
 
-// 智能縮寫函數
-const abbreviateClass = (className: string): string => {
-  // G1 Adventurers → G1A
-  // G2 Explorers → G2E
-  // 101 → 101
-  if (className.includes('Adventurers')) return className.replace('Adventurers', 'A').replace(/\s+/g, '');
-  if (className.includes('Explorers')) return className.replace('Explorers', 'E').replace(/\s+/g, '');
-  if (className.includes('Discoverers')) return className.replace('Discoverers', 'D').replace(/\s+/g, '');
-  if (className.includes('Navigators')) return className.replace('Navigators', 'N').replace(/\s+/g, '');
-  if (className.includes('Pioneers')) return className.replace('Pioneers', 'P').replace(/\s+/g, '');
-  return className;
+// 智能格式化函數 - 減少過度縮寫
+const formatClassName = (className: string): string => {
+  // 保持原樣，只移除多餘空格
+  return className.replace(/\s+/g, ' ').trim();
 };
 
-const abbreviateSubject = (subject: string): string => {
+const formatSubject = (subject: string): string => {
+  // 只縮寫特別長的科目名稱
   const abbrev: Record<string, string> = {
-    'English': 'Eng',
-    'Mathematics': 'Math',
-    'Science': 'Sci',
-    'Social Studies': 'SS',
     'Physical Education': 'PE',
-    'Music': 'Mus',
-    'Art': 'Art',
-    'Computer': 'Comp',
-    'Chinese': 'Chi',
-    'Reading': 'Read',
+    'Social Studies': 'Social',
   };
 
   for (const [full, short] of Object.entries(abbrev)) {
@@ -42,19 +28,12 @@ const abbreviateSubject = (subject: string): string => {
   return subject;
 };
 
-const simplifyTeacher = (teacher: string): string => {
-  // 何真瑾 Evelyn → 何Evelyn
-  // John Smith → J.Smith
-  const match = teacher.match(/^([\u4e00-\u9fa5]{1,2}).*?\s+([A-Za-z]+)$/);
+const formatTeacher = (teacher: string): string => {
+  // 何真瑾 Evelyn → 何 Evelyn (加空格更清晰)
+  const match = teacher.match(/^([\u4e00-\u9fa5]+)\s+([A-Za-z]+)$/);
   if (match) {
-    return `${match[1]}${match[2]}`;
+    return `${match[1]} ${match[2]}`;
   }
-
-  const englishMatch = teacher.match(/^([A-Za-z]+)\s+([A-Za-z]+)$/);
-  if (englishMatch) {
-    return `${englishMatch[1][0]}.${englishMatch[2]}`;
-  }
-
   return teacher;
 };
 
@@ -116,22 +95,22 @@ export default function PrintableTimetable({ timetableData, teacherName }: Print
                 // 如果有多個課程，只顯示第一個（教師不應該同時有多個課程）
                 const course = courses[0];
 
-                // 3行顯示格式
-                const classAbbrev = abbreviateClass(course.class_name || '');
-                const subjectAbbrev = abbreviateSubject(course.course_name || course.subject || '');
-                const teacherSimple = simplifyTeacher(course.teacher || '');
+                // 格式化顯示資訊
+                const className = formatClassName(course.class_name || '');
+                const subject = formatSubject(course.course_name || course.subject || '');
+                const teacher = formatTeacher(course.teacher || '');
                 const classroom = course.classroom || '';
 
                 return (
                   <td key={day} className="course-cell">
                     <div className="course-line-1">
-                      {classAbbrev}-{subjectAbbrev} @ {classroom}
+                      {className}
                     </div>
                     <div className="course-line-2">
-                      {course.course_name || course.subject}
+                      {subject}
                     </div>
                     <div className="course-line-3">
-                      {teacherSimple}
+                      {teacher} @ {classroom}
                     </div>
                   </td>
                 );
