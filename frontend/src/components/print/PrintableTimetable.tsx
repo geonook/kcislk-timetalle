@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import type { UnifiedTimetableDisplay } from '../../types';
-import './print-redesigned.css';
+import './print.css';
 
 interface PrintableTimetableProps {
   timetableData: UnifiedTimetableDisplay;
