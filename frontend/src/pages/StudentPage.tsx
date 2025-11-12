@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { apiService } from '../services/api';
@@ -7,6 +8,7 @@ import LoadingSpinner from '../components/ui/LoadingSpinner';
 import StudentCard from '../components/ui/StudentCard';
 import PrintButton from '../components/ui/PrintButton';
 import UnifiedTimetableGrid from '../components/timetable/UnifiedTimetableGrid';
+import PrintableTimetable from '../components/print/PrintableTimetable';
 import { mergeStudentTimetables, hasAnyTimetableData } from '../utils/timetableUtils';
 import { UserIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import type { Student, StudentTimetableResponse } from '../types';
@@ -510,6 +512,20 @@ export default function StudentPage() {
           )}
         </div>
       )}
+
+      {/* Hidden Print Component - Using Portal to render outside #root */}
+      {selectedStudent && studentTimetable && (() => {
+        const unifiedTimetable = mergeStudentTimetables(studentTimetable.timetables);
+        return hasAnyTimetableData(unifiedTimetable)
+          ? createPortal(
+              <PrintableTimetable
+                timetableData={unifiedTimetable}
+                teacherName={`${selectedStudent.student_name} (${selectedStudent.student_id})`}
+              />,
+              document.body
+            )
+          : null;
+      })()}
 
     </div>
   );
