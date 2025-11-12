@@ -1,4 +1,5 @@
 import { PrinterIcon } from '@heroicons/react/24/outline';
+import { useTranslation } from 'react-i18next';
 
 interface PrintButtonProps {
   documentTitle?: string;
@@ -6,6 +7,8 @@ interface PrintButtonProps {
 }
 
 export default function PrintButton({ documentTitle, className = '' }: PrintButtonProps) {
+  const { t } = useTranslation();
+
   const handlePrint = () => {
     const originalTitle = document.title;
 
@@ -25,10 +28,10 @@ export default function PrintButton({ documentTitle, className = '' }: PrintButt
     <button
       onClick={handlePrint}
       className={`no-print inline-flex items-center space-x-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg ${className}`}
-      aria-label="列印課表"
+      aria-label={t('common.print')}
     >
       <PrinterIcon className="h-5 w-5" />
-      <span className="font-medium">列印課表</span>
+      <span className="font-medium">{t('common.print')}</span>
     </button>
   );
 }

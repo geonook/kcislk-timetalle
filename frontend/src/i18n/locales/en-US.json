@@ -169,7 +169,8 @@
     "back": "Back",
     "next": "Next",
     "previous": "Previous",
-    "loaded": "Loaded"
+    "loaded": "Loaded",
+    "print": "Print Timetable"
   },
   "theme": {
     "light": "Light Mode",
