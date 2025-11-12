@@ -31,7 +31,7 @@ export default function TeacherPage() {
 
     const query = searchQuery.toLowerCase().trim();
     return allTeachers.filter(teacher =>
-      teacher.teacher_name.toLowerCase().includes(query)
+      teacher?.teacher_name && teacher.teacher_name.toLowerCase().includes(query)
     );
   }, [searchQuery, allTeachers]);
 
