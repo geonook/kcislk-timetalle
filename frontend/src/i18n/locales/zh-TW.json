@@ -60,11 +60,13 @@
       "searching": "搜尋中...",
       "searchError": "搜尋失敗",
       "searchResults": "搜尋結果",
+      "noResults": "未找到教師",
       "noMatchingTeachers": "沒有符合條件的教師",
       "tryDifferentSearch": "請嘗試其他搜尋條件",
       "backToTeacherList": "返回教師列表",
       "viewingTimetable": "查看 {{name}} 的課表",
       "statistics": "教學統計",
+      "timetable": "課表",
       "unifiedTimetable": "統一課表",
       "completeTimetable": "{{name}} 的完整課表",
       "clickToView": "點擊查看課表"

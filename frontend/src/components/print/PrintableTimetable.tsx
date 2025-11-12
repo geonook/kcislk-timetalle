@@ -97,7 +97,7 @@ export default function PrintableTimetable({
             </th>
             {days.map(day => (
               <th key={day} className="day-column">
-                {t(`timetable.days.${day.toLowerCase()}`)}
+                {t(`timetable.weekdays.${day.toLowerCase()}`)}
               </th>
             ))}
           </tr>

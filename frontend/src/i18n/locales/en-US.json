@@ -18,7 +18,12 @@
       "subtitle": "Select a class to view weekly timetable",
       "searchPlaceholder": "Search class name...",
       "loading": "Loading...",
-      "error": "Failed to load"
+      "error": "Failed to load",
+      "clickToView": "Click to view timetable",
+      "matchingClasses": "Matching",
+      "totalClasses": "Total Classes",
+      "allClasses": "All Classes",
+      "loadingDescription": "Loading class data, please wait..."
     },
     "student": {
       "title": "Student Timetable Query",
@@ -55,11 +60,13 @@
       "searching": "Searching...",
       "searchError": "Search failed",
       "searchResults": "Search Results",
+      "noResults": "No teachers found",
       "noMatchingTeachers": "No matching teachers found",
       "tryDifferentSearch": "Please try different search criteria",
       "backToTeacherList": "Back to Teacher List",
       "viewingTimetable": "Viewing {{name}}'s Timetable",
       "statistics": "Teaching Statistics",
+      "timetable": "Timetable",
       "unifiedTimetable": "Unified Timetable",
       "completeTimetable": "{{name}}'s Complete Timetable",
       "clickToView": "Click to view timetable"

@@ -303,13 +303,13 @@
      Print Optimization
      ======================================== */
 
-  /* 防止文字斷行過度 */
+  /* 允許文字換行以顯示完整內容 */
   .course-line-1,
   .course-line-2,
   .course-line-3 {
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    word-wrap: break-word;
+    word-break: break-word;
   }
 
   /* 確保顏色列印 */
