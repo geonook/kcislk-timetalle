@@ -1,14 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import type { UnifiedTimetableDisplay } from '../../types';
-import './print-redesigned.css';
+import './print.css';
 
 interface PrintableTimetableProps {
   timetableData: UnifiedTimetableDisplay;
   teacherName: string;
 }
 
-// 智能格式化函數 - 優化顯示
+// 智能格式化函數 - 減少過度縮寫
 const formatClassName = (className: string): string => {
+  // 保持原樣，只移除多餘空格
   return className.replace(/\s+/g, ' ').trim();
 };
 
@@ -28,7 +29,7 @@ const formatSubject = (subject: string): string => {
 };
 
 const formatTeacher = (teacher: string): string => {
-  // 何真瑾 Evelyn → 何 Evelyn
+  // 何真瑾 Evelyn → 何 Evelyn (加空格更清晰)
   const match = teacher.match(/^([\u4e00-\u9fa5]+)\s+([A-Za-z]+)$/);
   if (match) {
     return `${match[1]} ${match[2]}`;
@@ -36,26 +37,7 @@ const formatTeacher = (teacher: string): string => {
   return teacher;
 };
 
-// 格式化日期時間（專業顯示）
-const formatPrintDateTime = (): string => {
-  const now = new Date();
-  const date = now.toLocaleDateString('zh-TW', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  });
-  const time = now.toLocaleTimeString('zh-TW', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  });
-  return `${date} ${time}`;
-};
-
-export default function PrintableTimetable({
-  timetableData,
-  teacherName
-}: PrintableTimetableProps) {
+export default function PrintableTimetable({ timetableData, teacherName }: PrintableTimetableProps) {
   const { t } = useTranslation();
 
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
@@ -74,27 +56,17 @@ export default function PrintableTimetable({
 
   return (
     <div className="printable-timetable">
-      {/* Enhanced Header with Brand Identity */}
+      {/* Header */}
       <div className="print-header">
-        {/* 可選：如果有 Logo 可以加在這裡 */}
-        {/* <img src="/logo.png" alt="KCISLK Logo" className="print-header-logo" /> */}
-
-        <h1>
-          {teacherName} - {t('pages.teacher.timetable')}
-        </h1>
-
-        <p className="print-date">
-          列印時間: {formatPrintDateTime()}
-        </p>
+        <h1>{teacherName} - {t('pages.teacher.timetable')}</h1>
+        <p className="print-date">列印日期: {new Date().toLocaleDateString('zh-TW')}</p>
       </div>
 
-      {/* Timetable Table - Card-like Design */}
+      {/* Timetable Table */}
       <table className="print-table">
         <thead>
           <tr>
-            <th className="time-column">
-              {t('timetable.period')}
-            </th>
+            <th className="time-column">{t('timetable.period')}</th>
             {days.map(day => (
               <th key={day} className="day-column">
                 {t(`timetable.days.${day.toLowerCase()}`)}
@@ -105,25 +77,22 @@ export default function PrintableTimetable({
         <tbody>
           {periods.map(period => (
             <tr key={period}>
-              {/* Time Cell with Visual Emphasis */}
               <td className="time-cell">
-                <div className="period-number">P{period}</div>
+                <div className="period-number">{period}</div>
                 <div className="period-time">{timeSlots[period]}</div>
               </td>
-
-              {/* Course Cells */}
               {days.map(day => {
                 const courses = timetableData[day]?.[period];
 
                 if (!courses || courses.length === 0) {
                   return (
                     <td key={day} className="empty-cell">
-                      <div className="free-period">Free Period</div>
+                      <div className="free-period">Free</div>
                     </td>
                   );
                 }
 
-                // 顯示第一個課程
+                // 如果有多個課程，只顯示第一個（教師不應該同時有多個課程）
                 const course = courses[0];
 
                 // 格式化顯示資訊
@@ -151,11 +120,9 @@ export default function PrintableTimetable({
         </tbody>
       </table>
 
-      {/* Enhanced Footer with Professional Touch */}
+      {/* Footer */}
       <div className="print-footer">
-        <p>
-          康橋國際學校林口校區小學部 KCISLK Timetable System © {new Date().getFullYear()}
-        </p>
+        <p>KCISLK 課表查詢系統 | {new Date().getFullYear()}</p>
       </div>
     </div>
   );

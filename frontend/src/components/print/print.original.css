@@ -1,0 +1,220 @@
+/* ========================================
+   KCISLK Timetable - Dedicated Print Styles
+   專用列印組件樣式（A4 直式單頁）
+   ======================================== */
+
+/* 平時隱藏列印組件 */
+.printable-timetable {
+  display: none;
+}
+
+/* 列印時顯示 */
+@media print {
+  /* 隱藏整個 React 應用 */
+  #root {
+    display: none !important;
+  }
+
+  /* 只顯示列印組件（已透過 Portal 掛載到 body） */
+  .printable-timetable {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    min-height: 100vh !important;
+    background: white !important;
+  }
+
+  /* 頁面設定：A4 直式，8mm 邊界 */
+  @page {
+    size: A4 portrait;
+    margin: 8mm 8mm;
+  }
+
+  /* 基礎樣式重置 */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, 'Microsoft JhengHei', sans-serif;
+    font-size: 8pt;
+    line-height: 1.3;
+    color: #000;
+    background: #fff;
+  }
+
+  /* ========================================
+     Header Section
+     ======================================== */
+  .print-header {
+    text-align: center;
+    margin-bottom: 5mm;
+    padding-bottom: 3mm;
+    border-bottom: 1.5pt solid #333;
+  }
+
+  .print-header h1 {
+    font-size: 14pt;
+    font-weight: bold;
+    margin: 0 0 2mm 0;
+    color: #1a202c;
+    letter-spacing: 0.5pt;
+  }
+
+  .print-date {
+    font-size: 8pt;
+    color: #666;
+    margin: 0;
+  }
+
+  /* ========================================
+     Table Structure
+     ======================================== */
+  .print-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 8pt;
+  }
+
+  /* Column Widths */
+  .time-column {
+    width: 13%;
+  }
+
+  .day-column {
+    width: 17.4%; /* (100% - 13%) ÷ 5 = 17.4% */
+  }
+
+  /* ========================================
+     Table Header
+     ======================================== */
+  .print-table thead th {
+    background-color: #4a5568;
+    color: #fff;
+    font-weight: bold;
+    font-size: 9pt;
+    padding: 3pt 2pt;
+    text-align: center;
+    border: 0.75pt solid #2d3748;
+  }
+
+  /* ========================================
+     Table Body - Time Column
+     ======================================== */
+  .time-cell {
+    background-color: #f7fafc;
+    text-align: center;
+    vertical-align: middle;
+    padding: 2pt;
+    border: 0.75pt solid #cbd5e0;
+  }
+
+  .period-number {
+    font-weight: bold;
+    font-size: 10pt;
+    color: #2d3748;
+    margin-bottom: 1pt;
+  }
+
+  .period-time {
+    font-size: 7pt;
+    color: #718096;
+    line-height: 1.2;
+  }
+
+  /* ========================================
+     Table Body - Course Cells
+     ======================================== */
+  .course-cell {
+    padding: 2.5pt 2pt;
+    vertical-align: top;
+    border: 0.75pt solid #cbd5e0;
+    background-color: #fff;
+    height: 11mm; /* 增加高度，更寬鬆 */
+  }
+
+  /* 3行資訊顯示 */
+  .course-line-1 {
+    font-size: 7.5pt;
+    font-weight: bold;
+    color: #2d3748;
+    margin-bottom: 1pt;
+    line-height: 1.2;
+  }
+
+  .course-line-2 {
+    font-size: 7.5pt;
+    color: #4a5568;
+    margin-bottom: 1pt;
+    line-height: 1.2;
+  }
+
+  .course-line-3 {
+    font-size: 7pt;
+    color: #718096;
+    line-height: 1.2;
+  }
+
+  /* ========================================
+     Empty/Free Period Cells
+     ======================================== */
+  .empty-cell {
+    padding: 2pt;
+    text-align: center;
+    vertical-align: middle;
+    border: 0.75pt solid #e2e8f0;
+    background-color: #f7fafc;
+  }
+
+  .free-period {
+    font-size: 8pt;
+    color: #a0aec0;
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  /* ========================================
+     Footer Section
+     ======================================== */
+  .print-footer {
+    margin-top: 5mm;
+    padding-top: 3mm;
+    border-top: 1pt solid #e2e8f0;
+    text-align: center;
+    font-size: 7pt;
+    color: #a0aec0;
+  }
+
+  .print-footer p {
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* ========================================
+     Page Break Control
+     ======================================== */
+  .print-table {
+    page-break-inside: avoid;
+  }
+
+  .print-table tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  /* 防止孤兒行 */
+  .print-table thead {
+    display: table-header-group;
+  }
+
+  .print-table tbody {
+    display: table-row-group;
+  }
+}
