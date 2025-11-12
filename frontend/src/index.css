@@ -261,10 +261,10 @@
    A4 列印樣式 - 單頁優化版
    ====================================== */
 @media print {
-  /* A4 頁面設定 - 緊湊邊距 */
+  /* A4 頁面設定 - 橫向列印（單頁最佳化） */
   @page {
-    size: A4 portrait;  /* 210mm × 297mm 直向 */
-    margin: 10mm 8mm;   /* 上下 10mm，左右 8mm（更緊湊） */
+    size: A4 landscape;  /* 297mm × 210mm 橫向（寬度增加 87mm） */
+    margin: 8mm 10mm;    /* 上下 8mm，左右 10mm */
   }
 
   body {
@@ -286,12 +286,20 @@
   header,
   footer,
   .sidebar,
-  /* 新增：隱藏統計資料和圖例 */
+  /* 隱藏統計資料和圖例 */
   .stats-panel,
   .statistics-dashboard,
   .legend,
   .course-legend,
-  .print-button {
+  .print-button,
+  /* 強化：使用屬性選擇器隱藏統計面板 */
+  div[class*="statistics"],
+  div[class*="grid grid-cols-2"],
+  div[class*="grid-cols-6"],
+  /* 隱藏裝飾性元素 */
+  .hero-section,
+  .teacher-info-panel,
+  [class*="bg-gradient"] {
     display: none !important;
   }
 
@@ -323,16 +331,27 @@
 
   td, th {
     border: 1px solid #333 !important;
-    padding: 2pt !important;    /* 縮小 padding（4pt → 2pt） */
+    padding: 1pt !important;    /* 進一步縮小 padding（2pt → 1pt） */
     font-size: 7pt !important;
+    line-height: 1.1 !important; /* 緊湊行高 */
+    min-height: auto !important;
+    height: auto !important;
   }
 
   /* 課程卡片緊湊化 */
   .course-card,
   .timetable-cell {
-    padding: 2pt !important;
-    margin: 1pt !important;
+    padding: 1pt !important;    /* 進一步縮小（2pt → 1pt） */
+    margin: 0.5pt !important;   /* 進一步縮小（1pt → 0.5pt） */
     font-size: 7pt !important;
+    line-height: 1.1 !important;
+  }
+
+  /* 課程卡片內部元素緊湊化 */
+  .course-card > *,
+  .timetable-cell > * {
+    margin: 0 !important;
+    padding: 0.5pt !important;
   }
 
   /* 標題區域縮小 */
