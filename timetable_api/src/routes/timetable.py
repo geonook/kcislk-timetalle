@@ -242,21 +242,8 @@ def search_courses():
             'error': str(e)
         }), 500
 
-@timetable_bp.route('/teachers', methods=['GET'])
-def get_all_teachers():
-    """取得所有教師列表"""
-    try:
-        teachers = Teacher.query.all()
-        teacher_names = [teacher.teacher_name for teacher in teachers]
-        return jsonify({
-            'success': True,
-            'teachers': sorted(teacher_names)
-        })
-    except Exception as e:
-        return jsonify({
-            'success': False,
-            'error': str(e)
-        }), 500
+# NOTE: /teachers 路由已移至 routes/teacher.py (teacher_bp)
+# 避免重複路由導致回傳格式錯誤
 
 @timetable_bp.route('/classrooms', methods=['GET'])
 def get_all_classrooms():
