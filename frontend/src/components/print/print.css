@@ -32,9 +32,9 @@
     background: white !important;
   }
 
-  /* 頁面設定：A4 直式，7mm 邊界（更充實） */
+  /* 頁面設定：A4 橫式，7mm 邊界（更適合課表） */
   @page {
-    size: A4 portrait;
+    size: A4 landscape;
     margin: 7mm 10mm;
   }
 
