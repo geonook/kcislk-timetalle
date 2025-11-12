@@ -38,14 +38,21 @@ export default function Header() {
   ];
 
   return (
-    <header className="relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg shadow-lg border-b border-gray-200/50 dark:border-gray-700/50 z-[100000]">
+    <header
+      className="relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg shadow-lg border-b border-gray-200/50 dark:border-gray-700/50 z-[100000]"
+      role="banner"
+    >
       {/* Premium background gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-accent-50/30 via-transparent to-accent-50/30 dark:from-accent-900/10 dark:via-transparent dark:to-accent-900/10 pointer-events-none"></div>
 
       <div className="relative container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Premium Logo and title */}
-          <Link to="/classes" className="flex items-center space-x-3 group">
+          <Link
+            to="/classes"
+            className="flex items-center space-x-3 group"
+            aria-label={t('navigation.home')}
+          >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               <div className="relative w-10 h-10 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 overflow-hidden">
@@ -66,7 +73,7 @@ export default function Header() {
           </Link>
 
           {/* Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8" role="navigation" aria-label={t('navigation.home')}>
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -76,6 +83,7 @@ export default function Header() {
                     ? 'bg-accent-100 text-accent-700 dark:bg-accent-900 dark:text-accent-300'
                     : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white'
                 }`}
+                aria-current={location.pathname === item.href ? 'page' : undefined}
               >
                 {item.name}
               </Link>
@@ -86,10 +94,13 @@ export default function Header() {
           <div className="flex items-center space-x-2 sm:space-x-3">
             {/* Theme selector */}
             <Menu as="div" className="relative">
-              <Menu.Button className="p-2.5 sm:p-3 rounded-2xl text-gray-600 dark:text-gray-400 bg-white/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center">
-                {theme === 'light' && <SunIcon className="h-5 w-5" />}
-                {theme === 'dark' && <MoonIcon className="h-5 w-5" />}
-                {theme === 'system' && <ComputerDesktopIcon className="h-5 w-5" />}
+              <Menu.Button
+                className="p-2.5 sm:p-3 rounded-2xl text-gray-600 dark:text-gray-400 bg-white/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center"
+                aria-label={`${t('theme.light')}: ${themeOptions.find(o => o.key === theme)?.label}`}
+              >
+                {theme === 'light' && <SunIcon className="h-5 w-5" aria-hidden="true" />}
+                {theme === 'dark' && <MoonIcon className="h-5 w-5" aria-hidden="true" />}
+                {theme === 'system' && <ComputerDesktopIcon className="h-5 w-5" aria-hidden="true" />}
               </Menu.Button>
               <Transition
                 as={Fragment}
@@ -126,8 +137,11 @@ export default function Header() {
 
             {/* Language selector - Premium unified design */}
             <Menu as="div" className="relative">
-              <Menu.Button className="p-2.5 sm:p-3 rounded-2xl text-gray-600 dark:text-gray-400 bg-white/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center">
-                <LanguageIcon className="h-5 w-5" />
+              <Menu.Button
+                className="p-2.5 sm:p-3 rounded-2xl text-gray-600 dark:text-gray-400 bg-white/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center"
+                aria-label={`${t('language.zh-TW')}: ${languageOptions.find(o => o.key === language)?.label}`}
+              >
+                <LanguageIcon className="h-5 w-5" aria-hidden="true" />
               </Menu.Button>
               <Transition
                 as={Fragment}
@@ -171,8 +185,12 @@ export default function Header() {
           {/* Mobile navigation toggle - Premium design */}
           <div className="md:hidden">
             <Menu as="div" className="relative">
-              <Menu.Button className="p-2.5 sm:p-3 rounded-2xl text-gray-600 dark:text-gray-400 bg-white/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center">
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <Menu.Button
+                className="p-2.5 sm:p-3 rounded-2xl text-gray-600 dark:text-gray-400 bg-white/50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center"
+                aria-label={t('navigation.home')}
+                aria-expanded="false"
+              >
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </Menu.Button>
@@ -197,8 +215,9 @@ export default function Header() {
                             } ${
                               location.pathname === item.href ? 'text-accent-600 dark:text-accent-400 bg-accent-50 dark:bg-accent-900/20' : 'text-gray-900 dark:text-gray-100'
                             } group flex w-full items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200`}
+                            aria-current={location.pathname === item.href ? 'page' : undefined}
                           >
-                            <span className="mr-3 text-lg">
+                            <span className="mr-3 text-lg" aria-hidden="true">
                               {item.href === '/classes' ? '📚' : item.href === '/students' ? '👥' : item.href === '/teachers' ? '👨‍🏫' : '📋'}
                             </span>
                             {item.name}

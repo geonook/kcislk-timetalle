@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { useMutation, useQuery } from '@tanstack/react-query';
@@ -20,26 +20,28 @@ export default function StudentPage() {
   const [studentTimetable, setStudentTimetable] = useState<StudentTimetableResponse | null>(null);
   const [timetableError, setTimetableError] = useState<string | null>(null);
   const [allStudents, setAllStudents] = useState<Student[]>([]);
-  const [filteredStudents, setFilteredStudents] = useState<Student[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Handle search filtering
+  // Optimized search filtering with useMemo (prevents 1,036+ student re-filtering on every render)
+  const filteredStudents = useMemo(() => {
+    if (searchQuery.trim() === '') {
+      return allStudents;
+    }
+
+    const queryLower = searchQuery.toLowerCase();
+    return allStudents.filter(student =>
+      student.student_name.toLowerCase().includes(queryLower) ||
+      student.student_id.toLowerCase().includes(queryLower) ||
+      student.english_class_name.toLowerCase().includes(queryLower) ||
+      student.home_room_class_name.toLowerCase().includes(queryLower)
+    );
+  }, [allStudents, searchQuery]);
+
+  // Handle search filtering (now just updates search query, memo does the rest)
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    if (query.trim() === '') {
-      setFilteredStudents(allStudents);
-    } else {
-      const filtered = allStudents.filter(student =>
-        student.student_name.toLowerCase().includes(query.toLowerCase()) ||
-        student.student_id.toLowerCase().includes(query.toLowerCase()) ||
-        student.english_class_name.toLowerCase().includes(query.toLowerCase()) ||
-        student.home_room_class_name.toLowerCase().includes(query.toLowerCase())
-      );
-      setFilteredStudents(filtered);
-    }
   };
 
-  // Get student timetable mutation
   // Fetch all students
   const {
     data: studentsData,
@@ -50,12 +52,14 @@ export default function StudentPage() {
     queryFn: apiService.getAllStudents,
   });
 
+  // Update allStudents when data arrives (filteredStudents computed by useMemo)
   useEffect(() => {
     if (studentsData) {
       setAllStudents(studentsData);
-      setFilteredStudents(studentsData);
     }
   }, [studentsData]);
+
+  // Get student timetable mutation
 
   const timetableMutation = useMutation({
     mutationFn: apiService.getStudentTimetable,

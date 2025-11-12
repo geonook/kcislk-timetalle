@@ -49,11 +49,33 @@ db_path = os.environ.get('DATABASE_PATH', os.path.join(os.path.dirname(__file__)
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# Enable SQLite WAL mode for better concurrent performance
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    'connect_args': {
+        'check_same_thread': False,  # Allow multi-threaded access
+    },
+    'pool_pre_ping': True,  # Enable connection health checks
+    'pool_recycle': 3600,  # Recycle connections after 1 hour
+}
+
 # Ensure database directory exists
 os.makedirs(os.path.dirname(db_path), exist_ok=True)
 
 # 初始化資料庫
 db.init_app(app)
+
+# Enable WAL mode after database initialization
+@app.before_request
+def enable_wal_mode():
+    """Enable SQLite WAL mode for better concurrent read/write performance"""
+    if not hasattr(app, '_wal_enabled'):
+        with app.app_context():
+            db.session.execute(db.text('PRAGMA journal_mode=WAL;'))
+            db.session.execute(db.text('PRAGMA synchronous=NORMAL;'))
+            db.session.execute(db.text('PRAGMA busy_timeout=5000;'))
+            db.session.commit()
+            app._wal_enabled = True
+            print("✅ SQLite WAL mode enabled for better performance")
 
 def initialize_data():
     """初始化數據庫並載入初始數據"""

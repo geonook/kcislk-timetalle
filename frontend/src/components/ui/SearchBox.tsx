@@ -41,7 +41,12 @@ export default function SearchBox({
   const displayPlaceholder = placeholder || t('common.search');
 
   return (
-    <form onSubmit={handleSubmit} className={`relative group ${className}`}>
+    <form
+      onSubmit={handleSubmit}
+      className={`relative group ${className}`}
+      role="search"
+      aria-label={t('common.search')}
+    >
       <div className="relative">
         {/* Background glow effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-accent-500/10 to-accent-600/10 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
@@ -55,7 +60,7 @@ export default function SearchBox({
               {loading ? (
                 <LoadingSpinner size="sm" variant="modern" className="!m-0" />
               ) : (
-                <MagnifyingGlassIcon className="h-5 w-5" />
+                <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
               )}
             </div>
           </div>
@@ -67,6 +72,8 @@ export default function SearchBox({
             onChange={handleInputChange}
             placeholder={displayPlaceholder}
             disabled={disabled || loading}
+            aria-label={displayPlaceholder}
+            aria-describedby={loading ? 'search-loading' : undefined}
             className={`
               w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 sm:py-3.5
               bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm
@@ -93,9 +100,10 @@ export default function SearchBox({
               type="button"
               onClick={handleClear}
               className="absolute inset-y-0 right-0 flex items-center pr-3 sm:pr-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200 hover:scale-110"
+              aria-label={t('common.clear')}
             >
               <div className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
-                <XMarkIcon className="h-4 w-4" />
+                <XMarkIcon className="h-4 w-4" aria-hidden="true" />
               </div>
             </button>
           )}
