@@ -2,7 +2,7 @@
 
 康橋國際學校林口校區小學部課表查詢系統 - 現代化 React SPA + Flask API 架構
 
-[![Version](https://img.shields.io/badge/version-2.4.0-success)](https://github.com/geonook/kcislk-timetable)
+[![Version](https://img.shields.io/badge/version-2.4.1-success)](https://github.com/geonook/kcislk-timetable)
 [![Status](https://img.shields.io/badge/status-production-green)](https://kcislk-timetable.zeabur.app)
 [![React](https://img.shields.io/badge/React-19-blue)](https://react.dev)
 [![Python](https://img.shields.io/badge/Python-3.11-yellow)](https://python.org)
@@ -26,12 +26,19 @@
 - **完整8堂課表顯示** - 所有班級課表始終顯示每日完整8個時段（8:25-16:05）
 - **A4 標準列印功能** - 一鍵列印學生課表，支援 PDF 下載
 
-### 👨‍🏫 教師課表查詢（v2.4.0 新增）
+### 🏫 班級課表查詢（v2.4.1 新增列印功能）
+- **42 個班級完整覆蓋** - 1-6 年級所有班級課表
+- **智能班級搜尋** - 支援班級名稱即時搜尋與切換
+- **清晰課表顯示** - 完整8堂課時段，包含教師與教室資訊
+- **專業列印格式** - 黑白 A4 標準列印，加強粗體設計
+- **即時更新顯示** - 最後更新時間戳記
+
+### 👨‍🏫 教師課表查詢（v2.4.0）
 - **66 位教師完整覆蓋** - 支援所有中英文教師姓名搜尋
 - **跨班級課表聚合** - 自動整合教師所有教學班級課表
 - **教學統計分析** - 顯示總課數、教學班級數、各類課程統計
 - **紫色主題配色** - 與學生頁面（藍色）明確視覺區分
-- **A4 標準列印功能** - 一鍵列印教師課表，支援 PDF 下載
+- **專業列印格式** - 黑白 A4 標準列印，支援 PDF 下載
 
 ### 📋 期中考監考管理（v2.3.0 新增，v2.3.1 支援功能開關）
 - **12 個 GradeBand 完整覆蓋** - G1-G6 各 LT's 和 IT's 考試場次
@@ -253,6 +260,15 @@ VITE_ENABLE_EXAM_PROCTOR=true   # 開發環境啟用所有功能
 
 ## 🔄 最近更新
 
+### v2.4.1 (2025-11-13) - 班級課表列印功能
+- ✅ 新增班級課表專業列印功能
+- ✅ 黑白 A4 標準格式，加強粗體設計（v3.0）
+- ✅ 重用列印組件架構，保持代碼一致性
+- ✅ 新增 `convertToUnifiedTimetable()` 資料轉換工具
+- ✅ 使用 React Portal 技術實現列印隔離
+- ✅ 深色/淺色模式列印輸出一致
+- ✅ 完整的 TypeScript 類型安全
+
 ### v2.4.0 (2025-11-11) - 教師課表查詢與A4列印功能
 - ✅ 新增教師課表查詢功能（66 位教師完整覆蓋）
 - ✅ 支援跨班級課表聚合與教學統計分析
@@ -307,4 +323,4 @@ VITE_ENABLE_EXAM_PROCTOR=true   # 開發環境啟用所有功能
 
 ---
 
-**專案狀態**: ✅ 完全完成 | **最後更新**: 2025-11-10 | **版本**: 2.3.2
+**專案狀態**: ✅ 完全完成 | **最後更新**: 2025-11-13 | **版本**: 2.4.1
