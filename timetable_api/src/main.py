@@ -5,6 +5,7 @@ from src.models.timetable import db
 from src.routes.timetable import timetable_bp
 from src.routes.student import student_bp
 from src.routes.teacher import teacher_bp
+from src.routes.admin import admin_bp
 
 # Import exam models to ensure they are registered with SQLAlchemy
 from src.models import exam
@@ -33,7 +34,7 @@ all_origins = allowed_origins + [origin.strip() for origin in custom_origins if 
 
 CORS(app, origins=all_origins,
      methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-     allow_headers=['Content-Type', 'Authorization'],
+     allow_headers=['Content-Type', 'Authorization', 'X-Admin-Key'],
      supports_credentials=False)
 
 app.register_blueprint(timetable_bp, url_prefix='/api')
@@ -43,6 +44,9 @@ app.register_blueprint(teacher_bp, url_prefix='/api')
 # Import and register exam blueprint
 from src.routes.exam import exam_bp
 app.register_blueprint(exam_bp, url_prefix='/api')
+
+# Register admin blueprint for database maintenance
+app.register_blueprint(admin_bp)
 
 # Database configuration
 db_path = os.environ.get('DATABASE_PATH', os.path.join(os.path.dirname(__file__), 'database', 'app.db'))
@@ -156,8 +160,8 @@ def api_info():
     """API 資訊端點"""
     return {
         'name': 'KCISLK 課表查詢系統 API',
-        'version': '2.3.0',
-        'description': '康橋國際學校林口校區小學部課表查詢系統 API - 支援期中考監考管理',
+        'version': '2.3.1',
+        'description': '康橋國際學校林口校區小學部課表查詢系統 API - 支援期中考監考管理與資料庫維護',
         'endpoints': {
             'health': '/health',
             'students': '/api/students',
@@ -166,7 +170,10 @@ def api_info():
             'exam_classes': '/api/exams/classes',
             'exam_proctors': '/api/exams/proctors',
             'exam_export': '/api/exams/export/csv',
-            'exam_stats': '/api/exams/stats'
+            'exam_stats': '/api/exams/stats',
+            'admin_health': '/api/admin/health',
+            'admin_migrate_john': '/api/admin/migrate-john-teacher',
+            'admin_verify_john': '/api/admin/verify-john-teacher'
         },
         'status': 'running'
     }
