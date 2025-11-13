@@ -4,7 +4,8 @@ import './print.css';
 
 interface PrintableTimetableProps {
   timetableData: UnifiedTimetableDisplay;
-  teacherName: string;
+  teacherName?: string;
+  className?: string;
 }
 
 // 智能格式化函數 - 優化顯示
@@ -54,9 +55,13 @@ const formatPrintDateTime = (): string => {
 
 export default function PrintableTimetable({
   timetableData,
-  teacherName
+  teacherName,
+  className
 }: PrintableTimetableProps) {
   const { t } = useTranslation();
+
+  // Determine display name (teacher or class)
+  const displayName = teacherName || className || 'Timetable';
 
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
   const periods = Array.from({ length: 8 }, (_, i) => i + 1);
@@ -80,7 +85,7 @@ export default function PrintableTimetable({
         {/* <img src="/logo.png" alt="KCISLK Logo" className="print-header-logo" /> */}
 
         <h1>
-          {teacherName} - {t('pages.teacher.timetable')}
+          {displayName} - {teacherName ? t('pages.teacher.timetable') : t('pages.class.timetableTitle')}
         </h1>
 
         <p className="print-date">

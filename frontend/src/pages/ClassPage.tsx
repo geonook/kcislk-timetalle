@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from '@tanstack/react-query';
@@ -6,6 +7,9 @@ import { apiService } from '../services/api';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import TimetableGrid from '../components/timetable/TimetableGrid';
 import SearchBox from '../components/ui/SearchBox';
+import PrintButton from '../components/ui/PrintButton';
+import PrintableTimetable from '../components/print/PrintableTimetable';
+import { convertToUnifiedTimetable } from '../utils/timetableUtils';
 import { ArrowLeftIcon, AcademicCapIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import type { TimetableDisplay, DayTimetable, TimetableEntry } from '../types';
 
@@ -301,8 +305,14 @@ export default function ClassPage() {
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
               📋 {t('pages.class.timetableTitle')}
             </h2>
-            <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
-              {t('pages.class.lastUpdated')}: {new Date().toLocaleDateString()}
+            <div className="flex items-center space-x-4">
+              <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                {t('pages.class.lastUpdated')}: {new Date().toLocaleDateString()}
+              </div>
+              <PrintButton
+                documentTitle={`${decodeURIComponent(currentClassName)}_Timetable`}
+                className="px-4 py-2 bg-accent-600 hover:bg-accent-700 dark:bg-accent-500 dark:hover:bg-accent-600 text-white rounded-xl font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+              />
             </div>
           </div>
 
@@ -314,6 +324,19 @@ export default function ClassPage() {
           />
         </div>
       )}
+
+      {/* Hidden Print Component - Using Portal to render outside #root */}
+      {timetableData && (() => {
+        const unifiedTimetable = convertToUnifiedTimetable(timetableData.timetable);
+
+        return createPortal(
+          <PrintableTimetable
+            timetableData={unifiedTimetable}
+            className={decodeURIComponent(currentClassName)}
+          />,
+          document.body
+        );
+      })()}
     </div>
   );
 }

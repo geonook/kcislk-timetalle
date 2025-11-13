@@ -1,4 +1,4 @@
-import type { StudentTimetableResponse, UnifiedTimetableDisplay, TimetableEntry } from '../types';
+import type { StudentTimetableResponse, UnifiedTimetableDisplay, TimetableEntry, TimetableDisplay } from '../types';
 import { WEEKDAYS } from '../types';
 
 /**
@@ -127,4 +127,40 @@ export function calculateUnifiedTimetableStats(unifiedTimetable: UnifiedTimetabl
     ev_myreading_classes: evClasses,
     days_with_classes: daysWithClasses.size
   };
+}
+
+/**
+ * 將班級課表格式轉換為統一列印格式
+ * TimetableDisplay (單筆課程) → UnifiedTimetableDisplay (陣列格式)
+ * @param timetable 班級課表數據 (TimetableDisplay)
+ * @returns 統一課表數據結構 (UnifiedTimetableDisplay)
+ */
+export function convertToUnifiedTimetable(
+  timetable: TimetableDisplay
+): UnifiedTimetableDisplay {
+  const unified: UnifiedTimetableDisplay = {
+    Monday: {},
+    Tuesday: {},
+    Wednesday: {},
+    Thursday: {},
+    Friday: {}
+  };
+
+  // 遍歷每一天
+  WEEKDAYS.forEach(day => {
+    const dayKey = day as keyof typeof unified;
+    unified[dayKey] = {};
+
+    const dayData = timetable[dayKey];
+
+    // 遍歷每個時段，將單筆課程包裝成陣列格式
+    Object.keys(dayData).forEach(period => {
+      const entry = dayData[period];
+      if (entry) {
+        unified[dayKey][period] = [entry];
+      }
+    });
+  });
+
+  return unified;
 }
