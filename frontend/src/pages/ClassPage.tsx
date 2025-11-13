@@ -11,7 +11,6 @@ import PrintButton from '../components/ui/PrintButton';
 import PrintableTimetable from '../components/print/PrintableTimetable';
 import { convertToUnifiedTimetable } from '../utils/timetableUtils';
 import { ArrowLeftIcon, AcademicCapIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import type { TimetableDisplay, DayTimetable, TimetableEntry } from '../types';
 
 // API now returns TimetableDisplay format directly, no conversion needed
 
