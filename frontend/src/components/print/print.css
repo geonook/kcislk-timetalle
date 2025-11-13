@@ -1,8 +1,8 @@
 /* ========================================
-   KCISLK Timetable - Professional Print Redesign
-   專業 A4 列印版型（現代學術優雅風格）
-   Design Theme: Modern Academic Elegance
-   Version: 2.0
+   KCISLK Timetable - Professional Black & White Print Style
+   專業黑白列印版型（加強粗體設計）
+   Design Theme: Professional Monochrome with Bold Typography
+   Version: 3.0
    ======================================== */
 
 /* 平時隱藏列印組件 */
@@ -12,6 +12,32 @@
 
 /* 列印時顯示 */
 @media print {
+  /* ========================================
+     強制淺色模式 + 黑白配色（優先級最高）
+     ======================================== */
+
+  html, body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    color-scheme: light !important;
+  }
+
+  html.dark, body.dark,
+  html[class*="dark"], body[class*="dark"] {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+
+  .dark, [class*="dark"] {
+    background: transparent !important;
+    color: inherit !important;
+  }
+
+  .printable-timetable,
+  .printable-timetable * {
+    color-scheme: light !important;
+  }
+
   /* ========================================
      Page Setup & Base Styles
      ======================================== */
@@ -32,13 +58,13 @@
     background: white !important;
   }
 
-  /* 頁面設定：A4 橫式，7mm 邊界（更適合課表） */
+  /* 頁面設定：A4 橫式，7mm 邊界 */
   @page {
     size: A4 landscape;
     margin: 7mm 10mm;
   }
 
-  /* 強制列印顏色 */
+  /* 強制列印顏色（黑白也需要灰階） */
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -51,46 +77,48 @@
     padding: 0;
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
                  'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
-    font-size: 9pt;
-    line-height: 1.4;
-    color: #1F2937;
+    font-size: 9.5pt;  /* 9pt → 9.5pt */
+    line-height: 1.5;   /* 1.4 → 1.5 */
+    color: #000000;
     background: #FFFFFF;
   }
 
   /* ========================================
-     Header Section - Brand Identity
+     Header Section - Bold & Professional
      ======================================== */
   .print-header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 3mm;
-    padding-bottom: 3mm;
-    border-bottom: 2pt solid #7C3AED;
+    margin-bottom: 4mm;
+    padding-bottom: 4mm;
+    border-bottom: 2.5pt solid #000000;  /* 紫色 → 黑色加粗 */
     position: relative;
   }
 
-  /* 主標題容器 */
+  /* 主標題 - 特大粗體 */
   .print-header h1 {
-    font-size: 16pt;
-    font-weight: 700;
+    font-size: 18pt;     /* 16pt → 18pt 更大 */
+    font-weight: 800;    /* 700 → 800 更粗 */
     margin: 0 0 2mm 0;
-    color: #5B21B6;
-    letter-spacing: 0.3pt;
+    color: #000000 !important;  /* 紫色 → 黑色 */
+    letter-spacing: 0.5pt;      /* 0.3pt → 0.5pt 更寬鬆 */
     text-align: center;
     line-height: 1.3;
+    text-transform: uppercase;  /* 新增：全大寫 */
   }
 
   /* 副標題 - 列印日期 */
   .print-date {
-    font-size: 8pt;
-    color: #6B7280;
+    font-size: 9pt;      /* 8pt → 9pt */
+    color: #4B5563 !important;  /* 深灰 */
     margin: 0;
-    font-weight: 500;
+    font-weight: 700;    /* 500 → 700 加粗 */
     background: #F3F4F6;
-    padding: 2pt 8pt;
+    padding: 3pt 10pt;   /* 2pt 8pt → 3pt 10pt */
     border-radius: 3pt;
-    letter-spacing: 0.2pt;
+    letter-spacing: 0.3pt;
+    border: 1pt solid #D1D5DB;  /* 新增：邊框 */
   }
 
   /* ========================================
@@ -101,10 +129,11 @@
     border-collapse: separate;
     border-spacing: 0;
     table-layout: fixed;
-    font-size: 9pt;
-    box-shadow: 0 1pt 3pt rgba(0, 0, 0, 0.08);
-    border-radius: 4pt;
+    font-size: 9.5pt;    /* 9pt → 9.5pt */
+    box-shadow: none;    /* 移除陰影 */
+    border-radius: 0;    /* 移除圓角 */
     overflow: hidden;
+    border: 2pt solid #000000 !important;  /* 新增：粗黑框 */
   }
 
   /* Column Widths - Optimized */
@@ -117,66 +146,65 @@
   }
 
   /* ========================================
-     Table Header - Elegant Design
+     Table Header - Bold Black & White
      ======================================== */
   .print-table thead th {
-    background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
-    color: #FFFFFF;
-    font-weight: 700;
-    font-size: 10pt;
-    padding: 5pt 3pt;
+    background: #000000 !important;  /* 紫色漸層 → 純黑 */
+    color: #FFFFFF !important;
+    font-weight: 800;    /* 700 → 800 更粗 */
+    font-size: 11pt;     /* 9pt → 11pt 更大 */
+    padding: 6pt 4pt;    /* 5pt 3pt → 6pt 4pt */
     text-align: center;
-    border: none;
-    letter-spacing: 0.3pt;
+    border: 1pt solid #000000 !important;
+    letter-spacing: 0.5pt;  /* 0.3pt → 0.5pt */
     text-transform: uppercase;
-    font-size: 9pt;
   }
 
   .print-table thead th:first-child {
-    border-top-left-radius: 4pt;
+    border-top-left-radius: 0;  /* 移除圓角 */
   }
 
   .print-table thead th:last-child {
-    border-top-right-radius: 4pt;
+    border-top-right-radius: 0;  /* 移除圓角 */
   }
 
   /* ========================================
-     Time Column - Visual Prominence
+     Time Column - Bold Emphasis
      ======================================== */
   .time-cell {
-    background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
+    background: #F9FAFB !important;  /* 淺灰背景 */
     text-align: center;
     vertical-align: middle;
-    padding: 4pt 2pt;
-    border-right: 1.5pt solid #E5E7EB;
-    border-bottom: 0.5pt solid #E5E7EB;
+    padding: 5pt 3pt;    /* 4pt 2pt → 5pt 3pt */
+    border-right: 2pt solid #000000 !important;  /* 1.5pt → 2pt 加粗黑框 */
+    border-bottom: 1pt solid #D1D5DB !important;
   }
 
   .period-number {
-    font-weight: 700;
-    font-size: 10pt;
-    color: #7C3AED;
-    margin-bottom: 1.5pt;
-    letter-spacing: 0.2pt;
+    font-weight: 800;    /* 700 → 800 更粗 */
+    font-size: 11pt;     /* 10pt → 11pt 更大 */
+    color: #000000 !important;  /* 紫色 → 黑色 */
+    margin-bottom: 2pt;  /* 1.5pt → 2pt */
+    letter-spacing: 0.3pt;
   }
 
   .period-time {
-    font-size: 7pt;
-    color: #6B7280;
+    font-size: 8pt;      /* 7pt → 8pt */
+    color: #4B5563 !important;  /* 深灰 */
     line-height: 1.3;
-    font-weight: 500;
+    font-weight: 600;    /* 500 → 600 加粗 */
   }
 
   /* ========================================
-     Course Cells - Card-like Design
+     Course Cells - Bold Hierarchy
      ======================================== */
   .course-cell {
-    padding: 5pt 3pt;
+    padding: 6pt 4pt;    /* 5pt 3pt → 6pt 4pt */
     vertical-align: top;
-    border-right: 0.5pt solid #E5E7EB;
-    border-bottom: 0.5pt solid #E5E7EB;
-    background: #FFFFFF;
-    height: 25mm;
+    border-right: 1pt solid #D1D5DB !important;
+    border-bottom: 1pt solid #D1D5DB !important;
+    background: #FFFFFF !important;
+    height: 26mm;        /* 25mm → 26mm */
     position: relative;
   }
 
@@ -185,41 +213,41 @@
     border-right: none;
   }
 
-  /* 課程資訊三行顯示 - 優化層次 */
+  /* 課程資訊三行顯示 - 加強粗體層次 */
   .course-line-1 {
-    font-size: 8.5pt;
-    font-weight: 700;
-    color: #1F2937;
-    margin-bottom: 1.5pt;
+    font-size: 9pt;       /* 8.5pt → 9pt 更大 */
+    font-weight: 800;     /* 700 → 800 更粗 */
+    color: #000000 !important;
+    margin-bottom: 2pt;   /* 1.5pt → 2pt */
     line-height: 1.3;
-    letter-spacing: 0.1pt;
+    letter-spacing: 0.2pt;  /* 0.1pt → 0.2pt */
   }
 
   .course-line-2 {
-    font-size: 8pt;
-    color: #7C3AED;
-    font-weight: 600;
-    margin-bottom: 1.5pt;
+    font-size: 8.5pt;     /* 8pt → 8.5pt 更大 */
+    color: #1F2937 !important;  /* 紫色 → 深灰 */
+    font-weight: 700;     /* 600 → 700 加粗 */
+    margin-bottom: 2pt;   /* 1.5pt → 2pt */
     line-height: 1.3;
   }
 
   .course-line-3 {
-    font-size: 7pt;
-    color: #6B7280;
+    font-size: 7.5pt;     /* 7pt → 7.5pt 更大 */
+    color: #4B5563 !important;  /* 中灰 */
     line-height: 1.3;
-    font-weight: 500;
+    font-weight: 600;     /* 500 → 600 加粗 */
   }
 
   /* ========================================
      Empty/Free Period - Subtle Design
      ======================================== */
   .empty-cell {
-    padding: 4pt;
+    padding: 5pt;        /* 4pt → 5pt */
     text-align: center;
     vertical-align: middle;
-    border-right: 0.5pt solid #E5E7EB;
-    border-bottom: 0.5pt solid #E5E7EB;
-    background: linear-gradient(135deg, #FDFCFE 0%, #F5F3FF 100%);
+    border-right: 1pt solid #D1D5DB !important;
+    border-bottom: 1pt solid #D1D5DB !important;
+    background: #F9FAFB !important;  /* 淺灰背景 */
   }
 
   .empty-cell:last-child {
@@ -227,11 +255,11 @@
   }
 
   .free-period {
-    font-size: 8pt;
-    color: #A78BFA;
+    font-size: 8.5pt;    /* 8pt → 8.5pt */
+    color: #9CA3AF !important;  /* 淺灰 */
     font-style: italic;
-    font-weight: 600;
-    letter-spacing: 0.2pt;
+    font-weight: 700;    /* 600 → 700 加粗 */
+    letter-spacing: 0.3pt;
   }
 
   /* ========================================
@@ -240,7 +268,7 @@
   .print-footer {
     margin-top: 5mm;
     padding-top: 3mm;
-    border-top: 1pt solid #E5E7EB;
+    border-top: 2pt solid #000000 !important;  /* 1pt → 2pt 加粗黑線 */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -248,21 +276,21 @@
 
   .print-footer p {
     margin: 0;
-    font-size: 7pt;
-    color: #9CA3AF;
-    font-weight: 500;
-    letter-spacing: 0.3pt;
+    font-size: 8pt;      /* 7pt → 8pt */
+    color: #6B7280 !important;  /* 深灰 */
+    font-weight: 700;    /* 500 → 700 加粗 */
+    letter-spacing: 0.4pt;  /* 0.3pt → 0.4pt */
   }
 
   /* ========================================
-     Zebra Striping - Subtle Visual Aid
+     Zebra Striping - Subtle Black & White
      ======================================== */
   .print-table tbody tr:nth-child(even) .course-cell {
-    background: #FAFAFA;
+    background: #F9FAFB !important;  /* 淺灰斑馬紋 */
   }
 
   .print-table tbody tr:nth-child(even) .empty-cell {
-    background: linear-gradient(135deg, #FDFCFE 0%, #F8F7FC 100%);
+    background: #F3F4F6 !important;  /* 稍深灰 */
   }
 
   /* ========================================
@@ -294,9 +322,9 @@
     border-bottom: none;
   }
 
-  /* 確保表格外框完整 */
+  /* 確保表格外框完整（粗黑框） */
   .print-table {
-    border: 1pt solid #E5E7EB;
+    border: 2pt solid #000000 !important;
   }
 
   /* ========================================
@@ -313,12 +341,16 @@
     white-space: normal;
   }
 
-  /* 確保顏色列印 */
+  /* 強制黑白顏色（包含灰階） */
   .print-table thead th,
   .time-cell,
   .empty-cell,
   .period-number,
-  .course-line-2 {
+  .course-line-1,
+  .course-line-2,
+  .course-line-3,
+  .print-header h1,
+  .print-footer p {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     color-adjust: exact !important;
@@ -371,7 +403,8 @@
   .print-footer-left,
   .print-footer-center,
   .print-footer-right {
-    font-size: 7pt;
-    color: #9CA3AF;
+    font-size: 8pt;      /* 7pt → 8pt */
+    color: #6B7280 !important;
+    font-weight: 700;    /* 新增：加粗 */
   }
 }
