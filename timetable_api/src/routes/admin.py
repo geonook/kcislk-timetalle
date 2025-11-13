@@ -4,7 +4,7 @@
 """
 from flask import Blueprint, jsonify, request
 from sqlalchemy import text
-from src.models import db
+from src.models.timetable import db
 import os
 
 admin_bp = Blueprint('admin', __name__, url_prefix='/api/admin')
