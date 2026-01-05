@@ -255,6 +255,15 @@
   .card-interactive {
     @apply transition-all duration-300 hover:shadow-xl hover:scale-105 hover:-translate-y-1;
   }
+
+  /* 隱藏捲軸工具類 - 用於手機版水平滾動選單 */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 /* ======================================
