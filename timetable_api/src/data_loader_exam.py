@@ -5,7 +5,7 @@
 import pandas as pd
 import os
 from src.models.timetable import db
-from src.models.exam import ExamSession, ClassExamInfo
+from src.models.exam import ExamSession, ClassExamInfo, ProctorAssignment
 from src.models.student import Student, HomeRoomTimetable
 
 
@@ -364,6 +364,77 @@ def load_class_exam_info():
         return False
 
 
+def load_proctor_assignments_from_csv():
+    """從 CSV 檔案載入監考分配資料"""
+
+    csv_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'proctor_assignments.csv')
+
+    if not os.path.exists(csv_file_path):
+        print(f"❌ 找不到監考分配檔案：{csv_file_path}")
+        return False
+
+    print("開始載入監考分配資料...")
+
+    # 讀取 CSV 檔案
+    df = pd.read_csv(csv_file_path)
+    print(f"  ✅ 讀取到 {len(df)} 筆資料")
+
+    loaded_count = 0
+    updated_count = 0
+    error_count = 0
+
+    for _, row in df.iterrows():
+        # 從 CSV 取得資料
+        class_name = row['ClassName']
+        grade_band = row['GradeBand']
+        proctor = row['Proctor']
+        classroom = row['Classroom']
+
+        # 根據 GradeBand 判斷考試類型
+        exam_type = 'LT' if 'LT' in grade_band else 'IT'
+
+        # 建立完整的 class_name（包含考試類型）
+        full_class_name = f"{class_name} ({exam_type})"
+
+        # 查詢對應的 ClassExamInfo
+        class_exam_info = ClassExamInfo.query.filter_by(class_name=full_class_name).first()
+
+        if not class_exam_info:
+            print(f"  ⚠️  找不到班級：{full_class_name}")
+            error_count += 1
+            continue
+
+        # 檢查是否已有監考分配
+        existing = ProctorAssignment.query.filter_by(class_exam_info_id=class_exam_info.id).first()
+
+        if existing:
+            # 更新現有記錄
+            existing.proctor_teacher = proctor
+            existing.classroom = classroom
+            updated_count += 1
+        else:
+            # 新增記錄
+            assignment = ProctorAssignment(
+                class_exam_info_id=class_exam_info.id,
+                proctor_teacher=proctor,
+                classroom=classroom
+            )
+            db.session.add(assignment)
+            loaded_count += 1
+
+    try:
+        db.session.commit()
+        print(f"✅ 監考分配資料載入成功！")
+        print(f"  - 新增：{loaded_count} 筆")
+        print(f"  - 更新：{updated_count} 筆")
+        print(f"  - 錯誤：{error_count} 筆")
+        return True
+    except Exception as e:
+        db.session.rollback()
+        print(f"❌ 監考分配資料載入失敗: {e}")
+        return False
+
+
 def load_all_exam_data():
     """載入所有考試相關資料"""
     print("\n" + "="*60)
@@ -376,20 +447,24 @@ def load_all_exam_data():
     # 2. 載入班級考試資訊
     success2 = load_class_exam_info()
 
+    # 3. 載入監考分配資料
+    success3 = load_proctor_assignments_from_csv()
+
     print("\n" + "="*60)
-    if success1 and success2:
+    if success1 and success2 and success3:
         print("✅ 所有考試資料載入完成！")
 
         # 顯示統計資訊
         session_count = ExamSession.query.count()
         class_count = ClassExamInfo.query.count()
+        proctor_count = ProctorAssignment.query.count()
 
         print(f"\n統計資訊：")
         print(f"  - 考試場次：{session_count} 個 GradeBand")
         print(f"  - 班級記錄：{class_count} 筆（84班 x 2考試類型）")
-        print(f"  - 待分配監考：{class_count} 個班級")
+        print(f"  - 監考分配：{proctor_count} 筆")
     else:
         print("❌ 部分資料載入失敗，請檢查錯誤訊息")
     print("="*60 + "\n")
 
-    return success1 and success2
+    return success1 and success2 and success3
