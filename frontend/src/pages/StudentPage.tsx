@@ -134,7 +134,7 @@ export default function StudentPage() {
       {/* Breadcrumb Navigation */}
       {selectedStudent && (
         <div className="mb-8">
-          <nav className="flex items-center space-x-2 text-sm font-medium mb-6">
+          <nav className="flex items-center space-x-2 text-xs sm:text-sm font-medium mb-6">
             <button
               onClick={handleBackToList}
               className="inline-flex items-center px-4 py-2 rounded-xl text-accent-600 hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300 bg-accent-50 hover:bg-accent-100 dark:bg-accent-900/20 dark:hover:bg-accent-900/30 transition-all duration-200"
@@ -167,13 +167,13 @@ export default function StudentPage() {
           </div>
         </div>
 
-        <h1 className="text-5xl font-bold mb-4">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
           <span className="bg-gradient-to-r from-gray-900 via-accent-700 to-accent-600 dark:from-white dark:via-accent-300 dark:to-accent-200 bg-clip-text text-transparent">
             {t('pages.student.title')}
           </span>
         </h1>
 
-        <p className="text-xl font-medium text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-base sm:text-lg md:text-xl font-medium text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
           {selectedStudent ? t('pages.student.viewingTimetable', { name: selectedStudent.student_name }) : t('pages.student.browseSubtitle')}
         </p>
 
@@ -285,7 +285,7 @@ export default function StudentPage() {
         <div>
           {/* Premium Student Info Panel */}
           <div className="mb-8">
-            <div className="card p-8 bg-gradient-to-br from-white via-gray-50/50 to-white dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 shadow-xl border border-gray-200 dark:border-gray-700">
+            <div className="card p-4 sm:p-6 md:p-8 bg-gradient-to-br from-white via-gray-50/50 to-white dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 shadow-xl border border-gray-200 dark:border-gray-700">
               {/* Background gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-accent-50/30 dark:to-accent-900/10 opacity-50 rounded-lg pointer-events-none"></div>
 
@@ -425,7 +425,7 @@ export default function StudentPage() {
             <div className="space-y-8">
               {/* Premium Statistics Dashboard */}
               {studentTimetable.statistics && (
-                <div className="card p-8 shadow-xl bg-gradient-to-br from-white via-gray-50/50 to-white dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 border border-gray-200 dark:border-gray-700">
+                <div className="card p-4 sm:p-6 md:p-8 shadow-xl bg-gradient-to-br from-white via-gray-50/50 to-white dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 border border-gray-200 dark:border-gray-700">
                   {/* Header */}
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center space-x-3">
@@ -438,12 +438,12 @@ export default function StudentPage() {
                   </div>
 
                   {/* Stats Grid */}
-                  <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
                     <div className="group">
                       <div className="relative p-4 bg-gradient-to-br from-accent-50 to-accent-100 dark:from-accent-900/20 dark:to-accent-800/30 rounded-2xl border border-accent-200 dark:border-accent-700 transition-all duration-300 hover:shadow-lg hover:scale-105">
                         <div className="absolute inset-0 bg-gradient-to-br from-accent-500/10 to-accent-600/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                         <div className="relative text-center">
-                          <div className="text-3xl font-bold text-accent-600 dark:text-accent-400 animate-pulse">{studentTimetable.statistics.total_classes}</div>
+                          <div className="text-2xl sm:text-3xl font-bold text-accent-600 dark:text-accent-400 animate-pulse">{studentTimetable.statistics.total_classes}</div>
                           <div className="text-xs font-medium text-accent-700 dark:text-accent-300 mt-1">{t('student.statistics.totalClasses')}</div>
                         </div>
                       </div>
@@ -453,7 +453,7 @@ export default function StudentPage() {
                       <div className="relative p-4 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/30 rounded-2xl border border-green-200 dark:border-green-700 transition-all duration-300 hover:shadow-lg hover:scale-105">
                         <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-green-600/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                         <div className="relative text-center">
-                          <div className="text-3xl font-bold text-green-600 dark:text-green-400">{studentTimetable.statistics.english_classes}</div>
+                          <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400">{studentTimetable.statistics.english_classes}</div>
                           <div className="text-xs font-medium text-green-700 dark:text-green-300 mt-1">{t('student.statistics.englishClasses')}</div>
                         </div>
                       </div>
@@ -463,7 +463,7 @@ export default function StudentPage() {
                       <div className="relative p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/30 rounded-2xl border border-blue-200 dark:border-blue-700 transition-all duration-300 hover:shadow-lg hover:scale-105">
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-600/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                         <div className="relative text-center">
-                          <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">{studentTimetable.statistics.homeroom_classes}</div>
+                          <div className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400">{studentTimetable.statistics.homeroom_classes}</div>
                           <div className="text-xs font-medium text-blue-700 dark:text-blue-300 mt-1">{t('student.statistics.homeroomClasses')}</div>
                         </div>
                       </div>
@@ -473,7 +473,7 @@ export default function StudentPage() {
                       <div className="relative p-4 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/30 rounded-2xl border border-orange-200 dark:border-orange-700 transition-all duration-300 hover:shadow-lg hover:scale-105">
                         <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-orange-600/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                         <div className="relative text-center">
-                          <div className="text-3xl font-bold text-orange-600 dark:text-orange-400">{studentTimetable.statistics.ev_myreading_classes}</div>
+                          <div className="text-2xl sm:text-3xl font-bold text-orange-600 dark:text-orange-400">{studentTimetable.statistics.ev_myreading_classes}</div>
                           <div className="text-xs font-medium text-orange-700 dark:text-orange-300 mt-1">{t('student.statistics.evClasses')}</div>
                         </div>
                       </div>
@@ -483,7 +483,7 @@ export default function StudentPage() {
                       <div className="relative p-4 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/30 rounded-2xl border border-purple-200 dark:border-purple-700 transition-all duration-300 hover:shadow-lg hover:scale-105">
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-purple-600/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                         <div className="relative text-center">
-                          <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">{studentTimetable.statistics.days_with_classes}</div>
+                          <div className="text-2xl sm:text-3xl font-bold text-purple-600 dark:text-purple-400">{studentTimetable.statistics.days_with_classes}</div>
                           <div className="text-xs font-medium text-purple-700 dark:text-purple-300 mt-1">{t('student.statistics.daysWithClasses')}</div>
                         </div>
                       </div>

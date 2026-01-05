@@ -35,14 +35,14 @@ export default function NotFoundPage() {
           </div>
 
           {/* 404 Number */}
-          <h1 className="text-8xl font-bold mb-6">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold mb-6">
             <span className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 dark:from-red-400 dark:via-red-300 dark:to-orange-300 bg-clip-text text-transparent drop-shadow-lg">
               404
             </span>
           </h1>
 
           {/* Error Title */}
-          <h2 className="text-3xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">
             <span className="bg-gradient-to-r from-gray-900 via-red-700 to-red-600 dark:from-white dark:via-red-300 dark:to-red-200 bg-clip-text text-transparent">
               {t('pages.notFound.title')}
             </span>

@@ -96,7 +96,7 @@ export default function ClassPage() {
       <div className="max-w-6xl mx-auto">
         {/* Enhanced Breadcrumb */}
         <div className="mb-8">
-          <nav className="flex items-center space-x-2 text-sm font-medium">
+          <nav className="flex items-center space-x-2 text-xs sm:text-sm font-medium">
             <Link
               to="/classes"
               className="inline-flex items-center px-4 py-2 rounded-xl text-accent-600 hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300 bg-accent-50 hover:bg-accent-100 dark:bg-accent-900/20 dark:hover:bg-accent-900/30 transition-all duration-200"
@@ -156,7 +156,7 @@ export default function ClassPage() {
     <div className="max-w-6xl mx-auto">
       {/* Enhanced Breadcrumb Navigation */}
       <div className="mb-8">
-        <nav className="flex items-center space-x-2 text-sm font-medium mb-6">
+        <nav className="flex items-center space-x-2 text-xs sm:text-sm font-medium mb-6">
           <Link
             to="/classes"
             className="inline-flex items-center px-4 py-2 rounded-xl text-accent-600 hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300 bg-accent-50 hover:bg-accent-100 dark:bg-accent-900/20 dark:hover:bg-accent-900/30 transition-all duration-200"
@@ -185,12 +185,12 @@ export default function ClassPage() {
             <div className="flex-1">
               <div className="flex items-start justify-between">
                 <div>
-                  <h1 className="text-3xl font-bold mb-3">
+                  <h1 className="text-2xl sm:text-3xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-gray-900 via-accent-700 to-accent-600 dark:from-white dark:via-accent-300 dark:to-accent-200 bg-clip-text text-transparent">
                       {decodeURIComponent(currentClassName)}
                     </span>
                   </h1>
-                  <p className="text-xl font-medium text-gray-600 dark:text-gray-400 mb-4">
+                  <p className="text-base sm:text-lg md:text-xl font-medium text-gray-600 dark:text-gray-400 mb-4">
                     {t('pages.class.weeklyTimetable')}
                   </p>
 
