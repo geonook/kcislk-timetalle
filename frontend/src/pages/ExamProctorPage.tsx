@@ -210,7 +210,7 @@ const ExamProctorPage: React.FC = () => {
         </h2>
 
         {/* 手機版：橫向滑動日期 Tab 選擇器 */}
-        <div className="sm:hidden">
+        <div className="md:hidden">
           {/* 日期 Tab */}
           <div className="flex overflow-x-auto pb-3 mb-3 -mx-1 px-1 gap-2 scrollbar-hide">
             {Object.keys(sessionsByDate).sort().map((date) => (
@@ -228,8 +228,8 @@ const ExamProctorPage: React.FC = () => {
             ))}
           </div>
 
-          {/* 選中日期的 GradeBand 列表 */}
-          <div className="space-y-2">
+          {/* 選中日期的 GradeBand 列表 - 手機單欄，小平板雙欄 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {activeDate && sessionsByDate[activeDate]
               ?.sort((a, b) => a.periods.localeCompare(b.periods))
               .map((session) => (
@@ -254,11 +254,11 @@ const ExamProctorPage: React.FC = () => {
           </div>
         </div>
 
-        {/* 桌面版：三欄並排 */}
-        <div className="hidden sm:grid sm:grid-cols-3 gap-4">
+        {/* iPad/桌面版：三欄並排 */}
+        <div className="hidden md:grid md:grid-cols-3 gap-4">
           {Object.entries(sessionsByDate).sort().map(([date, dateSessions]) => (
             <div key={date} className="border dark:border-gray-700 rounded-lg p-4">
-              <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-3">{formatDate(date)}</h3>
+              <h3 className="font-bold text-base lg:text-lg text-gray-900 dark:text-white mb-3">{formatDate(date)}</h3>
               <div className="space-y-2">
                 {dateSessions
                   .sort((a, b) => a.periods.localeCompare(b.periods))
@@ -310,8 +310,8 @@ const ExamProctorPage: React.FC = () => {
 
           {!loading && classes.length > 0 && (
             <>
-              {/* 手機版：卡片式佈局 */}
-              <div className="sm:hidden space-y-3">
+              {/* 手機/iPad 版：卡片式佈局（手機單欄，iPad 雙欄） */}
+              <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {classes.map((cls) => (
                   <div
                     key={cls.id}
@@ -347,8 +347,8 @@ const ExamProctorPage: React.FC = () => {
                 ))}
               </div>
 
-              {/* 桌面版：表格佈局 */}
-              <div className="hidden sm:block overflow-x-auto">
+              {/* 桌面版：表格佈局（≥1024px） */}
+              <div className="hidden lg:block overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                   <thead className="bg-gray-50 dark:bg-gray-700">
                     <tr>
