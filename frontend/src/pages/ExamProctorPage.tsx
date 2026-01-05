@@ -76,7 +76,7 @@ const ExamProctorPage: React.FC = () => {
     try {
       setLoading(true);
       const blob = await examExportApi.exportAll();
-      examExportApi.downloadCSV(blob, 'midterm_exam_all_classes.csv');
+      examExportApi.downloadCSV(blob, 'final_exam_all_classes.csv');
       setSuccessMessage('CSV 匯出成功！');
     } catch (err) {
       setError('CSV 匯出失敗');
@@ -95,7 +95,7 @@ const ExamProctorPage: React.FC = () => {
     try {
       setLoading(true);
       const blob = await examExportApi.exportGradeBand(selectedGradeBand);
-      const filename = `midterm_exam_${selectedGradeBand.replace(/\s/g, '_').replace(/'/g, '')}.csv`;
+      const filename = `final_exam_${selectedGradeBand.replace(/\s/g, '_').replace(/'/g, '')}.csv`;
       examExportApi.downloadCSV(blob, filename);
       setSuccessMessage('CSV 匯出成功！');
     } catch (err) {
@@ -127,8 +127,8 @@ const ExamProctorPage: React.FC = () => {
     <div className="container mx-auto px-4 py-8 max-w-7xl">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">期中考監考管理系統</h1>
-        <p className="text-gray-600 dark:text-gray-400">2025 Fall Semester Midterm Assessment - 監考分配一覽</p>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">期末考監考管理系統</h1>
+        <p className="text-gray-600 dark:text-gray-400">2025 Fall Semester Final Assessment - 監考分配一覽</p>
       </div>
 
       {/* Statistics */}

@@ -324,7 +324,7 @@ export const formatExamDate = (dateString: string): string => {
  * 取得考試日期列表
  */
 export const getExamDates = (): string[] => {
-  return ['2025-11-04', '2025-11-05', '2025-11-06'];
+  return ['2026-01-06', '2026-01-07', '2026-01-08'];
 };
 
 /**

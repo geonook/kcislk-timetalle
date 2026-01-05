@@ -406,7 +406,7 @@ def export_all_to_csv():
             output.getvalue(),
             mimetype='text/csv',
             headers={
-                'Content-Disposition': 'attachment; filename=midterm_exam_proctor_assignments.csv'
+                'Content-Disposition': 'attachment; filename=final_exam_proctor_assignments.csv'
             }
         )
 
@@ -471,7 +471,7 @@ def export_grade_band_to_csv(grade_band):
         output.seek(0)
         # 清理 grade_band 字串，移除空格和單引號
         cleaned_grade_band = grade_band.replace(" ", "_").replace("'", "")
-        filename = f'midterm_exam_{cleaned_grade_band}.csv'
+        filename = f'final_exam_{cleaned_grade_band}.csv'
         return Response(
             output.getvalue(),
             mimetype='text/csv',

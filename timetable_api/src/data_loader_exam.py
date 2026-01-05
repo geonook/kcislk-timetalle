@@ -1,6 +1,6 @@
 """
-期中考資料載入器
-載入 2025 Fall Semester Midterm Assessment 的考試場次和班級資訊
+期末考資料載入器
+載入 2025 Fall Semester Final Assessment 的考試場次和班級資訊
 """
 import pandas as pd
 import os
@@ -18,7 +18,7 @@ def load_exam_sessions():
             'grade_band': 'G1 LT\'s',
             'exam_type': 'LT',
             'grade': 'G1',
-            'exam_date': '2025-11-05',
+            'exam_date': '2026-01-07',
             'periods': 'P3-P4',
             'duration': 75,
             'self_study_time': None,
@@ -30,7 +30,7 @@ def load_exam_sessions():
             'grade_band': 'G2 LT\'s',
             'exam_type': 'LT',
             'grade': 'G2',
-            'exam_date': '2025-11-05',
+            'exam_date': '2026-01-07',
             'periods': 'P1-P2',
             'duration': 75,
             'self_study_time': None,
@@ -42,7 +42,7 @@ def load_exam_sessions():
             'grade_band': 'G3 LT\'s',
             'exam_type': 'LT',
             'grade': 'G3',
-            'exam_date': '2025-11-05',
+            'exam_date': '2026-01-07',
             'periods': 'P3-P4',
             'duration': 60,
             'self_study_time': '10:20-10:35',
@@ -54,7 +54,7 @@ def load_exam_sessions():
             'grade_band': 'G4 LT\'s',
             'exam_type': 'LT',
             'grade': 'G4',
-            'exam_date': '2025-11-05',
+            'exam_date': '2026-01-07',
             'periods': 'P1-P2',
             'duration': 60,
             'self_study_time': '08:25-08:40',
@@ -66,7 +66,7 @@ def load_exam_sessions():
             'grade_band': 'G5 LT\'s',
             'exam_type': 'LT',
             'grade': 'G5',
-            'exam_date': '2025-11-05',
+            'exam_date': '2026-01-07',
             'periods': 'P3-P4',
             'duration': 60,
             'self_study_time': '10:20-10:40',
@@ -78,7 +78,7 @@ def load_exam_sessions():
             'grade_band': 'G6 LT\'s',
             'exam_type': 'LT',
             'grade': 'G6',
-            'exam_date': '2025-11-05',
+            'exam_date': '2026-01-07',
             'periods': 'P1-P2',
             'duration': 80,
             'self_study_time': None,
@@ -92,7 +92,7 @@ def load_exam_sessions():
             'grade_band': 'G1 IT\'s',
             'exam_type': 'IT',
             'grade': 'G1',
-            'exam_date': '2025-11-06',
+            'exam_date': '2026-01-08',
             'periods': 'P3-P4',
             'duration': 75,
             'self_study_time': None,
@@ -104,7 +104,7 @@ def load_exam_sessions():
             'grade_band': 'G2 IT\'s',
             'exam_type': 'IT',
             'grade': 'G2',
-            'exam_date': '2025-11-06',
+            'exam_date': '2026-01-08',
             'periods': 'P1-P2',
             'duration': 75,
             'self_study_time': None,
@@ -116,7 +116,7 @@ def load_exam_sessions():
             'grade_band': 'G3 IT\'s',
             'exam_type': 'IT',
             'grade': 'G3',
-            'exam_date': '2025-11-04',
+            'exam_date': '2026-01-06',
             'periods': 'P7-P8',
             'duration': 75,
             'self_study_time': None,
@@ -128,7 +128,7 @@ def load_exam_sessions():
             'grade_band': 'G4 IT\'s',
             'exam_type': 'IT',
             'grade': 'G4',
-            'exam_date': '2025-11-04',
+            'exam_date': '2026-01-06',
             'periods': 'P5-P6',
             'duration': 75,
             'self_study_time': None,
@@ -140,7 +140,7 @@ def load_exam_sessions():
             'grade_band': 'G5 IT\'s',
             'exam_type': 'IT',
             'grade': 'G5',
-            'exam_date': '2025-11-04',
+            'exam_date': '2026-01-06',
             'periods': 'P7-P8',
             'duration': 80,
             'self_study_time': None,
@@ -152,7 +152,7 @@ def load_exam_sessions():
             'grade_band': 'G6 IT\'s',
             'exam_type': 'IT',
             'grade': 'G6',
-            'exam_date': '2025-11-04',
+            'exam_date': '2026-01-06',
             'periods': 'P5-P6',
             'duration': 80,
             'self_study_time': None,
@@ -438,7 +438,7 @@ def load_proctor_assignments_from_csv():
 def load_all_exam_data():
     """載入所有考試相關資料"""
     print("\n" + "="*60)
-    print("開始載入 2025 Fall Semester Midterm Assessment 資料")
+    print("開始載入 2025 Fall Semester Final Assessment 資料")
     print("="*60 + "\n")
 
     # 1. 載入考試場次
