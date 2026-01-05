@@ -95,6 +95,42 @@
       "description": "Sorry, the page you're looking for doesn't exist. It may have been removed, renamed, or is temporarily unavailable.",
       "backToHome": "Go Home",
       "suggestion": "Or use the navigation bar above to return to other pages"
+    },
+    "examProctor": {
+      "title": "Final Exam Proctor Management",
+      "subtitle": "2025 Fall Semester Final Assessment - Proctor Assignments Overview",
+      "totalClasses": "Total Classes",
+      "assigned": "Assigned",
+      "unassigned": "Unassigned",
+      "progress": "Progress",
+      "scheduleOverview": "Exam Schedule Overview",
+      "proctorAssignment": "Proctor Assignments",
+      "exportThisGroup": "Export This Group CSV",
+      "exportAll": "Export All Classes CSV (Full 15-Column Format)",
+      "loading": "Loading...",
+      "loadSessionsError": "Failed to load exam sessions",
+      "loadStatsError": "Failed to load statistics",
+      "loadClassesError": "Failed to load class data",
+      "exportSuccess": "CSV exported successfully!",
+      "exportError": "CSV export failed",
+      "selectGradeBandFirst": "Please select a GradeBand first",
+      "weekdays": {
+        "sun": "Sun",
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat"
+      },
+      "table": {
+        "class": "Class",
+        "level": "Level",
+        "students": "Students",
+        "classTeacher": "Class Teacher",
+        "proctor": "Proctor",
+        "examRoom": "Exam Room"
+      }
     }
   },
   "timetable": {

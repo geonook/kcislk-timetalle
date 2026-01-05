@@ -1,8 +1,9 @@
 /**
- * 期中考監考管理頁面（唯讀模式）
+ * 期末考監考管理頁面（唯讀模式）
  * 顯示已分配的監考老師和教室，支援 CSV 匯出
  */
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   examSessionApi,
   classExamInfoApi,
@@ -14,6 +15,8 @@ import {
 } from '../services/examApi';
 
 const ExamProctorPage: React.FC = () => {
+  const { t } = useTranslation();
+
   // State
   const [sessions, setSessions] = useState<ExamSession[]>([]);
   const [selectedGradeBand, setSelectedGradeBand] = useState<string>('');
@@ -42,7 +45,7 @@ const ExamProctorPage: React.FC = () => {
       const data = await examSessionApi.getAll();
       setSessions(data);
     } catch (err) {
-      setError('載入考試場次失敗');
+      setError(t('pages.examProctor.loadSessionsError'));
       console.error(err);
     } finally {
       setLoading(false);
@@ -54,7 +57,7 @@ const ExamProctorPage: React.FC = () => {
       const data = await examStatsApi.get();
       setStats(data);
     } catch (err) {
-      console.error('載入統計資訊失敗', err);
+      console.error(t('pages.examProctor.loadStatsError'), err);
     }
   };
 
@@ -65,7 +68,7 @@ const ExamProctorPage: React.FC = () => {
       const data = await classExamInfoApi.getByGradeBand(gradeBand);
       setClasses(data.classes);
     } catch (err) {
-      setError('載入班級資料失敗');
+      setError(t('pages.examProctor.loadClassesError'));
       console.error(err);
     } finally {
       setLoading(false);
@@ -77,9 +80,9 @@ const ExamProctorPage: React.FC = () => {
       setLoading(true);
       const blob = await examExportApi.exportAll();
       examExportApi.downloadCSV(blob, 'final_exam_all_classes.csv');
-      setSuccessMessage('CSV 匯出成功！');
+      setSuccessMessage(t('pages.examProctor.exportSuccess'));
     } catch (err) {
-      setError('CSV 匯出失敗');
+      setError(t('pages.examProctor.exportError'));
       console.error(err);
     } finally {
       setLoading(false);
@@ -88,7 +91,7 @@ const ExamProctorPage: React.FC = () => {
 
   const handleExportGradeBand = async () => {
     if (!selectedGradeBand) {
-      setError('請先選擇 GradeBand');
+      setError(t('pages.examProctor.selectGradeBandFirst'));
       return;
     }
 
@@ -97,9 +100,9 @@ const ExamProctorPage: React.FC = () => {
       const blob = await examExportApi.exportGradeBand(selectedGradeBand);
       const filename = `final_exam_${selectedGradeBand.replace(/\s/g, '_').replace(/'/g, '')}.csv`;
       examExportApi.downloadCSV(blob, filename);
-      setSuccessMessage('CSV 匯出成功！');
+      setSuccessMessage(t('pages.examProctor.exportSuccess'));
     } catch (err) {
-      setError('CSV 匯出失敗');
+      setError(t('pages.examProctor.exportError'));
       console.error(err);
     } finally {
       setLoading(false);
@@ -119,35 +122,36 @@ const ExamProctorPage: React.FC = () => {
     const date = new Date(dateStr);
     const month = date.getMonth() + 1;
     const day = date.getDate();
-    const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
-    return `${month}/${day} (${weekdays[date.getDay()]})`;
+    const weekdayKeys = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+    const weekday = t(`pages.examProctor.weekdays.${weekdayKeys[date.getDay()]}`);
+    return `${month}/${day} (${weekday})`;
   };
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">期末考監考管理系統</h1>
-        <p className="text-gray-600 dark:text-gray-400">2025 Fall Semester Final Assessment - 監考分配一覽</p>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{t('pages.examProctor.title')}</h1>
+        <p className="text-gray-600 dark:text-gray-400">{t('pages.examProctor.subtitle')}</p>
       </div>
 
       {/* Statistics */}
       {stats && (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-            <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">總班級數</p>
+            <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">{t('pages.examProctor.totalClasses')}</p>
             <p className="text-2xl font-bold text-blue-900 dark:text-blue-100">{stats.overall.total_classes}</p>
           </div>
           <div className="bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-lg p-4">
-            <p className="text-sm text-green-600 dark:text-green-400 font-medium">已分配</p>
+            <p className="text-sm text-green-600 dark:text-green-400 font-medium">{t('pages.examProctor.assigned')}</p>
             <p className="text-2xl font-bold text-green-900 dark:text-green-100">{stats.overall.assigned}</p>
           </div>
           <div className="bg-orange-50 dark:bg-orange-900/30 border border-orange-200 dark:border-orange-800 rounded-lg p-4">
-            <p className="text-sm text-orange-600 dark:text-orange-400 font-medium">未分配</p>
+            <p className="text-sm text-orange-600 dark:text-orange-400 font-medium">{t('pages.examProctor.unassigned')}</p>
             <p className="text-2xl font-bold text-orange-900 dark:text-orange-100">{stats.overall.unassigned}</p>
           </div>
           <div className="bg-purple-50 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-800 rounded-lg p-4">
-            <p className="text-sm text-purple-600 dark:text-purple-400 font-medium">完成進度</p>
+            <p className="text-sm text-purple-600 dark:text-purple-400 font-medium">{t('pages.examProctor.progress')}</p>
             <p className="text-2xl font-bold text-purple-900 dark:text-purple-100">{stats.overall.progress_percent}%</p>
           </div>
         </div>
@@ -167,7 +171,7 @@ const ExamProctorPage: React.FC = () => {
 
       {/* Exam Schedule Overview */}
       <div className="mb-8 bg-white dark:bg-gray-800 shadow rounded-lg p-6">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">考試日程總覽</h2>
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{t('pages.examProctor.scheduleOverview')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {Object.entries(sessionsByDate).sort().map(([date, dateSessions]) => (
             <div key={date} className="border dark:border-gray-700 rounded-lg p-4">
@@ -202,29 +206,29 @@ const ExamProctorPage: React.FC = () => {
       {selectedGradeBand && (
         <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">{selectedGradeBand} - 監考分配</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">{selectedGradeBand} - {t('pages.examProctor.proctorAssignment')}</h2>
             <button
               onClick={handleExportGradeBand}
               disabled={loading}
               className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 disabled:bg-gray-300"
             >
-              匯出此組 CSV
+              {t('pages.examProctor.exportThisGroup')}
             </button>
           </div>
 
-          {loading && <p className="text-center py-4 text-gray-600 dark:text-gray-400">載入中...</p>}
+          {loading && <p className="text-center py-4 text-gray-600 dark:text-gray-400">{t('pages.examProctor.loading')}</p>}
 
           {!loading && classes.length > 0 && (
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                 <thead className="bg-gray-50 dark:bg-gray-700">
                   <tr>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">班級</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Level</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">學生數</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">班級導師</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">監考老師</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">考試教室</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">{t('pages.examProctor.table.class')}</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">{t('pages.examProctor.table.level')}</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">{t('pages.examProctor.table.students')}</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">{t('pages.examProctor.table.classTeacher')}</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">{t('pages.examProctor.table.proctor')}</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">{t('pages.examProctor.table.examRoom')}</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
@@ -260,7 +264,7 @@ const ExamProctorPage: React.FC = () => {
           disabled={loading}
           className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-green-300 font-medium"
         >
-          匯出所有班級 CSV（完整 15 欄位格式）
+          {t('pages.examProctor.exportAll')}
         </button>
       </div>
     </div>

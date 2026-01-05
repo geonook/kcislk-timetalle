@@ -95,6 +95,42 @@
       "description": "抱歉，您要尋找的頁面不存在。可能已被移除、重新命名或暫時無法使用。",
       "backToHome": "返回首頁",
       "suggestion": "或使用上方導航列返回其他頁面"
+    },
+    "examProctor": {
+      "title": "期末考監考管理系統",
+      "subtitle": "2025 Fall Semester Final Assessment - 監考分配一覽",
+      "totalClasses": "總班級數",
+      "assigned": "已分配",
+      "unassigned": "未分配",
+      "progress": "完成進度",
+      "scheduleOverview": "考試日程總覽",
+      "proctorAssignment": "監考分配",
+      "exportThisGroup": "匯出此組 CSV",
+      "exportAll": "匯出所有班級 CSV（完整 15 欄位格式）",
+      "loading": "載入中...",
+      "loadSessionsError": "載入考試場次失敗",
+      "loadStatsError": "載入統計資訊失敗",
+      "loadClassesError": "載入班級資料失敗",
+      "exportSuccess": "CSV 匯出成功！",
+      "exportError": "CSV 匯出失敗",
+      "selectGradeBandFirst": "請先選擇 GradeBand",
+      "weekdays": {
+        "sun": "日",
+        "mon": "一",
+        "tue": "二",
+        "wed": "三",
+        "thu": "四",
+        "fri": "五",
+        "sat": "六"
+      },
+      "table": {
+        "class": "班級",
+        "level": "Level",
+        "students": "學生數",
+        "classTeacher": "班級導師",
+        "proctor": "監考老師",
+        "examRoom": "考試教室"
+      }
     }
   },
   "timetable": {
