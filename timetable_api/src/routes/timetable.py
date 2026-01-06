@@ -247,15 +247,158 @@ def search_courses():
 
 @timetable_bp.route('/classrooms', methods=['GET'])
 def get_all_classrooms():
-    """取得所有教室列表"""
+    """取得所有教室列表（含分組和統計）"""
     try:
         classrooms = Classroom.query.all()
         classroom_names = [classroom.classroom_name for classroom in classrooms]
+        sorted_names = sorted(classroom_names)
+
+        # 按樓層分組
+        grouped = {}
+        for name in sorted_names:
+            floor = extract_floor(name)
+            if floor not in grouped:
+                grouped[floor] = []
+            grouped[floor].append(name)
+
+        # 統計資訊
+        statistics = {
+            'total': len(sorted_names),
+            'by_floor': {floor: len(rooms) for floor, rooms in grouped.items()}
+        }
+
         return jsonify({
             'success': True,
-            'classrooms': sorted(classroom_names)
+            'classrooms': sorted_names,
+            'grouped': grouped,
+            'statistics': statistics
         })
     except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+def extract_floor(classroom_name):
+    """從教室名稱提取樓層 (E301 -> E3, KCFS1 -> KCFS)"""
+    if not classroom_name:
+        return 'Other'
+    if classroom_name.startswith('KCFS'):
+        return 'KCFS'
+    # E101 -> E1, E301 -> E3
+    if len(classroom_name) >= 2 and classroom_name[0].isalpha() and classroom_name[1].isdigit():
+        return classroom_name[:2]
+    return 'Other'
+
+@timetable_bp.route('/classrooms/<classroom_name>/timetable', methods=['GET'])
+def get_classroom_timetable(classroom_name):
+    """取得特定教室的完整週課表"""
+    try:
+        # 驗證教室是否存在
+        classroom = Classroom.query.filter_by(classroom_name=classroom_name).first()
+        if not classroom:
+            return jsonify({
+                'success': False,
+                'error': f'找不到教室: {classroom_name}'
+            }), 404
+
+        days_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+
+        # 初始化課表結構
+        english_timetable = {day: {} for day in days_order}
+        homeroom_timetable = {day: {} for day in days_order}
+
+        # 統計變數
+        total_classes = 0
+        days_with_classes = set()
+        english_count = 0
+        homeroom_count = 0
+        unique_teachers = set()
+        unique_class_groups = set()
+
+        # 1. 查詢英文班課表
+        english_courses = EnglishTimetable.query.filter_by(classroom=classroom_name).all()
+        for course in english_courses:
+            try:
+                period_num = int(course.period.split(')')[0].replace('(', ''))
+                time_range = course.period.split(')')[-1] if ')' in course.period else course.period
+            except:
+                period_num = 0
+                time_range = course.period
+
+            period_key = str(period_num)
+            if period_key not in english_timetable[course.day]:
+                english_timetable[course.day][period_key] = {
+                    'period': period_num,
+                    'time': time_range,
+                    'teacher': course.teacher,
+                    'classroom': course.classroom,
+                    'course_name': f'English - {course.class_name}',
+                    'class_name': course.class_name,
+                    'class_type': 'english'
+                }
+                total_classes += 1
+                english_count += 1
+                days_with_classes.add(course.day)
+                if course.teacher:
+                    unique_teachers.add(course.teacher)
+                if course.class_name:
+                    unique_class_groups.add(course.class_name)
+
+        # 2. 查詢導師班課表
+        homeroom_courses = HomeRoomTimetable.query.filter_by(classroom=classroom_name).all()
+        for course in homeroom_courses:
+            try:
+                period_num = int(course.period.split(')')[0].replace('(', ''))
+                time_range = course.period.split(')')[-1] if ')' in course.period else course.period
+            except:
+                period_num = 0
+                time_range = course.period
+
+            period_key = str(period_num)
+            if period_key not in homeroom_timetable[course.day]:
+                homeroom_timetable[course.day][period_key] = {
+                    'period': period_num,
+                    'time': time_range,
+                    'teacher': course.teacher,
+                    'classroom': course.classroom,
+                    'course_name': course.course_name,
+                    'class_name': course.home_room_class_name,
+                    'class_type': 'homeroom'
+                }
+                total_classes += 1
+                homeroom_count += 1
+                days_with_classes.add(course.day)
+                if course.teacher:
+                    unique_teachers.add(course.teacher)
+                if course.home_room_class_name:
+                    unique_class_groups.add(course.home_room_class_name)
+
+        return jsonify({
+            'success': True,
+            'classroom': {
+                'classroom_name': classroom_name,
+                'floor': extract_floor(classroom_name)
+            },
+            'timetables': {
+                'english_timetable': english_timetable,
+                'homeroom_timetable': homeroom_timetable,
+                'ev_myreading_timetable': {day: {} for day in days_order}  # 預留
+            },
+            'statistics': {
+                'total_classes': total_classes,
+                'days_with_classes': len(days_with_classes),
+                'english_classes': english_count,
+                'homeroom_classes': homeroom_count,
+                'ev_myreading_classes': 0,
+                'unique_teachers': len(unique_teachers),
+                'unique_class_groups': len(unique_class_groups)
+            }
+        })
+    except Exception as e:
+        import traceback
+        print(f"Error in get_classroom_timetable: {e}")
+        print(traceback.format_exc())
         return jsonify({
             'success': False,
             'error': str(e)

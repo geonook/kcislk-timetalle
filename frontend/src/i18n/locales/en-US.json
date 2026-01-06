@@ -9,6 +9,7 @@
     "classes": "Class Timetables",
     "students": "Student Timetables",
     "teachers": "Teacher Timetables",
+    "classrooms": "Classroom Query",
     "examProctor": "Final Exam Proctors",
     "home": "Home"
   },
@@ -95,6 +96,25 @@
       "description": "Sorry, the page you're looking for doesn't exist. It may have been removed, renamed, or is temporarily unavailable.",
       "backToHome": "Go Home",
       "suggestion": "Or use the navigation bar above to return to other pages"
+    },
+    "classroom": {
+      "title": "Classroom Timetable Query",
+      "searchSubtitle": "Browse campus classrooms and view usage schedules",
+      "searchPlaceholder": "Search classroom name...",
+      "searchClassrooms": "Search Classrooms",
+      "searching": "Searching...",
+      "searchResults": "Search Results",
+      "noResults": "No classrooms found",
+      "noMatchingClassrooms": "No matching classrooms found",
+      "tryDifferentSearch": "Please try different search criteria",
+      "backToClassroomList": "Back to Classroom List",
+      "viewingTimetable": "Viewing {{name}}'s Timetable",
+      "statistics": "Usage Statistics",
+      "unifiedTimetable": "Unified Timetable",
+      "completeTimetable": "{{name}}'s Complete Timetable",
+      "clickToView": "Click to view timetable",
+      "allFloors": "All Floors",
+      "floor": "Floor"
     },
     "examProctor": {
       "title": "Final Exam Proctor Management",
@@ -191,6 +211,21 @@
       "homeroomClasses": "Homeroom Classes",
       "evClasses": "EV Classes",
       "uniqueClasses": "Classes Taught"
+    }
+  },
+  "classroom": {
+    "info": {
+      "classroom": "Classroom",
+      "floor": "Floor"
+    },
+    "statistics": {
+      "totalClasses": "Total Classes",
+      "daysWithClasses": "Days with Classes",
+      "englishClasses": "English Classes",
+      "homeroomClasses": "Homeroom Classes",
+      "evClasses": "EV Classes",
+      "uniqueTeachers": "Teachers Using",
+      "uniqueClassGroups": "Classes Using"
     }
   },
   "common": {

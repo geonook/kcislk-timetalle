@@ -9,6 +9,7 @@
     "classes": "班級課表",
     "students": "學生課表",
     "teachers": "教師課表",
+    "classrooms": "教室查詢",
     "examProctor": "期末考監考",
     "home": "首頁"
   },
@@ -95,6 +96,25 @@
       "description": "抱歉，您要尋找的頁面不存在。可能已被移除、重新命名或暫時無法使用。",
       "backToHome": "返回首頁",
       "suggestion": "或使用上方導航列返回其他頁面"
+    },
+    "classroom": {
+      "title": "教室課表查詢",
+      "searchSubtitle": "瀏覽校園教室並查看使用課表",
+      "searchPlaceholder": "搜尋教室名稱...",
+      "searchClassrooms": "搜尋教室",
+      "searching": "搜尋中...",
+      "searchResults": "搜尋結果",
+      "noResults": "未找到教室",
+      "noMatchingClassrooms": "沒有符合條件的教室",
+      "tryDifferentSearch": "請嘗試其他搜尋條件",
+      "backToClassroomList": "返回教室列表",
+      "viewingTimetable": "查看 {{name}} 的課表",
+      "statistics": "使用統計",
+      "unifiedTimetable": "統一課表",
+      "completeTimetable": "{{name}} 的完整課表",
+      "clickToView": "點擊查看課表",
+      "allFloors": "全部樓層",
+      "floor": "樓層"
     },
     "examProctor": {
       "title": "期末考監考管理系統",
@@ -191,6 +211,21 @@
       "homeroomClasses": "導師課堂",
       "evClasses": "EV課堂",
       "uniqueClasses": "教學班級"
+    }
+  },
+  "classroom": {
+    "info": {
+      "classroom": "教室",
+      "floor": "樓層"
+    },
+    "statistics": {
+      "totalClasses": "總課堂數",
+      "daysWithClasses": "上課天數",
+      "englishClasses": "英文課堂",
+      "homeroomClasses": "導師課堂",
+      "evClasses": "EV課堂",
+      "uniqueTeachers": "使用教師數",
+      "uniqueClassGroups": "使用班級數"
     }
   },
   "common": {

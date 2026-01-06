@@ -220,6 +220,55 @@ export interface StudentStore {
   clearSearch: () => void;
 }
 
+// Classroom Types
+export interface Classroom {
+  id: number;
+  classroom_name: string;
+  floor?: string;
+}
+
+export interface ClassroomSearchResponse {
+  success: boolean;
+  classrooms: string[];
+  grouped: {
+    [floor: string]: string[];
+  };
+  statistics: {
+    total: number;
+    by_floor: {
+      [floor: string]: number;
+    };
+  };
+}
+
+export interface ClassroomTimetableResponse {
+  success: boolean;
+  classroom: {
+    classroom_name: string;
+    floor: string;
+  };
+  timetables: {
+    english_timetable: TimetableDisplay;
+    homeroom_timetable: TimetableDisplay;
+    ev_myreading_timetable: TimetableDisplay;
+  };
+  statistics: {
+    total_classes: number;
+    days_with_classes: number;
+    english_classes: number;
+    homeroom_classes: number;
+    ev_myreading_classes: number;
+    unique_teachers: number;
+    unique_class_groups: number;
+  };
+}
+
+export interface ClassroomCardProps {
+  classroom: Classroom;
+  onClick: (classroom: Classroom) => void;
+  className?: string;
+}
+
 // Teacher Types
 export interface Teacher {
   id: number;

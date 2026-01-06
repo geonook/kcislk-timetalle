@@ -8,6 +8,8 @@ import type {
   TeacherTimetableResponse,
   ClassListResponse,
   ClassTimetableResponse,
+  ClassroomSearchResponse,
+  ClassroomTimetableResponse,
   ApiResponse,
 } from '../types';
 
@@ -133,6 +135,17 @@ export const apiService = {
 
   async getClassTimetable(className: string): Promise<ClassTimetableResponse> {
     const response = await api.get<ClassTimetableResponse>(`/timetable/${encodeURIComponent(className)}`);
+    return response.data;
+  },
+
+  // Classroom-related endpoints
+  async getAllClassrooms(): Promise<ClassroomSearchResponse> {
+    const response = await api.get<ClassroomSearchResponse>('/classrooms');
+    return response.data;
+  },
+
+  async getClassroomTimetable(classroomName: string): Promise<ClassroomTimetableResponse> {
+    const response = await api.get<ClassroomTimetableResponse>(`/classrooms/${encodeURIComponent(classroomName)}/timetable`);
     return response.data;
   },
 };

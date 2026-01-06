@@ -3,6 +3,7 @@ import App from '../App';
 import HomePage from '../pages/HomePage';
 import StudentPage from '../pages/StudentPage';
 import TeacherPage from '../pages/TeacherPage';
+import ClassroomPage from '../pages/ClassroomPage';
 import ClassPage from '../pages/ClassPage';
 import ExamProctorPage from '../pages/ExamProctorPage';
 import NotFoundPage from '../pages/NotFoundPage';
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: 'teachers',
         element: <TeacherPage />,
+      },
+      {
+        path: 'classrooms',
+        element: <ClassroomPage />,
       },
       {
         path: 'class/:className',

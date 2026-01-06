@@ -19,7 +19,8 @@ export default function Header() {
     { name: t('navigation.classes'), href: '/classes' },
     { name: t('navigation.students'), href: '/students' },
     { name: t('navigation.teachers'), href: '/teachers' },
-    // 條件式顯示：只在環境變數啟用時顯示期中考監考功能
+    { name: t('navigation.classrooms'), href: '/classrooms' },
+    // 條件式顯示：只在環境變數啟用時顯示期末考監考功能
     ...(import.meta.env.VITE_ENABLE_EXAM_PROCTOR === 'true'
       ? [{ name: t('navigation.examProctor'), href: '/exam-proctor' }]
       : []
