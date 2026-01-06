@@ -547,7 +547,7 @@ export default function ClassroomPage() {
         return createPortal(
           <PrintableTimetable
             timetableData={unifiedTimetable}
-            classroomName={selectedClassroom.classroom_name}
+            className={selectedClassroom.classroom_name}
           />,
           document.body
         );
